@@ -11,113 +11,73 @@
             <!-- Post Items Start -->
             <div class="post--items post--items-1 pd--30-0">
                 <div class="row gutter--15">
+                    <div class="col-md-12">
+                        <div class="container">
+                            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                                <!-- Wrapper for slides -->
+                                <div class="carousel-inner">
+                                    <div class="item active">
+                                        <img src="{{asset('user/img/slideshow-img/a12-16877994426012071256703.jpg')}}">
+                                        <div class="carousel-caption">
+                                        <h3><a href="#">Việt Nam là hình mẫu về phục hồi kinh tế</a></h3>
+                                        <p>Trưa 26.6, trong khuôn khổ chuyến thăm chính thức Trung Quốc và dự hội nghị của Diễn đàn Kinh tế thế giới, Thủ tướng...<a class="label label-primary" href="" target="_blank"></a></p>
+                                        </div>
+                                    </div><!-- End Item -->
+                                    
+                                    <div class="item">
+                                        <img src="{{asset('user/img/slideshow-img/img1081-168779566180572722111.jpeg')}}">
+                                        <div class="carousel-caption">
+                                            <h3><a href="#">Thiếu tướng Vũ Hồng Văn, Cục trưởng A03 nhận huân chương Quân công hạng nhì</a></h3>
+                                            <p>Tại hội nghị sơ kết công tác công an 6 tháng đầu năm, thừa ủy quyền của lãnh đạo Đảng, Nhà nước, đại tướng Tô Lâm, Bộ trưởng Bộ Công an, đã...<a class="label label-primary" href="" target="_blank"></a></p>
+                                        </div>
+                                    </div><!-- End Item -->
+                                    
+                                    <div class="item">
+                                        <img src="{{asset('user/img/slideshow-img/ezgif-1-d25e8afc1c.jpg')}}">
+                                        <div class="carousel-caption">
+                                            <h3><a href="#">'Mở cửa' du lịch giữa Ấn Độ và Đà Lạt, Lạc Dương</a></h3>
+                                            <p>Nhiều đơn vị lữ hành của Ấn Độ đang có kế hoạch tổ chức đưa du khách đến Đà Lạt, Lạc Dương và các điểm du lịch khác của Lâm Đồng. <a class="label label-primary" href="" target="_blank"></a></p>
+                                        </div>
+                                    </div><!-- End Item -->
+                                    
+                                    <div class="item">
+                                        <img src="{{asset('user/img/slideshow-img/img1081-168779566180572722111.jpeg')}}">
+                                        <div class="carousel-caption">
+                                            <h3><a href="#">Thiếu tướng Vũ Hồng Văn, Cục trưởng A03 nhận huân chương Quân công hạng nhì</a></h3>
+                                            <p>Tại hội nghị sơ kết công tác công an 6 tháng đầu năm, thừa ủy quyền của lãnh đạo Đảng, Nhà nước, đại tướng Tô Lâm, Bộ trưởng Bộ Công an, đã...<a class="label label-primary" href="" target="_blank"></a></p>
+                                        </div>
+                                    </div><!-- End Item -->
+                                    
+                                    <div class="item">
+                                        <img src="{{asset('user/img/slideshow-img/a12-16877994426012071256703.jpg')}}">
+                                        <div class="carousel-caption">
+                                            <h3><a href="#">Việt Nam là hình mẫu về phục hồi kinh tế</a></h3>
+                                            <p>Trưa 26.6, trong khuôn khổ chuyến thăm chính thức Trung Quốc và dự hội nghị của Diễn đàn Kinh tế thế giới, Thủ tướng...<a class="label label-primary" href="" target="_blank"></a></p>
+                                        </div>
+                                    </div><!-- End Item -->
+                                </div><!-- End Carousel Inner -->
 
-                <div class="col-md-12">
-                    <div class="container">
-                    <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                    
-                        <!-- Wrapper for slides -->
-                        <div class="carousel-inner">
+                                <ul class="list-group col-sm-4">
+                                    <li data-target="#myCarousel" data-slide-to="0" class="list-group-item active"><h4>Việt Nam là hình mẫu về phục hồi kinh tế</h4></li>
+                                    <li data-target="#myCarousel" data-slide-to="1" class="list-group-item"><h4>Thiếu tướng Vũ Hồng Văn, Cục trưởng A03 nhận huân chương Quân công hạng nhì</h4></li>
+                                    <li data-target="#myCarousel" data-slide-to="2" class="list-group-item"><h4>'Mở cửa' du lịch giữa Ấn Độ và Đà Lạt, Lạc Dương</h4></li>
+                                    <li data-target="#myCarousel" data-slide-to="3" class="list-group-item"><h4>Thiếu tướng Vũ Hồng Văn, Cục trưởng A03 nhận huân chương Quân công hạng nhì</h4></li>
+                                    <li data-target="#myCarousel" data-slide-to="4" class="list-group-item"><h4>Việt Nam là hình mẫu về phục hồi kinh tế</h4></li>
+                                </ul>
                         
-                        <div class="item active">
-                            <img src="http://placehold.it/760x400/cccccc/ffffff">
-                            <div class="carousel-caption">
-                            <h4><a href="#">Lorem ipsum dolor sit amet consetetur sadipscing</a></h4>
-                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat. <a class="label label-primary" href="http://sevenx.de/demo/bootstrap-carousel/" target="_blank">Free Bootstrap Carousel Collection</a></p>
-                            </div>
-                        </div><!-- End Item -->
-                
-                        <div class="item">
-                            <img src="http://placehold.it/760x400/999999/cccccc">
-                            <div class="carousel-caption">
-                            <h4><a href="#">consetetur sadipscing elitr, sed diam nonumy eirmod</a></h4>
-                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat. <a class="label label-primary" href="http://sevenx.de/demo/bootstrap-carousel/" target="_blank">Free Bootstrap Carousel Collection</a></p>
-                            </div>
-                        </div><!-- End Item -->
+                                <!-- Controls -->
+                                <div class="carousel-controls">
+                                    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                                        <span class="glyphicon glyphicon-chevron-left"></span>
+                                    </a>
+                                    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                                        <span class="glyphicon glyphicon-chevron-right"></span>
+                                    </a>
+                                </div>
                         
-                        <div class="item">
-                            <img src="http://placehold.it/760x400/dddddd/333333">
-                            <div class="carousel-caption">
-                            <h4><a href="#">tempor invidunt ut labore et dolore</a></h4>
-                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat. <a class="label label-primary" href="http://sevenx.de/demo/bootstrap-carousel/" target="_blank">Free Bootstrap Carousel Collection</a></p>
-                            </div>
-                        </div><!-- End Item -->
-                        
-                        <div class="item">
-                            <img src="http://placehold.it/760x400/999999/cccccc">
-                            <div class="carousel-caption">
-                            <h4><a href="#">magna aliquyam erat, sed diam voluptua</a></h4>
-                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat. <a class="label label-primary" href="http://sevenx.de/demo/bootstrap-carousel/" target="_blank">Free Bootstrap Carousel Collection</a></p>
-                            </div>
-                        </div><!-- End Item -->
-                
-                        <div class="item">
-                            <img src="http://placehold.it/760x400/dddddd/333333">
-                            <div class="carousel-caption">
-                            <h4><a href="#">tempor invidunt ut labore et dolore magna aliquyam erat</a></h4>
-                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat. <a class="label label-primary" href="http://sevenx.de/demo/bootstrap-carousel/" target="_blank">Free Bootstrap Carousel Collection</a></p>
-                            </div>
-                        </div><!-- End Item -->
-                                
-                        </div><!-- End Carousel Inner -->
-                
-                
-                        <ul class="list-group col-sm-4">
-                        <li data-target="#myCarousel" data-slide-to="0" class="list-group-item active"><h4>Lorem ipsum dolor sit amet consetetur sadipscing</h4></li>
-                        <li data-target="#myCarousel" data-slide-to="1" class="list-group-item"><h4>consetetur sadipscing elitr, sed diam nonumy eirmod</h4></li>
-                        <li data-target="#myCarousel" data-slide-to="2" class="list-group-item"><h4>tempor invidunt ut labore et dolore</h4></li>
-                        <li data-target="#myCarousel" data-slide-to="3" class="list-group-item"><h4>magna aliquyam erat, sed diam voluptua</h4></li>
-                        <li data-target="#myCarousel" data-slide-to="4" class="list-group-item"><h4>tempor invidunt ut labore et dolore magna aliquyam erat</h4></li>
-                        </ul>
-                
-                        <!-- Controls -->
-                        <div class="carousel-controls">
-                            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-                            <span class="glyphicon glyphicon-chevron-left"></span>
-                            </a>
-                            <a class="right carousel-control" href="#myCarousel" data-slide="next">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                            </a>
+                            </div><!-- End Carousel -->
                         </div>
-                
-                    </div><!-- End Carousel -->
-                    </div>
-                    <style>
-                        #myCarousel .carousel-caption {
-                            left:0;
-                            right:0;
-                            bottom:0;
-                            text-align:left;
-                            padding:10px;
-                            background:rgba(0,0,0,0.6);
-                            text-shadow:none;
-                        }
-
-                        #myCarousel .list-group {
-                            position:absolute;
-                            top:0;
-                            right:0;
-                        }
-                        #myCarousel .list-group-item {
-                            border-radius:0px;
-                            cursor:pointer;
-                        }
-                        #myCarousel .list-group .active {
-                         background-color:#eee;	
-                        }
-
-                        @media (min-width: 992px) { 
-                            #myCarousel {padding-right:33.3333%;}
-                            #myCarousel .carousel-controls {display:none;} 	
-                        }
-                        @media (max-width: 991px) { 
-                            .carousel-caption p,
-                            #myCarousel .list-group {
-                                display:none;
-                            } 
-                        }
-                    </style>
-                </div>   
+                    </div>   
                 </div>
             </div>
             <!-- Post Items End -->
@@ -423,10 +383,6 @@
                                     <div class="input-group">
                                         <input type="email" name="" placeholder="Nhập Email" class="form-control" autocomplete="off" required>
                                         <input type="text" name="" placeholder="Nhập nội dung" class="form-control" autocomplete="off" required>
-
-                                        {{-- <div class="input-group-btn">
-                                            <button type="submit" class="btn btn-lg btn-default active"><i class="fa fa-paper-plane-o"></i></button>
-                                        </div> --}}
                                         <button type="submit" class="btn btn-lg btn-default active"><i class="fa fa-paper-plane-o"></i></button>
 
                                     </div>
@@ -459,7 +415,7 @@
                 <!-- Main Sidebar End -->
             </div>
 
-            {{-- <div class="row">
+            <div class="row">
                 <!-- Main Content Start -->
                 <div class="main--content col-md-8 col-sm-7" data-sticky-content="true">
                     <div class="sticky-content-inner">
@@ -850,37 +806,8 @@
                     </div>
                 </div>
                 <!-- Main Sidebar End -->
-            </div> --}}
+            </div>
         </div>
     </div>
     <!-- Main Content Section End -->
-    {{-- <script>
-        $(document).ready(function(){
-            var clickEvent = false;
-            $('#myCarousel').carousel({
-                interval: 4000	
-            }).on('click', '.list-group li', function() {
-                clickEvent = true;
-                $('.list-group li').removeClass('active');
-                $(this).addClass('active');		
-            }).on('slid.bs.carousel', function(e) {
-            if(!clickEvent) {
-                var count = $('.list-group').children().length -1;
-                var current = $('.list-group li.active');
-                current.removeClass('active').next().addClass('active');
-                var id = parseInt(current.data('slide-to'));
-                if(count == id) {
-                $('.list-group li').first().addClass('active');	
-                }
-            }
-            clickEvent = false;
-            });
-        })
-        $(window).load(function() {
-            var boxheight = $('#myCarousel .carousel-inner').innerHeight();
-            var itemlength = $('#myCarousel .item').length;
-            var triggerheight = Math.round(boxheight/itemlength+1);
-            $('#myCarousel .list-group-item').outerHeight(triggerheight);
-        });
-    </script> --}}
 @endsection

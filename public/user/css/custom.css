@@ -1,0 +1,49 @@
+/* slideshow */
+#myCarousel .carousel-caption {
+  left:0;
+  right:0;
+  bottom:0;
+  text-align:left;
+  padding:10px;
+  background:rgba(0,0,0,0.6);
+  text-shadow:none;
+}
+
+#myCarousel .list-group {
+  position:absolute;
+  top:0;
+  right:0;
+  color: black;
+
+}
+#myCarousel .list-group-item {
+  border-radius:0px;
+  cursor:pointer;
+}
+#myCarousel .list-group .active {
+  background-color:#fdf2f2;	
+  color: #ff0000;
+}
+
+#myCarousel .carousel-inner .item img{
+  width: 760px;
+  height: 400px;
+  object-fit: fill;
+}
+
+a, a:hover, a:focus, .btn-link:hover, .btn-link:focus, .btn-link.active, .nav li a:hover, .nav li.active > a, .nav li.active > a:hover, .nav li.active > a:focus, .nav li.open > a, .nav li.open > a:hover, .nav li.open > a:focus, .text--color-1, .comment--header .rating, .comment-respond .rating .br-widget a:after, .widget--title .h4, .tags--widget.style--4 .nav > li > a:hover, .search--widget li label span:hover, .search--widget li label input:checked + span, .megamenu--posts > ul > li:hover > .title, .main--breadcrumb .breadcrumb .active, .page--title .h2 span, .post--items-title .h4, .product--item:hover .rating, .product--summery .rating .nav, .faq--item .panel-title a, .checkout--info .title .fa, .checkout--info .title a:hover, .checkout--info .title a.active, .checkout--billing-info .table tbody tr td span, .contact--cats .nav > li > a:hover .title .h5, .portfolio--item:hover .title .h4 .btn-link {
+  color: #ff0000;
+}
+
+
+@media (min-width: 992px) { 
+  #myCarousel {padding-right:33.3333%;}
+  #myCarousel .carousel-controls {display:none;} 	
+}
+@media (max-width: 991px) { 
+  .carousel-caption p,
+  #myCarousel .list-group {
+      display:none;
+  } 
+}
+/* end slideshow */

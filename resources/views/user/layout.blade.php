@@ -25,6 +25,7 @@
     
     <!-- ==== Main Stylesheet ==== -->
     <link rel="stylesheet" href="{{asset('user/css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('user/css/custom.css')}}">
     
     <!-- ==== Responsive Stylesheet ==== -->
     <link rel="stylesheet" href="{{asset('user/css/responsive-style.css')}}">
@@ -223,7 +224,7 @@
         <!-- Header Section End -->
 
         <!-- Posts Filter Bar Start -->
-        <div class="posts--filter-bar style--1 hidden-xs">
+        {{-- <div class="posts--filter-bar style--1 hidden-xs">
             <div class="container">
                 <ul class="nav">
                     <li>
@@ -258,7 +259,7 @@
                     </li>
                 </ul>
             </div>
-        </div>
+        </div> --}}
         <!-- Posts Filter Bar End -->
 
         @yield('web_content')
@@ -293,11 +294,11 @@
                                         </li>
                                         <li>
                                             <i class="fa fa-envelope-o"></i>
-                                            <a href="mailto:example@example.com">0306171004@caothang.edu.com</a>
+                                            <a href="">Demo@caothang.edu.vn</a>
                                         </li>
                                         <li>
                                             <i class="fa fa-phone"></i>
-                                            <a href="tel:+123456789">+123 456 (789)</a>
+                                            <a href="">+123 456 (789)</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -340,8 +341,8 @@
                                 <!-- Links Widget Start -->
                                 <div class="links--widget">
                                     <ul class="nav">
-                                        <li><a href="#" class="fa-angle-right"> 0945.54.03.03</a></li>
-                                        <li><a href="#" class="fa-angle-right">Email: quangcao@dantri.com.vn</a></li>
+                                        <li><a href="#" class="fa-angle-right"> 0945.12.34.56</a></li>
+                                        <li><a href="#" class="fa-angle-right">Email: ads@caothang.edu.vn</a></li>
                                     </ul>
                                 </div>
                                 <!-- Links Widget End -->
@@ -384,9 +385,9 @@
                     </ul>
 
                     <ul class="nav links float--right">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Support</a></li>
+                        <li><a href="#">Trang chủ</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Hỗ trợ</a></li>
                     </ul>
                 </div>
             </div>
@@ -443,35 +444,6 @@
 
     <!-- ==== Main JavaScript ==== -->
     <script src="{{asset('user/js/main.js')}}"></script>
-
-    <script>
-        $(document).ready(function(){
-            var clickEvent = false;
-            $('#myCarousel').carousel({
-                interval: 4000	
-            }).on('click', '.list-group li', function() {
-                clickEvent = true;
-                $('.list-group li').removeClass('active');
-                $(this).addClass('active');		
-            }).on('slid.bs.carousel', function(e) {
-            if(!clickEvent) {
-                var count = $('.list-group').children().length -1;
-                var current = $('.list-group li.active');
-                current.removeClass('active').next().addClass('active');
-                var id = parseInt(current.data('slide-to'));
-                if(count == id) {
-                $('.list-group li').first().addClass('active');	
-                }
-            }
-            clickEvent = false;
-            });
-        })
-        $(window).load(function() {
-            var boxheight = $('#myCarousel .carousel-inner').innerHeight();
-            var itemlength = $('#myCarousel .item').length;
-            var triggerheight = Math.round(boxheight/itemlength+1);
-            $('#myCarousel .list-group-item').outerHeight(triggerheight);
-        });
-    </script>
+    <script src="{{asset('user/js/custom.js')}}"></script>
 </body>
 </html>
