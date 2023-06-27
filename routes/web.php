@@ -1,7 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+//Admin
 
+//User
+use App\Http\Controllers\user\HomeController as UserHomeController;
+use App\Http\Controllers\user\CategoryController as UserCategoryController;
+use App\Http\Controllers\user\TypeCategoryController as UserTypeCategoryController;
+use App\Http\Controllers\user\SearchController as UserSearchController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,7 +18,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+//Admin
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+//User
+Route::get('/', [UserHomeController::class,'index'])->name('/');
+Route::get('/category', [UserCategoryController::class,'index'])->name('category');
+Route::get('/type-category', [UserTypeCategoryController::class,'index'])->name('type-category');
+Route::get('/search', [UserSearchController::class,'index'])->name('search');
