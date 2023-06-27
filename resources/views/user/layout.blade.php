@@ -294,11 +294,11 @@
                                         </li>
                                         <li>
                                             <i class="fa fa-envelope-o"></i>
-                                            <a href="mailto:example@example.com">Demo@caothang.edu.com</a>
+                                            <a href="">Demo@caothang.edu.vn</a>
                                         </li>
                                         <li>
                                             <i class="fa fa-phone"></i>
-                                            <a href="tel:+123456789">+123 456 (789)</a>
+                                            <a href="">+123 456 (789)</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -342,7 +342,7 @@
                                 <div class="links--widget">
                                     <ul class="nav">
                                         <li><a href="#" class="fa-angle-right"> 0945.12.34.56</a></li>
-                                        <li><a href="#" class="fa-angle-right">Email: quangcao@dantri.com.vn</a></li>
+                                        <li><a href="#" class="fa-angle-right">Email: ads@caothang.edu.vn</a></li>
                                     </ul>
                                 </div>
                                 <!-- Links Widget End -->
@@ -445,7 +445,5 @@
     <!-- ==== Main JavaScript ==== -->
     <script src="{{asset('user/js/main.js')}}"></script>
     <script src="{{asset('user/js/custom.js')}}"></script>
-
-    
 </body>
 </html>

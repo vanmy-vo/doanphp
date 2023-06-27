@@ -2,7 +2,7 @@
 $(document).ready(function(){
     var clickEvent = false;
     $('#myCarousel').carousel({
-        interval: 2500	
+        interval: 2000	
     }).on('click', '.list-group li', function() {
         clickEvent = true;
         $('.list-group li').removeClass('active');
