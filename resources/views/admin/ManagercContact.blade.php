@@ -3,6 +3,119 @@
 @section('title', 'Category')
 
 @section('webcontent')
+{{-- View Form --}}
+<style>
+    #FilterContentCenter {
+        margin: auto;
+        background-color: #fff;
+        border-radius: 4px;
+        width: 95%;
+        min-width: 278px;
+        max-width: 450px;
+        position: relative;
+    }
+
+    .filtergrouptitle {
+        margin: 20px 0px 0px 0px;
+        padding: 0px;
+        font-size: 20px;
+    }
+
+        .filtergrouptitle.floatleft {
+            margin: 0px 10px 0px 0px;
+            padding: 10px;
+            line-height: 1;
+            border: 1px dotted #ccc;
+            border-radius: 5px;
+            float: left;
+        }
+
+            .filtergrouptitle.floatleft.focus {
+                background: #ccc;
+            }
+
+    .scroll {
+        border: 1px solid #ccc;
+        height: 195px;
+        overflow-y: scroll;
+    }
+
+    .inputtext {
+        margin: 0px 0px 0px 0px;
+        padding: 0px 0px 0px 0px;
+        text-align: center;
+    }
+
+    .filterpane .row {
+        margin: 0px 0px 5px 0px;
+        padding: 3px 0px 3px 0px;
+        background-color: #eae9e9;
+        border-radius: 4px;
+    }
+
+        .filterpane .row.selected {
+            background-color: var(--secondary);
+            color: #fff;
+        }
+
+    .lefttitle {
+        margin: 10px 0px 0px 0px;
+        padding: 0px;
+        line-height: 1;
+    }
+    .input-edit{
+        padding-left: 17px;
+    }
+</style>
+<div class="modal fade" id="viewContact" tabindex="-1" role="dialog" aria-labelledby="viewContact" aria-hidden="true">
+    <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-dark">
+                <h3 class="filtergrouptitle modal-title text-white text-uppercase" id="exampleModalPopoversLabel" style="text-align: center;">THÔNG TIN LIÊN HỆ</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <div id="FilterContentCenter">
+                    <div class="filterpane" style="margin-bottom:0px;padding-bottom:0px">
+                        <div class="row">
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                <p class="lefttitle">Email</p>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                <p class="lefttitle">Tên</p>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                <p class="lefttitle">Tiêu đề</p>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                <p class="lefttitle">Nội dung</p>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="filerfooter" style="margin-top:20px">
+                        <button class="btn btn-dark">Đóng</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{-- End View Form --}}
+
 {{-- Add Form --}}
 <style>
     #FilterContentCenter {
@@ -71,7 +184,7 @@
     <div class="modal-dialog modal-md" role="document">
         <div class="modal-content">
             <div class="modal-header bg-dark">
-                <h3 class="filtergrouptitle modal-title text-white text-uppercase" id="exampleModalPopoversLabel">THÊM THÔNG TIN LIÊN HỆ</h3>
+                <h3 class="filtergrouptitle modal-title text-white text-uppercase" id="exampleModalPopoversLabel"  style="text-align: center;">THÊM THÔNG TIN LIÊN HỆ</h3>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
@@ -79,54 +192,51 @@
 
             <div class="modal-body">
                 <form action="" id="updateContactForm" method="">
-                    {{-- <div id="FilterBG" style="opacity: 0.8"></div> --}}
-                    {{-- <div id="FilterContent" style="opacity: 1"> --}}
-                        <div id="FilterContentCenter">
-                            <div class="filterpane" style="margin-bottom:0px;padding-bottom:0px">
-                                <div class="row">
-                                    <div class="col-md-3 col-sm-3 col-xs-12">
-                                        <p class="lefttitle">Email</p>
-                                    </div>
-                                    <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <input type="text" class="form-control input-edit" value=""/>
-                                    </div>
-                                    {{-- <div class="clearfix"></div> --}}
+                    <div id="FilterContentCenter">
+                        <div class="filterpane" style="margin-bottom:0px;padding-bottom:0px">
+                            <div class="row">
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <p class="lefttitle">Email</p>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-3 col-sm-3 col-xs-12">
-                                        <p class="lefttitle">Tên</p>
-                                    </div>
-                                    <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <input type="text" class="form-control input-edit" value="" />
-                                    </div>
-                                    {{-- <div class="clearfix"></div> --}}
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <input type="text" class="form-control input-edit" value=""/>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-3 col-sm-3 col-xs-12">
-                                        <p class="lefttitle">Tiêu đề</p>
-                                    </div>
-                                    <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <input type="text" class="form-control input-edit" value="" />
-                                    </div>
-                                    {{-- <div class="clearfix"></div> --}}
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-3 col-sm-3 col-xs-12">
-                                        <p class="lefttitle">Nội dung</p>
-                                    </div>
-                                    <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <textarea type="text" class="form-control input-edit" value="" ></textarea>
-                                    </div>
-                                    {{-- <div class="clearfix"></div> --}}
-                                </div>
+                                <div class="clearfix"></div>
                             </div>
-                            <div class="clearfix"></div>
-                            <div class="filerfooter" style="margin-top:20px">
-                                <button class="btn btn-success">Thêm</button>
-                                <button class="btn btn-dark">Hủy</button>
+                            <div class="row">
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <p class="lefttitle">Tên</p>
+                                </div>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <input type="text" class="form-control input-edit" value="" />
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <p class="lefttitle">Tiêu đề</p>
+                                </div>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <input type="text" class="form-control input-edit" value="" />
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <p class="lefttitle">Nội dung</p>
+                                </div>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <textarea type="text" class="form-control input-edit" value="" ></textarea>
+                                </div>
+                                <div class="clearfix"></div>
                             </div>
                         </div>
-                    {{-- </div> --}}
+                        <div class="clearfix"></div>
+                        <div class="filerfooter" style="margin-top:20px">
+                            <button class="btn btn-success">Thêm</button>
+                            <button class="btn btn-dark">Hủy</button>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
@@ -202,7 +312,7 @@
     <div class="modal-dialog modal-md" role="document">
         <div class="modal-content">
             <div class="modal-header bg-dark">
-                <h3 class="filtergrouptitle modal-title text-white text-uppercase" id="exampleModalPopoversLabel">CHỈNH SỬA THÔNG TIN LIÊN HỆ</h3>
+                <h3 class="filtergrouptitle modal-title text-white text-uppercase" id="exampleModalPopoversLabel"  style="text-align: center;">SỬA THÔNG TIN LIÊN HỆ</h3>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
@@ -210,54 +320,51 @@
 
             <div class="modal-body">
                 <form action="" id="updateContactForm" method="">
-                    {{-- <div id="FilterBG" style="opacity: 0.8"></div> --}}
-                    {{-- <div id="FilterContent" style="opacity: 1"> --}}
-                        <div id="FilterContentCenter">
-                            <div class="filterpane" style="margin-bottom:0px;padding-bottom:0px">
-                                <div class="row">
-                                    <div class="col-md-3 col-sm-3 col-xs-12">
-                                        <p class="lefttitle">Email</p>
-                                    </div>
-                                    <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <input type="text" class="form-control input-edit" value=""/>
-                                    </div>
-                                    {{-- <div class="clearfix"></div> --}}
+                    <div id="FilterContentCenter">
+                        <div class="filterpane" style="margin-bottom:0px;padding-bottom:0px">
+                            <div class="row">
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <p class="lefttitle">Email</p>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-3 col-sm-3 col-xs-12">
-                                        <p class="lefttitle">Tên</p>
-                                    </div>
-                                    <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <input type="text" class="form-control input-edit" value="" />
-                                    </div>
-                                    {{-- <div class="clearfix"></div> --}}
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <input type="text" class="form-control input-edit" value=""/>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-3 col-sm-3 col-xs-12">
-                                        <p class="lefttitle">Tiêu đề</p>
-                                    </div>
-                                    <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <input type="text" class="form-control input-edit" value="" />
-                                    </div>
-                                    {{-- <div class="clearfix"></div> --}}
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-3 col-sm-3 col-xs-12">
-                                        <p class="lefttitle">Nội dung</p>
-                                    </div>
-                                    <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <textarea type="text" class="form-control input-edit" value="" ></textarea>
-                                    </div>
-                                    {{-- <div class="clearfix"></div> --}}
-                                </div>
+                                <div class="clearfix"></div>
                             </div>
-                            <div class="clearfix"></div>
-                            <div class="filerfooter" style="margin-top:20px">
-                                <button class="btn btn-success">Lưu</button>
-                                <button class="btn btn-dark">Hủy</button>
+                            <div class="row">
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <p class="lefttitle">Tên</p>
+                                </div>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <input type="text" class="form-control input-edit" value="" />
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <p class="lefttitle">Tiêu đề</p>
+                                </div>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <input type="text" class="form-control input-edit" value="" />
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <p class="lefttitle">Nội dung</p>
+                                </div>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <textarea type="text" class="form-control input-edit" value="" ></textarea>
+                                </div>
+                                <div class="clearfix"></div>
                             </div>
                         </div>
-                    {{-- </div> --}}
+                        <div class="clearfix"></div>
+                        <div class="filerfooter" style="margin-top:20px">
+                            <button class="btn btn-success">Lưu</button>
+                            <button class="btn btn-dark">Hủy</button>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
@@ -451,6 +558,7 @@
                 <thead>
                     <tr>
                         <th class="tc1">Họ tên</th>
+                        <th class="tc1">Email</th>
                         <th class="tc2">Tiêu đề</th>
                         <th class="tc3">Nội dung</th>
                         <th class="tc5">Thao tác</th>
@@ -458,15 +566,13 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="tc1">demo@gmail.com<br><b>Nguyễn Văn A</b></td>
-                        <td class="tc2"><p>Game công nghệ</p></td>
-                        <td class="tc3"><p>Mùa thu lá vàng rơi rơi rơi rơi...</p></td>
+                        <td class="tc1">Nguyễn Văn A</td>
+                        <td class="tc1">demo@gmail.com</td>
+                        <td class="tc2">Game công nghệ</td>
+                        <td class="tc3">Mùa thu lá vàng rơi rơi rơi rơi...</td>
                         <td class="tc">
-                            {{-- <div class="btn btn-xs btn-success"><a href="detailAccount.html" style="color: #fff;"><i class="fa fa-eye"></i></a></div> --}}
-                            {{-- <div class="btn btn-xs btn-success" onclick="ShowHide(true)"><i class="fa fa-pencil-square-o"></i></div> --}}
-                            {{-- <div class="btn btn-xs btn-danger" onclick="Delete('Lê Triệu Long')" style=""><i class="fa fa-remove"></i></div> --}}
-                            <a class="btn btn-xs btn-success" data-toggle="modal" data-target="#updateContact"><i class="fa fa-eye"></i></a>
-                            <a class="btn btn-xs btn-success"><i class="fa fa-pencil-square-o"></i></a>
+                            <a class="btn btn-xs btn-success" data-toggle="modal" data-target="#viewContact"><i class="fa fa-eye"></i></a>
+                            <a class="btn btn-xs btn-success" data-toggle="modal" data-target="#updateContact"><i class="fa fa-pencil-square-o"></i></a>
                             <a class="btn btn-xs btn-danger"><i class="fa fa-remove"></i></a>
                         </td>
                     </tr>
