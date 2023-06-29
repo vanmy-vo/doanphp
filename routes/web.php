@@ -95,3 +95,7 @@ Route::post('auth/admin', function () {
 Route::get('/detail', [UserDetailController::class,'index'])->name('detail');
 Route::get('/contact', [UserContactController::class,'index'])->name('contact');
 
+//CKeditor and CKFinder
+Route::any('/ckfinder/connector', '\CKSource\CKFinderBridge\Controller\CKFinderController@requestAction')->name('ckfinder_connector');
+Route::any('/ckfinder/browser', '\CKSource\CKFinderBridge\Controller\CKFinderController@browserAction')->name('ckfinder_browser');
+

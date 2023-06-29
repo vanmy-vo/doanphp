@@ -686,6 +686,7 @@
     //     location.reload();
     // }
 
+
      // Hiển thị / Tắt popup bộ lọ
     // function ShowHide(show) {
     //     if (!show) {
@@ -696,5 +697,7 @@
     //         $('#FilterContent').css('display', 'block').animate({ opacity: '1' }, 400);
     //     }
     // }
+
+ 
 </script>
 @stop
