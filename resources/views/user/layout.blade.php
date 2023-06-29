@@ -62,13 +62,13 @@
 
                     <div class="float--right float--xs-none text-xs-center">
                         <!-- Header Topbar Action Start -->
-                        <ul class="header--topbar-action nav">
+                        {{-- <ul class="header--topbar-action nav">
                             <li><a href="login.html"><i class="fa fm fa-user-o"></i>Đăng ký/Đăng nhập</a></li>
-                        </ul>
+                        </ul> --}}
                         <!-- Header Topbar Action End -->
                         
                         <!-- Header Topbar Language Start -->
-                        <ul class="header--topbar-lang nav">
+                        {{-- <ul class="header--topbar-lang nav">
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fm fa-language"></i>Tiếng Việt<i class="fa flm fa-angle-down"></i></a>
                                 <ul class="dropdown-menu">
@@ -76,7 +76,7 @@
                                     <li><a href="#">Tiếng Việt</a></li>
                                 </ul>
                             </li>
-                        </ul>
+                        </ul> --}}
                         <!-- Header Topbar Language End -->
 
                         <!-- Header Topbar Social Start -->
@@ -130,8 +130,8 @@
                         <!-- Header Menu Links Start -->
                         <ul class="header--menu-links nav navbar-nav" data-trigger="hoverIntent">
                             <li><a href="{{asset('/')}}">Trang chủ</a></li>
-                            <li><a href="{{asset('type-category')}}">Giáo dục</a></li>
-                            <li class="dropdown">
+                            {{-- <li><a href="{{asset('type-category')}}">Giáo dục</a></li> --}}
+                            {{-- <li class="dropdown">
                                 <a href="{{asset('type-category')}}" class="dropdown-toggle" data-toggle="dropdown">Du Lịch<i class="fa flm fa-angle-down"></i></a>
                                 <ul class="dropdown-menu">
                                     <li class="dropdown">
@@ -150,10 +150,10 @@
                                         </ul>
                                     </li>
                                 </ul>
-                            </li>
-                            <li><a href="{{asset('type-category')}}">Giải Trí</a></li>
-                            <li><a href="{{asset('type-category')}}">Văn hóa</a></li>
-                            <li><a href="{{asset('type-category')}}">Công nghệ</a></li>                          
+                            </li> --}}
+                            {{-- <li><a href="{{asset('type-category')}}">Giải Trí</a></li> --}}
+                            {{-- <li><a href="{{asset('type-category')}}">Văn hóa</a></li> --}}
+                            {{-- <li><a href="{{asset('type-category')}}">Công nghệ</a></li>                           --}}
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Danh mục<i class="fa flm fa-angle-down"></i></a>
                                 <ul class="dropdown-menu">
