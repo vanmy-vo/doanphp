@@ -62,7 +62,7 @@ Route::get('admin/slide', function () {
 
 Route::get('admin/contact', function () {
     return view('admin.ManagercContact');
-})->name('contact.admin');
+})->name('admin-contact');
 
 Route::get('admin/ads', function () {
     return view('admin.ManagerAdvertisement');

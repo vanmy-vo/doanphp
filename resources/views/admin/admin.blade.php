@@ -329,9 +329,8 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('contact.admin') }}">
-                                        <i class="fa fa-phone"></i>
-                                        Quản lý liên hệ
+                                    <a href="{{ route('admin-contact') }}">
+                                        <i class="fa fa-phone"></i>Quản lý liên hệ
                                     </a>
                                 </li>
                                 <li>
