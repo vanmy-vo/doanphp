@@ -198,14 +198,14 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li><a href="#">Liên hệ</a></li>      
+                            <li><a href="{{route('contact')}}">Liên hệ</a></li>      
                         </ul>
                         <!-- Header Menu Links End -->
                     </div>
 
                     <!-- Header Search Form Start -->
                     <form action="#" class="header--search-form float--right" data-form="validate">
-                        <input type="search" name="search" placeholder="Search..." class="header--search-control form-control" required>
+                        <input type="search" name="search" placeholder="Tìm kiếm..." class="header--search-control form-control" required>
 
                         <button type="submit" class="header--search-btn btn"><i class="header--search-icon fa fa-search"></i></button>
                     </form>
@@ -342,7 +342,6 @@
                             </div>
                             <!-- Widget End -->
                         </div>
-
                         <div class="col-md-3 col-xs-6 col-xxs-12 ptop--30 pbottom--30">
                             <!-- Widget Start -->
                             <div class="widget">
@@ -354,7 +353,7 @@
                                 <div class="links--widget">
                                     <ul class="nav">
                                         <li><a href="#" class="fa-angle-right">Chính trị - Xã hội</a></li>
-                                        <li><a href="#" class="fa-angle-right">Tin TP Hồ Chí Minh</a></li>
+                                        <li><a href="#" class="fa-angle-right">Tin TP.Hồ Chí Minh</a></li>
                                     </ul>
                                 </div>
                                 <!-- Links Widget End -->

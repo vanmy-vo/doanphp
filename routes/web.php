@@ -9,6 +9,7 @@ use App\Http\Controllers\user\CategoryController as UserCategoryController;
 use App\Http\Controllers\user\TypeCategoryController as UserTypeCategoryController;
 use App\Http\Controllers\user\SearchController as UserSearchController;
 use App\Http\Controllers\user\DetailController as UserDetailController;
+use App\Http\Controllers\user\ContactController as UserContactController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -81,3 +82,4 @@ Route::get('/category', [UserCategoryController::class,'index'])->name('category
 Route::get('/type-category', [UserTypeCategoryController::class,'index'])->name('type-category');
 Route::get('/search', [UserSearchController::class,'index'])->name('search');
 Route::get('/detail', [UserDetailController::class,'index'])->name('detail');
+Route::get('/contact', [UserContactController::class,'index'])->name('contact');

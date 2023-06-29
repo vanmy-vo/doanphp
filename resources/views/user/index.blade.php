@@ -96,7 +96,7 @@
                                     <h2 class="h4">Tin mới</h2>
 
                                     <div class="nav">
-                                        <a href="#" class="btn-link">Xem thêm</a>
+                                        <a href="{{route('category')}}" class="btn-link">Xem thêm</a>
                                     </div>
                                 </div>
                                 <!-- Post Items Title End -->
@@ -242,7 +242,7 @@
                                 <h2 class="h4">Tin nổi bật</h2>
 
                                 <div class="nav">
-                                    <a href="#" class="btn-link">Xem thêm</a>
+                                    <a href="{{route('category')}}" class="btn-link">Xem thêm</a>
                                 </div>
                             </div>
                             <!-- Post Items Title End -->
@@ -435,7 +435,7 @@
                                     <h2 class="h4">Thể thao</h2>
 
                                     <div class="nav">
-                                        <a href="#" class="btn-link">Xem thêm</a>
+                                        <a href="{{route('category')}}" class="btn-link">Xem thêm</a>
                                     </div>
                                 </div>
                                 <!-- Post Items Title End -->
@@ -559,7 +559,7 @@
                                     <h2 class="h4">Công nghệ</h2>
 
                                     <div class="nav">
-                                    <a href="#" class="btn-link">Xem thêm</a>
+                                    <a href="{{route('category')}}" class="btn-link">Xem thêm</a>
                                 </div>
                                 </div>
                                 <!-- Post Items Title End -->
@@ -693,7 +693,7 @@
                                 <h2 class="h4">Tin vắng</h2>
 
                                 <div class="nav">
-                                    <a href="#" class="btn-link">Xem thêm</a>
+                                    <a href="{{route('category')}}" class="btn-link">Xem thêm</a>
                                 </div>
                             </div>
 
