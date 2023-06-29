@@ -295,7 +295,8 @@
                 <div class="left_col scroll-view">
                     <div class="navbar nav_title" style="border:0;background:#fff;text-align:center;">
                         <a href="<?=SITE_PATH?>/admin" class="site_title" style="padding-left:0!important;color:#666!important;font-size:15px">
-                            <img id="MainLogo" src="" /> 1.0
+                            ADMIN
+                            <!-- <img id="MainLogo" src="" /> 1.0 -->
                         </a>
                     </div>
                     <div class="clearfix"></div>
@@ -310,43 +311,43 @@
                         <div class="menu_section">
                             <ul class="nav side-menu">
                                 <li>
-                                    <a href="{{ route('dashboard') }}">
+                                    <a href="{{ route('dashboard.admin') }}">
                                         <i class="fa fa-pie-chart"></i>
                                         Thông kê
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('category') }}">
+                                    <a href="{{ route('category.admin') }}">
                                         <i class="fa fa-map-marker"></i>
                                         Quản lý danh mục
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('slide') }}">
+                                    <a href="{{ route('slide.admin') }}">
                                         <i class="fa fa-dot-circle-o"></i>
                                         Quản lý slideshow
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('contact') }}">
+                                    <a href="{{ route('contact.admin') }}">
                                         <i class="fa fa-phone"></i>
                                         Quản lý liên hệ
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('ads') }}">
+                                    <a href="{{ route('ads.admin') }}">
                                         <i class="fa fa-list-ul"></i>
                                         Quản lý quảng cáo
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('setting') }}">
+                                    <a href="{{ route('setting.admin') }}">
                                         <i class="fa fa-user"></i>
                                         Quản lý cài đặt thông tin
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('post') }}">
+                                    <a href="{{ route('post.admin') }}">
                                         <i class="fa fa-list-ul"></i>
                                         Quản lý bài viết
                                     </a>
@@ -378,7 +379,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="javascript:Logout()">
+                                        <a href="{{ route('logout.admin') }}">
                                             <i class="fa fa-sign-out pull-right"></i> Đăng xuất
                                         </a>
                                     </li>

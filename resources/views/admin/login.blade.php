@@ -237,20 +237,27 @@
 <body>
     <div id="fullscreen">
         <div id="LoginPane">
-            <img id="LoginLogo" src="<?=SITE_PATH?>/image/logintem.png" alt="" />
-            <div class="logininput" id="loginemail">
-                <img src="<?=SITE_PATH?>/image/bgemail.png" />
-                <input id="username" class="my-form-control" placeholder="Email" name="username" autofocus>
-            </div>
-            <div class="logininput" id="loginpass">
-                <img src="<?=SITE_PATH?>/image/bgpass.png" />
-                <input id="password" class="my-form-control" placeholder="Password" name="password" type="password">
-            </div>
-            <label style="font-weight:normal;display:flex;align-items:center;margin:10px 0 0 0;padding:0">
-                <input type="checkbox" id="chkRemember" style="margin:0 5px 0 0" />
-                <span>Remember account on this browser</span>
-            </label>
-            <img id="login" src="<?=SITE_PATH?>/image/loginbtb.png" onclick="Login()" />
+            <form action="{{ route('auth.admin') }}" method="post">
+                @csrf
+                <!-- <img id="LoginLogo" src="<?=SITE_PATH?>/image/logintem.png" alt="" /> -->
+                <div class="logininput" id="loginemail">
+                    <img src="<?=SITE_PATH?>/image/bgemail.png" />
+                    <input id="username" class="my-form-control" placeholder="Email" name="username" autofocus>
+                </div>
+                <div class="logininput" id="loginpass">
+                    <img src="<?=SITE_PATH?>/image/bgpass.png" />
+                    <input id="password" class="my-form-control" placeholder="Password" name="password" type="password">
+                </div>
+                <label style="font-weight:normal;display:flex;align-items:center;margin:10px 0 0 0;padding:0">
+                    <input type="checkbox" id="chkRemember" style="margin:0 5px 0 0" />
+                    <span>Remember account on this browser</span>
+                </label>
+                <button type="submit" style="background: none;border: none;">
+                    <!-- <img id="login" src="<?=SITE_PATH?>/image/loginbtb.png" onclick="Login()" /> -->
+                    <img id="login" src="<?=SITE_PATH?>/image/loginbtb.png" />
+                </button>
+            </form>
+            
             <a href="@URL/login/forgetpass" class="forgetpasslink" style="display:none">Quên mật khẩu</a>
             <p id="alertms"></p>
             <div id="sepa"></div>
@@ -308,44 +315,46 @@
         });
 
         function Login() {
-            if ($('#username').val() == '' || $('#password').val() == '') {
-                $('#alertms').html("Chưa nhập đủ email và mật khẩu!");
-                return;
-            }
-            $('#Loading').css('display', 'block');
-            var form = new FormData();
-            form.append("email", $('#username').val());
-            form.append("password", $('#password').val());
-            form.append("rt", '@Request.QueryString["rt"]');
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", "@URL/login/check", true);
-            xhr.timeout = 30000;
-            xhr.ontimeout = function () {
-                $('#alertms').html("Có thể INTERNET gặp vấn đề. Không thể đăng nhập lúc này. Xin vui lòng thử lại sau!");
-                $('#Loading').css('display', 'none');
-            }
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState == 4 && xhr.status == 200) {
-                    var ms = JSON.parse(xhr.responseText);
-                    if (ms.status == "OK") {
-                        if ($('#chkRemember').is(':checked')) {
-                            setCookie('vnsign-u', $('#username').val(), 365);
-                            setCookie('vnsign-p', $('#password').val(), 365);
-                        }
-                        var rturn = ms.back;
-                        if (rturn == "") {
-                            window.location = '@URL/dashboard/index';
-                        } else {
-                            window.location = "@URL" + rturn;
-                        }
-                    } else {
-                        $('#Loading').css('display', 'none');
-                        $('#LoginForm').css('opacity', '1');
-                        $('#alertms').html("Sai email hoặc mật khẩu.");
-                    }
-                }
-            }
-            xhr.send(form);
+            // if ($('#username').val() == '' || $('#password').val() == '') {
+            //     $('#alertms').html("Chưa nhập đủ email và mật khẩu!");
+            //     return;
+            // }
+            // $('#Loading').css('display', 'block');
+            // var form = new FormData();
+            // form.append("email", $('#username').val());
+            // form.append("password", $('#password').val());
+            // form.append("rt", '@Request.QueryString["rt"]');
+            // var xhr = new XMLHttpRequest();
+            // // xhr.open("POST", "@URL/login/check", true);
+            // xhr.open("GET", "{{ route('admin') }}", true);
+            // xhr.timeout = 30000;
+            // xhr.ontimeout = function () {
+            //     $('#alertms').html("Có thể INTERNET gặp vấn đề. Không thể đăng nhập lúc này. Xin vui lòng thử lại sau!");
+            //     $('#Loading').css('display', 'none');
+            // }
+            // xhr.onreadystatechange = function () {
+            //     if (xhr.readyState == 4 && xhr.status == 200) {
+            //         var ms = JSON.parse(xhr.responseText);
+            //         if (ms.status == "OK") {
+            //             if ($('#chkRemember').is(':checked')) {
+            //                 setCookie('vnsign-u', $('#username').val(), 365);
+            //                 setCookie('vnsign-p', $('#password').val(), 365);
+            //             }
+            //             var rturn = ms.back;
+            //             if (rturn == "") {
+            //                 // window.location = '@URL/dashboard/index';
+            //                 window.location.href = "{{ route('admin') }}";
+            //             } else {
+            //                 window.location = "@URL" + rturn;
+            //             }
+            //         } else {
+            //             $('#Loading').css('display', 'none');
+            //             $('#LoginForm').css('opacity', '1');
+            //             $('#alertms').html("Sai email hoặc mật khẩu.");
+            //         }
+            //     }
+            // }
+            // xhr.send(form);
         }
 
         function setCookie(cname, cvalue, exdays) {
