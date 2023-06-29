@@ -8,6 +8,8 @@ use App\Http\Controllers\user\HomeController as UserHomeController;
 use App\Http\Controllers\user\CategoryController as UserCategoryController;
 use App\Http\Controllers\user\TypeCategoryController as UserTypeCategoryController;
 use App\Http\Controllers\user\SearchController as UserSearchController;
+use App\Http\Controllers\user\DetailController as UserDetailController;
+use App\Http\Controllers\user\ContactController as UserContactController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -81,6 +83,7 @@ Route::get('/type-category', [UserTypeCategoryController::class,'index'])->name(
 Route::get('/search', [UserSearchController::class,'index'])->name('search');
 
 
+
 Route::get('admin/logout', function () {
     return redirect()->route('login.admin');
 })->name('logout.admin');
@@ -88,3 +91,7 @@ Route::get('admin/logout', function () {
 Route::post('auth/admin', function () {
     return redirect()->route('admin');
 })->name('auth.admin');
+
+Route::get('/detail', [UserDetailController::class,'index'])->name('detail');
+Route::get('/contact', [UserContactController::class,'index'])->name('contact');
+

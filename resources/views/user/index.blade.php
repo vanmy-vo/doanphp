@@ -17,7 +17,7 @@
                                 <!-- Wrapper for slides -->
                                 <div class="carousel-inner">
                                     <div class="item active">
-                                        <img src="{{asset('user/img/slideshow-img/a12-16877994426012071256703.jpg')}}">
+                                        <img src="{{asset('user/img/slideshow-img/a12-16877994426012071256703.jpg')}}" width="400" height="350">
                                         <div class="carousel-caption">
                                         <h3><a href="#">Việt Nam là hình mẫu về phục hồi kinh tế</a></h3>
                                         <p>Trưa 26.6, trong khuôn khổ chuyến thăm chính thức Trung Quốc và dự hội nghị của Diễn đàn Kinh tế thế giới, Thủ tướng...<a class="label label-primary" href="" target="_blank"></a></p>
@@ -96,7 +96,7 @@
                                     <h2 class="h4">Tin mới</h2>
 
                                     <div class="nav">
-                                        <a href="#" class="btn-link">Xem thêm</a>
+                                        <a href="{{route('category')}}" class="btn-link">Xem thêm</a>
                                     </div>
                                 </div>
                                 <!-- Post Items Title End -->
@@ -108,18 +108,21 @@
                                             <!-- Post Item Start -->
                                             <div class="post--item post--layout-2">
                                                 <div class="post--img">
-                                                    <a href="news-single-v1.html" class="thumb"><img src="{{asset('user/img/home-img/finance-01.jpg')}}" alt=""></a>
-                                                    <a href="#" class="cat">Business</a>
-                                                    <a href="#" class="icon"><i class="fa fa-star-o"></i></a>
+                                                    <a href="" class="thumb"><img src="{{asset('user/img/post-img/f7f9000cf953290d7042-168794481470437.jpg')}}" alt=""></a>
+                                                    <a href="#" class="cat">Mới</a>
+                                                    <a href="#" class="icon"><i class="fa fa-heart-o"></i></a>
 
                                                     <div class="post--info">
                                                         <ul class="nav meta">
-                                                            <li><a href="#">Vassago</a></li>
-                                                            <li><a href="#">Today 03:30 am</a></li>
+                                                            <li><a href="#">Admin</a></li>
+                                                            <li><a href="#">28/6/223</a></li>
                                                         </ul>
 
+                                                        {{-- <div class="title">
+                                                            <h3 style="color: #000; "><a href="" class="btn-link">Vì sao mưa lớn khắp TP.HCM chiều nay?</a></h3>
+                                                        </div> --}}
                                                         <div class="title">
-                                                            <h3 class="h4"><a href="news-single-v1.html" class="btn-link">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas.</a></h3>
+                                                            <h4 class="h4"><a href="" class="btn-link">Chiều 28.6, TP.HCM có mưa lớn ở khắp nơi, nhiều tuyến đường bị ngập cục bộ. Dự báo trong đêm nay vẫn còn mưa rào và giông vài nơi.</a></h4>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -139,16 +142,16 @@
                                                     <!-- Post Item Start -->
                                                     <div class="post--item post--layout-2">
                                                         <div class="post--img">
-                                                            <a href="news-single-v1.html" class="thumb"><img src="{{asset('user/img/home-img/finance-02.jpg')}}" alt=""></a>
+                                                            <a href="" class="thumb"><img src="{{asset('user/img/post-img/xe-may-dien.png')}}" alt=""></a>
 
                                                             <div class="post--info">
                                                                 <ul class="nav meta">
                                                                     <li><a href="#">Zepar</a></li>
-                                                                    <li><a href="#">Today 03:52 pm</a></li>
+                                                                    <li><a href="#">28/06/2023</a></li>
                                                                 </ul>
 
                                                                 <div class="title">
-                                                                    <h3 class="h4"><a href="news-single-v1.html" class="btn-link">It is a long established fact that a reader will be</a></h3>
+                                                                    <h3 class="h4"><a href="" class="btn-link">Xe máy điện Honda U-Go có bản nâng cấp giá 26 triệu đồng...</a></h3>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -160,16 +163,16 @@
                                                     <!-- Post Item Start -->
                                                     <div class="post--item post--layout-2">
                                                         <div class="post--img">
-                                                            <a href="news-single-v1.html" class="thumb"><img src="{{asset('user/img/home-img/finance-03.jpg')}}" alt=""></a>
+                                                            <a href="" class="thumb"><img src="{{asset('user/img/post-img/xe-may-dien.png')}}" alt=""></a>
 
                                                             <div class="post--info">
                                                                 <ul class="nav meta">
-                                                                    <li><a href="#">Demiurge</a></li>
-                                                                    <li><a href="#">Today 03:02 pm</a></li>
+                                                                    <li><a href="#">Zepar</a></li>
+                                                                    <li><a href="#">28/06/2023</a></li>
                                                                 </ul>
 
                                                                 <div class="title">
-                                                                    <h3 class="h4"><a href="news-single-v1.html" class="btn-link">It is a long established fact that a reader will be</a></h3>
+                                                                    <h3 class="h4"><a href="" class="btn-link">Xe máy điện Honda U-Go có bản nâng cấp giá 26 triệu đồng...</a></h3>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -187,37 +190,37 @@
                                                     <!-- Post Item Start -->
                                                     <div class="post--item post--layout-2">
                                                         <div class="post--img">
-                                                            <a href="news-single-v1.html" class="thumb"><img src="{{asset('user/img/home-img/finance-04.jpg')}}" alt=""></a>
+                                                            <a href="" class="thumb"><img src="{{asset('user/img/post-img/xe-may-dien.png')}}" alt=""></a>
 
                                                             <div class="post--info">
                                                                 <ul class="nav meta">
-                                                                    <li><a href="#">Demiurge</a></li>
-                                                                    <li><a href="#">Today 02:05 am</a></li>
+                                                                    <li><a href="#">Zepar</a></li>
+                                                                    <li><a href="#">28/06/2023</a></li>
                                                                 </ul>
 
                                                                 <div class="title">
-                                                                    <h3 class="h4"><a href="news-single-v1.html" class="btn-link">It is a long established fact that a reader will be</a></h3>
+                                                                    <h3 class="h4"><a href="" class="btn-link">Xe máy điện Honda U-Go có bản nâng cấp giá 26 triệu đồng...</a></h3>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <!-- Post Item End -->
                                                 </li>
-
+                                                
                                                 <li class="col-xs-6">
                                                     <!-- Post Item Start -->
                                                     <div class="post--item post--layout-2">
                                                         <div class="post--img">
-                                                            <a href="news-single-v1.html" class="thumb"><img src="{{asset('user/img/home-img/finance-05.jpg')}}" alt=""></a>
+                                                            <a href="" class="thumb"><img src="{{asset('user/img/post-img/xe-may-dien.png')}}" alt=""></a>
 
                                                             <div class="post--info">
                                                                 <ul class="nav meta">
                                                                     <li><a href="#">Zepar</a></li>
-                                                                    <li><a href="#">Today 12:35 am</a></li>
+                                                                    <li><a href="#">28/06/2023</a></li>
                                                                 </ul>
 
                                                                 <div class="title">
-                                                                    <h3 class="h4"><a href="news-single-v1.html" class="btn-link">It is a long established fact that a reader will be</a></h3>
+                                                                    <h3 class="h4"><a href="" class="btn-link">Xe máy điện Honda U-Go có bản nâng cấp giá 26 triệu đồng...</a></h3>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -227,12 +230,6 @@
                                             </ul>
                                         </li>
                                     </ul>
-
-                                    <!-- Preloader Start -->
-                                    <div class="preloader bg--color-0--b" data-preloader="1">
-                                        <div class="preloader--inner"></div>
-                                    </div>
-                                    <!-- Preloader End -->
                                 </div>
                                 <!-- Post Items End -->
                             </div>
@@ -245,7 +242,7 @@
                                 <h2 class="h4">Tin nổi bật</h2>
 
                                 <div class="nav">
-                                    <a href="#" class="btn-link">Xem thêm</a>
+                                    <a href="{{route('category')}}" class="btn-link">Xem thêm</a>
                                 </div>
                             </div>
                             <!-- Post Items Title End -->
@@ -256,11 +253,17 @@
                                     <li class="col-md-12">
                                         <!-- Post Item Start -->
                                         <div class="post--item post--layout-1 post--title-large">
-                                            <div class="post--img">
-                                                <a href="news-single-v1.html" class="thumb"><img src="{{asset('user/img/home-img/photo-gallery-01.jpg')}}" alt=""></a>
-                                                <a href="#" class="cat">Serfer</a>
-                                                <a href="#" class="icon"><i class="fa fa-eye"></i></a>
-
+                                            <div class="post--img a">
+                                                <style>
+                                                    .post--img.a img{
+                                                        object-fit: cover;
+                                                        width: 770px; 
+                                                        height: 256px;
+                                                    }
+                                                </style>
+                                                <a href="" class="thumb"><img src="{{asset('user/img/post-img/black-pinkk.png')}}" alt=""></a>
+                                                <a href="#" class="cat">HOT</a>
+                                                <a href="#" class="icon"><i class="fa fa-heart-o"></i></a>
                                                 <div class="post--info">
                                                     <ul class="nav meta">
                                                         <li><a href="#">Astaroth</a></li>
@@ -268,7 +271,7 @@
                                                     </ul>
 
                                                     <div class="title text-xxs-ellipsis">
-                                                        <h2 class="h4"><a href="news-single-v1.html" class="btn-link">Standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum</a></h2>
+                                                        <h2 class="h4"><a href="" class="btn-link">Vé xem BlackPink tại Việt Nam đã được rao bán, cao nhất 25 triệu đồng</a></h2>
                                                     </div>
                                                 </div>
                                             </div>
@@ -278,8 +281,15 @@
                                     <li class="col-md-4 col-xs-6 col-xxs-12">
                                         <!-- Post Item Start -->
                                         <div class="post--item post--layout-1">
-                                            <div class="post--img">
-                                                <a href="news-single-v1.html" class="thumb"><img src="{{asset('user/img/home-img/photo-gallery-02.jpg')}}" alt=""></a>
+                                            <div class="post--img b">
+                                                <style>
+                                                    .post--img.b img{
+                                                        object-fit: fill;
+                                                        width: 370px; 
+                                                        height: 200px;
+                                                    }
+                                                </style>
+                                                <a href="" class="thumb"><img src="{{asset('user/img/post-img/2523523523.jpg')}}"  style="object-fit: fill" alt=""></a>
 
                                                 <div class="post--info">
                                                     <ul class="nav meta">
@@ -288,7 +298,7 @@
                                                     </ul>
 
                                                     <div class="title">
-                                                        <h2 class="h4"><a href="news-single-v1.html" class="btn-link">It is a long established fact that a reader will be distracted by</a></h2>
+                                                        <h2 class="h4"><a href="" class="btn-link">‘Indiana Jones 5’: Tạm biệt Indy, tạm biệt một di sản</a></h2>
                                                     </div>
                                                 </div>
                                             </div>
@@ -298,8 +308,8 @@
                                     <li class="col-md-4 col-xs-6 col-xxs-12">
                                         <!-- Post Item Start -->
                                         <div class="post--item post--layout-1">
-                                            <div class="post--img">
-                                                <a href="news-single-v1.html" class="thumb"><img src="{{asset('user/img/home-img/photo-gallery-03.jpg')}}" alt=""></a>
+                                            <div class="post--img b">
+                                                <a href="" class="thumb"><img src="{{asset('user/img/post-img/2523523523.jpg')}}"  style="object-fit: fill" alt=""></a>
 
                                                 <div class="post--info">
                                                     <ul class="nav meta">
@@ -308,18 +318,18 @@
                                                     </ul>
 
                                                     <div class="title">
-                                                        <h2 class="h4"><a href="news-single-v1.html" class="btn-link">It is a long established fact that a reader will be distracted by</a></h2>
+                                                        <h2 class="h4"><a href="" class="btn-link">‘Indiana Jones 5’: Tạm biệt Indy, tạm biệt một di sản</a></h2>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <!-- Post Item End -->
                                     </li>
-                                    <li class="col-md-4 hidden-sm hidden-xs">
+                                    <li class="col-md-4 col-xs-6 col-xxs-12">
                                         <!-- Post Item Start -->
                                         <div class="post--item post--layout-1">
-                                            <div class="post--img">
-                                                <a href="news-single-v1.html" class="thumb"><img src="{{asset('user/img/home-img/photo-gallery-04.jpg')}}" alt=""></a>
+                                            <div class="post--img b">
+                                                <a href="" class="thumb"><img src="{{asset('user/img/post-img/2523523523.jpg')}}"  style="object-fit: fill" alt=""></a>
 
                                                 <div class="post--info">
                                                     <ul class="nav meta">
@@ -328,20 +338,15 @@
                                                     </ul>
 
                                                     <div class="title">
-                                                        <h2 class="h4"><a href="news-single-v1.html" class="btn-link">It is a long established fact that a reader will be distracted by</a></h2>
+                                                        <h2 class="h4"><a href="" class="btn-link">‘Indiana Jones 5’: Tạm biệt Indy, tạm biệt một di sản</a></h2>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <!-- Post Item End -->
                                     </li>
+
                                 </ul>
-
-                                <!-- Preloader Start -->
-                                <div class="preloader bg--color-0--b" data-preloader="1">
-                                    <div class="preloader--inner"></div>
-                                </div>
-                                <!-- Preloader End -->
                             </div>
                             <!-- Post Items End -->
                         </div>
@@ -357,9 +362,13 @@
                         <!-- Widget Start -->
                         <div class="widget">
                             <!-- Ad Widget Start -->
+                            <div class="widget--title">
+                                <h2 class="h4">Quảng cáo</h2>
+                                <i class="icon fa fa-bullhorn"></i>
+                            </div>
                             <div class="ad--widget">
                                 <a href="#">
-                                    <img src="{{asset('user/img/ads-img/ad-300x250-1.jpg')}}" alt="">
+                                    <img src="{{asset('user/img/ads-img/ads-black-pink-samsung.jpg')}}" alt="">
                                 </a>
                             </div>
                             <!-- Ad Widget End -->
@@ -382,11 +391,10 @@
                                 <form action="" method="post" name="mc-embedded-subscribe-form" target="_blank" data-form="mailchimpAjax">
                                     <div class="input-group">
                                         <input type="email" name="" placeholder="Nhập Email" class="form-control" autocomplete="off" required>
+                                        <input type="text" name="" placeholder="Nhập tiêu đề" class="form-control" autocomplete="off" required>
                                         <input type="text" name="" placeholder="Nhập nội dung" class="form-control" autocomplete="off" required>
                                         <button type="submit" class="btn btn-lg btn-default active"><i class="fa fa-paper-plane-o"></i></button>
-
                                     </div>
-
                                     <div class="status"></div>
                                 </form>
                             </div>
@@ -404,7 +412,7 @@
                             <!-- Ad Widget Start -->
                             <div class="ad--widget">
                                 <a href="#">
-                                    <img src="{{asset('user/img/ads-img/ad-300x250-2.jpg')}}" alt="">
+                                    <img src="{{asset('user/img/ads-img/black-pink.jpg')}}" alt="">
                                 </a>
                             </div>
                             <!-- Ad Widget End -->
@@ -424,11 +432,11 @@
                             <div class="col-md-6 ptop--30 pbottom--30">
                                 <!-- Post Items Title Start -->
                                 <div class="post--items-title" data-ajax="tab">
-                                    <h2 class="h4">Health &amp; fitness</h2>
+                                    <h2 class="h4">Thể thao</h2>
 
                                     <div class="nav">
-                                    <a href="#" class="btn-link">Xem thêm</a>
-                                </div>
+                                        <a href="{{route('category')}}" class="btn-link">Xem thêm</a>
+                                    </div>
                                 </div>
                                 <!-- Post Items Title End -->
 
@@ -439,9 +447,9 @@
                                             <!-- Post Item Start -->
                                             <div class="post--item post--layout-1">
                                                 <div class="post--img">
-                                                    <a href="news-single-v1.html" class="thumb"><img src="{{asset('user/img/home-img/health-and-fitness-01.jpg')}}" alt=""></a>
-                                                    <a href="#" class="cat">Business</a>
-                                                    <a href="#" class="icon"><i class="fa fa-star-o"></i></a>
+                                                    <a href="" class="thumb"><img src="{{asset('user/img/post-img/463634634.jpg')}}" alt=""></a>
+                                                    <a href="#" class="cat">Thể thao</a>
+                                                    <a href="#" class="icon"><i class="fa fa-heart-o"></i></a>
 
                                                     <div class="post--info">
                                                         <ul class="nav meta">
@@ -450,7 +458,7 @@
                                                         </ul>
 
                                                         <div class="title">
-                                                            <h3 class="h4"><a href="news-single-v1.html" class="btn-link">It is a long established fact that a reader will be distracted by</a></h3>
+                                                            <h3 class="h4"><a href="" class="btn-link">Mỗi cầu thủ nhận 700 triệu khi dự World Cup 2023, cao nhất 6,3 tỉ đồng</a></h3>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -461,7 +469,7 @@
                                             <!-- Post Item Start -->
                                             <div class="post--item post--layout-3">
                                                 <div class="post--img">
-                                                    <a href="news-single-v1.html" class="thumb"><img src="{{asset('user/img/home-img/health-and-fitness-02.jpg')}}" alt=""></a>
+                                                    <a href="" class="thumb"><img src="{{asset('user/img/post-img/463634634.jpg')}}" alt=""></a>
 
                                                     <div class="post--info">
                                                         <ul class="nav meta">
@@ -470,7 +478,7 @@
                                                         </ul>
 
                                                         <div class="title">
-                                                            <h3 class="h4"><a href="news-single-v1.html" class="btn-link">Established fact that a reader will be distracted by the readable content</a></h3>
+                                                            <h3 class="h4"><a href="" class="btn-link">Mỗi cầu thủ nhận 700 triệu khi dự World Cup 2023, cao nhất 6,3 tỉ đồng</a></h3>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -481,16 +489,16 @@
                                             <!-- Post Item Start -->
                                             <div class="post--item post--layout-3">
                                                 <div class="post--img">
-                                                    <a href="news-single-v1.html" class="thumb"><img src="{{asset('user/img/home-img/health-and-fitness-03.jpg')}}" alt=""></a>
+                                                    <a href="" class="thumb"><img src="{{asset('user/img/post-img/463634634.jpg')}}" alt=""></a>
 
                                                     <div class="post--info">
                                                         <ul class="nav meta">
-                                                            <li><a href="#">Ziminiar</a></li>
+                                                            <li><a href="#">Maclaan John</a></li>
                                                             <li><a href="#">16 April 2017</a></li>
                                                         </ul>
 
                                                         <div class="title">
-                                                            <h3 class="h4"><a href="news-single-v1.html" class="btn-link">Long established fact that a reader will be distracted by the readable</a></h3>
+                                                            <h3 class="h4"><a href="" class="btn-link">Mỗi cầu thủ nhận 700 triệu khi dự World Cup 2023, cao nhất 6,3 tỉ đồng</a></h3>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -501,16 +509,16 @@
                                             <!-- Post Item Start -->
                                             <div class="post--item post--layout-3">
                                                 <div class="post--img">
-                                                    <a href="news-single-v1.html" class="thumb"><img src="{{asset('user/img/home-img/health-and-fitness-04.jpg')}}" alt=""></a>
+                                                    <a href="" class="thumb"><img src="{{asset('user/img/post-img/463634634.jpg')}}" alt=""></a>
 
                                                     <div class="post--info">
                                                         <ul class="nav meta">
-                                                            <li><a href="#">Vanth</a></li>
+                                                            <li><a href="#">Maclaan John</a></li>
                                                             <li><a href="#">16 April 2017</a></li>
                                                         </ul>
 
                                                         <div class="title">
-                                                            <h3 class="h4"><a href="news-single-v1.html" class="btn-link">Long established fact that a reader will be distracted by the readable</a></h3>
+                                                            <h3 class="h4"><a href="" class="btn-link">Mỗi cầu thủ nhận 700 triệu khi dự World Cup 2023, cao nhất 6,3 tỉ đồng</a></h3>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -521,29 +529,24 @@
                                             <!-- Post Item Start -->
                                             <div class="post--item post--layout-3">
                                                 <div class="post--img">
-                                                    <a href="news-single-v1.html" class="thumb"><img src="{{asset('user/img/home-img/health-and-fitness-05.jpg')}}" alt=""></a>
+                                                    <a href="" class="thumb"><img src="{{asset('user/img/post-img/463634634.jpg')}}" alt=""></a>
 
                                                     <div class="post--info">
                                                         <ul class="nav meta">
-                                                            <li><a href="#">Vanth</a></li>
+                                                            <li><a href="#">Maclaan John</a></li>
                                                             <li><a href="#">16 April 2017</a></li>
                                                         </ul>
 
                                                         <div class="title">
-                                                            <h3 class="h4"><a href="news-single-v1.html" class="btn-link">Long established fact that a reader will be distracted by the readable</a></h3>
+                                                            <h3 class="h4"><a href="" class="btn-link">Mỗi cầu thủ nhận 700 triệu khi dự World Cup 2023, cao nhất 6,3 tỉ đồng</a></h3>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <!-- Post Item End -->
                                         </li>
+                                       
                                     </ul>
-
-                                    <!-- Preloader Start -->
-                                    <div class="preloader bg--color-0--b" data-preloader="1">
-                                        <div class="preloader--inner"></div>
-                                    </div>
-                                    <!-- Preloader End -->
                                 </div>
                                 <!-- Post Items End -->
                             </div>
@@ -553,10 +556,10 @@
                             <div class="col-md-6 ptop--30 pbottom--30">
                                 <!-- Post Items Title Start -->
                                 <div class="post--items-title" data-ajax="tab">
-                                    <h2 class="h4">Lifestyle</h2>
+                                    <h2 class="h4">Công nghệ</h2>
 
                                     <div class="nav">
-                                    <a href="#" class="btn-link">Xem thêm</a>
+                                    <a href="{{route('category')}}" class="btn-link">Xem thêm</a>
                                 </div>
                                 </div>
                                 <!-- Post Items Title End -->
@@ -568,8 +571,8 @@
                                             <!-- Post Item Start -->
                                             <div class="post--item post--layout-1">
                                                 <div class="post--img">
-                                                    <a href="news-single-v1.html" class="thumb"><img src="{{asset('user/img/home-img/lifestyle-01.jpg')}}" alt=""></a>
-                                                    <a href="#" class="cat">Fashion</a>
+                                                    <a href="" class="thumb"><img src="{{asset('user/img/post-img/235235235.jpg')}}" alt=""></a>
+                                                    <a href="#" class="cat">Công nghệ</a>
                                                     <a href="#" class="icon"><i class="fa fa-heart-o"></i></a>
 
                                                     <div class="post--info">
@@ -579,7 +582,7 @@
                                                         </ul>
 
                                                         <div class="title">
-                                                            <h3 class="h4"><a href="news-single-v1.html" class="btn-link">Siriya attaced by a long established fact that a reader will be distracted by</a></h3>
+                                                            <h3 class="h4"><a href="" class="btn-link">Giá iPhone có thể đã 'xuống đáy'</a></h3>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -595,7 +598,7 @@
                                             <!-- Post Item Start -->
                                             <div class="post--item post--layout-2">
                                                 <div class="post--img">
-                                                    <a href="news-single-v1.html" class="thumb"><img src="{{asset('user/img/home-img/lifestyle-02.jpg')}}" alt=""></a>
+                                                    <a href="" class="thumb"><img src="{{asset('user/img/post-img/235235235.jpg')}}" alt=""></a>
 
                                                     <div class="post--info">
                                                         <ul class="nav meta">
@@ -604,7 +607,7 @@
                                                         </ul>
 
                                                         <div class="title">
-                                                            <h3 class="h4"><a href="news-single-v1.html" class="btn-link">It is a long established fact that a reader will done</a></h3>
+                                                            <h3 class="h4"><a href="" class="btn-link">Giá iPhone có thể đã 'xuống đáy'</a></h3>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -615,7 +618,7 @@
                                             <!-- Post Item Start -->
                                             <div class="post--item post--layout-2">
                                                 <div class="post--img">
-                                                    <a href="news-single-v1.html" class="thumb"><img src="{{asset('user/img/home-img/lifestyle-03.jpg')}}" alt=""></a>
+                                                    <a href="" class="thumb"><img src="{{asset('user/img/post-img/235235235.jpg')}}" alt=""></a>
 
                                                     <div class="post--info">
                                                         <ul class="nav meta">
@@ -624,32 +627,7 @@
                                                         </ul>
 
                                                         <div class="title">
-                                                            <h3 class="h4"><a href="news-single-v1.html" class="btn-link">It is a long established fact that a reader will done</a></h3>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- Post Item End -->
-                                        </li>
-                                        <li class="col-xs-12">
-                                            <!-- Divider Start -->
-                                            <hr class="divider">
-                                            <!-- Divider End -->
-                                        </li>
-                                        <li class="col-xs-6">
-                                            <!-- Post Item Start -->
-                                            <div class="post--item post--layout-2">
-                                                <div class="post--img">
-                                                    <a href="news-single-v1.html" class="thumb"><img src="{{asset('user/img/home-img/lifestyle-04.jpg')}}" alt=""></a>
-
-                                                    <div class="post--info">
-                                                        <ul class="nav meta">
-                                                            <li><a href="#">Astaroth</a></li>
-                                                            <li><a href="#">17 April 2017</a></li>
-                                                        </ul>
-
-                                                        <div class="title">
-                                                            <h3 class="h4"><a href="news-single-v1.html" class="btn-link">It is a long established fact that a reader will done</a></h3>
+                                                            <h3 class="h4"><a href="" class="btn-link">Giá iPhone có thể đã 'xuống đáy'</a></h3>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -660,7 +638,7 @@
                                             <!-- Post Item Start -->
                                             <div class="post--item post--layout-2">
                                                 <div class="post--img">
-                                                    <a href="news-single-v1.html" class="thumb"><img src="{{asset('user/img/home-img/lifestyle-05.jpg')}}" alt=""></a>
+                                                    <a href="" class="thumb"><img src="{{asset('user/img/post-img/235235235.jpg')}}" alt=""></a>
 
                                                     <div class="post--info">
                                                         <ul class="nav meta">
@@ -669,7 +647,27 @@
                                                         </ul>
 
                                                         <div class="title">
-                                                            <h3 class="h4"><a href="news-single-v1.html" class="btn-link">It is a long established fact that a reader will done</a></h3>
+                                                            <h3 class="h4"><a href="" class="btn-link">Giá iPhone có thể đã 'xuống đáy'</a></h3>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Post Item End -->
+                                        </li>
+                                        <li class="col-xs-6">
+                                            <!-- Post Item Start -->
+                                            <div class="post--item post--layout-2">
+                                                <div class="post--img">
+                                                    <a href="" class="thumb"><img src="{{asset('user/img/post-img/235235235.jpg')}}" alt=""></a>
+
+                                                    <div class="post--info">
+                                                        <ul class="nav meta">
+                                                            <li><a href="#">Astaroth</a></li>
+                                                            <li><a href="#">17 April 2017</a></li>
+                                                        </ul>
+
+                                                        <div class="title">
+                                                            <h3 class="h4"><a href="" class="btn-link">Giá iPhone có thể đã 'xuống đáy'</a></h3>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -677,12 +675,6 @@
                                             <!-- Post Item End -->
                                         </li>
                                     </ul>
-
-                                    <!-- Preloader Start -->
-                                    <div class="preloader bg--color-0--b" data-preloader="1">
-                                        <div class="preloader--inner"></div>
-                                    </div>
-                                    <!-- Preloader End -->
                                 </div>
                                 <!-- Post Items End -->
                             </div>
@@ -701,7 +693,7 @@
                                 <h2 class="h4">Tin vắng</h2>
 
                                 <div class="nav">
-                                    <a href="#" class="btn-link">Xem thêm</a>
+                                    <a href="{{route('category')}}" class="btn-link">Xem thêm</a>
                                 </div>
                             </div>
 
@@ -714,7 +706,7 @@
                                             <!-- Post Item Start -->
                                             <div class="post--item post--layout-3">
                                                 <div class="post--img">
-                                                    <a href="news-single-v1.html" class="thumb"><img src="{{asset('user/img/widgets-img/editors-choice-01.jpg')}}" alt=""></a>
+                                                    <a href="" class="thumb"><img src="{{asset('user/img/post-img/252532523.jpg')}}" alt=""></a>
 
                                                     <div class="post--info">
                                                         <ul class="nav meta">
@@ -723,7 +715,7 @@
                                                         </ul>
 
                                                         <div class="title">
-                                                            <h3 class="h4"><a href="news-single-v1.html" class="btn-link">Long established fact that a reader will be distracted</a></h3>
+                                                            <h3 class="h4"><a href="" class="btn-link">Trí tuệ nhân tạo nguy hiểm như thế nào?</a></h3>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -734,7 +726,7 @@
                                             <!-- Post Item Start -->
                                             <div class="post--item post--layout-3">
                                                 <div class="post--img">
-                                                    <a href="news-single-v1.html" class="thumb"><img src="{{asset('user/img/widgets-img/editors-choice-02.jpg')}}" alt=""></a>
+                                                    <a href="" class="thumb"><img src="{{asset('user/img/post-img/252532523.jpg')}}" alt=""></a>
 
                                                     <div class="post--info">
                                                         <ul class="nav meta">
@@ -743,7 +735,7 @@
                                                         </ul>
 
                                                         <div class="title">
-                                                            <h3 class="h4"><a href="news-single-v1.html" class="btn-link">Long established fact that a reader will be distracted</a></h3>
+                                                            <h3 class="h4"><a href="" class="btn-link">Trí tuệ nhân tạo nguy hiểm như thế nào?</a></h3>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -754,16 +746,16 @@
                                             <!-- Post Item Start -->
                                             <div class="post--item post--layout-3">
                                                 <div class="post--img">
-                                                    <a href="news-single-v1.html" class="thumb"><img src="{{asset('user/img/widgets-img/editors-choice-03.jpg')}}" alt=""></a>
+                                                    <a href="" class="thumb"><img src="{{asset('user/img/post-img/252532523.jpg')}}" alt=""></a>
 
                                                     <div class="post--info">
                                                         <ul class="nav meta">
-                                                            <li><a href="#">Rahab</a></li>
+                                                            <li><a href="#">Orcus</a></li>
                                                             <li><a href="#">16 April 2017</a></li>
                                                         </ul>
 
                                                         <div class="title">
-                                                            <h3 class="h4"><a href="news-single-v1.html" class="btn-link">Long established fact that a reader will be distracted</a></h3>
+                                                            <h3 class="h4"><a href="" class="btn-link">Trí tuệ nhân tạo nguy hiểm như thế nào?</a></h3>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -774,16 +766,16 @@
                                             <!-- Post Item Start -->
                                             <div class="post--item post--layout-3">
                                                 <div class="post--img">
-                                                    <a href="news-single-v1.html" class="thumb"><img src="{{asset('user/img/widgets-img/editors-choice-04.jpg')}}" alt=""></a>
+                                                    <a href="" class="thumb"><img src="{{asset('user/img/post-img/252532523.jpg')}}" alt=""></a>
 
                                                     <div class="post--info">
                                                         <ul class="nav meta">
-                                                            <li><a href="#">Tannin</a></li>
+                                                            <li><a href="#">Orcus</a></li>
                                                             <li><a href="#">16 April 2017</a></li>
                                                         </ul>
 
                                                         <div class="title">
-                                                            <h3 class="h4"><a href="news-single-v1.html" class="btn-link">Long established fact that a reader will be distracted</a></h3>
+                                                            <h3 class="h4"><a href="" class="btn-link">Trí tuệ nhân tạo nguy hiểm như thế nào?</a></h3>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -791,12 +783,6 @@
                                             <!-- Post Item End -->
                                         </li>
                                     </ul>
-
-                                    <!-- Preloader Start -->
-                                    <div class="preloader bg--color-0--b" data-preloader="1">
-                                        <div class="preloader--inner"></div>
-                                    </div>
-                                    <!-- Preloader End -->
                                 </div>
                                 <!-- Post Items End -->
                             </div>
