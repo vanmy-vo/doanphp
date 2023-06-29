@@ -316,7 +316,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('category') }}">
+                                    <a href="{{ route('list') }}">
                                         <i class="fa fa-map-marker"></i>
                                         Quản lý danh mục
                                     </a>
