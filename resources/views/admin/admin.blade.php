@@ -18,7 +18,7 @@
     <script src="<?=SITE_PATH?>/Lib/vendors/jquery/dist/jquery.min.js"></script>
     <script src="<?=SITE_PATH?>/Lib/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <link href="<?=SITE_PATH?>/Lib/vendors/switchery/dist/switchery.min.css" rel="stylesheet">
-    <script src="<?=SITE_PATH?>/Lib/ckeditor/ckeditor.js"></script>
+    <link rel="stylesheet" type="text/css" href="<?=SITE_PATH?>/ckeditor5/sample/style.css">
     <style>
         /* width */
         ::-webkit-scrollbar {
@@ -317,11 +317,7 @@
                                     </a>
                                 </li>
                                 <li>
-<<<<<<< HEAD
                                     <a href="{{ route('category.admin') }}">
-=======
-                                    <a href="{{ route('list') }}">
->>>>>>> 624f93865c5f08b939b22880d9182f4530165ae1
                                         <i class="fa fa-map-marker"></i>
                                         Quản lý danh mục
                                     </a>
@@ -514,5 +510,6 @@
 
 
     </script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/37.0.1/classic/ckeditor.js"></script>
 </body>
 </html>

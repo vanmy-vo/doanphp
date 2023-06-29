@@ -553,7 +553,7 @@
         location.reload();
     }
 
-     // Hiển thị / Tắt popup bộ lọ
+    // Hiển thị / Tắt popup bộ lọ
     function ShowHide(show) {
         if (!show) {
             $('#FilterBG').stop(true).animate({ opacity: 0 }, 400, function () { $('#FilterBG').css('display', 'none'); });

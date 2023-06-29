@@ -52,13 +52,10 @@ Route::get('admin/dashboard', function () {
     return view('admin.dashboard');
 })->name('dashboard.admin');
 
-Route::get('admin/list', function () {
+Route::get('admin/category', function () {
     return view('admin.ManagerList');
-<<<<<<< HEAD
 })->name('category.admin');
-=======
-})->name('list');
->>>>>>> 624f93865c5f08b939b22880d9182f4530165ae1
+
 
 Route::get('admin/slide', function () {
     return view('admin.ManagercSlideShow');
@@ -98,4 +95,8 @@ Route::post('auth/admin', function () {
 
 Route::get('/detail', [UserDetailController::class,'index'])->name('detail');
 Route::get('/contact', [UserContactController::class,'index'])->name('contact');
+
+//CKeditor and CKFinder
+Route::any('/ckfinder/connector', '\CKSource\CKFinderBridge\Controller\CKFinderController@requestAction')->name('ckfinder_connector');
+Route::any('/ckfinder/browser', '\CKSource\CKFinderBridge\Controller\CKFinderController@browserAction')->name('ckfinder_browser');
 
