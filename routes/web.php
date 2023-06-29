@@ -52,13 +52,9 @@ Route::get('admin/dashboard', function () {
     return view('admin.dashboard');
 })->name('dashboard.admin');
 
-Route::get('admin/list', function () {
+Route::get('admin/category', function () {
     return view('admin.ManagerList');
-<<<<<<< HEAD
 })->name('category.admin');
-=======
-})->name('list');
->>>>>>> 624f93865c5f08b939b22880d9182f4530165ae1
 
 Route::get('admin/slide', function () {
     return view('admin.ManagercSlideShow');

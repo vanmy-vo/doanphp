@@ -70,14 +70,14 @@
         <div class="device-search-box">
             <label>Tìm</label>
             <div class="search-box">
-                <input placeholder="Nhập tên ..." value="" onchange="SearchLocation(this)">
+                <input placeholder="Nhập tên liên h..." value="" onchange="SearchLocation(this)">
                 <i onclick="SearchLocation(this.previousElementSibling)" class="fa fa-search"></i>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Danh sách kịch bản (nếu có) -->
+<!--  -->
 <style>
     div.x_panel::-webkit-scrollbar {
         height: 5px;
@@ -190,7 +190,7 @@
                             display: inline-block
                         }
                 </style>
-                <table class="data-table">
+                  <table class="data-table">
                     <thead>
                         <tr>
                             <th class="tc1">Thông tin</th>
@@ -322,13 +322,12 @@
                         <option value="80">80</option>
                         <option value="160">160</option>
                     </select>
-                    <span style="margin-left:5px">Liên hệ / trang </span>
+                    <span style="margin-left:5px">Tài khoản / trang </span>
                 </p>
                 <div class="clear"></div>
             </div>
     </div>
 </div>
-
 
 <!-- POPUP EDIT ACCOUNT -->
 <div class="row" style="margin-bottom:10px">
@@ -483,13 +482,13 @@
         <div id="FilterContent" style="opacity: 1">
             <div id="FilterContentCenter">
                 <h3 class="filtergrouptitle">
-                    CHỈNH SỬA THÔNG TIN LIÊN HỆ
+                    CHỈNH SỬA THÔNG TIN TÀI KHOẢN
                 </h3>
                 <div class="filterpane" style="margin-bottom:0px;padding-bottom:0px">
                     <div class="row">
                             <div class="col-md-3 col-sm-3 col-xs-12">
                                 <p class="lefttitle">
-                                    Email
+                                    Tên tài khoản
                                 </p>
                             </div>
                             <div class="col-md-9 col-sm-9 col-xs-12">
@@ -511,22 +510,15 @@
                     <div class="row">
                         <div class="col-md-3 col-sm-3 col-xs-12">
                             <p class="lefttitle">
-                                Tiêu đề
+                                Chức vụ
                             </p>
                         </div>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                            <input type="text" class="form-control input-edit" value="Đây là tiêu đề" />
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-3 col-sm-3 col-xs-12">
-                            <p class="lefttitle">
-                                Nội dung
-                            </p>
-                        </div>
-                        <div class="col-md-9 col-sm-9 col-xs-12">
-                            <textarea type="text" class="form-control input-edit" value="Đây là nội dung" ></textarea>
+                            <select id="txtYear" class="form-control select year">
+                               <option value="">Chọn chức vụ</option>
+                               <option value="Admin">Admin</option>
+                               <option value="Nhân viên">Nhân viên</option>
+                            </select>
                         </div>
                         <div class="clearfix"></div>
                     </div>
@@ -539,7 +531,6 @@
                 </div>
             </div>
         </div>
-
 
 
 <script>

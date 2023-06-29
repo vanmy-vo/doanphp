@@ -70,14 +70,14 @@
         <div class="device-search-box">
             <label>Tìm</label>
             <div class="search-box">
-                <input placeholder="Nhập tên tài khoản..." value="" onchange="SearchLocation(this)">
+                <input placeholder="Nhập tên bài viết..." value="" onchange="SearchLocation(this)">
                 <i onclick="SearchLocation(this.previousElementSibling)" class="fa fa-search"></i>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Danh sách kịch bản (nếu có) -->
+<!--  -->
 <style>
     div.x_panel::-webkit-scrollbar {
         height: 5px;
@@ -193,33 +193,32 @@
                 <table class="data-table">
                     <thead>
                         <tr>
-                            <th class="tc1">Tài khoản</th>
-                            <th class="tc2">Chức vụ</th>
-                            <th class="tc3">Người tạo<br>Ngày tạo</th>
+                            <th class="tc1">Preview</th>
+                            <th class="tc2">Tiêu đề</th>
+                            <th class="tc2">Nội dung</th>
+                            <th class="tc3">Ngày tạo</th>
                             <th class="tc4">Thao tác</th>
                         </tr>
                     </thead>
                     <tbody>
                             <tr>
                                 <td class="tc1">
-                                    ltlong@gmail.com
-                                    <br>
-                                    <b>Lê Triệu Long</b>
+                                   <img src="http://localhost/doanmonhoc/public/user/img/slideshow-img/a12-16877994426012071256703.jpg" style="width:150px"/>
                                 </td>
                                 <td class="tc2">
-                                    <p>Nhân viên</p>
+                                    <p>Đây là tiêu đề</p>
                                 </td>
                                 <td class="tc3">
-                                    <p>Administrator</p>
+                                    <p>Đây là nội dung</p>
+                                </td>
+                                <td class="tc4">
                                     <p>31/03/2023</p>
                                 </td>
                                 <td class="tc">                        
-                                    <div class="btn btn-xs btn-success">
-                                        <a href="detailAccount.html" style="color: #fff;">
-                                            <i class="fa fa-edit"></i> Chi tiết
-                                        </a>
+                                    <div class="btn btn-xs btn-success"  onclick="ShowHide(true)">
+                                    <i class="fa fa-edit"></i>
                                     </div>
-                                    <div class="btn btn-xs btn-danger" onclick="Delete('Lê Triệu Long')" style=""><i class="fa fa-remove"></i> Xoá</div>
+                                    <div class="btn btn-xs btn-danger" onclick="Delete('Lê Triệu Long')" style=""><i class="fa fa-remove"></i></div>
                                 </td>
                             </tr>
                     </tbody>
@@ -322,4 +321,216 @@
             </div>
     </div>
 </div>
+
+<!-- POPUP EDIT ACCOUNT -->
+<div class="row" style="margin-bottom:10px">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <style>
+                    .search-box {
+                        position: relative;
+                        display: inline-block;
+                        box-sizing: content-box;
+                        border-radius: 3px;
+                        border: 1px solid #ccc;
+                        background-color: #fff;
+                    }
+
+                        .search-box input {
+                            background-color: transparent;
+                            max-width: 250px;
+                            width: 100%;
+                            border: none;
+                            outline: none;
+                        }
+
+                        .search-box i.fa.fa-search {
+                            position: absolute;
+                            top: 8px;
+                            right: 10px;
+                            cursor: pointer;
+                        }
+
+                    #search-results {
+                        display: block;
+                        position: absolute;
+                        border-radius: 3px;
+                        padding: 5px;
+                        width: 100%;
+                        list-style: none;
+                        background: rgb(255, 255, 255);
+                        border: 1px solid #ccc;
+                    }
+                </style>
+                <div class="clearfix"></div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <!-- Modal Bộ lọc -->
+        <style>
+            #FilterBG {
+                margin: 0;
+                padding: 0;
+                width: 100vw;
+                height: 100vh;
+                position: fixed;
+                z-index: 998;
+                background-color: #000;
+                opacity: 0;
+                top: 0px;
+                left: 0px;
+                display: none;
+            }
+
+            #FilterContent {
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                min-height: 100%;
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                z-index: 999;
+                display: none;
+                opacity: 0;
+            }
+
+            #FilterContentCenter {
+                margin: 0 auto;
+                padding: 20px;
+                margin-top: 60px;
+                background-color: #fff;
+                border-radius: 4px;
+                border: 1px solid #ccc;
+                width: 95%;
+                min-width: 278px;
+                max-width: 80%;
+                position: relative;
+            }
+
+            .filtergrouptitle {
+                margin: 20px 0px 0px 0px;
+                padding: 0px;
+                font-size: 20px;
+            }
+
+                .filtergrouptitle.floatleft {
+                    margin: 0px 10px 0px 0px;
+                    padding: 10px;
+                    line-height: 1;
+                    border: 1px dotted #ccc;
+                    border-radius: 5px;
+                    float: left;
+                }
+
+                    .filtergrouptitle.floatleft.focus {
+                        background: #ccc;
+                    }
+
+            .filterpane {
+                margin: 5px 0px 0px;
+                padding: 10px 0px;
+                width: 100%;
+            }
+
+                .filterpane.locate {
+                    margin: 0px 0px 20px 0px;
+                }
+
+            .scroll {
+                border: 1px solid #ccc;
+                height: 195px;
+                overflow-y: scroll;
+            }
+
+            .inputtext {
+                margin: 0px 0px 0px 0px;
+                padding: 0px 0px 0px 0px;
+                text-align: center;
+            }
+
+            .filterpane .row {
+                margin: 0px 0px 5px 0px;
+                padding: 3px 0px 3px 0px;
+                background-color: #eae9e9;
+                border-radius: 4px;
+            }
+
+                .filterpane .row.selected {
+                    background-color: var(--secondary);
+                    color: #fff;
+                }
+
+            .lefttitle {
+                margin: 10px 0px 5px 0px;
+                padding: 0px;
+                line-height: 1;
+            }
+            .input-edit{
+                padding-left: 17px;
+            }
+        </style>
+        <div id="FilterBG" style="opacity: 0.8"></div>
+        <div id="FilterContent" style="opacity: 1">
+            <div id="FilterContentCenter">
+                <h3 class="filtergrouptitle">
+                    CHỈNH SỬA THÔNG TIN BÀI VIẾT
+                </h3>
+                <div class="filterpane" style="margin-bottom:0px;padding-bottom:0px">
+                    <div class="row">
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                <img src ='http://localhost/doanmonhoc/public/user/img/slideshow-img/a12-16877994426012071256703.jpg' style='width:200px'/>
+                                <input type='file' style='margin-top:10px'/>
+                            </div>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                <p class="lefttitle">
+                                    Tiêu đề
+                                </p>
+                            </div>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                <input type="text" class="form-control input-edit" value="Lê Triệu Long"/>
+                            </div>
+
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                <p class="lefttitle">
+                                    Nội dung
+                                </p>
+                            </div>
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                <textarea type="text" class="form-control input-edit" value="Lê Triệu Long" ></textarea>
+                            </div>
+                            <div class="clearfix"></div>
+                    </div>
+                </div>
+
+                <div class="clearfix"></div>
+                <div class="filerfooter" style="margin-top:20px">
+                    <div class="btn btn-success" onclick="Update()">Lưu lại</div>
+                    <div class="btn btn-dark" onclick="ShowHide(false)">Hủy</div>
+                </div>
+            </div>
+        </div>
+
+
+<script>
+    function Delete(name){
+        if (confirm('Bạn có chắc muốn xóa "' + name + '"')){
+            console.log("ok");
+        }
+    }
+
+    function Update(){
+        location.reload();
+    }
+
+     // Hiển thị / Tắt popup bộ lọ
+    function ShowHide(show) {
+        if (!show) {
+            $('#FilterBG').stop(true).animate({ opacity: 0 }, 400, function () { $('#FilterBG').css('display', 'none'); });
+            $('#FilterContent').stop(true).animate({ opacity: 0 }, 400, function () { $('#FilterContent').css('display', 'none'); });
+        } else {
+            $('#FilterBG').css('display', 'block').animate({ opacity: '0.8' }, 400);
+            $('#FilterContent').css('display', 'block').animate({ opacity: '1' }, 400);
+        }
+    }
+</script>
 @stop

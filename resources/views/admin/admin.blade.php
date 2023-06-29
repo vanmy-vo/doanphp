@@ -317,11 +317,7 @@
                                     </a>
                                 </li>
                                 <li>
-<<<<<<< HEAD
                                     <a href="{{ route('category.admin') }}">
-=======
-                                    <a href="{{ route('list') }}">
->>>>>>> 624f93865c5f08b939b22880d9182f4530165ae1
                                         <i class="fa fa-map-marker"></i>
                                         Quản lý danh mục
                                     </a>

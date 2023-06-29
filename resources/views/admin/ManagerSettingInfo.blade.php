@@ -3,6 +3,9 @@
 @section('title', 'Category')
 
 @section('webcontent')
+
+
+
 <!-- KHUNG TIỂU ĐỀ -->
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
@@ -11,11 +14,9 @@
                 <h2 style="font-family:Verdana;line-height:normal;color:#000">
                     DANH SÁCH TÀI KHOẢN
                 </h2>
-                <div class="nav navbar-right green">
-                    <a href="/location/add" class="btn btn-success btn-sm">
-                        <i class="fa fa-plus-square" aria-hidden="true"></i>
+                <div class="nav navbar-right green btn btn-success btn-sm" onclick="ShowHide(true, 'add')" style="color:#fff; padding:5px 10px">
+                    <i class="fa fa-plus-square" aria-hidden="true"></i>
                         Thêm
-                    </a>
                 </div>
                 <div class="clearfix"></div>
             </div>
@@ -190,12 +191,12 @@
                             display: inline-block
                         }
                 </style>
-                <table class="data-table">
+               <table class="data-table">
                     <thead>
                         <tr>
                             <th class="tc1">Tài khoản</th>
                             <th class="tc2">Chức vụ</th>
-                            <th class="tc3">Người tạo<br>Ngày tạo</th>
+                            <th class="tc3">Ngày tạo</th>
                             <th class="tc4">Thao tác</th>
                         </tr>
                     </thead>
@@ -214,7 +215,7 @@
                                     <p>31/03/2023</p>
                                 </td>
                                 <td class="tc">
-                                    <div class="btn btn-xs btn-success" onclick="ShowHide(true)">
+                                    <div class="btn btn-xs btn-success" onclick="ShowHide(true, 'edit')">
                                     <i class="fa fa-pencil-square-o"></i>
                                     </div>
                                     <div class="btn btn-xs btn-danger" onclick="Delete('Lê Triệu Long')" style=""><i class="fa fa-remove"></i></div>
@@ -227,6 +228,7 @@
 </div>
 
 <div class="row">
+
     <div class="col-md-12 col-sm-12 col-xs-12">
         <style>
             #PageControl {
@@ -319,7 +321,7 @@
                 <div class="clear"></div>
             </div>
     </div>
-</div>
+            </div>
 
 <!-- POPUP EDIT ACCOUNT -->
 <div class="row" style="margin-bottom:10px">
@@ -332,7 +334,6 @@
                         border-radius: 3px;
                         border: 1px solid #ccc;
                         background-color: #fff;
-                        width: 300px;
                     }
 
                         .search-box input {
@@ -341,7 +342,6 @@
                             width: 100%;
                             border: none;
                             outline: none;
-                            padding: 5px 25px 5px 10px;
                         }
 
                         .search-box i.fa.fa-search {
@@ -365,164 +365,164 @@
                 <div class="clearfix"></div>
             </div>
             <div class="clearfix"></div>
-        </div>
-        <!-- Modal Bộ lọc -->
-        <style>
-            #FilterBG {
-                margin: 0;
-                padding: 0;
-                width: 100vw;
-                height: 100vh;
-                position: fixed;
-                z-index: 998;
-                background-color: #000;
-                opacity: 0;
-                top: 0px;
-                left: 0px;
-                display: none;
-            }
+</div>
+    <!-- Modal Bộ lọc -->
+    <style>
+        #FilterBG {
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            z-index: 998;
+            background-color: #000;
+            opacity: 0;
+            top: 0px;
+            left: 0px;
+            display: none;
+        }
 
-            #FilterContent {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                min-height: 100%;
-                position: absolute;
-                top: 0px;
-                left: 0px;
-                z-index: 999;
-                display: none;
-                opacity: 0;
-            }
+        #FilterContent {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            min-height: 100%;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            z-index: 999;
+            display: none;
+            opacity: 0;
+        }
 
-            #FilterContentCenter {
-                margin: 0 auto;
-                padding: 20px;
-                margin-top: 60px;
-                background-color: #fff;
-                border-radius: 4px;
-                border: 1px solid #ccc;
-                width: 95%;
-                min-width: 278px;
-                max-width: 450px;
-                position: relative;
-            }
+        #FilterContentCenter {
+            margin: 0 auto;
+            padding: 20px;
+            margin-top: 60px;
+            background-color: #fff;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            width: 95%;
+            min-width: 278px;
+            max-width: 450px;
+            position: relative;
+        }
 
-            .filtergrouptitle {
-                margin: 20px 0px 0px 0px;
-                padding: 0px;
-                font-size: 20px;
-            }
+        .filtergrouptitle {
+            margin: 20px 0px 0px 0px;
+            padding: 0px;
+            font-size: 20px;
+        }
 
-                .filtergrouptitle.floatleft {
-                    margin: 0px 10px 0px 0px;
-                    padding: 10px;
-                    line-height: 1;
-                    border: 1px dotted #ccc;
-                    border-radius: 5px;
-                    float: left;
-                }
-
-                    .filtergrouptitle.floatleft.focus {
-                        background: #ccc;
-                    }
-
-            .filterpane {
-                margin: 5px 0px 0px;
-                padding: 10px 0px;
-                width: 100%;
-            }
-
-                .filterpane.locate {
-                    margin: 0px 0px 20px 0px;
-                }
-
-            .scroll {
-                border: 1px solid #ccc;
-                height: 195px;
-                overflow-y: scroll;
-            }
-
-            .inputtext {
-                margin: 0px 0px 0px 0px;
-                padding: 0px 0px 0px 0px;
-                text-align: center;
-            }
-
-            .filterpane .row {
-                margin: 0px 0px 5px 0px;
-                padding: 3px 0px 3px 0px;
-                background-color: #eae9e9;
-                border-radius: 4px;
-            }
-
-                .filterpane .row.selected {
-                    background-color: var(--secondary);
-                    color: #fff;
-                }
-
-            .lefttitle {
-                margin: 10px 0px 0px 0px;
-                padding: 0px;
+            .filtergrouptitle.floatleft {
+                margin: 0px 10px 0px 0px;
+                padding: 10px;
                 line-height: 1;
+                border: 1px dotted #ccc;
+                border-radius: 5px;
+                float: left;
             }
-            .input-edit{
-                padding-left: 17px;
-            }
-        </style>
-        <div id="FilterBG" style="opacity: 0.8"></div>
-        <div id="FilterContent" style="opacity: 1">
-            <div id="FilterContentCenter">
-                <h3 class="filtergrouptitle">
-                    CHỈNH SỬA THÔNG TIN TÀI KHOẢN
-                </h3>
-                <div class="filterpane" style="margin-bottom:0px;padding-bottom:0px">
-                    <div class="row">
-                            <div class="col-md-3 col-sm-3 col-xs-12">
-                                <p class="lefttitle">
-                                    Tên tài khoản
-                                </p>
-                            </div>
-                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                <input type="text" class="form-control input-edit" value="ltl@abc.com" disabled/>
-                            </div>
-                            <div class="clearfix"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-3 col-sm-3 col-xs-12">
-                            <p class="lefttitle">
-                                Tên
-                            </p>
-                        </div>
-                        <div class="col-md-9 col-sm-9 col-xs-12">
-                            <input type="text" class="form-control input-edit" value="Lê Triệu Long" />
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-3 col-sm-3 col-xs-12">
-                            <p class="lefttitle">
-                                Chức vụ
-                            </p>
-                        </div>
-                        <div class="col-md-9 col-sm-9 col-xs-12">
-                            <select id="txtYear" class="form-control select year">
-                               <option value="">Chọn chức vụ</option>
-                               <option value="Admin">Admin</option>
-                               <option value="Nhân viên">Nhân viên</option>
-                            </select>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                </div>
 
-                <div class="clearfix"></div>
-                <div class="filerfooter" style="margin-top:20px">
-                    <div class="btn btn-success" onclick="Update()">Lưu lại</div>
-                    <div class="btn btn-dark" onclick="ShowHide(false)">Hủy</div>
+                .filtergrouptitle.floatleft.focus {
+                    background: #ccc;
+                }
+
+        .filterpane {
+            margin: 5px 0px 0px;
+            padding: 10px 0px;
+            width: 100%;
+        }
+
+            .filterpane.locate {
+                margin: 0px 0px 20px 0px;
+            }
+
+        .scroll {
+            border: 1px solid #ccc;
+            height: 195px;
+            overflow-y: scroll;
+        }
+
+        .inputtext {
+            margin: 0px 0px 0px 0px;
+            padding: 0px 0px 0px 0px;
+            text-align: center;
+        }
+
+        .filterpane .row {
+            margin: 0px 0px 5px 0px;
+            padding: 3px 0px 3px 0px;
+            background-color: #eae9e9;
+            border-radius: 4px;
+        }
+
+            .filterpane .row.selected {
+                background-color: var(--secondary);
+                color: #fff;
+            }
+
+        .lefttitle {
+            margin: 10px 0px 0px 0px;
+            padding: 0px;
+            line-height: 1;
+        }
+        .input-edit{
+            padding-left: 17px;
+        }
+    </style>
+    <div id="FilterBG" style="opacity: 0.8"></div>
+    <div id="FilterContent" style="opacity: 1">
+        <div id="FilterContentCenter">
+            <h3 class="filtergrouptitle">
+                CHỈNH SỬA THÔNG TIN TÀI KHOẢN
+            </h3>
+            <div class="filterpane" style="margin-bottom:0px;padding-bottom:0px">
+                <div class="row">
+                        <div class="col-md-3 col-sm-3 col-xs-12">
+                            <p class="lefttitle">
+                                Tên tài khoản
+                            </p>
+                        </div>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input type="text" class="form-control input-edit" value="ltl@abc.com" disabled/>
+                        </div>
+                        <div class="clearfix"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 col-sm-3 col-xs-12">
+                        <p class="lefttitle">
+                            Tên
+                        </p>
+                    </div>
+                    <div class="col-md-9 col-sm-9 col-xs-12">
+                        <input type="text" class="form-control input-edit" value="Lê Triệu Long" />
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 col-sm-3 col-xs-12">
+                        <p class="lefttitle">
+                            Chức vụ
+                        </p>
+                    </div>
+                    <div class="col-md-9 col-sm-9 col-xs-12">
+                        <select id="txtYear" class="form-control select year">
+                            <option value="">Chọn chức vụ</option>
+                            <option value="Admin">Admin</option>
+                            <option value="Nhân viên">Nhân viên</option>
+                        </select>
+                    </div>
+                    <div class="clearfix"></div>
                 </div>
             </div>
+            <div class="clearfix"></div>
+            <div class="filerfooter" style="margin-top:20px">
+                <div class="btn btn-success" onclick="UpdateAndSave()">Lưu lại</div>
+                <div class="btn btn-dark" onclick="ShowHide(false, '')">Hủy</div>
+            </div>
         </div>
+    </div>
+
 
 
 <script>
@@ -532,12 +532,28 @@
         }
     }
 
-    function Update(){
+    var b_action;
+    function UpdateAndSave(){
+        if (b_action){
+            console.log('OK')
+        }else{
+            console.log('OK11')
+        }
         location.reload();
     }
 
      // Hiển thị / Tắt popup bộ lọ
-    function ShowHide(show) {
+    function ShowHide(show, action) {
+        if (action == "add"){
+            b_action = true;
+            $('.filtergrouptitle').text("THÊM MỚI TÀI KHOẢN");
+            $('input').val('');
+            $('input').attr("placeholder","Nhập thông tin");
+            $("input").prop('disabled', false);
+        }else{
+            b_action = false;
+            $('.filtergrouptitle').text("CHỈNH SỬA THÔNG TIN TÀI KHOẢN");
+        }
         if (!show) {
             $('#FilterBG').stop(true).animate({ opacity: 0 }, 400, function () { $('#FilterBG').css('display', 'none'); });
             $('#FilterContent').stop(true).animate({ opacity: 0 }, 400, function () { $('#FilterContent').css('display', 'none'); });
