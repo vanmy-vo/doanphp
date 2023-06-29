@@ -2,17 +2,6 @@
 @section('title','Trang tìm kiếm')
 
 @section('web_content')
-    <!-- Main Breadcrumb Start -->
-    <div class="main--breadcrumb">
-        <div class="container">
-            <ul class="breadcrumb">
-                <li><a href="home-1.html" class="btn-link"><i class="fa fm fa-home"></i>Home</a></li>
-                <li class="active"><span>Kết quả tìm kiếm</span></li>
-            </ul>
-        </div>
-    </div>
-    <!-- Main Breadcrumb End -->
-
     <!-- Main Content Section Start -->
     <div class="main-content--section pbottom--30">
         <div class="container">
@@ -20,6 +9,26 @@
                 <!-- Main Content Start -->
                 <div class="main--content col-md-8 col-sm-7" data-sticky-content="true">
                     <div class="sticky-content-inner">
+                        <!-- Search Widget Start -->
+                        <div class="search--widget ptop--30">
+                            <form action="#" data-form="validate">
+                                <div class="input-group">
+                                    <input type="search" name="search" placeholder="Tìm kiếm..." class="form-control" required>
+
+                                    <div class="input-group-btn">
+                                        <button type="submit" class="btn-link"><i class="fa fa-search"></i></button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- Search Widget End -->
+
+                        <!-- Page Title Start -->
+                        <div class="page--title ptop--30">
+                            <h2 class="h2">Kết quả cho: <span>Du lịch</span></h2>
+                        </div>
+                        <!-- Page Title End -->
+
                         <!-- Post Items Start -->
                         <div class="post--items post--items-5 pd--30-0">
                             <ul class="nav">
@@ -29,8 +38,8 @@
                                         <div class="row">
                                             <div class="col-md-4 col-sm-12 col-xs-4 col-xxs-12">
                                                 <div class="post--img">
-                                                    <a href="news-single-v1.html" class="thumb"><img src="img/blog-img/post-01.jpg" alt=""></a>
-                                                    <a href="#" class="cat">Kids</a>
+                                                    <a href="news-single-v1.html" class="thumb"><img src="user/img/post-img/3525235253.jpg" alt=""></a>
+                                                    <a href="#" class="cat">Quân sự</a>
                                                 </div>
                                             </div>
 
@@ -38,20 +47,20 @@
                                                 <div class="post--info">
                                                     <ul class="nav meta">
                                                         <li><a href="#">Bushyasta</a></li>
-                                                        <li><a href="#">16 April 2016</a></li>
+                                                        <li><a href="#">29/06/2023</a></li>
                                                     </ul>
 
                                                     <div class="title">
-                                                        <h3 class="h4"><a href="news-single-v1.html" class="btn-link">Credibly pontificate highly efficient manufactured products and enabled data.</a></h3>
+                                                        <h3 class="h4"><a href="news-single-v1.html" class="btn-link">Phương Tây đã huấn luyện hơn 17.000 tân binh Ukraine</a></h3>
                                                     </div>
                                                 </div>
 
                                                 <div class="post--content">
-                                                    <p>Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.</p>
+                                                    <p>Bộ Quốc phòng Anh cho biết nước này và các đồng minh đã giúp huấn luyện hơn 17.000 tân binh Ukraine và dự kiến đào tạo 30.000 người đến năm 2024.</p>
                                                 </div>
 
                                                 <div class="post--action">
-                                                    <a href="news-single-v1.html">Continue Reading...</a>
+                                                    <a href="news-single-v1.html">Đọc tiếp...</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -64,8 +73,8 @@
                                         <div class="row">
                                             <div class="col-md-4 col-sm-12 col-xs-4 col-xxs-12">
                                                 <div class="post--img">
-                                                    <a href="news-single-v1.html" class="thumb"><img src="img/blog-img/post-01.jpg" alt=""></a>
-                                                    <a href="#" class="cat">Kids</a>
+                                                    <a href="news-single-v1.html" class="thumb"><img src="user/img/post-img/3525235253.jpg" alt=""></a>
+                                                    <a href="#" class="cat">Quân sự</a>
                                                 </div>
                                             </div>
 
@@ -73,20 +82,20 @@
                                                 <div class="post--info">
                                                     <ul class="nav meta">
                                                         <li><a href="#">Bushyasta</a></li>
-                                                        <li><a href="#">16 April 2016</a></li>
+                                                        <li><a href="#">29/06/2023</a></li>
                                                     </ul>
 
                                                     <div class="title">
-                                                        <h3 class="h4"><a href="news-single-v1.html" class="btn-link">Credibly pontificate highly efficient manufactured products and enabled data.</a></h3>
+                                                        <h3 class="h4"><a href="news-single-v1.html" class="btn-link">Phương Tây đã huấn luyện hơn 17.000 tân binh Ukraine</a></h3>
                                                     </div>
                                                 </div>
 
                                                 <div class="post--content">
-                                                    <p>Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.</p>
+                                                    <p>Bộ Quốc phòng Anh cho biết nước này và các đồng minh đã giúp huấn luyện hơn 17.000 tân binh Ukraine và dự kiến đào tạo 30.000 người đến năm 2024.</p>
                                                 </div>
 
                                                 <div class="post--action">
-                                                    <a href="news-single-v1.html">Continue Reading...</a>
+                                                    <a href="news-single-v1.html">Đọc tiếp...</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -99,8 +108,8 @@
                                         <div class="row">
                                             <div class="col-md-4 col-sm-12 col-xs-4 col-xxs-12">
                                                 <div class="post--img">
-                                                    <a href="news-single-v1.html" class="thumb"><img src="img/blog-img/post-01.jpg" alt=""></a>
-                                                    <a href="#" class="cat">Kids</a>
+                                                    <a href="news-single-v1.html" class="thumb"><img src="user/img/post-img/3525235253.jpg" alt=""></a>
+                                                    <a href="#" class="cat">Quân sự</a>
                                                 </div>
                                             </div>
 
@@ -108,20 +117,20 @@
                                                 <div class="post--info">
                                                     <ul class="nav meta">
                                                         <li><a href="#">Bushyasta</a></li>
-                                                        <li><a href="#">16 April 2016</a></li>
+                                                        <li><a href="#">29/06/2023</a></li>
                                                     </ul>
 
                                                     <div class="title">
-                                                        <h3 class="h4"><a href="news-single-v1.html" class="btn-link">Credibly pontificate highly efficient manufactured products and enabled data.</a></h3>
+                                                        <h3 class="h4"><a href="news-single-v1.html" class="btn-link">Phương Tây đã huấn luyện hơn 17.000 tân binh Ukraine</a></h3>
                                                     </div>
                                                 </div>
 
                                                 <div class="post--content">
-                                                    <p>Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.</p>
+                                                    <p>Bộ Quốc phòng Anh cho biết nước này và các đồng minh đã giúp huấn luyện hơn 17.000 tân binh Ukraine và dự kiến đào tạo 30.000 người đến năm 2024.</p>
                                                 </div>
 
                                                 <div class="post--action">
-                                                    <a href="news-single-v1.html">Continue Reading...</a>
+                                                    <a href="news-single-v1.html">Đọc tiếp...</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -134,8 +143,8 @@
                                         <div class="row">
                                             <div class="col-md-4 col-sm-12 col-xs-4 col-xxs-12">
                                                 <div class="post--img">
-                                                    <a href="news-single-v1.html" class="thumb"><img src="img/blog-img/post-01.jpg" alt=""></a>
-                                                    <a href="#" class="cat">Kids</a>
+                                                    <a href="news-single-v1.html" class="thumb"><img src="user/img/post-img/3525235253.jpg" alt=""></a>
+                                                    <a href="#" class="cat">Quân sự</a>
                                                 </div>
                                             </div>
 
@@ -143,20 +152,160 @@
                                                 <div class="post--info">
                                                     <ul class="nav meta">
                                                         <li><a href="#">Bushyasta</a></li>
-                                                        <li><a href="#">16 April 2016</a></li>
+                                                        <li><a href="#">29/06/2023</a></li>
                                                     </ul>
 
                                                     <div class="title">
-                                                        <h3 class="h4"><a href="news-single-v1.html" class="btn-link">Credibly pontificate highly efficient manufactured products and enabled data.</a></h3>
+                                                        <h3 class="h4"><a href="news-single-v1.html" class="btn-link">Phương Tây đã huấn luyện hơn 17.000 tân binh Ukraine</a></h3>
                                                     </div>
                                                 </div>
 
                                                 <div class="post--content">
-                                                    <p>Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.</p>
+                                                    <p>Bộ Quốc phòng Anh cho biết nước này và các đồng minh đã giúp huấn luyện hơn 17.000 tân binh Ukraine và dự kiến đào tạo 30.000 người đến năm 2024.</p>
                                                 </div>
 
                                                 <div class="post--action">
-                                                    <a href="news-single-v1.html">Continue Reading...</a>
+                                                    <a href="news-single-v1.html">Đọc tiếp...</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Post Item End -->
+                                </li>
+                                <li>
+                                    <!-- Post Item Start -->
+                                    <div class="post--item post--title-larger">
+                                        <div class="row">
+                                            <div class="col-md-4 col-sm-12 col-xs-4 col-xxs-12">
+                                                <div class="post--img">
+                                                    <a href="news-single-v1.html" class="thumb"><img src="user/img/post-img/3525235253.jpg" alt=""></a>
+                                                    <a href="#" class="cat">Quân sự</a>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-8 col-sm-12 col-xs-8 col-xxs-12">
+                                                <div class="post--info">
+                                                    <ul class="nav meta">
+                                                        <li><a href="#">Bushyasta</a></li>
+                                                        <li><a href="#">29/06/2023</a></li>
+                                                    </ul>
+
+                                                    <div class="title">
+                                                        <h3 class="h4"><a href="news-single-v1.html" class="btn-link">Phương Tây đã huấn luyện hơn 17.000 tân binh Ukraine</a></h3>
+                                                    </div>
+                                                </div>
+
+                                                <div class="post--content">
+                                                    <p>Bộ Quốc phòng Anh cho biết nước này và các đồng minh đã giúp huấn luyện hơn 17.000 tân binh Ukraine và dự kiến đào tạo 30.000 người đến năm 2024.</p>
+                                                </div>
+
+                                                <div class="post--action">
+                                                    <a href="news-single-v1.html">Đọc tiếp...</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Post Item End -->
+                                </li>
+                                <li>
+                                    <!-- Post Item Start -->
+                                    <div class="post--item post--title-larger">
+                                        <div class="row">
+                                            <div class="col-md-4 col-sm-12 col-xs-4 col-xxs-12">
+                                                <div class="post--img">
+                                                    <a href="news-single-v1.html" class="thumb"><img src="user/img/post-img/3525235253.jpg" alt=""></a>
+                                                    <a href="#" class="cat">Quân sự</a>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-8 col-sm-12 col-xs-8 col-xxs-12">
+                                                <div class="post--info">
+                                                    <ul class="nav meta">
+                                                        <li><a href="#">Bushyasta</a></li>
+                                                        <li><a href="#">29/06/2023</a></li>
+                                                    </ul>
+
+                                                    <div class="title">
+                                                        <h3 class="h4"><a href="news-single-v1.html" class="btn-link">Phương Tây đã huấn luyện hơn 17.000 tân binh Ukraine</a></h3>
+                                                    </div>
+                                                </div>
+
+                                                <div class="post--content">
+                                                    <p>Bộ Quốc phòng Anh cho biết nước này và các đồng minh đã giúp huấn luyện hơn 17.000 tân binh Ukraine và dự kiến đào tạo 30.000 người đến năm 2024.</p>
+                                                </div>
+
+                                                <div class="post--action">
+                                                    <a href="news-single-v1.html">Đọc tiếp...</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Post Item End -->
+                                </li>
+                                <li>
+                                    <!-- Post Item Start -->
+                                    <div class="post--item post--title-larger">
+                                        <div class="row">
+                                            <div class="col-md-4 col-sm-12 col-xs-4 col-xxs-12">
+                                                <div class="post--img">
+                                                    <a href="news-single-v1.html" class="thumb"><img src="user/img/post-img/3525235253.jpg" alt=""></a>
+                                                    <a href="#" class="cat">Quân sự</a>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-8 col-sm-12 col-xs-8 col-xxs-12">
+                                                <div class="post--info">
+                                                    <ul class="nav meta">
+                                                        <li><a href="#">Bushyasta</a></li>
+                                                        <li><a href="#">29/06/2023</a></li>
+                                                    </ul>
+
+                                                    <div class="title">
+                                                        <h3 class="h4"><a href="news-single-v1.html" class="btn-link">Phương Tây đã huấn luyện hơn 17.000 tân binh Ukraine</a></h3>
+                                                    </div>
+                                                </div>
+
+                                                <div class="post--content">
+                                                    <p>Bộ Quốc phòng Anh cho biết nước này và các đồng minh đã giúp huấn luyện hơn 17.000 tân binh Ukraine và dự kiến đào tạo 30.000 người đến năm 2024.</p>
+                                                </div>
+
+                                                <div class="post--action">
+                                                    <a href="news-single-v1.html">Đọc tiếp...</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Post Item End -->
+                                </li>
+                                <li>
+                                    <!-- Post Item Start -->
+                                    <div class="post--item post--title-larger">
+                                        <div class="row">
+                                            <div class="col-md-4 col-sm-12 col-xs-4 col-xxs-12">
+                                                <div class="post--img">
+                                                    <a href="news-single-v1.html" class="thumb"><img src="user/img/post-img/3525235253.jpg" alt=""></a>
+                                                    <a href="#" class="cat">Quân sự</a>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-8 col-sm-12 col-xs-8 col-xxs-12">
+                                                <div class="post--info">
+                                                    <ul class="nav meta">
+                                                        <li><a href="#">Bushyasta</a></li>
+                                                        <li><a href="#">29/06/2023</a></li>
+                                                    </ul>
+
+                                                    <div class="title">
+                                                        <h3 class="h4"><a href="news-single-v1.html" class="btn-link">Phương Tây đã huấn luyện hơn 17.000 tân binh Ukraine</a></h3>
+                                                    </div>
+                                                </div>
+
+                                                <div class="post--content">
+                                                    <p>Bộ Quốc phòng Anh cho biết nước này và các đồng minh đã giúp huấn luyện hơn 17.000 tân binh Ukraine và dự kiến đào tạo 30.000 người đến năm 2024.</p>
+                                                </div>
+
+                                                <div class="post--action">
+                                                    <a href="news-single-v1.html">Đọc tiếp...</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -166,7 +315,6 @@
                             </ul>
                         </div>
                         <!-- Post Items End -->
-
 
                         <!-- Pagination Start -->
                         <div class="pagination--wrapper clearfix bdtop--1 bd--color-2 ptop--60 pbottom--30">
@@ -215,7 +363,7 @@
                         <!-- Widget Start -->
                         <div class="widget">
                             <div class="widget--title">
-                                <h2 class="h4">Catagory</h2>
+                                <h2 class="h4">Danh mục</h2>
                                 <i class="icon fa fa-folder-open-o"></i>
                             </div>
 
@@ -256,11 +404,9 @@
                                 <h2 class="h4">Quảng cáo</h2>
                                 <i class="icon fa fa-bullhorn"></i>
                             </div>
-
-                            <!-- Ad Widget Start -->
                             <div class="ad--widget">
                                 <a href="#">
-                                    <img src="{{asset('user/img/ads-img/ad-300x250-2.jpg')}}" alt="">
+                                    <img src="{{asset('user/img/ads-img/ads-black-pink-samsung.jpg')}}" alt="">
                                 </a>
                             </div>
                             <!-- Ad Widget End -->

@@ -8,6 +8,7 @@ use App\Http\Controllers\user\HomeController as UserHomeController;
 use App\Http\Controllers\user\CategoryController as UserCategoryController;
 use App\Http\Controllers\user\TypeCategoryController as UserTypeCategoryController;
 use App\Http\Controllers\user\SearchController as UserSearchController;
+use App\Http\Controllers\user\DetailController as UserDetailController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -79,3 +80,4 @@ Route::get('/', [UserHomeController::class,'index'])->name('/');
 Route::get('/category', [UserCategoryController::class,'index'])->name('category');
 Route::get('/type-category', [UserTypeCategoryController::class,'index'])->name('type-category');
 Route::get('/search', [UserSearchController::class,'index'])->name('search');
+Route::get('/detail', [UserDetailController::class,'index'])->name('detail');

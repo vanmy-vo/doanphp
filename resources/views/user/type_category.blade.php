@@ -40,28 +40,28 @@
                                             <!-- Post Item Start -->
                                             <div class="post--item post--layout-1">
                                                 <div class="post--img">
-                                                    <a href="news-single-v1.html" class="thumb"><img src="{{asset('user/img/national-img/diplomacy-01.jpg')}}" alt=""></a>
-                                                    <a href="#" class="cat">Diplomatic</a>
-                                                    {{-- <a href="#" class="icon"><i class="fa fa-flash"></i></a> --}}
+                                                    <a href="" class="thumb"><img src="{{asset('user/img/post-img/4338558824b902034179897y12h.jpeg')}}" alt=""></a>
+                                                    <a href="#" class="cat">Du lịch</a>
+                                                    <a href="#" class="icon"><i class="fa fa-heart-o"></i></a>
 
                                                     <div class="post--info">
                                                         <ul class="nav meta">
                                                             <li><a href="#">Astaroth</a></li>
-                                                            <li><a href="#">Yeasterday 03:52 pm</a></li>
+                                                            <li><a href="#">29/06/2023</a></li>
                                                         </ul>
 
                                                         <div class="title">
-                                                            <h3 class="h4"><a href="#" class="btn-link">On the other hand, we denounce with righteous indignation and dislike demoralized</a></h3>
+                                                            <h3 class="h4"><a href="#" class="btn-link">Cẩm nang du học 2023 từ 12 trường đại học Australia</a></h3>
                                                         </div>
                                                     </div>
                                                 </div>
 
                                                 <div class="post--content">
-                                                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos mollitia animi, id est laborum et dolorum fuga.</p>
+                                                    <p>Du học Australia với chương trình Global Pathways, xét tuyển thẳng vào đại học top 1% thế giới.</p>
                                                 </div>
 
                                                 <div class="post--action">
-                                                    <a href="news-single-v1.html">Continue Reading... </a>
+                                                    <a href="">Đọc tiếp... </a>
                                                 </div>
                                             </div>
                                             <!-- Post Item End -->
@@ -75,39 +75,33 @@
                                             <!-- Post Item Start -->
                                             <div class="post--item post--layout-1">
                                                 <div class="post--img">
-                                                    <a href="news-single-v1.html" class="thumb"><img src="{{asset('user/img/national-img/diplomacy-02.jpg')}}" alt=""></a>
-                                                    <a href="#" class="cat">Talk-Show</a>
-                                                    {{-- <a href="#" class="icon"><i class="fa fa-flash"></i></a> --}}
+                                                    <a href="" class="thumb"><img src="{{asset('user/img/post-img/4338558824b902034179897y12h.jpeg')}}" alt=""></a>
+                                                    <a href="#" class="cat">Du lịch</a>
+                                                    <a href="#" class="icon"><i class="fa fa-heart-o"></i></a>
 
                                                     <div class="post--info">
                                                         <ul class="nav meta">
                                                             <li><a href="#">Astaroth</a></li>
-                                                            <li><a href="#">Yeasterday 03:52 pm</a></li>
+                                                            <li><a href="#">29/06/2023</a></li>
                                                         </ul>
 
                                                         <div class="title">
-                                                            <h3 class="h4"><a href="news-single-v1.html" class="btn-link">On the other hand, we denounce with righteous indignation and dislike demoralized</a></h3>
+                                                            <h3 class="h4"><a href="#" class="btn-link">Cẩm nang du học 2023 từ 12 trường đại học Australia</a></h3>
                                                         </div>
                                                     </div>
                                                 </div>
 
                                                 <div class="post--content">
-                                                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos mollitia animi, id est laborum et dolorum fuga.</p>
+                                                    <p>Du học Australia với chương trình Global Pathways, xét tuyển thẳng vào đại học top 1% thế giới.</p>
                                                 </div>
 
                                                 <div class="post--action">
-                                                    <a href="news-single-v1.html">Continue Reading... </a>
+                                                    <a href="">Đọc tiếp... </a>
                                                 </div>
                                             </div>
                                             <!-- Post Item End -->
                                         </li>
                                     </ul>
-
-                                    <!-- Preloader Start -->
-                                    {{-- <div class="preloader bg--color-0--b" data-preloader="1">
-                                        <div class="preloader--inner"></div>
-                                    </div> --}}
-                                    <!-- Preloader End -->
                                 </div>
                                 <!-- Post Items End -->
                             </div>
@@ -131,28 +125,28 @@
                                             <!-- Post Item Start -->
                                             <div class="post--item post--layout-1">
                                                 <div class="post--img">
-                                                    <a href="news-single-v1.html" class="thumb"><img src="{{asset('user/img/national-img/administration-01.jpg')}}" alt=""></a>
-                                                    <a href="#" class="cat">Command</a>
-                                                    {{-- <a href="#" class="icon"><i class="fa fa-flash"></i></a> --}}
+                                                    <a href="" class="thumb"><img src="{{asset('user/img/post-img/4338558824b902034179897y12h.jpeg')}}" alt=""></a>
+                                                    <a href="#" class="cat">Du lịch</a>
+                                                    <a href="#" class="icon"><i class="fa fa-heart-o"></i></a>
 
                                                     <div class="post--info">
                                                         <ul class="nav meta">
                                                             <li><a href="#">Astaroth</a></li>
-                                                            <li><a href="#">Yeasterday 03:52 pm</a></li>
+                                                            <li><a href="#">29/06/2023</a></li>
                                                         </ul>
 
                                                         <div class="title">
-                                                            <h3 class="h4"><a href="news-single-v1.html" class="btn-link">On the other hand, we denounce with righteous indignation and dislike demoralized</a></h3>
+                                                            <h3 class="h4"><a href="#" class="btn-link">Cẩm nang du học 2023 từ 12 trường đại học Australia</a></h3>
                                                         </div>
                                                     </div>
                                                 </div>
 
                                                 <div class="post--content">
-                                                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos mollitia animi, id est laborum et dolorum fuga.</p>
+                                                    <p>Du học Australia với chương trình Global Pathways, xét tuyển thẳng vào đại học top 1% thế giới.</p>
                                                 </div>
 
                                                 <div class="post--action">
-                                                    <a href="news-single-v1.html">Continue Reading... </a>
+                                                    <a href="">Đọc tiếp... </a>
                                                 </div>
                                             </div>
                                             <!-- Post Item End -->
@@ -166,39 +160,33 @@
                                             <!-- Post Item Start -->
                                             <div class="post--item post--layout-1">
                                                 <div class="post--img">
-                                                    <a href="news-single-v1.html" class="thumb"><img src="{{asset('user/img/national-img/administration-02.jpg')}}" alt=""></a>
-                                                    <a href="#" class="cat">Regulation</a>
-                                                    {{-- <a href="#" class="icon"><i class="fa fa-flash"></i></a> --}}
+                                                    <a href="" class="thumb"><img src="{{asset('user/img/post-img/4338558824b902034179897y12h.jpeg')}}" alt=""></a>
+                                                    <a href="#" class="cat">Du lịch</a>
+                                                    <a href="#" class="icon"><i class="fa fa-heart-o"></i></a>
 
                                                     <div class="post--info">
                                                         <ul class="nav meta">
-                                                            <li><a href="#">Famous</a></li>
-                                                            <li><a href="#">Yeasterday 03:52 pm</a></li>
+                                                            <li><a href="#">Astaroth</a></li>
+                                                            <li><a href="#">29/06/2023</a></li>
                                                         </ul>
 
                                                         <div class="title">
-                                                            <h3 class="h4"><a href="news-single-v1.html" class="btn-link">On the other hand, we denounce with righteous indignation and dislike demoralized</a></h3>
+                                                            <h3 class="h4"><a href="#" class="btn-link">Cẩm nang du học 2023 từ 12 trường đại học Australia</a></h3>
                                                         </div>
                                                     </div>
                                                 </div>
 
                                                 <div class="post--content">
-                                                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos mollitia animi, id est laborum et dolorum fuga.</p>
+                                                    <p>Du học Australia với chương trình Global Pathways, xét tuyển thẳng vào đại học top 1% thế giới.</p>
                                                 </div>
 
                                                 <div class="post--action">
-                                                    <a href="news-single-v1.html">Continue Reading... </a>
+                                                    <a href="">Đọc tiếp... </a>
                                                 </div>
                                             </div>
                                             <!-- Post Item End -->
                                         </li>
                                     </ul>
-
-                                    <!-- Preloader Start -->
-                                    {{-- <div class="preloader bg--color-0--b" data-preloader="1">
-                                        <div class="preloader--inner"></div>
-                                    </div> --}}
-                                    <!-- Preloader End -->
                                 </div>
                                 <!-- Post Items End -->
                             </div>
@@ -214,9 +202,13 @@
                         <!-- Widget Start -->
                         <div class="widget">
                             <!-- Ad Widget Start -->
+                            <div class="widget--title">
+                                <h2 class="h4">Quảng cáo</h2>
+                                <i class="icon fa fa-bullhorn"></i>
+                            </div>
                             <div class="ad--widget">
                                 <a href="#">
-                                    <img src="{{asset('user/img/ads-img/ad-300x250-1.jpg')}}" alt="">
+                                    <img src="{{asset('user/img/ads-img/ads-black-pink-samsung.jpg')}}" alt="">
                                 </a>
                             </div>
                             <!-- Ad Widget End -->
@@ -240,15 +232,10 @@
                                 <form action="" method="post" name="mc-embedded-subscribe-form" target="_blank" data-form="mailchimpAjax">
                                     <div class="input-group">
                                         <input type="email" name="" placeholder="Nhập Email" class="form-control" autocomplete="off" required>
+                                        <input type="text" name="" placeholder="Nhập tiêu đề" class="form-control" autocomplete="off" required>
                                         <input type="text" name="" placeholder="Nhập nội dung" class="form-control" autocomplete="off" required>
-
-                                        {{-- <div class="input-group-btn">
-                                            <button type="submit" class="btn btn-lg btn-default active"><i class="fa fa-paper-plane-o"></i></button>
-                                        </div> --}}
                                         <button type="submit" class="btn btn-lg btn-default active"><i class="fa fa-paper-plane-o"></i></button>
-
                                     </div>
-
                                     <div class="status"></div>
                                 </form>
                             </div>
@@ -262,11 +249,9 @@
                                 <h2 class="h4">Quảng cáo</h2>
                                 <i class="icon fa fa-bullhorn"></i>
                             </div>
-
-                            <!-- Ad Widget Start -->
                             <div class="ad--widget">
                                 <a href="#">
-                                    <img src="{{asset('user/img/ads-img/ad-300x250-2.jpg')}}" alt="">
+                                    <img src="{{asset('user/img/ads-img/ads-black-pink-samsung.jpg')}}" alt="">
                                 </a>
                             </div>
                             <!-- Ad Widget End -->

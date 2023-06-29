@@ -62,9 +62,9 @@
 
                     <div class="float--right float--xs-none text-xs-center">
                         <!-- Header Topbar Action Start -->
-                        {{-- <ul class="header--topbar-action nav">
+                        <ul class="header--topbar-action nav">
                             <li><a href="login.html"><i class="fa fm fa-user-o"></i>Đăng ký/Đăng nhập</a></li>
-                        </ul> --}}
+                        </ul>
                         <!-- Header Topbar Action End -->
                         
                         <!-- Header Topbar Language Start -->
@@ -144,7 +144,6 @@
                                     </li>
                                     <li class="dropdown">
                                         <a href="{{asset('type-category')}}" class="dropdown-toggle" data-toggle="dropdown">Địa điểm quốc tế<i class="fa flm fa-angle-right"></i></a>
-
                                         <ul class="dropdown-menu">
                                             <li><a href="{{asset('category')}}">Thái Lan</a></li>
                                             <li><a href="{{asset('category')}}">Singapore</a></li>
@@ -160,7 +159,6 @@
                                 <ul class="dropdown-menu">
                                     <li class="dropdown">
                                         <a href="{{asset('type-category')}}" class="dropdown-toggle" data-toggle="dropdown">Thế giới<i class="fa flm fa-angle-right"></i></a>
-
                                         <ul class="dropdown-menu">
                                             <li><a href="{{asset('category')}}">Điểm nóng</a></li>
                                             <li><a href="{{asset('category')}}">Quân sự</a></li>
@@ -169,7 +167,6 @@
                                     </li>
                                     <li class="dropdown">
                                         <a href="{{asset('type-category')}}" class="dropdown-toggle" data-toggle="dropdown">Bạn trẻ - cuộc sống<i class="fa flm fa-angle-right"></i></a>
-
                                         <ul class="dropdown-menu">
                                             <li><a href="{{asset('category')}}">Tình yêu - giới tính</a></li>
                                             <li><a href="{{asset('category')}}">Giới trẻ</a></li>
@@ -177,7 +174,6 @@
                                     </li>
                                     <li class="dropdown">
                                         <a href="{{asset('type-category')}}" class="dropdown-toggle" data-toggle="dropdown">Đời sống Showbiz<i class="fa flm fa-angle-right"></i></a>
-
                                         <ul class="dropdown-menu">
                                             <li><a href="{{asset('category')}}">Showbiz 24h</a></li>
                                             <li><a href="{{asset('category')}}">Sao Việt</a></li>
@@ -185,7 +181,6 @@
                                     </li>
                                     <li class="dropdown">
                                         <a href="{{asset('type-category')}}" class="dropdown-toggle" data-toggle="dropdown">Ô tô<i class="fa flm fa-angle-right"></i></a>
-
                                         <ul class="dropdown-menu">
                                             <li><a href="{{asset('category')}}">Tin tức ô tô</a></li>
                                             <li><a href="{{asset('category')}}">Bảng giá xe</a></li>
@@ -193,7 +188,6 @@
                                     </li>
                                     <li class="dropdown">
                                         <a href="{{asset('type-category')}}" class="dropdown-toggle" data-toggle="dropdown">Bóng đá<i class="fa flm fa-angle-right"></i></a>
-
                                         <ul class="dropdown-menu">
                                             <li><a href="{{asset('category')}}">Bóng đá Việt Nam</a></li>
                                             <li><a href="{{asset('category')}}">Lịch thi đấu</a></li>
@@ -204,7 +198,6 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li><a href="#">Giới thiệu</a></li>                
                             <li><a href="#">Liên hệ</a></li>      
                         </ul>
                         <!-- Header Menu Links End -->
@@ -290,7 +283,7 @@
                                     <ul class="nav">
                                         <li>
                                             <i class="fa fa-map"></i>
-                                            <a href="">Nguyễn Văn Lượng, Phường 6, Quận Gò Vấp, TP.Hồ Chí Minh</a>
+                                            <a href="">TP.Hồ Chí Minh</a>
                                         </li>
                                         <li>
                                             <i class="fa fa-envelope-o"></i>
