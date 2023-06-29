@@ -432,9 +432,9 @@
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 10px">
         <div class="device-search-box">
-            <label>Tìm</label>
+            <label>Tìm kiếm</label>
             <div class="search-box">
-                <input placeholder="Nhập tên liên h..." value="" onchange="SearchLocation(this)">
+                <input placeholder="nhập..." value="" onchange="SearchLocation(this)">
                 <i onclick="SearchLocation(this.previousElementSibling)" class="fa fa-search"></i>
             </div>
         </div>
