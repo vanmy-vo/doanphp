@@ -76,6 +76,10 @@ Route::get('admin/post', function () {
     return view('admin.ManagerComment');
 })->name('post.admin');
 
+Route::get('admin/user', function () {
+    return view('admin.ManagerUser');
+})->name('user.admin');
+
 //User
 Route::get('/', [UserHomeController::class,'index'])->name('/');
 Route::get('/category', [UserCategoryController::class,'index'])->name('category');

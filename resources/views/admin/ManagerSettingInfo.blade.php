@@ -4,7 +4,7 @@
 
 @section('webcontent')
 {{-- Edit Form --}}
-<style>
+{{-- <style>
     #FilterContentCenter {
         margin: auto;
         background-color: #fff;
@@ -146,7 +146,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 {{-- End Edit Form --}}
 
 <!-- KHUNG TIỂU ĐỀ -->
@@ -162,13 +162,13 @@
 </div>
 
 <!-- Table -->
-<style>
+{{-- <style>
     div.x_panel::-webkit-scrollbar {
         height: 5px;
     }
-</style>
+</style> --}}
 <div class="row">
-    <div class="col-md-12 col-sm-12 col-xs-12">
+    {{-- <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="x_panel" style="padding:15px;overflow:auto">
             <style>
                 table.data-table {
@@ -289,6 +289,150 @@
                         </tr>
                 </tbody>
             </table>
+        </div>
+    </div> --}}
+    <style>
+        #FilterContentCenter {
+            margin: auto;
+            background-color: #fff;
+            border-radius: 4px;
+            width: 95%;
+            min-width: 278px;
+            max-width: 450px;
+            position: relative;
+        }
+
+        .filtergrouptitle {
+            margin: 20px 0px 0px 0px;
+            padding: 0px;
+            font-size: 20px;
+        }
+
+            .filtergrouptitle.floatleft {
+                margin: 0px 10px 0px 0px;
+                padding: 10px;
+                line-height: 1;
+                border: 1px dotted #ccc;
+                border-radius: 5px;
+                float: left;
+            }
+
+                .filtergrouptitle.floatleft.focus {
+                    background: #ccc;
+                }
+
+        .scroll {
+            border: 1px solid #ccc;
+            height: 195px;
+            overflow-y: scroll;
+        }
+
+        .inputtext {
+            margin: 0px 0px 0px 0px;
+            padding: 0px 0px 0px 0px;
+            text-align: center;
+        }
+
+        .filterpane .row {
+            margin: 0px 0px 5px 0px;
+            padding: 3px 0px 3px 0px;
+            background-color: #eae9e9;
+            border-radius: 4px;
+        }
+
+            .filterpane .row.selected {
+                background-color: var(--secondary);
+                color: #fff;
+            }
+
+        .lefttitle {
+            margin: 10px 0px 0px 0px;
+            padding: 0px;
+            line-height: 1;
+        }
+        .input-edit{
+            padding-left: 17px;
+        }
+    </style>
+    <div id="updateAds" tabindex="-1" role="dialog" aria-labelledby="updateAds" aria-hidden="true">
+        <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-dark">
+                    <h3 class="filtergrouptitle modal-title text-white text-uppercase" style="text-align: center;">Cài đặt website</h3>
+                </div>
+
+                <div class="modal-body">
+                    <form action="" id="updateAdsForm" method="">
+                        <div id="FilterContentCenter">
+                            <div class="filterpane" style="margin-bottom:0px;padding-bottom:0px">
+                                <div class="row">
+                                    <div class="col-md-3 col-sm-3 col-xs-12">
+                                        <img src="{{asset('user/img/ads-img/black-pink.jpg')}}" alt="" width="100" height="100">                                    
+                                    </div>
+
+                                     <div class="col-md-4 col-sm-3 col-xs-12">
+                                        <p class="lefttitle">Thay đổi logo mới</p>
+                                    </div>
+
+                                    <div class="col-md-8 col-sm-9 col-xs-12">
+                                        <input type="file" class="form-control input-edit" />
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3 col-sm-3 col-xs-12">
+                                        <p class="lefttitle">Địa chỉ</p>
+                                    </div>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <input type="text" class="form-control input-edit" value="TH.Hồ Chí Minh"/>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3 col-sm-3 col-xs-12">
+                                        <p class="lefttitle">Mô tả</p>
+                                    </div>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <input type="text" class="form-control input-edit" value="Mô tả ngắn..." />
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3 col-sm-3 col-xs-12">
+                                        <p class="lefttitle">Email</p>
+                                    </div>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <input type="text" class="form-control input-edit" value="Demo@gmail.com"/>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3 col-sm-3 col-xs-12">
+                                        <p class="lefttitle">Số điện thoại</p>
+                                    </div>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <input type="text" class="form-control input-edit" value="0944 123 123"/>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3 col-sm-3 col-xs-12">
+                                        <p class="lefttitle">Facebook</p>
+                                    </div>
+                                    <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <input type="text" class="form-control input-edit" value="http://localhost:8080/doanphplaravelmoi/doanphp/public/admin/setting?"/>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="filerfooter" style="margin-top:20px">
+                                <button class="btn btn-success">Cập nhật</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 </div>

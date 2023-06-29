@@ -351,6 +351,12 @@
                                         Quản lý bài viết
                                     </a>
                                 </li>
+                                <li>
+                                    <a href="{{ route('user.admin') }}">
+                                        <i class="fa fa-list-ul"></i>
+                                        Quản lý tài khoản
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </div>
