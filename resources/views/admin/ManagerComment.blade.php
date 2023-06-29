@@ -197,24 +197,28 @@
                 <table class="data-table">
                     <thead>
                         <tr>
-                            <th class="tc1">Tài khoản</th>
-                            <th class="tc2">Chức vụ</th>
-                            <th class="tc3">Người tạo<br>Ngày tạo</th>
+                            <th class="tc1">hình đại diện</th>
+                            <th class="tc2">tiêu đề</th>
+                            <th class="tc3">Người tạo</th>
+                            <th class="tc4">ngày đăng</th>
                             <th class="tc4">Thao tác</th>
                         </tr>
                     </thead>
                     <tbody>
                             <tr>
                                 <td class="tc1">
-                                    ltlong@gmail.com
+                                    <!-- ltlong@gmail.com
                                     <br>
-                                    <b>Lê Triệu Long</b>
+                                    <b>Lê Triệu Long</b> -->
+                                    <img src="{{ asset('client/public/user/img/banner/tin-tuc.jpg') }}" alt="hình đại diện" width="200">
                                 </td>
                                 <td class="tc2">
-                                    <p>Nhân viên</p>
+                                    <p>tiêu đề bài viết</p>
                                 </td>
                                 <td class="tc3">
                                     <p>Administrator</p>
+                                </td>
+                                <td>
                                     <p>31/03/2023</p>
                                 </td>
                                 <td class="tc">                        
