@@ -1,21 +1,373 @@
 @extends('admin.admin')
 
-@section('title', 'Category')
+@section('title', 'Quản lý quản cáo')
 
 @section('webcontent')
+{{-- View Form --}}
+<style>
+    #FilterContentCenter {
+        margin: auto;
+        background-color: #fff;
+        border-radius: 5px;
+        width: 95%;
+        min-width: 278px;
+        max-width: 450px;
+        position: relative;
+    }
+
+    /* .filtergrouptitle {
+        margin: 20px 0px 0px 0px;
+        padding: 0px;
+        font-size: 20px;
+    }
+
+        .filtergrouptitle.floatleft {
+            margin: 0px 10px 0px 0px;
+            padding: 10px;
+            line-height: 1;
+            border: 1px dotted #ccc;
+            border-radius: 5px;
+            float: left;
+        }
+
+            .filtergrouptitle.floatleft.focus {
+                background: #ccc;
+            } */
+
+    .scroll {
+        border: 1px solid #ccc;
+        height: 195px;
+        overflow-y: scroll;
+    }
+
+    .filterpane .row {
+        /* margin: 20px 0px 5px 0px; */
+        /* margin-top: 15px; */
+        background-color: #eae9e9;
+        border-radius: 5px;
+    }
+
+    .input-edit{
+        padding-left: 17px;
+    }
+</style>
+<div class="modal fade" id="viewAds" tabindex="-1" role="dialog" aria-labelledby="viewAds" aria-hidden="true">
+    <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-dark">
+                <h3 class="modal-title text-white text-uppercase" id="exampleModalPopoversLabel" style="text-align: center;">Thông tin slideshow</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <div id="FilterContentCenter">
+                    <div class="filterpane">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <label class="col-md-6">Tiêu đề:</label>
+                                <p class="col-md-6">Quảng cáo Samsung</p>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <label class="col-md-6">Hình ảnh:</label>
+                                <img src="{{asset('user/img/ads-img/black-pink.jpg')}}" alt="" width="200" height="200" style="margin-top: 15px; object-fit:fill">
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <label class="col-md-6">Tên đường dẫn: </label>
+                                <p class="col-md-6">Samsungabc.com</p>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <label class="col-md-6">Liên kết: </label>
+                                <p class="col-md-6" style="word-wrap: break-word;">http://localhost:8080/doanphplaravelmoi/doanphp/public/admin/ads</p>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="filerfooter" style="margin-top:20px">
+                        <button class="btn btn-dark">Đóng</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{-- End View Form --}}
+
+{{-- Add Form --}}
+<style>
+    #FilterContentCenter {
+        margin: auto;
+        background-color: #fff;
+        border-radius: 4px;
+        width: 95%;
+        min-width: 278px;
+        max-width: 450px;
+        position: relative;
+    }
+
+    .filtergrouptitle {
+        margin: 20px 0px 0px 0px;
+        padding: 0px;
+        font-size: 20px;
+    }
+
+        .filtergrouptitle.floatleft {
+            margin: 0px 10px 0px 0px;
+            padding: 10px;
+            line-height: 1;
+            border: 1px dotted #ccc;
+            border-radius: 5px;
+            float: left;
+        }
+
+            .filtergrouptitle.floatleft.focus {
+                background: #ccc;
+            }
+
+    .scroll {
+        border: 1px solid #ccc;
+        height: 195px;
+        overflow-y: scroll;
+    }
+
+    .inputtext {
+        margin: 0px 0px 0px 0px;
+        padding: 0px 0px 0px 0px;
+        text-align: center;
+    }
+
+    .filterpane .row {
+        margin: 0px 0px 5px 0px;
+        padding: 3px 0px 3px 0px;
+        background-color: #eae9e9;
+        border-radius: 4px;
+    }
+
+        .filterpane .row.selected {
+            background-color: var(--secondary);
+            color: #fff;
+        }
+
+    .lefttitle {
+        margin: 10px 0px 0px 0px;
+        padding: 0px;
+        line-height: 1;
+    }
+    .input-edit{
+        padding-left: 17px;
+    }
+</style>
+<div class="modal fade" id="addAds" tabindex="-1" role="dialog" aria-labelledby="addAds" aria-hidden="true">
+    <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-dark">
+                <h3 class="filtergrouptitle modal-title text-white text-uppercase" id="exampleModalPopoversLLabel"  style="text-align: center;">Thêm Slideshow</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <form action="" id="updateAdsForm" method="">
+                    <div id="FilterContentCenter">
+                        <div class="filterpane" style="margin-bottom:0px;padding-bottom:0px">
+                            <div class="row">
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <p class="lefttitle">Tiêu đề</p>
+                                </div>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <input type="text" class="form-control input-edit" value=""/>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <p class="lefttitle">Hình ảnh</p>
+                                </div>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <input type="file" class="form-control input-edit" value="" />
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <p class="lefttitle">Tên đường dẫn</p>
+                                </div>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <input type="text" class="form-control input-edit" value="" />
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <p class="lefttitle">Liên kết</p>
+                                </div>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <textarea type="text" class="form-control input-edit" value="" ></textarea>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="filerfooter" style="margin-top:20px">
+                            <button class="btn btn-success">Thêm</button>
+                            <button class="btn btn-dark">Hủy</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{{-- End Add Form --}}
+
+{{-- Edit Form --}}
+<style>
+    #FilterContentCenter {
+        margin: auto;
+        background-color: #fff;
+        border-radius: 4px;
+        width: 95%;
+        min-width: 278px;
+        max-width: 450px;
+        position: relative;
+    }
+
+    .filtergrouptitle {
+        margin: 20px 0px 0px 0px;
+        padding: 0px;
+        font-size: 20px;
+    }
+
+        .filtergrouptitle.floatleft {
+            margin: 0px 10px 0px 0px;
+            padding: 10px;
+            line-height: 1;
+            border: 1px dotted #ccc;
+            border-radius: 5px;
+            float: left;
+        }
+
+            .filtergrouptitle.floatleft.focus {
+                background: #ccc;
+            }
+
+    .scroll {
+        border: 1px solid #ccc;
+        height: 195px;
+        overflow-y: scroll;
+    }
+
+    .inputtext {
+        margin: 0px 0px 0px 0px;
+        padding: 0px 0px 0px 0px;
+        text-align: center;
+    }
+
+    .filterpane .row {
+        margin: 0px 0px 5px 0px;
+        padding: 3px 0px 3px 0px;
+        background-color: #eae9e9;
+        border-radius: 4px;
+    }
+
+        .filterpane .row.selected {
+            background-color: var(--secondary);
+            color: #fff;
+        }
+
+    .lefttitle {
+        margin: 10px 0px 0px 0px;
+        padding: 0px;
+        line-height: 1;
+    }
+    .input-edit{
+        padding-left: 17px;
+    }
+</style>
+<div class="modal fade" id="updateAds" tabindex="-1" role="dialog" aria-labelledby="updateAds" aria-hidden="true">
+    <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-dark">
+                <h3 class="filtergrouptitle modal-title text-white text-uppercase" id="exampleModalPopoversLabel"  style="text-align: center;">SỬA THÔNG TIN Slideshow</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <form action="" id="updateAdsForm" method="">
+                    <div id="FilterContentCenter">
+                        <div class="filterpane" style="margin-bottom:0px;padding-bottom:0px">
+                            <div class="row">
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <p class="lefttitle">Tiêu đề</p>
+                                </div>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <input type="text" class="form-control input-edit" value=""/>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <p class="lefttitle">Hình ảnh</p>
+                                </div>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <input type="file" class="form-control input-edit" value="" />
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <p class="lefttitle">Tên đường dẫn</p>
+                                </div>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <input type="text" class="form-control input-edit" value="" />
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <p class="lefttitle">Liên kết</p>
+                                </div>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <textarea type="text" class="form-control input-edit" value="" ></textarea>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="filerfooter" style="margin-top:20px">
+                            <button class="btn btn-success">Lưu</button>
+                            <button class="btn btn-dark">Hủy</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{{-- End Edit Form --}}
+
 <!-- KHUNG TIỂU ĐỀ -->
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="x_panel" style="padding:15px!important">
             <div class="x_title" style="border-bottom:none;padding-bottom:0px;margin-bottom:0px">
-                <h2 style="font-family:Verdana;line-height:normal;color:#000">
-                    DANH SÁCH QUẢNG CÁO
-                </h2>
+                <h2 style="font-family:Verdana;line-height:normal;color:#000">DANH SÁCH QUẢNG CÁO</h2>
                 <div class="nav navbar-right green">
-                    <a href="/location/add" class="btn btn-success btn-sm">
-                        <i class="fa fa-plus-square" aria-hidden="true"></i>
-                        Thêm
-                    </a>
+                    <a href="" class="btn btn-success btn-sm" data-toggle="modal" data-target="#addAds"><i class="fa fa-plus-square" aria-hidden="true"></i> Thêm</a>
                 </div>
                 <div class="clearfix"></div>
             </div>
@@ -68,16 +420,16 @@
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 10px">
         <div class="device-search-box">
-            <label>Tìm</label>
+            <label>Tìm kiếm</label>
             <div class="search-box">
-                <input placeholder="Nhập tên tài khoản..." value="" onchange="SearchLocation(this)">
+                <input placeholder="Nhập..." value="" onchange="SearchLocation(this)">
                 <i onclick="SearchLocation(this.previousElementSibling)" class="fa fa-search"></i>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Danh sách kịch bản (nếu có) -->
+<!-- Table -->
 <style>
     div.x_panel::-webkit-scrollbar {
         height: 5px;
@@ -86,148 +438,128 @@
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="x_panel" style="padding:15px;overflow:auto">
-                <style>
-                    table.data-table {
-                        margin-top: 10px;
-                        width: 100%;
+            <style>
+                table.data-table {
+                    margin-top: 10px;
+                    width: 100%;
+                }
+
+                    table.data-table thead tr {
+                        color: #fff;
+                        background-color: var(--secondary);
+                        border: none;
                     }
 
-                        table.data-table thead tr {
-                            color: #fff;
-                            background-color: var(--secondary);
-                            border: none;
+                    table.data-table th {
+                        padding: 5px 10px;
+                    }
+
+                    table.data-table td {
+                        padding: 10px;
+                    }
+
+                    table.data-table th {
+                        border: 1px solid var(--secondary);
+                    }
+
+                    table.data-table td:first-child {
+                        border-left: 1px solid var(--secondary);
+                    }
+
+                    table.data-table td {
+                        border-right: 1px dotted var(--secondary-light);
+                        border-bottom: 1px dotted var(--secondary-light);
+                        vertical-align: top;
+                    }
+
+                        table.data-table td:last-child {
+                            border-right: 1px solid var(--secondary);
                         }
 
-                        table.data-table th {
-                            padding: 5px 10px;
+                        table.data-table td p {
+                            margin-bottom: 5px;
                         }
 
-                        table.data-table td {
-                            padding: 10px;
-                        }
-
-                        table.data-table th {
-                            border: 1px solid var(--secondary);
-                        }
-
-                        table.data-table td:first-child {
-                            border-left: 1px solid var(--secondary);
-                        }
-
-                        table.data-table td {
-                            border-right: 1px dotted var(--secondary-light);
-                            border-bottom: 1px dotted var(--secondary-light);
-                            vertical-align: top;
-                        }
-
-                            table.data-table td:last-child {
-                                border-right: 1px solid var(--secondary);
+                            table.data-table td p.title {
+                                font-size: 15px;
                             }
 
-                            table.data-table td p {
-                                margin-bottom: 5px;
-                            }
-
-                                table.data-table td p.title {
-                                    font-size: 15px;
-                                }
-
-                                    table.data-table td p.title input {
-                                        width: 100%;
-                                        padding: 0;
-                                        border: none;
-                                        outline: none;
-                                        display: none;
-                                        font-size: 14px;
-                                        border-bottom: 1px dotted #333;
-                                    }
-
-                            table.data-table td div.references {
-                                margin-top: 15px;
-                                font-size: 14px;
-                            }
-
-                                table.data-table td div.references p {
-                                    display: inline-block;
+                                table.data-table td p.title input {
+                                    width: 100%;
                                     padding: 0;
-                                    margin: 5px 15px 0px 0px;
+                                    border: none;
+                                    outline: none;
+                                    display: none;
+                                    font-size: 14px;
                                     border-bottom: 1px dotted #333;
-                                    cursor: pointer;
                                 }
 
-                            table.data-table td p span.properties {
+                        table.data-table td div.references {
+                            margin-top: 15px;
+                            font-size: 14px;
+                        }
+
+                            table.data-table td div.references p {
                                 display: inline-block;
-                                border-radius: 3px;
-                                margin: 2px 5px 5px 0px;
-                                padding: 2px 5px;
-                                width: fit-content;
-                                width: --webkit-fit-content
+                                padding: 0;
+                                margin: 5px 15px 0px 0px;
+                                border-bottom: 1px dotted #333;
+                                cursor: pointer;
                             }
 
-                                table.data-table td p span.properties.default {
-                                    border: 1px solid var(--thirdary);
-                                    color: var(--thirdary)
-                                }
-
-                        table.data-table tr:last-child {
-                            border-bottom: 1px solid var(--secondary)
+                        table.data-table td p span.properties {
+                            display: inline-block;
+                            border-radius: 3px;
+                            margin: 2px 5px 5px 0px;
+                            padding: 2px 5px;
+                            width: fit-content;
+                            width: --webkit-fit-content
                         }
 
-                        table.data-table .tc1, table.data-table .tc2, table.data-table .tc3 {
-                            text-align: left
-                        }
-                        table.data-table .tc1, table.data-table .tc2 {
-                            min-width: 250px
-                        }
-                        table.data-table .tc3, table.data-table .tc4 {
-                            min-width: 200px;
-                        }
-                        table.data-table .tc5 {
-                            text-align: left;
-                            width: 152px
-                        }
-                        .location-id {
-                            display: inline-block
-                        }
-                </style>
-                <table class="data-table">
-                    <thead>
+                            table.data-table td p span.properties.default {
+                                border: 1px solid var(--thirdary);
+                                color: var(--thirdary)
+                            }
+
+                    table.data-table tr:last-child {
+                        border-bottom: 1px solid var(--secondary)
+                    }
+                    table.data-table .tc1, table.data-table .tc2, table.data-table .tc4, table.data-table .tc3 {
+                        margin: auto;
+                        text-align: center;
+                    }
+                    .location-id {
+                        display: inline-block
+                    }
+            </style>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th class="tc1">Tiêu đề</th>
+                        <th class="tc2">Hình ảnh</th>
+                        <th class="tc3">Tên đường dẫn</th>
+                        <th class="tc4">Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
                         <tr>
-                            <th class="tc1">Tài khoản</th>
-                            <th class="tc2">Chức vụ</th>
-                            <th class="tc3">Người tạo<br>Ngày tạo</th>
-                            <th class="tc4">Thao tác</th>
+                            <td>1</td>
+                            <td class="tc1">Quảng cáo samsung</td>
+                            <td class="tc2"><img src="{{asset('user/img/ads-img/black-pink.jpg')}}" alt="" width="50" height="50"></td>
+                            <td class="tc3"><a href="http://localhost:8080/doanphplaravelmoi/doanphp/public/admin/ads" target="_blank">samsungabvcd.com</a></td>
+                            <td class="tc">                        
+                                <a class="btn btn-xs btn-success" data-toggle="modal" data-target="#viewAds"><i class="fa fa-eye"></i></a>
+                                <a class="btn btn-xs btn-success" data-toggle="modal" data-target="#updateAds"><i class="fa fa-pencil-square-o"></i></a>
+                                <a class="btn btn-xs btn-danger"><i class="fa fa-remove"></i></a>
+                            </td>
                         </tr>
-                    </thead>
-                    <tbody>
-                            <tr>
-                                <td class="tc1">
-                                    ltlong@gmail.com
-                                    <br>
-                                    <b>Lê Triệu Long</b>
-                                </td>
-                                <td class="tc2">
-                                    <p>Nhân viên</p>
-                                </td>
-                                <td class="tc3">
-                                    <p>Administrator</p>
-                                    <p>31/03/2023</p>
-                                </td>
-                                <td class="tc">                        
-                                    <div class="btn btn-xs btn-success">
-                                        <a href="detailAccount.html" style="color: #fff;">
-                                            <i class="fa fa-edit"></i> Chi tiết
-                                        </a>
-                                    </div>
-                                    <div class="btn btn-xs btn-danger" onclick="Delete('Lê Triệu Long')" style=""><i class="fa fa-remove"></i> Xoá</div>
-                                </td>
-                            </tr>
-                    </tbody>
-                </table>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
-
+{{-- Pagination --}}
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
         <style>
