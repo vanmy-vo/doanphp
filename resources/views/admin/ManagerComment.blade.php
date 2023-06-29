@@ -474,6 +474,7 @@
                 </div>
                 <div class="col-lg-11 col-md-9 col-sm-9 col-xs-12">
                     <!-- <input type="text" class="form-control input-edit" value="" placeholder="hình đại diện bài viết" /> -->
+                    <input type="file" name="" class="form-control">
                     <img src="{{ asset('image/loginSystem.png') }}" alt="hình đại diện bài viết">
                 </div>
                 <div class="clearfix"></div>

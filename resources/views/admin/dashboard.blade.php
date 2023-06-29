@@ -3,8 +3,47 @@
 @section('title', 'Dashboard')
 
 @section('webcontent')
+<!-- <div style="width: 600px; margin: auto;">
+    <canvas id="myChart"></canvas>
+</div> -->
+<div class="col-lg-2" style="height: 100px;">
+    <div style="background: #000;width: 100%;height: 100%;border-radius: 10px;color: #fff;">
+        <a href="#">
+            <div class="col-lg-6"><h5>Danh mục</h5></div>
+        <div class="col-lg-6" style="height: 100%;"><span style="position: absolute;bottom: 10%;right: 15%;">100</span></div>
+        </a>
+
+    </div>
+</div>
+<div class="col-lg-2" style="height: 100px;">
+    <div style="background: #000;width: 100%;height: 100%;border-radius: 10px;color: #fff;">
+        <a href="#">
+            <div class="col-lg-6"><h5>Liên hệ</h5></div>
+        <div class="col-lg-6" style="height: 100%;"><span style="position: absolute;bottom: 10%;right: 15%;">100</span></div>
+        </a>
+
+    </div>
+</div>
+<div class="col-lg-2" style="height: 100px;">
+    <div style="background: #000;width: 100%;height: 100%;border-radius: 10px;color: #fff;">
+        <a href="#">
+            <div class="col-lg-6"><h5>Bài viết</h5></div>
+        <div class="col-lg-6" style="height: 100%;"><span style="position: absolute;bottom: 10%;right: 15%;">100</span></div>
+        </a>
+
+    </div>
+</div>
+<div class="col-lg-2" style="height: 100px;">
+    <div style="background: #000;width: 100%;height: 100%;border-radius: 10px;color: #fff;">
+        <a href="#">
+            <div class="col-lg-6"><h5>Quảng cáo</h5></div>
+        <div class="col-lg-6" style="height: 100%;"><span style="position: absolute;bottom: 10%;right: 15%;">100</span></div>
+        </a>
+
+    </div>
+</div>
 <!-- KHUNG TIỂU ĐỀ -->
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="x_panel" style="padding:15px!important">
                             <div class="x_title" style="border-bottom:none;padding-bottom:0px;margin-bottom:0px">
@@ -21,10 +60,10 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 
                 <!-- Search bar -->
-                <style>
+                <!-- <style>
                     .device-search-box {
                         display: inline-block;
                         width: fit-content;
@@ -75,10 +114,10 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 
                 <!-- Danh sách kịch bản (nếu có) -->
-                <style>
+                <!-- <style>
                     div.x_panel::-webkit-scrollbar {
                         height: 5px;
                     }
@@ -322,5 +361,5 @@
                             </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
 @stop

@@ -4,7 +4,7 @@ use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Http\Request;
 
 define('LARAVEL_START', microtime(true));
-define('SITE_PATH', 'http://localhost:8080/doanphplaravelmoi/doanphp/public');
+define('SITE_PATH', 'http://localhost/doanmonhoc/public');
 
 /*
 |--------------------------------------------------------------------------

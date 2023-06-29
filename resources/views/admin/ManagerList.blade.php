@@ -13,10 +13,14 @@
                     DANH SÁCH DANH MỤC
                 </h2>
                 <div class="nav navbar-right green">
-                    <a href="/location/add" class="btn btn-success btn-sm">
+                    <!-- <a href="/location/add" class="btn btn-success btn-sm">
                         <i class="fa fa-plus-square" aria-hidden="true"></i>
                         Thêm
-                    </a>
+                    </a> -->
+                    <button type="button" class="btn btn-success btn-sm" onclick="ShowHide(true)">
+                        <i class="fa fa-plus-square" aria-hidden="true"></i>
+                        Thêm
+                    </button>
                 </div>
                 <div class="clearfix"></div>
             </div>
@@ -71,7 +75,7 @@
         <div class="device-search-box">
             <label>Tìm</label>
             <div class="search-box">
-                <input placeholder="Nhập tên tài khoản..." value="" onchange="SearchLocation(this)">
+                <input placeholder="Nhập tên danh mục..." value="" onchange="SearchLocation(this)">
                 <i onclick="SearchLocation(this.previousElementSibling)" class="fa fa-search"></i>
             </div>
         </div>
@@ -194,26 +198,76 @@
                 <table class="data-table">
                     <thead>
                         <tr>
-                            <th class="tc1">Tài khoản</th>
-                            <th class="tc2">Chức vụ</th>
-                            <th class="tc3">Người tạo<br>Ngày tạo</th>
+                            <th class="tc1">Tên danh mục</th>
+                            <th class="tc2">ngày tạo</th>
+                            <!-- <th class="tc3"></th> -->
                             <th class="tc4">Thao tác</th>
                         </tr>
                     </thead>
                     <tbody>
                             <tr>
                                 <td class="tc1">
-                                    ltlong@gmail.com
+                                    <!-- ltlong@gmail.com
                                     <br>
-                                    <b>Lê Triệu Long</b>
+                                    <b>Lê Triệu Long</b> -->
+                                    việt nam
                                 </td>
                                 <td class="tc2">
-                                    <p>Nhân viên</p>
-                                </td>
-                                <td class="tc3">
-                                    <p>Administrator</p>
+                                    <!-- <p>Nhân viên</p> -->
                                     <p>31/03/2023</p>
                                 </td>
+                                <!-- <td class="tc3">
+                                    <p>Administrator</p>
+                                    <p>31/03/2023</p>
+                                </td> -->
+                                <td class="tc">                        
+                                    <div class="btn btn-xs btn-success">
+                                        <a href="detailAccount.html" style="color: #fff;">
+                                            <i class="fa fa-edit"></i> Chi tiết
+                                        </a>
+                                    </div>
+                                    <div class="btn btn-xs btn-danger" onclick="Delete('Lê Triệu Long')" style=""><i class="fa fa-remove"></i> Xoá</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="tc1">
+                                    <!-- ltlong@gmail.com
+                                    <br>
+                                    <b>Lê Triệu Long</b> -->
+                                    châu âu
+                                </td>
+                                <td class="tc2">
+                                    <!-- <p>Nhân viên</p> -->
+                                    <p>30/03/2023</p>
+                                </td>
+                                <!-- <td class="tc3">
+                                    <p>Administrator</p>
+                                    <p>31/03/2023</p>
+                                </td> -->
+                                <td class="tc">                        
+                                    <div class="btn btn-xs btn-success">
+                                        <a href="detailAccount.html" style="color: #fff;">
+                                            <i class="fa fa-edit"></i> Chi tiết
+                                        </a>
+                                    </div>
+                                    <div class="btn btn-xs btn-danger" onclick="Delete('Lê Triệu Long')" style=""><i class="fa fa-remove"></i> Xoá</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="tc1">
+                                    <!-- ltlong@gmail.com
+                                    <br>
+                                    <b>Lê Triệu Long</b> -->
+                                    thế giới
+                                </td>
+                                <td class="tc2">
+                                    <!-- <p>Nhân viên</p> -->
+                                    <p>29/03/2023</p>
+                                </td>
+                                <!-- <td class="tc3">
+                                    <p>Administrator</p>
+                                    <p>31/03/2023</p>
+                                </td> -->
                                 <td class="tc">                        
                                     <div class="btn btn-xs btn-success">
                                         <a href="detailAccount.html" style="color: #fff;">
@@ -323,4 +377,157 @@
             </div>
     </div>
 </div>
+<!-- Modal Bộ lọc -->
+<style>
+    #FilterBG {
+        margin: 0;
+        padding: 0;
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        z-index: 998;
+        background-color: #000;
+        opacity: 0;
+        top: 0px;
+        left: 0px;
+        display: none;
+    }
+
+    #FilterContent {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        min-height: 100%;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        z-index: 999;
+        display: none;
+        opacity: 0;
+    }
+
+    #FilterContentCenter {
+        margin: 0 auto;
+        padding: 20px;
+        margin-top: 60px;
+        background-color: #fff;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        width: 95%;
+        min-width: 278px;
+        max-width: 80%;
+        position: relative;
+    }
+
+    .filtergrouptitle {
+        margin: 20px 0px 0px 0px;
+        padding: 0px;
+        font-size: 20px;
+    }
+
+        .filtergrouptitle.floatleft {
+            margin: 0px 10px 0px 0px;
+            padding: 10px;
+            line-height: 1;
+            border: 1px dotted #ccc;
+            border-radius: 5px;
+            float: left;
+        }
+
+            .filtergrouptitle.floatleft.focus {
+                background: #ccc;
+            }
+
+    .filterpane {
+        margin: 5px 0px 0px;
+        padding: 10px 0px;
+        width: 100%;
+    }
+
+        .filterpane.locate {
+            margin: 0px 0px 20px 0px;
+        }
+
+    .scroll {
+        border: 1px solid #ccc;
+        height: 195px;
+        overflow-y: scroll;
+    }
+
+    .inputtext {
+        margin: 0px 0px 0px 0px;
+        padding: 0px 0px 0px 0px;
+        text-align: center;
+    }
+
+    .filterpane .row {
+        margin: 0px 0px 5px 0px;
+        padding: 3px 0px 3px 0px;
+        background-color: #eae9e9;
+        border-radius: 4px;
+    }
+
+        .filterpane .row.selected {
+            background-color: var(--secondary);
+            color: #fff;
+        }
+
+    .lefttitle {
+        margin: 10px 0px 0px 0px;
+        padding: 0px;
+        line-height: 1;
+    }
+    .input-edit{
+        padding-left: 17px;
+    }
+</style>
+<div id="FilterBG" style="opacity: 0.8"></div>
+<div id="FilterContent" style="opacity: 1">
+    <div id="FilterContentCenter">
+        <h3 class="filtergrouptitle">
+            CHỈNH SỬA THÔNG TIN DANH MỤC
+        </h3>
+        <div class="filterpane" style="margin-bottom:0px;padding-bottom:0px">
+            <div class="row">
+                    <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+                        <p class="lefttitle">
+                            Tên danh mục
+                        </p>
+                    </div>
+                    <div class="col-lg-10 col-md-9 col-sm-9 col-xs-12">
+                        <input type="text" class="form-control input-edit" value="" placeholder="Tiêu đề bài viết" />
+                    </div>
+                    <div class="clearfix"></div>
+            </div>        
+        </div>
+        <div class="clearfix"></div>
+        <div class="filerfooter" style="margin-top:20px">
+            <div class="btn btn-success" onclick="Update()">Lưu lại</div>
+            <div class="btn btn-dark" onclick="ShowHide(false)">Hủy</div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+
+    function Delete(name){
+        if (confirm('Bạn có chắc muốn xóa "' + name + '"')){
+            console.log("ok");
+        }
+    }
+
+    function Update(){
+        location.reload();
+    }
+
+
+    function ShowHide(show) {
+        if (!show) {
+            $('#FilterBG').stop(true).animate({ opacity: 0 }, 400, function () { $('#FilterBG').css('display', 'none'); });
+            $('#FilterContent').stop(true).animate({ opacity: 0 }, 400, function () { $('#FilterContent').css('display', 'none'); });
+        } else {
+            $('#FilterBG').css('display', 'block').animate({ opacity: '0.8' }, 400);
+            $('#FilterContent').css('display', 'block').animate({ opacity: '1' }, 400);
+        }
+    }
+</script>
 @stop
