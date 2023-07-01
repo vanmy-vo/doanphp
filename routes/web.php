@@ -10,6 +10,8 @@ use App\Http\Controllers\user\TypeCategoryController as UserTypeCategoryControll
 use App\Http\Controllers\user\SearchController as UserSearchController;
 use App\Http\Controllers\user\DetailController as UserDetailController;
 use App\Http\Controllers\user\ContactController as UserContactController;
+
+use App\Http\Controllers\admin\BaivietController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -72,9 +74,12 @@ Route::get('admin/setting', function () {
     return view('admin.ManagerSettingInfo');
 })->name('setting.admin');
 
-Route::get('admin/post', function () {
-    return view('admin.ManagerComment');
-})->name('post.admin');
+// Route::get('admin/post', function () {
+//     return view('admin.ManagerComment');
+// })->name('post.admin');
+
+Route::get('admin/baiviet', [BaivietController::class, 'index'])->name('post.admin');
+Route::post('admin/luubaiviet', [BaivietController::class, 'store'])->name('post.admin.store');
 
 //User
 Route::get('/', [UserHomeController::class,'index'])->name('/');

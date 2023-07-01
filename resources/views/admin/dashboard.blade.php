@@ -6,38 +6,47 @@
 <!-- <div style="width: 600px; margin: auto;">
     <canvas id="myChart"></canvas>
 </div> -->
-<div class="col-lg-2" style="height: 100px;">
-    <div style="background: #000;width: 100%;height: 100%;border-radius: 10px;color: #fff;">
-        <a href="#">
+<style type="text/css">
+    a {
+        color: #fff;
+        transition: 1s;
+    }
+    a:hover {
+        color: #000;
+    }
+</style>
+<div class="col-lg-3" style="height: 100px;">
+    <div style="background: #337ab7;width: 100%;height: 100%;color: #fff;">
+        <a href="#" style="display: block;width: 100%;height: 100%;">
             <div class="col-lg-6"><h5>Danh mục</h5></div>
-        <div class="col-lg-6" style="height: 100%;"><span style="position: absolute;bottom: 10%;right: 15%;">100</span></div>
+        <div class="col-lg-6" style="height: 100%;"><span style="position: absolute;bottom: 10%;right: 15%;font-size: 16px;">100</span></div>
         </a>
 
     </div>
 </div>
-<div class="col-lg-2" style="height: 100px;">
-    <div style="background: #000;width: 100%;height: 100%;border-radius: 10px;color: #fff;">
-        <a href="#">
+<div class="col-lg-3" style="height: 100px;">
+    <div style="background: #f0ad4e;width: 100%;height: 100%;color: #fff;">
+        <a href="#" style="display: block;width: 100%;height: 100%;">
             <div class="col-lg-6"><h5>Liên hệ</h5></div>
-        <div class="col-lg-6" style="height: 100%;"><span style="position: absolute;bottom: 10%;right: 15%;">100</span></div>
+        <div class="col-lg-6" style="height: 100%;"><span style="position: absolute;bottom: 10%;right: 15%;font-size: 16px;">100</span></div>
         </a>
 
     </div>
 </div>
-<div class="col-lg-2" style="height: 100px;">
-    <div style="background: #000;width: 100%;height: 100%;border-radius: 10px;color: #fff;">
-        <a href="#">
+<div class="col-lg-3" style="height: 100px;">
+    <div style="background: #1d2174;width: 100%;height: 100%;color: #fff;">
+        <a href="#" style="display: block;width: 100%;height: 100%;">
             <div class="col-lg-6"><h5>Bài viết</h5></div>
-        <div class="col-lg-6" style="height: 100%;"><span style="position: absolute;bottom: 10%;right: 15%;">100</span></div>
+        <div class="col-lg-6" style="height: 100%;"><span style="position: absolute;bottom: 10%;right: 15%;font-size: 16px;">100</span></div>
         </a>
 
     </div>
 </div>
-<div class="col-lg-2" style="height: 100px;">
-    <div style="background: #000;width: 100%;height: 100%;border-radius: 10px;color: #fff;">
-        <a href="#">
+<div class="col-lg-3" style="height: 100px;">
+    <div style="background: #d9534f;width: 100%;height: 100%;color: #fff;">
+        <a href="#" style="display: block;width: 100%;height: 100%;">
             <div class="col-lg-6"><h5>Quảng cáo</h5></div>
-        <div class="col-lg-6" style="height: 100%;"><span style="position: absolute;bottom: 10%;right: 15%;">100</span></div>
+        <div class="col-lg-6" style="height: 100%;"><span style="position: absolute;bottom: 10%;right: 15%;font-size: 16px;">100</span></div>
         </a>
 
     </div>

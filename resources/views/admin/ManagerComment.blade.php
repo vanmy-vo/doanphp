@@ -71,13 +71,34 @@
 </style>
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 10px">
-        <div class="device-search-box">
+        <div class="device-search-box col-md-3" style="display: flex;">
             <label>Tìm</label>
             <div class="search-box">
-                <input placeholder="Nhập tên tài khoản..." value="" onchange="SearchLocation(this)">
-                <i onclick="SearchLocation(this.previousElementSibling)" class="fa fa-search"></i>
+                <!-- <input placeholder="Nhập tên tài khoản..." value="" onchange="SearchLocation(this)">
+                <i onclick="SearchLocation(this.previousElementSibling)" class="fa fa-search"></i> -->
+                <input id="search" placeholder="Nhập tên tài khoản..." value="">
             </div>
+            
         </div>
+        <div class="col-md-2" style="margin-left: 1%;">
+            <select class="form-control input-edit">
+                <option>Chọn danh mục</option>
+                <option>Việt Nam</option>
+                <option>Châu Âu</option>
+                <option>Thế Giới</option>
+            </select>
+        </div>
+        <div class="col-md-1" style="margin-left: 1%;display: flex;">
+            <label for="">ẩn/hiện</label>
+            <input type="checkbox" name="" value="0">
+        </div>
+        <div class="col-md-1" style="margin-left: 1%;display: flex;">
+            <label for="">slideshow</label>
+            <input type="checkbox" name="" value="0">
+        </div>
+        <div style="margin-left: 1%;">
+                <i onclick="searchPost()" class="fa fa-search btn btn-success"></i>        
+            </div>
     </div>
 </div>
 
@@ -204,8 +225,8 @@
                             <th class="tc4">Thao tác</th>
                         </tr>
                     </thead>
-                    <tbody>
-                            <tr>
+                    <tbody id="abc">
+                            <tr data-key="1">
                                 <td class="tc1">
                                     <!-- ltlong@gmail.com
                                     <br>
@@ -220,6 +241,62 @@
                                 </td>
                                 <td>
                                     <p>31/03/2023</p>
+                                </td>
+                                <td class="tc">                        
+                                    <div class="btn btn-xs btn-success hidden">
+                                        <a href="detailAccount.html" style="color: #fff;">
+                                            <i class="fa fa-edit"></i> edit
+                                        </a>
+                                    </div>
+                                    <button type="button" class="btn btn-xs btn-success" onclick="addPost(true)">
+                                        <i class="fa fa-edit"></i> edit
+                                    </button>
+                                    <div class="btn btn-xs btn-danger" onclick="Delete('Lê Triệu Long')" style=""><i class="fa fa-remove"></i> Xoá</div>
+                                </td>
+                            </tr>
+                            <tr data-key="2">
+                                <td class="tc1">
+                                    <!-- ltlong@gmail.com
+                                    <br>
+                                    <b>Lê Triệu Long</b> -->
+                                    <img src="{{ asset('client/public/user/img/banner/tin-tuc.jpg') }}" alt="hình đại diện" width="200">
+                                </td>
+                                <td class="tc2">
+                                    <p>tiêu đề bài viết moiws</p>
+                                </td>
+                                <td class="tc3">
+                                    <p>Administrator</p>
+                                </td>
+                                <td>
+                                    <p>30/03/2023</p>
+                                </td>
+                                <td class="tc">                        
+                                    <div class="btn btn-xs btn-success hidden">
+                                        <a href="detailAccount.html" style="color: #fff;">
+                                            <i class="fa fa-edit"></i> edit
+                                        </a>
+                                    </div>
+                                    <button type="button" class="btn btn-xs btn-success" onclick="addPost(true)">
+                                        <i class="fa fa-edit"></i> edit
+                                    </button>
+                                    <div class="btn btn-xs btn-danger" onclick="Delete('Lê Triệu Long')" style=""><i class="fa fa-remove"></i> Xoá</div>
+                                </td>
+                            </tr>
+                            <tr data-key="3">
+                                <td class="tc1">
+                                    <!-- ltlong@gmail.com
+                                    <br>
+                                    <b>Lê Triệu Long</b> -->
+                                    <img src="{{ asset('client/public/user/img/banner/tin-tuc.jpg') }}" alt="hình đại diện" width="200">
+                                </td>
+                                <td class="tc2">
+                                    <p>tiêu đề bài viết nef</p>
+                                </td>
+                                <td class="tc3">
+                                    <p>Administrator</p>
+                                </td>
+                                <td>
+                                    <p>29/03/2023</p>
                                 </td>
                                 <td class="tc">                        
                                     <div class="btn btn-xs btn-success hidden">
@@ -440,169 +517,166 @@
 <div id="FilterBG" style="opacity: 0.8"></div>
 <div id="FilterContent" style="opacity: 1">
     <div id="FilterContentCenter">
-        <h3 class="filtergrouptitle">
-            CHỈNH SỬA THÔNG TIN BÀI VIẾT
-        </h3>
-        <div class="filterpane" style="margin-bottom:0px;padding-bottom:0px">
-            <div class="row">
+        <!-- start from -->
+        <form action="{{ route('post.admin.store') }}" method="post" enctype="multipart/form-data">
+            @csrf
+            <h3 class="filtergrouptitle">
+                CHỈNH SỬA THÔNG TIN BÀI VIẾT
+            </h3>
+            <div class="filterpane" style="margin-bottom:0px;padding-bottom:0px">
+                <div class="row">
+                        <div class="col-lg-1 col-md-3 col-sm-3 col-xs-12">
+                            <p class="lefttitle">
+                                Tiêu đề
+                            </p>
+                        </div>
+                        <div class="col-lg-11 col-md-9 col-sm-9 col-xs-12">
+                            <input type="text" class="form-control input-edit" value="" placeholder="Tiêu đề bài viết" name="title" />
+                        </div>
+                        <div class="clearfix"></div>
+                </div>
+                <div class="row">
                     <div class="col-lg-1 col-md-3 col-sm-3 col-xs-12">
                         <p class="lefttitle">
-                            Tiêu đề
+                            slug
                         </p>
                     </div>
                     <div class="col-lg-11 col-md-9 col-sm-9 col-xs-12">
-                        <input type="text" class="form-control input-edit" value="" placeholder="Tiêu đề bài viết" />
+                        <input type="text" class="form-control input-edit" value="" placeholder="slug" disabled/>
                     </div>
                     <div class="clearfix"></div>
-            </div>
-            <div class="row">
-                <div class="col-lg-1 col-md-3 col-sm-3 col-xs-12">
-                    <p class="lefttitle">
-                        slug
-                    </p>
                 </div>
-                <div class="col-lg-11 col-md-9 col-sm-9 col-xs-12">
-                    <input type="text" class="form-control input-edit" value="" placeholder="slug" disabled/>
+                <div class="row">
+                    <div class="col-lg-1 col-md-3 col-sm-3 col-xs-12">
+                        <p class="lefttitle">
+                            hình đại diện
+                        </p>
+                    </div>
+                    <div class="col-lg-11 col-md-9 col-sm-9 col-xs-12">
+                        <!-- <input type="text" class="form-control input-edit" value="" placeholder="hình đại diện bài viết" /> -->
+                        <input type="file" name="imageupload" class="form-control">
+                        <img src="{{ asset('image/noimage.jpg') }}" alt="hình đại diện bài viết">
+                    </div>
+                    <div class="clearfix"></div>
                 </div>
-                <div class="clearfix"></div>
-            </div>
-            <div class="row">
-                <div class="col-lg-1 col-md-3 col-sm-3 col-xs-12">
-                    <p class="lefttitle">
-                        hình đại diện
-                    </p>
+                <div class="row">
+                    <div class="col-lg-1 col-md-3 col-sm-3 col-xs-12">
+                        <p class="lefttitle">
+                            mô tả ngắn
+                        </p>
+                    </div>
+                    <div class="col-lg-11 col-md-9 col-sm-9 col-xs-12">
+                        <textarea class="form-control input-edit" value="" placeholder="mô tả ngắn bài viết" name="descriptionshort" /></textarea>
+                    </div>
+                    <div class="clearfix"></div>
                 </div>
-                <div class="col-lg-11 col-md-9 col-sm-9 col-xs-12">
-                    <!-- <input type="text" class="form-control input-edit" value="" placeholder="hình đại diện bài viết" /> -->
-                    <input type="file" name="" class="form-control">
-                    <img src="{{ asset('image/loginSystem.png') }}" alt="hình đại diện bài viết">
-                </div>
-                <div class="clearfix"></div>
-            </div>
-            <div class="row">
-                <div class="col-lg-1 col-md-3 col-sm-3 col-xs-12">
-                    <p class="lefttitle">
-                        mô tả ngắn
-                    </p>
-                </div>
-                <div class="col-lg-11 col-md-9 col-sm-9 col-xs-12">
-                    <textarea class="form-control input-edit" value="" placeholder="mô tả ngắn bài viết" /></textarea>
-                </div>
-                <div class="clearfix"></div>
-            </div>
-            <div class="row">
-                <div class="col-lg-1 col-md-3 col-sm-3 col-xs-12">
-                    <p class="lefttitle">
-                        Nội dung
-                    </p>
-                </div>
-                <div class="col-lg-11 col-md-9 col-sm-9 col-xs-12">
-                    <!-- <textarea type="text" class="form-control input-edit" value="Đây là nội dung" ></textarea> -->
-                    <!-- <textarea class="form-control" id="editor" name="editor"></textarea> -->
-                    <main>
-                        <div class="centered">
-                            <div class="row row-editor">
-                                <div class="editor-container">
-                                    <div class="editor"></div>
+                <div class="row">
+                    <div class="col-lg-1 col-md-3 col-sm-3 col-xs-12">
+                        <p class="lefttitle">
+                            Nội dung
+                        </p>
+                    </div>
+                    <div class="col-lg-11 col-md-9 col-sm-9 col-xs-12">
+                        <!-- <textarea type="text" class="form-control input-edit" value="Đây là nội dung" ></textarea> -->
+                        <textarea class="form-control editor" name="noidungbaiviet" placeholder="Nội dung bài viết..."></textarea>
+                        <!-- <main data-editor="ClassicEditor" data-collaboration="false" data-revision-history="false">
+                            <div class="centered">
+                                <div class="row row-editor">
+                                    <div class="editor-container">
+                                        <div class="editor"></div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </main>
-                    <script src="{{ asset('ckeditor5/build/ckeditor.js') }}"></script>
-                    <script>ClassicEditor
-                        .create( document.querySelector( '.editor' ), {
-                            licenseKey: '',
-                        } )
-                        .then( editor => {
-                            window.editor = editor;
-                        } )
-                        .catch( error => {
-                            console.error( 'Oops, something went wrong!' );
-                            console.error( 'Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:' );
-                            console.warn( 'Build id: 8fpqy8djw5cr-ww0lbr6vjhkj' );
-                            console.error( error );
-                        } );
-                    </script>
-                    <script>
-                        // CKEDITOR.replace('editor', {
-                        //   filebrowserBrowseUrl: "{{ route('ckfinder_browser') }}",
-                        //   filebrowserImageBrowseUrl: "{{ route('ckfinder_browser') }}?type=Images&token=123",
-                        //   filebrowserFlashBrowseUrl: "{{ route('ckfinder_browser') }}?type=Flash&token=123",
-                        //   filebrowserUploadUrl: "{{ route('ckfinder_connector') }}?command=QuickUpload&type=Files",
-                        //   filebrowserImageUploadUrl: "{{ route('ckfinder_connector') }}?command=QuickUpload&type=Images",
-                        //   filebrowserFlashUploadUrl: "{{ route('ckfinder_connector') }}?command=QuickUpload&type=Flash",
-                        // });
-                    </script>
+                        </main> -->
+                        <script src="{{ asset('ckeditor5/build/ckeditor.js') }}"></script>
+                        <script>ClassicEditor
+                            .create( document.querySelector( '.editor' ), {
+                                licenseKey: '',
+                            } )
+                            .then( editor => {
+                                console.log(editor);
+                                window.editor = editor;
+                            } )
+                            .catch( error => {
+                                console.error( 'Oops, something went wrong!' );
+                                console.error( 'Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:' );
+                                console.warn( 'Build id: 8fpqy8djw5cr-ww0lbr6vjhkj' );
+                                console.error( error );
+                            } );
+                        </script>
+                        <script>
+                            // CKEDITOR.replace('editor', {
+                            //   filebrowserBrowseUrl: "{{ route('ckfinder_browser') }}",
+                            //   filebrowserImageBrowseUrl: "{{ route('ckfinder_browser') }}?type=Images&token=123",
+                            //   filebrowserFlashBrowseUrl: "{{ route('ckfinder_browser') }}?type=Flash&token=123",
+                            //   filebrowserUploadUrl: "{{ route('ckfinder_connector') }}?command=QuickUpload&type=Files",
+                            //   filebrowserImageUploadUrl: "{{ route('ckfinder_connector') }}?command=QuickUpload&type=Images",
+                            //   filebrowserFlashUploadUrl: "{{ route('ckfinder_connector') }}?command=QuickUpload&type=Flash",
+                            // });
+                        </script>
+                    </div>
+                    <div class="clearfix"></div>
                 </div>
-                <div class="clearfix"></div>
+                <div class="row">
+                    <div class="col-lg-1 col-md-3 col-sm-3 col-xs-12">
+                        <p class="lefttitle">
+                            danh mục
+                        </p>
+                    </div>
+                    <div class="col-lg-11 col-md-9 col-sm-9 col-xs-12">
+                        <!-- <input type="text" class="form-control input-edit" value="" placeholder="" /> -->
+                        <select class="form-control input-edit" name="danhmuc">
+                            <option>Thế giới</option>
+                            <option>Thế giới</option>
+                            <option>Thế giới</option>
+                        </select>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-1 col-md-3 col-sm-3 col-xs-12">
+                        <p class="lefttitle">
+                            tác giả
+                        </p>
+                    </div>
+                    <div class="col-lg-11 col-md-9 col-sm-9 col-xs-12">
+                        <!-- <input type="text" class="form-control input-edit" value="" placeholder="" /> -->
+                        <select class="form-control input-edit" name="tacgia">
+                            <option>Thế giới</option>
+                            <option>Thế giới</option>
+                            <option>Thế giới</option>
+                        </select>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-1 col-md-3 col-sm-3 col-xs-12">
+                        <p class="lefttitle">
+                            loại
+                        </p>
+                    </div>
+                    <div class="col-lg-11 col-md-9 col-sm-9 col-xs-12">
+                        <!-- <input type="text" class="form-control input-edit" value="" placeholder="" /> -->
+                        <select class="form-control input-edit" name="loaibaiviet">
+                            <option>Thế giới</option>
+                            <option>Thế giới</option>
+                            <option>Thế giới</option>
+                        </select>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
             </div>
-            <div class="row">
-                <div class="col-lg-1 col-md-3 col-sm-3 col-xs-12">
-                    <p class="lefttitle">
-                        danh mục
-                    </p>
-                </div>
-                <div class="col-lg-11 col-md-9 col-sm-9 col-xs-12">
-                    <!-- <input type="text" class="form-control input-edit" value="" placeholder="" /> -->
-                    <select class="form-control input-edit">
-                        <option>Thế giới</option>
-                        <option>Thế giới</option>
-                        <option>Thế giới</option>
-                    </select>
-                </div>
-                <div class="clearfix"></div>
-            </div>
-            <div class="row">
-                <div class="col-lg-1 col-md-3 col-sm-3 col-xs-12">
-                    <p class="lefttitle">
-                        tác giả
-                    </p>
-                </div>
-                <div class="col-lg-11 col-md-9 col-sm-9 col-xs-12">
-                    <!-- <input type="text" class="form-control input-edit" value="" placeholder="" /> -->
-                    <select class="form-control input-edit">
-                        <option>Thế giới</option>
-                        <option>Thế giới</option>
-                        <option>Thế giới</option>
-                    </select>
-                </div>
-                <div class="clearfix"></div>
-            </div>
-            <div class="row">
-                <div class="col-lg-1 col-md-3 col-sm-3 col-xs-12">
-                    <p class="lefttitle">
-                        loại
-                    </p>
-                </div>
-                <div class="col-lg-11 col-md-9 col-sm-9 col-xs-12">
-                    <!-- <input type="text" class="form-control input-edit" value="" placeholder="" /> -->
-                    <select class="form-control input-edit">
-                        <option>Thế giới</option>
-                        <option>Thế giới</option>
-                        <option>Thế giới</option>
-                    </select>
-                </div>
-                <div class="clearfix"></div>
-            </div>
-            <div class="row">
-                <div class="col-lg-1 col-md-3 col-sm-3 col-xs-12">
-                    <p class="lefttitle">
-                        ngày đăng
-                    </p>
-                </div>
-                <div class="col-lg-11 col-md-9 col-sm-9 col-xs-12">
-                    <input type="text" class="form-control input-edit" value="<?= date('d-m-Y H:i:s', time()) ?>" placeholder="Ngày đăng" />
-                </div>
-                <div class="clearfix"></div>
-            </div>
-        </div>
-        
+            
 
-        <div class="clearfix"></div>
-        <div class="filerfooter" style="margin-top:20px">
-            <div class="btn btn-success" onclick="Update()">Lưu lại</div>
-            <div class="btn btn-dark" onclick="addPost(false)">Hủy</div>
-        </div>
+            <div class="clearfix"></div>
+            <div class="filerfooter" style="margin-top:20px">
+                <!-- <div class="btn btn-success" onclick="Update()">Lưu lại</div> -->
+                <button type="submit" class="btn btn-success">Lưu lại</button>
+                <!-- <div class="btn btn-dark" onclick="addPost(false)">Hủy</div> -->
+                <button type="button" class="btn btn-dark" onclick="addPost(false)">Hủy</button>
+            </div>
+        </form>
+        <!-- end form -->
     </div>
 </div>
 
@@ -628,5 +702,25 @@
             $('#FilterContent').css('display', 'block').animate({ opacity: '1' }, 400);
         }
     }
+   
+    function searchPost() {
+        var value = $('#search').val();
+        let arr = document.querySelectorAll('tr');
+        var txt1 = arr[1].querySelectorAll('td')[1].querySelector('p').textContent;
+        var txt2 = arr[2].querySelectorAll('td')[1].querySelector('p').textContent;
+        var txt3 = arr[3].querySelectorAll('td')[1].querySelector('p').textContent;
+        const array = [txt1, txt2, txt3];
+        window.sessionStorage.setItem("items", JSON.stringify(array));
+        var storedArray = JSON.parse(sessionStorage.getItem("items"));//no brackets
+        var i;
+        if (storedArray.includes(value)) {
+            var position = storedArray.indexOf(value) + 1;
+            $('#abc').html(arr[position]);
+        } else {
+            alert('not found');
+        }
+    }
+
+
 </script>
 @stop

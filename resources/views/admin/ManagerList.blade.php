@@ -220,12 +220,19 @@
                                     <p>Administrator</p>
                                     <p>31/03/2023</p>
                                 </td> -->
-                                <td class="tc">                        
-                                    <div class="btn btn-xs btn-success">
-                                        <a href="detailAccount.html" style="color: #fff;">
+                                <td class="tc">      
+                                    <!-- <button type="button" class="btn btn-success btn-xs" onclick="listChild(1)">list con</button>
+                                    <button type="button" class="btn btn-success btn-xs" onclick="Level(1)">
+                                        thêm
+                                    </button>   -->                
+                                    <!-- <div class="btn btn-xs btn-success"> -->
+                                        <!-- <a href="detailAccount.html" style="color: #fff;">
                                             <i class="fa fa-edit"></i> Chi tiết
-                                        </a>
-                                    </div>
+                                        </a> -->
+                                        <button type="button" class="btn btn-success btn-xs" onclick="Level(1)">
+                                            <i class="fa fa-edit"></i> Chi tiết
+                                        </button>
+                                    <!-- </div> -->
                                     <div class="btn btn-xs btn-danger" onclick="Delete('Lê Triệu Long')" style=""><i class="fa fa-remove"></i> Xoá</div>
                                 </td>
                             </tr>
@@ -244,12 +251,19 @@
                                     <p>Administrator</p>
                                     <p>31/03/2023</p>
                                 </td> -->
-                                <td class="tc">                        
-                                    <div class="btn btn-xs btn-success">
-                                        <a href="detailAccount.html" style="color: #fff;">
+                                <td class="tc">
+                                   <!--  <button type="button" class="btn btn-success btn-xs" onclick="listChild(2)">list con</button>
+                                    <button type="button" class="btn btn-success btn-xs" onclick="Level(2)">
+                                        thêm
+                                    </button>    -->                     
+                                    <!-- <div class="btn btn-xs btn-success"> -->
+                                        <!-- <a href="detailAccount.html" style="color: #fff;">
                                             <i class="fa fa-edit"></i> Chi tiết
-                                        </a>
-                                    </div>
+                                        </a> -->
+                                        <button type="button" class="btn btn-success btn-xs" onclick="Level(2)">
+                                            <i class="fa fa-edit"></i> Chi tiết
+                                        </button>
+                                    <!-- </div> -->
                                     <div class="btn btn-xs btn-danger" onclick="Delete('Lê Triệu Long')" style=""><i class="fa fa-remove"></i> Xoá</div>
                                 </td>
                             </tr>
@@ -268,12 +282,19 @@
                                     <p>Administrator</p>
                                     <p>31/03/2023</p>
                                 </td> -->
-                                <td class="tc">                        
-                                    <div class="btn btn-xs btn-success">
-                                        <a href="detailAccount.html" style="color: #fff;">
+                                <td class="tc">
+                                   <!--  <button type="button" class="btn btn-success btn-xs" onclick="listChild(3)">list con</button>
+                                    <button type="button" class="btn btn-success btn-xs" onclick="Level(3)">
+                                        thêm
+                                    </button> -->                        
+                                    <!-- <div class="btn btn-xs btn-success"> -->
+                                        <!-- <a href="detailAccount.html" style="color: #fff;">
                                             <i class="fa fa-edit"></i> Chi tiết
-                                        </a>
-                                    </div>
+                                        </a> -->
+                                        <button type="button" class="btn btn-success btn-xs" onclick="Level(3)">
+                                            <i class="fa fa-edit"></i> Chi tiết
+                                        </button>
+                                    <!-- </div> -->
                                     <div class="btn btn-xs btn-danger" onclick="Delete('Lê Triệu Long')" style=""><i class="fa fa-remove"></i> Xoá</div>
                                 </td>
                             </tr>
@@ -491,11 +512,28 @@
             <div class="row">
                     <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
                         <p class="lefttitle">
-                            Tên danh mục
+                            Tên danh mục cha
                         </p>
                     </div>
                     <div class="col-lg-10 col-md-9 col-sm-9 col-xs-12">
-                        <input type="text" class="form-control input-edit" value="" placeholder="Tiêu đề bài viết" />
+                        <!-- <input type="text" class="form-control input-edit show-parent" value="" placeholder="Tiêu đề bài viết" /> -->
+                        <select class="form-control input-edit parent">
+                            <option>Chọn danh mục cha</option>
+                            <option value="1">việt nam</option>
+                            <option value="2">châu âu</option>
+                            <option value="3">thế giới</option>
+                        </select>
+                    </div>
+                    <div class="clearfix"></div>
+            </div>
+            <div class="row child">
+                    <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+                        <p class="lefttitle">
+                            Tên danh mục con
+                        </p>
+                    </div>
+                    <div class="col-lg-10 col-md-9 col-sm-9 col-xs-12">
+                        <input type="text" class="form-control input-edit show-child" value="" placeholder="Tiêu đề bài viết" />
                     </div>
                     <div class="clearfix"></div>
             </div>        
@@ -529,5 +567,33 @@
             $('#FilterContent').css('display', 'block').animate({ opacity: '1' }, 400);
         }
     }
+
+    function Level(id) {
+        $('#FilterBG').css('display', 'block').animate({ opacity: '0.8' }, 400);
+        $('#FilterContent').css('display', 'block').animate({ opacity: '1' }, 400);
+        $('.child').css('display', 'block');
+        if (id == 1) {
+            $('.parent').val(1);
+        } 
+        else if (id == 2 ) {
+            $('.parent').val(2);
+        }
+        else {
+            $('.parent').val(3);
+        }
+    }
+
+    // function listChild(id) {
+    //     if (id == 1) {
+
+    //     } else
+    //     if (id == 2) {
+
+    //     } else {
+
+    //     }
+    // }
+
+    
 </script>
 @stop
