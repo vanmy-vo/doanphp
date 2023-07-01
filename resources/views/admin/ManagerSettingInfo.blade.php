@@ -284,7 +284,7 @@
                             <td class="col-md-2 tc1">trang web Mô tả trang web Mô tả trang webMô tả trang webMô tả trang web Mô tả trang web...</td>
                             <td class="col-md-2 tc1">demo@gmail.com</td>
                             <td class="col-md-2 tc1">0944 123 123</td>
-                            <td class="col-md-2 tc1">http://localhost:8080/doanphplaravelmoi/doanphp/public/admin/setting</td>
+                            <td class="col-md-2 tc1">http://localhost:8080/doanmonhoc/public/admin/setting</td>
                             <td class="col-md-2 tc1"><a class="btn btn-xs btn-success" data-toggle="modal" data-target="#updateAds"><i class="fa fa-pencil-square-o"></i></a></td>
                         </tr>
                 </tbody>

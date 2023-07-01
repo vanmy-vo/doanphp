@@ -64,6 +64,11 @@ Route::get('admin/contact', function () {
     return view('admin.ManagercContact');
 })->name('admin-contact');
 
+Route::get('admin/function', function () {
+    return view('admin.function');
+})->name('admin-contact');
+
+
 Route::get('admin/ads', function () {
     return view('admin.ManagerAdvertisement');
 })->name('ads.admin');

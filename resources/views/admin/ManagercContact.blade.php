@@ -4,6 +4,19 @@
 
 @section('webcontent')
 {{-- View Form --}}
+
+<!-- Get List -->
+<?php
+      $username = "root";
+      $password = "";
+      $host = "localhost";
+      $database = "webtintuc";
+
+      $conn = mysqli_connect($host,$username,$password, $database) or die("Unable to connect");
+      $sql = "SELECT * FROM contact ORDER BY created_at DESC";
+      $result = mysqli_query($conn, $sql) or die ("Error in Selecting". mysqli_error($conn));
+?>
+
 <style>
     #FilterContentCenter {
         margin: auto;
@@ -548,7 +561,7 @@
                     }
                     table.data-table .tc5 {
                         text-align: left;
-                        width: 152px
+                        width: 200px
                     }
                     .location-id {
                         display: inline-block
@@ -557,25 +570,34 @@
             <table class="data-table">
                 <thead>
                     <tr>
-                        <th class="tc1">Họ tên</th>
-                        <th class="tc1">Email</th>
+                        <th class="tc5">Thông tin</th>
                         <th class="tc2">Tiêu đề</th>
                         <th class="tc3">Nội dung</th>
+                        <th class="tc5">Ngày tạo</th>
                         <th class="tc5">Thao tác</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td class="tc1">Nguyễn Văn A</td>
-                        <td class="tc1">demo@gmail.com</td>
-                        <td class="tc2">Game công nghệ</td>
-                        <td class="tc3">Mùa thu lá vàng rơi rơi rơi rơi...</td>
-                        <td class="tc">
-                            <a class="btn btn-xs btn-success" data-toggle="modal" data-target="#viewContact"><i class="fa fa-eye"></i></a>
-                            <a class="btn btn-xs btn-success" data-toggle="modal" data-target="#updateContact"><i class="fa fa-pencil-square-o"></i></a>
-                            <a class="btn btn-xs btn-danger"><i class="fa fa-remove"></i></a>
-                        </td>
-                    </tr>
+                    <!-- Render data from phpMyAdmin -->
+                    <?php foreach($result as $row) : ?>
+                        <tr> 
+                            <td class='tc5'>
+                                <b><?php echo $row['fullname']; ?></b> 
+                                <br> 
+                                <?php echo $row['email']; ?>
+                            </td>
+                            <td class='tc5'><?php echo $row['title_contact']; ?></td>
+                            <td class='tc3'><?php echo $row['content_contact']; ?></td>
+                            <td class='tc5'><?php echo $row['created_at']; ?></td>
+                            <td class='tc5'>
+                                <a class='btn btn-xs btn-success' data-toggle='modal' data-target='#viewContact'><i class='fa fa-eye'></i></a>
+                                <a class='btn btn-xs btn-success' data-toggle='modal' data-target='#updateContact'><i class='fa fa-pencil-square-o'></i></a>
+                                <a class='btn btn-xs btn-danger trash' data-id='<?php echo $row['id']; ?>' href="javascript:Delete('<?php echo $row['id']; ?>', '<?php echo $row['fullname']; ?>')" ><i class='fa fa-remove'></i></a>
+                                </td>
+                                <td><button type="button" name="button" onclick="deletedata('<?php echo $row['id']; ?>', '<?php echo $row['fullname']; ?>')">Delete</button>
+
+                        </tr>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
         </div>
@@ -674,30 +696,36 @@
         </div>
     </div>
 </div>
-
+        
 <script>
-    // function Delete(name){
-    //     if (confirm('Bạn có chắc muốn xóa "' + name + '"')){
-    //         console.log("ok");
-    //     }
-    // }
-
-    // function Update(){
-    //     location.reload();
-    // }
-
-
-     // Hiển thị / Tắt popup bộ lọ
-    // function ShowHide(show) {
-    //     if (!show) {
-    //         $('#FilterBG').stop(true).animate({ opacity: 0 }, 400, function () { $('#FilterBG').css('display', 'none'); });
-    //         $('#FilterContent').stop(true).animate({ opacity: 0 }, 400, function () { $('#FilterContent').css('display', 'none'); });
-    //     } else {
-    //         $('#FilterBG').css('display', 'block').animate({ opacity: '0.8' }, 400);
-    //         $('#FilterContent').css('display', 'block').animate({ opacity: '1' }, 400);
-    //     }
-    // }
-
- 
+    
+    // Function
+    function deletedata(id, name){
+        if (confirm('Bạn có chắc muốn xóa "' + name + '"')){
+             $(document).ready(function(){
+                $.ajax({
+                    // Action
+                    url: 'http://localhost:8080/doanmonhoc/public/admin/function',
+                    // Method
+                    type: 'POST',
+                    data: {
+                    // Get value
+                    id: id
+                    },
+                    success:function(data){1
+                    // Response is the output of action file
+                    if(data == 1){
+                        document.getElementById(id).style.display = "none";
+                    }
+                    else if(data == 0){
+                        console.log(data)
+                    }
+                    console.log(data)
+                    }
+                });
+                });
+            }
+        }
+       
 </script>
 @stop

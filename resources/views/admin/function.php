@@ -11,10 +11,23 @@
 
     $result = mysqli_query($conn, $sql) or die ("Error in Selecting ". mysqli_error($conn));
 
-    if ($result){
-        echo 1;
-    }
-    else{
-        echo 0;
-    }
+    
+	if (isset($_POST["action"])){
+		if ($_POST["action"] == "delete"){
+			delete();
+		}
+	}
+
+    function delete(){
+		global $conn;
+        global $result;
+
+        if ($result){
+            echo 1;
+        }
+        else{
+            echo 0;
+        }
+
+	}
 ?>  
