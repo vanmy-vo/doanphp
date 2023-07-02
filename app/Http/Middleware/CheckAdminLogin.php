@@ -20,29 +20,39 @@ class CheckAdminLogin
         // return $next($request);
         // dd(session());
         // kiem tra xem da tung dang nhap va con luu session chua
-        if (!session('user')['userid']) {
-            $tried_login = DB::table('check_tried_login')->where(['username' => $request->username, 'success' => 0])->get();    
+        if (!session('user')) {
+            $tried_login = DB::table('check_tried_login')->where(['username' => $request->username, 'success' => 0])->get();
 
             $hashMd5 = md5($request->password);
             $hashSha1 = sha1($hashMd5);
             $hashPassword = $hashSha1;
             $check = DB::table('account')->where(['username' => $request->username, 'password' => $hashPassword])->first();
 
+            $checkTimeBlock = DB::table('account')->where(['username' => $request->username])->first();
             if (count($tried_login) > 3) {
-                if ($check->timeblock == 0) {
-                    $check->timeblock = time();
-                    $check->save();
+                if ($checkTimeBlock->timeblock != 0) {
+                    if ((time() - $checkTimeBlock->timeblock) > 60) {
+                        DB::table('check_tried_login')->where(['username' => $request->username, 'success' => 0])->delete();
+                        // $checkTimeBlock->timeblock = 0;
+                        // $checkTimeBlock->save();
+                        DB::table('account')
+                        ->where(['username' => $request->username])
+                        ->update([
+                            'timeblock' => 0,
+                        ]);
+                        return $next($request);
+                    }
+                    return redirect()->route('login.admin');
+                } else {
+                    DB::table('account')
+                    ->where(['username' => $request->username])
+                    ->update([
+                        'timeblock' => time(),
+                    ]);
+                    // $checkTimeBlock->timeblock = time();
+                    // $checkTimeBlock->save();
                 }
-                return view('admin.login')->with('error', 'Bạn đã nhập sai tài khoản hoặc mật khẩu quá 3 lần không đúng, nên bị chặn trong 1 phút');
-            }
-            if (isset($check->timeblock) != 0) {
-                if ((time() - $check->timeblock) > 60) {
-                    $tried_login->delete();
-                    $check->timeblock = 0;
-                    $check->save();
-                    return $next($request);
-                }
-                return route('login.admin');
+                return redirect()->route('login.admin')->with('error', 'Bạn đã nhập sai tài khoản hoặc mật khẩu quá 3 lần không đúng, nên bị chặn trong 1 phút');
             }
 
             if ($check) {
@@ -60,21 +70,30 @@ class CheckAdminLogin
                     'success' => 1,
                 ]);
                 // return redirect()->route('admin');
-                // if ($check->role_id == 1) {
+                if ($check->role_id == 1) {
                     return $next($request);
-                // } else {
-                //     return 
-                // }
+                } else {
+                    return redirect()->route('post.admin');
+                }
             } else {
-                // kiem tra co gang dang nhap
-                DB::table('check_tried_login')
-                ->insert([
-                    'username' => $request->username,
-                    'password' => $request->password,
-                    'success' => 0,
-                ]);
+                if (!is_null($request->username) && !is_null($request->password)) {
+                    // kiem tra co gang dang nhap
+                    DB::table('check_tried_login')
+                    ->insert([
+                        'username' => $request->username,
+                        'password' => $request->password,
+                        'success' => 0,
+                    ]);
+                    // return redirect()->route('login.admin')->with('error', 'Đăng nhập không thành công!');
+                    $message = 'Đăng nhập không thành công!';
+                } else {
+                    $message = 'Tài khoản hoặc mật khẩu của bạn đang trống!';
+                }
+                // else {
+                //     // return redirect()->route('login.admin')->with('error', 'Đăng nhập không thành công!');
+                // }                
                 // return view('admin.login')->with('error', 'Đăng nhập không thành công!');
-                return route('login.admin')->with('error', 'Đăng nhập không thành công!');
+                return redirect()->route('login.admin')->with('error', $message);
             }
         } else {
             // return route('login.admin');

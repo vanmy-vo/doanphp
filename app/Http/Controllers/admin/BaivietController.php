@@ -23,7 +23,8 @@ class BaivietController extends Controller
         }
         $list = Baiviet::orderBy('id', 'desc')->get();
         $category = DB::table('category')->get();
-        $tacgia = DB::table('account')->where(['role_id' => 2])->get();
+        // $tacgia = DB::table('account')->where(['role_id' => 2])->get();
+        $tacgia = DB::table('account')->get();
         $type = DB::table('type')->get();
         return view('admin.ManagerComment', compact('list', 'category', 'tacgia', 'type'));
     }
@@ -113,7 +114,28 @@ class BaivietController extends Controller
      */
     public function update(Request $request)
     {
+        $message = [];
+        // dd($request->all());
+        $baiviet = Baiviet::where(['id' => $request->postid])->first();
 
+        $baiviet->title_post = $request->title;
+        $baiviet->description = $request->descriptionshort;
+        $baiviet->content_post = $request->noidungbaiviet;
+        // $baiviet->title_post = $request->danhmuc;
+        $baiviet->account_id = $request->tacgia;
+        $baiviet->type_id = $request->loaibaiviet;
+
+        if ($baiviet->save()) {
+            $message['code'] = '99';
+            $message['noti'] = 'Cập nhật thành công';
+        } else {
+            $message['code'] = '0';
+            $message['noti'] = 'Cập nhật không thành công';
+        }
+
+
+
+        return redirect()->route('post.admin')->with($message['code'], $message['noti']);
     }
 
     /**

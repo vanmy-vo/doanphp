@@ -678,8 +678,9 @@ use Illuminate\Support\Request;
             $('textarea[name="descriptionshort"]').val('');
             $('.imageload').attr('src', '<?=SITE_PATH?>/image/noimage.jpg').css('box-shadow', '1px 1px 1px #000, -1px 1px 1px #000, 1px -1px 1px #000, -1px -1px 1px #000');
             $('select[name="danhmuc"]').val('');
-            $('select[name="tacgia"]').val('');
+            $('select[name="tacgia"]').val(<?=session('user')['userid']?>);
             $('select[name="loaibaiviet"]').val('');
+            $('input[name="postid"]').remove();
         } else {
             // alert(idPost);
             $('.filtergrouptitle').html('CẬP NHẬT THÔNG TIN BÀI VIẾT');
@@ -710,6 +711,7 @@ use Illuminate\Support\Request;
                     // $('input[name="imageupload"]').val(data['imageload']);
                     $('select[name="tacgia"]').val(data['account_id']);
                     $('select[name="loaibaiviet"]').val(data['type_id']);
+                    $('#addpost').append('<input type="hidden" class="form-control input-edit" value="'+data['id']+'" placeholder="Tiêu đề bài viết" name="postid" />')
                 },
                 error:function(error) {
 
