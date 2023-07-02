@@ -509,42 +509,42 @@
 
 
     </script>
-    <script src="https://cdn.ckeditor.com/ckeditor5/37.0.1/classic/ckeditor.js"></script>
+    <!-- <script src="https://cdn.ckeditor.com/ckeditor5/37.0.1/classic/ckeditor.js"></script> -->
     <!-- <script src="<?=str_replace('public', '', SITE_PATH)?>node_modules/chart.js/dist/chart.js"></script> -->
     <!-- <script src="{{ asset('js/chart.js') }}"></script> -->
     
 <script type="text/javascript">
     // import Chart from 'chart.js';
 
-const labels = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-];
+// const labels = [
+//     'January',
+//     'February',
+//     'March',
+//     'April',
+//     'May',
+//     'June',
+// ];
 
-const data = {
-    labels: labels,
-    datasets: [{
-        label: 'My First dataset',
-        backgroundColor: 'rgb(255, 99, 132)',
-        borderColor: 'rgb(255, 99, 132)',
-        data: [0, 10, 5, 2, 20, 30, 45],
-    }]
-};
+// const data = {
+//     labels: labels,
+//     datasets: [{
+//         label: 'My First dataset',
+//         backgroundColor: 'rgb(255, 99, 132)',
+//         borderColor: 'rgb(255, 99, 132)',
+//         data: [0, 10, 5, 2, 20, 30, 45],
+//     }]
+// };
 
-const config = {
-    type: 'line',
-    data: data,
-    options: {}
-};
+// const config = {
+//     type: 'line',
+//     data: data,
+//     options: {}
+// };
 
-new Chart(
-    document.getElementById('myChart'),
-    config
-);
+// new Chart(
+//     document.getElementById('myChart'),
+//     config
+// );
 </script>
 
 </body>

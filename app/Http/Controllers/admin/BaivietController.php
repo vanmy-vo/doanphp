@@ -5,7 +5,9 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Baiviet;
+use App\Models\Slide;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 
 class BaivietController extends Controller
 {
@@ -16,8 +18,11 @@ class BaivietController extends Controller
      */
     public function index()
     {
-        $list = Baiviet::all();
-        return view('admin.ManagerComment', compact('list'));
+        $list = Baiviet::orderBy('id', 'desc')->get();
+        $category = DB::table('category')->get();
+        $tacgia = DB::table('account')->where(['role_id' => 2])->get();
+        $type = DB::table('type')->get();
+        return view('admin.ManagerComment', compact('list', 'category', 'tacgia', 'type'));
     }
 
     /**
@@ -38,6 +43,14 @@ class BaivietController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'imageupload' => 'mimes:jpg,png,jpeg,gif,svg',
+        ]);
+
+        $nameimage = $request->file('imageupload')->getClientOriginalName();
+
+        $path = $request->file('imageupload')->move('public/uploads/posts');
+
         $baivetmoi = new Baiviet;
         $baivetmoi->title_post = $request->title;
         $baivetmoi->description = $request->descriptionshort;
@@ -47,10 +60,14 @@ class BaivietController extends Controller
         $baivetmoi->deleted_at = date('Y-m-d H:i:s', time());
 
 
-        $baivetmoi->account_id = 1;
+        $baivetmoi->account_id = 3;
         $baivetmoi->type_id = 1;
         if ($baivetmoi->save()) {
-
+            $slide = new Slide();
+            $slide->img = $path . '/' . $nameimage;
+            $slide->post_id = $baivetmoi->id;
+            $slide->save(); 
+            return redirect()->back()->with('message', 'taoj thanfh cong');
         } else {
 
         }
@@ -73,9 +90,15 @@ class BaivietController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request)
     {
-        //
+        $baiviet  = Baiviet::where(['id' => $request['idPost']])->first();
+        $slide = Slide::where(['post_id' => $baiviet->id])->first();
+        $type = DB::table('type')->where(['id' => $baiviet->type_id])->first();
+        $category = DB::table('category')->where(['id' => $type->category_id])->first();
+        $baiviet['imageload'] = $slide->img;
+        $baiviet['category_id'] = $category->id;
+        return $baiviet;
     }
 
     /**
@@ -85,9 +108,9 @@ class BaivietController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+
     }
 
     /**

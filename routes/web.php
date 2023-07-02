@@ -80,6 +80,8 @@ Route::get('admin/setting', function () {
 
 Route::get('admin/baiviet', [BaivietController::class, 'index'])->name('post.admin');
 Route::post('admin/luubaiviet', [BaivietController::class, 'store'])->name('post.admin.store');
+Route::post('admin/capnhatbaiviet', [BaivietController::class, 'edit'])->name('post.admin.update');
+Route::post('admin/capnhat', [BaivietController::class, 'update'])->name('post.admin.edit');
 
 //User
 Route::get('/', [UserHomeController::class,'index'])->name('/');

@@ -3,6 +3,14 @@
 @section('title', 'Bài viết')
 
 @section('webcontent')
+<?php
+
+use App\Models\Taikhoan;
+use App\Models\Slide;
+use Illuminate\Support\Request;
+
+
+?>
 <!-- KHUNG TIỂU ĐỀ -->
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
@@ -12,7 +20,7 @@
                     DANH SÁCH BÀI VIẾT
                 </h2>
                 <div class="nav navbar-right green">
-                    <button type="button" class="btn btn-success btn-sm" onclick="addPost(true)">
+                    <button type="button" class="btn btn-success btn-sm" onclick="addPost(true, 'create')">
                         <i class="fa fa-plus-square" aria-hidden="true"></i>
                         Thêm
                     </button>
@@ -71,34 +79,33 @@
 </style>
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 10px">
-        <div class="device-search-box col-md-3" style="display: flex;">
-            <label>Tìm</label>
+        <div class="device-search-box col-lg-12 col-md-12" style="display: flex;width: 100%;">
+            <label for="c">Tìm</label>
             <div class="search-box">
                 <!-- <input placeholder="Nhập tên tài khoản..." value="" onchange="SearchLocation(this)">
                 <i onclick="SearchLocation(this.previousElementSibling)" class="fa fa-search"></i> -->
-                <input id="search" placeholder="Nhập tên tài khoản..." value="">
+                <input id="search" placeholder="Nhập tên tài khoản..." name="c" value="">
             </div>
-            
-        </div>
-        <div class="col-md-2" style="margin-left: 1%;">
-            <select class="form-control input-edit">
-                <option>Chọn danh mục</option>
-                <option>Việt Nam</option>
-                <option>Châu Âu</option>
-                <option>Thế Giới</option>
-            </select>
-        </div>
-        <div class="col-md-1" style="margin-left: 1%;display: flex;">
-            <label for="">ẩn/hiện</label>
-            <input type="checkbox" name="" value="0">
-        </div>
-        <div class="col-md-1" style="margin-left: 1%;display: flex;">
-            <label for="">slideshow</label>
-            <input type="checkbox" name="" value="0">
-        </div>
-        <div style="margin-left: 1%;">
+            <div class="col-md-2" style="margin-left: 1%;">
+                <select class="form-control input-edit" name="danhmuc">
+                    <option value="">Chọn danh mục</option>
+                    <?php foreach ($category as $value_category_filter) : ?>
+                    <option value="<?= $value_category_filter->id ?>"><?= $value_category_filter->category_name ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+            <div class="col-md-1" style="margin-left: 1%;display: flex;flex-direction: row-reverse;">
+                <label for="a" style="padding-top: 10px;">ẩn/hiện</label>
+                <input type="checkbox" name="a" value="0">
+            </div>
+            <div class="col-md-1" style="margin-left: 1%;display: flex;flex-direction: row-reverse;">
+                <label for="n" style="padding-top: 10px;">slideshow</label>
+                <input type="checkbox" name="n" value="0">
+            </div>
+            <div style="margin-left: 1%;">
                 <i onclick="searchPost()" class="fa fa-search btn btn-success"></i>        
             </div>
+        </div>
     </div>
 </div>
 
@@ -217,7 +224,7 @@
                 </style>
                 <table class="data-table">
                     <thead>
-                        <tr>
+                        <tr style="text-transform: capitalize;">
                             <th class="tc1">hình đại diện</th>
                             <th class="tc2">tiêu đề</th>
                             <th class="tc3">Người tạo</th>
@@ -226,90 +233,44 @@
                         </tr>
                     </thead>
                     <tbody id="abc">
+                        <?php foreach ($list as $value) : ?>
                             <tr data-key="1">
                                 <td class="tc1">
-                                    <!-- ltlong@gmail.com
-                                    <br>
-                                    <b>Lê Triệu Long</b> -->
-                                    <img src="{{ asset('client/public/user/img/banner/tin-tuc.jpg') }}" alt="hình đại diện" width="200">
+                                    <?php $image = Slide::where(['post_id' => $value->id])->first(); ?>
+                                    <?php if ($image) { ?>
+                                        <?php if ($image->img) { ?>
+                                        <img src="{{ asset('uploads/posts/' . $image->img) }}" alt="<?= $value->title_post ?>" width="200" title="<?= $value->title_post ?>">
+                                        <?php } else { ?>
+                                        <img src="{{ asset('uploads/noimg/nobanner.jpg') }}" alt="<?= $value->title_post ?>" width="200" title="<?= $value->title_post ?>">
+                                        <?php } ?>
+                                    <?php } else { ?>
+                                    <img src="{{ asset('uploads/noimg/nobanner.jpg') }}" alt="<?= $value->title_post ?>" width="200" title="<?= $value->title_post ?>">
+                                    <?php } ?>
                                 </td>
                                 <td class="tc2">
-                                    <p>tiêu đề bài viết</p>
+                                    <p><?= $value->title_post ?></p>
                                 </td>
                                 <td class="tc3">
-                                    <p>Administrator</p>
+                                    <?php $taikhoan = Taikhoan::where(['id' => $value->account_id])->first(); ?>
+                                    <p><?= $taikhoan->fullname ?></p>
                                 </td>
                                 <td>
-                                    <p>31/03/2023</p>
+                                    <?php $time = strtotime($value->created_at) ?>
+                                    <p><?= date('d-m-Y H:i:s', $time) ?></p>
                                 </td>
-                                <td class="tc">                        
-                                    <div class="btn btn-xs btn-success hidden">
-                                        <a href="detailAccount.html" style="color: #fff;">
+                                <td class="tc" style="text-transform: capitalize;">                        
+                                    <!-- <div class="btn btn-xs btn-success">
+                                        <a href="#" style="color: #fff;">
                                             <i class="fa fa-edit"></i> edit
                                         </a>
-                                    </div>
-                                    <button type="button" class="btn btn-xs btn-success" onclick="addPost(true)">
+                                    </div> -->
+                                    <button type="button" class="btn btn-xs btn-success" onclick="addPost(true, <?= $value->id ?>)" style="text-transform: inherit;">
                                         <i class="fa fa-edit"></i> edit
                                     </button>
                                     <div class="btn btn-xs btn-danger" onclick="Delete('Lê Triệu Long')" style=""><i class="fa fa-remove"></i> Xoá</div>
                                 </td>
                             </tr>
-                            <tr data-key="2">
-                                <td class="tc1">
-                                    <!-- ltlong@gmail.com
-                                    <br>
-                                    <b>Lê Triệu Long</b> -->
-                                    <img src="{{ asset('client/public/user/img/banner/tin-tuc.jpg') }}" alt="hình đại diện" width="200">
-                                </td>
-                                <td class="tc2">
-                                    <p>tiêu đề bài viết moiws</p>
-                                </td>
-                                <td class="tc3">
-                                    <p>Administrator</p>
-                                </td>
-                                <td>
-                                    <p>30/03/2023</p>
-                                </td>
-                                <td class="tc">                        
-                                    <div class="btn btn-xs btn-success hidden">
-                                        <a href="detailAccount.html" style="color: #fff;">
-                                            <i class="fa fa-edit"></i> edit
-                                        </a>
-                                    </div>
-                                    <button type="button" class="btn btn-xs btn-success" onclick="addPost(true)">
-                                        <i class="fa fa-edit"></i> edit
-                                    </button>
-                                    <div class="btn btn-xs btn-danger" onclick="Delete('Lê Triệu Long')" style=""><i class="fa fa-remove"></i> Xoá</div>
-                                </td>
-                            </tr>
-                            <tr data-key="3">
-                                <td class="tc1">
-                                    <!-- ltlong@gmail.com
-                                    <br>
-                                    <b>Lê Triệu Long</b> -->
-                                    <img src="{{ asset('client/public/user/img/banner/tin-tuc.jpg') }}" alt="hình đại diện" width="200">
-                                </td>
-                                <td class="tc2">
-                                    <p>tiêu đề bài viết nef</p>
-                                </td>
-                                <td class="tc3">
-                                    <p>Administrator</p>
-                                </td>
-                                <td>
-                                    <p>29/03/2023</p>
-                                </td>
-                                <td class="tc">                        
-                                    <div class="btn btn-xs btn-success hidden">
-                                        <a href="detailAccount.html" style="color: #fff;">
-                                            <i class="fa fa-edit"></i> edit
-                                        </a>
-                                    </div>
-                                    <button type="button" class="btn btn-xs btn-success" onclick="addPost(true)">
-                                        <i class="fa fa-edit"></i> edit
-                                    </button>
-                                    <div class="btn btn-xs btn-danger" onclick="Delete('Lê Triệu Long')" style=""><i class="fa fa-remove"></i> Xoá</div>
-                                </td>
-                            </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
         </div>
@@ -515,10 +476,10 @@
     }
 </style>
 <div id="FilterBG" style="opacity: 0.8"></div>
-<div id="FilterContent" style="opacity: 1">
+<div id="FilterContent" style="opacity: 1;text-transform: capitalize;">
     <div id="FilterContentCenter">
         <!-- start from -->
-        <form action="{{ route('post.admin.store') }}" method="post" enctype="multipart/form-data">
+        <form id="addpost" action="{{ route('post.admin.store') }}" method="post" enctype="multipart/form-data">
             @csrf
             <h3 class="filtergrouptitle">
                 CHỈNH SỬA THÔNG TIN BÀI VIẾT
@@ -542,31 +503,31 @@
                         </p>
                     </div>
                     <div class="col-lg-11 col-md-9 col-sm-9 col-xs-12">
-                        <input type="text" class="form-control input-edit" value="" placeholder="slug" disabled/>
+                        <input type="text" class="form-control input-edit" value="" placeholder="Slug" disabled name="slugbaiviet" />
                     </div>
                     <div class="clearfix"></div>
                 </div>
                 <div class="row">
                     <div class="col-lg-1 col-md-3 col-sm-3 col-xs-12">
                         <p class="lefttitle">
-                            hình đại diện
+                            Hình đại diện
                         </p>
                     </div>
                     <div class="col-lg-11 col-md-9 col-sm-9 col-xs-12">
                         <!-- <input type="text" class="form-control input-edit" value="" placeholder="hình đại diện bài viết" /> -->
-                        <input type="file" name="imageupload" class="form-control">
-                        <img src="{{ asset('image/noimage.jpg') }}" alt="hình đại diện bài viết">
+                        <input type="file" name="imageupload" class="form-control" value="">
+                        <img class="imageload" src="{{ asset('image/noimage.jpg') }}" alt="Hình đại diện bài viết">
                     </div>
                     <div class="clearfix"></div>
                 </div>
                 <div class="row">
                     <div class="col-lg-1 col-md-3 col-sm-3 col-xs-12">
                         <p class="lefttitle">
-                            mô tả ngắn
+                            Mô tả ngắn
                         </p>
                     </div>
                     <div class="col-lg-11 col-md-9 col-sm-9 col-xs-12">
-                        <textarea class="form-control input-edit" value="" placeholder="mô tả ngắn bài viết" name="descriptionshort" /></textarea>
+                        <textarea class="form-control input-edit" value="" placeholder="Mô tả ngắn bài viết" name="descriptionshort" /></textarea>
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -589,6 +550,7 @@
                             </div>
                         </main> -->
                         <script src="{{ asset('ckeditor5/build/ckeditor.js') }}"></script>
+                        <?php  ?>
                         <script>ClassicEditor
                             .create( document.querySelector( '.editor' ), {
                                 licenseKey: '',
@@ -626,9 +588,10 @@
                     <div class="col-lg-11 col-md-9 col-sm-9 col-xs-12">
                         <!-- <input type="text" class="form-control input-edit" value="" placeholder="" /> -->
                         <select class="form-control input-edit" name="danhmuc">
-                            <option>Thế giới</option>
-                            <option>Thế giới</option>
-                            <option>Thế giới</option>
+                            <option value="">--->>>>Chọn danh mục<<<<---</option>
+                            <?php foreach ($category as $value_category) : ?>
+                            <option value="<?= $value_category->id ?>"><?= $value_category->category_name ?></option>
+                            <?php endforeach; ?>
                         </select>
                     </div>
                     <div class="clearfix"></div>
@@ -642,9 +605,10 @@
                     <div class="col-lg-11 col-md-9 col-sm-9 col-xs-12">
                         <!-- <input type="text" class="form-control input-edit" value="" placeholder="" /> -->
                         <select class="form-control input-edit" name="tacgia">
-                            <option>Thế giới</option>
-                            <option>Thế giới</option>
-                            <option>Thế giới</option>
+                            <option value="">--->>>>Chọn tác giả<<<<---</option>
+                            <?php foreach ($tacgia as $value_tacgia) : ?>
+                            <option value="<?= $value_tacgia->id ?>"><?= $value_tacgia->fullname ?></option>
+                            <?php endforeach; ?>
                         </select>
                     </div>
                     <div class="clearfix"></div>
@@ -658,9 +622,11 @@
                     <div class="col-lg-11 col-md-9 col-sm-9 col-xs-12">
                         <!-- <input type="text" class="form-control input-edit" value="" placeholder="" /> -->
                         <select class="form-control input-edit" name="loaibaiviet">
-                            <option>Thế giới</option>
-                            <option>Thế giới</option>
-                            <option>Thế giới</option>
+                            <option value="">--->>>>Chọn loại bài viết<<<<---</option>
+                            <?php foreach ($type as $value_type) : ?>
+                            <option value="<?= $value_type->id ?>"><?= $value_type->type_name ?></option>
+                            <?php endforeach; ?>
+
                         </select>
                     </div>
                     <div class="clearfix"></div>
@@ -671,7 +637,7 @@
             <div class="clearfix"></div>
             <div class="filerfooter" style="margin-top:20px">
                 <!-- <div class="btn btn-success" onclick="Update()">Lưu lại</div> -->
-                <button type="submit" class="btn btn-success">Lưu lại</button>
+                <button type="submit" class="btn btn-success" style="text-transform: inherit;">Lưu lại</button>
                 <!-- <div class="btn btn-dark" onclick="addPost(false)">Hủy</div> -->
                 <button type="button" class="btn btn-dark" onclick="addPost(false)">Hủy</button>
             </div>
@@ -684,7 +650,7 @@
 
     function Delete(name){
         if (confirm('Bạn có chắc muốn xóa "' + name + '"')){
-            console.log("ok");
+            // console.log("ok");
         }
     }
 
@@ -693,13 +659,62 @@
     }
 
 
-    function addPost(show) {
+    function addPost(show, action) {
+        // alert(ClassicEditor);
         if (!show) {
             $('#FilterBG').stop(true).animate({ opacity: 0 }, 400, function () { $('#FilterBG').css('display', 'none'); });
             $('#FilterContent').stop(true).animate({ opacity: 0 }, 400, function () { $('#FilterContent').css('display', 'none'); });
         } else {
             $('#FilterBG').css('display', 'block').animate({ opacity: '0.8' }, 400);
             $('#FilterContent').css('display', 'block').animate({ opacity: '1' }, 400);
+        }
+        $('.ck-placeholder').css('text-transform', 'none');
+        var idPost = action;
+        if (action == 'create') {
+            $('.filtergrouptitle').html('THÊM BÀI VIẾT MỚI');
+            $('#addpost').attr('action', '{{ route("post.admin.store") }}');
+            $('input[name="title"]').val('');
+            $('input[name="slugbaiviet"]').val('');
+            $('textarea[name="descriptionshort"]').val('');
+            $('.imageload').attr('src', '<?=SITE_PATH?>/image/noimage.jpg').css('box-shadow', '1px 1px 1px #000, -1px 1px 1px #000, 1px -1px 1px #000, -1px -1px 1px #000');
+            $('select[name="danhmuc"]').val('');
+            $('select[name="tacgia"]').val('');
+            $('select[name="loaibaiviet"]').val('');
+        } else {
+            // alert(idPost);
+            $('.filtergrouptitle').html('CẬP NHẬT THÔNG TIN BÀI VIẾT');
+            $.ajax({
+                url: '{{ route("post.admin.update") }}',
+                type: 'POST',
+                data: {
+                    idPost: idPost,
+                    _token: $('input[name="_token"]').val(),
+                },
+                success:function(data) {
+                    // console.log(data['id']);
+                    // var value = data.split(',');
+                    // console.log(value[id]);
+                    $('#addpost').attr('action', '{{ route("post.admin.edit") }}');
+                    $('input[name="title"]').val(data['title_post']);
+                    $('input[name="slugbaiviet"]').val(data['slug_post']);
+                    $('textarea[name="descriptionshort"]').val(data['description']);
+                    // $('textarea[name="noidungbaiviet"]').attr('data-placeholder', data['content_post']);
+                    // $('.ck-placeholder').attr('data-placeholder', data['content_post']).html(data['content_post']);
+                    // $('.ck-content').html(data['content_post']);
+                    $('select[name="danhmuc"]').val(data['category_id']);
+                    if (data['imageload']) {
+                        $('.imageload').attr('src', '<?=SITE_PATH?>/uploads/posts/'+data['imageload']).css('box-shadow', '1px 1px 1px #000, -1px 1px 1px #000, 1px -1px 1px #000, -1px -1px 1px #000');
+                    } else {
+                        $('.imageload').attr('src', '<?=SITE_PATH?>/image/noimage.jpg').css('box-shadow', '1px 1px 1px #000, -1px 1px 1px #000, 1px -1px 1px #000, -1px -1px 1px #000');
+                    }
+                    // $('input[name="imageupload"]').val(data['imageload']);
+                    $('select[name="tacgia"]').val(data['account_id']);
+                    $('select[name="loaibaiviet"]').val(data['type_id']);
+                },
+                error:function(error) {
+
+                },
+            });
         }
     }
    
