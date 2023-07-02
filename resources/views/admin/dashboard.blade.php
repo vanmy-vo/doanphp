@@ -3,6 +3,13 @@
 @section('title', 'Dashboard')
 
 @section('webcontent')
+<?php 
+
+use App\Models\Baiviet;
+
+$baiviet = Baiviet::get();
+
+?>
 <!-- <div style="width: 600px; margin: auto;">
     <canvas id="myChart"></canvas>
 </div> -->
@@ -35,9 +42,9 @@
 </div>
 <div class="col-lg-3" style="height: 100px;">
     <div style="background: #1d2174;width: 100%;height: 100%;color: #fff;">
-        <a href="#" style="display: block;width: 100%;height: 100%;">
+        <a href="{{ route('post.admin') }}" style="display: block;width: 100%;height: 100%;">
             <div class="col-lg-6"><h5>Bài viết</h5></div>
-        <div class="col-lg-6" style="height: 100%;"><span style="position: absolute;bottom: 10%;right: 15%;font-size: 16px;">100</span></div>
+        <div class="col-lg-6" style="height: 100%;"><span style="position: absolute;bottom: 10%;right: 15%;font-size: 16px;"><?=count($baiviet)?></span></div>
         </a>
 
     </div>
