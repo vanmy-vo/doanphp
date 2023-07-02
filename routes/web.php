@@ -83,6 +83,10 @@ Route::post('admin/luubaiviet', [BaivietController::class, 'store'])->name('post
 Route::post('admin/capnhatbaiviet', [BaivietController::class, 'edit'])->name('post.admin.update');
 Route::post('admin/capnhat', [BaivietController::class, 'update'])->name('post.admin.edit');
 
+Route::get('admin/user', function () {
+    return view('admin.ManagerUser');
+})->name('user.admin');
+
 //User
 Route::get('/', [UserHomeController::class,'index'])->name('/');
 Route::get('/category', [UserCategoryController::class,'index'])->name('category');
