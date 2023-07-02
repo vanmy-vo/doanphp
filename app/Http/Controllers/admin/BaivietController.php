@@ -18,6 +18,9 @@ class BaivietController extends Controller
      */
     public function index()
     {
+        if (!session('user')['userid']) {
+            return view('admin.login');
+        }
         $list = Baiviet::orderBy('id', 'desc')->get();
         $category = DB::table('category')->get();
         $tacgia = DB::table('account')->where(['role_id' => 2])->get();
