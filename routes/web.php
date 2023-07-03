@@ -133,3 +133,6 @@ Route::get('/contact', [UserContactController::class,'index'])->name('contact');
 Route::any('/ckfinder/connector', '\CKSource\CKFinderBridge\Controller\CKFinderController@requestAction')->name('ckfinder_connector');
 Route::any('/ckfinder/browser', '\CKSource\CKFinderBridge\Controller\CKFinderController@browserAction')->name('ckfinder_browser');
 
+Route::get('bai-viet/{slug}', [UserDetailController::class, 'detail'])->name('chitietbaiviet');
+Route::get('danh-muc/{id}', [UserCategoryController::class, 'detailcategory'])->name('chitietdanhmuc');
+Route::get('loai-danh-muc/{id}', [UserTypeCategoryController::class, 'detailtype'])->name('chitietloai');

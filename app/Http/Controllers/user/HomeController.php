@@ -4,10 +4,13 @@ namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Baiviet;
 
 class HomeController extends Controller
 {
     public function index(){
-        return view('user.index');
+        $tinmoi = Baiviet::orderBy('id', 'desc')->limit(4)->get();
+        // dd($tinmoi);
+        return view('user.index', compact('tinmoi'));
     }
 }

@@ -3,6 +3,10 @@
 @section('title','Trang chủ')
 
 @section('web_content')
+<?php
+use App\Models\Taikhoan;
+
+?>
     <!-- Main Content Section Start -->
     <div class="main-content--section pbottom--30">
         <div class="container">
@@ -137,56 +141,65 @@
                                                     <hr class="divider">
                                                     <!-- Divider End -->
                                                 </li>
-
+                                                <?php foreach ($tinmoi as $key => $value_tinmoi) : ?>
+                                                <?php $tacgia = Taikhoan::where(['id' => $value_tinmoi->account_id])->first(); ?>
                                                 <li class="col-xs-6">
                                                     <!-- Post Item Start -->
                                                     <div class="post--item post--layout-2">
                                                         <div class="post--img">
-                                                            <a href="" class="thumb"><img src="{{asset('user/img/post-img/xe-may-dien.png')}}" alt=""></a>
+                                                            <a href="{{ route('chitietbaiviet', $value_tinmoi->slug_post) }}" class="thumb"><img src="{{asset('user/img/post-img/xe-may-dien.png')}}" alt=""></a>
 
                                                             <div class="post--info">
                                                                 <ul class="nav meta">
-                                                                    <li><a href="#">Zepar</a></li>
-                                                                    <li><a href="#">28/06/2023</a></li>
+                                                                    <li><a href="#"><?=$tacgia->fullname?></a></li>
+                                                                    <li><a href="#"><?=$value_tinmoi->created_at?></a></li>
                                                                 </ul>
 
                                                                 <div class="title">
-                                                                    <h3 class="h4"><a href="" class="btn-link">Xe máy điện Honda U-Go có bản nâng cấp giá 26 triệu đồng...</a></h3>
+                                                                    <h3 class="h4"><a href="" class="btn-link"><?=$value_tinmoi->description?></a></h3>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <!-- Post Item End -->
                                                 </li>
-
-                                                <li class="col-xs-6">
-                                                    <!-- Post Item Start -->
-                                                    <div class="post--item post--layout-2">
-                                                        <div class="post--img">
-                                                            <a href="" class="thumb"><img src="{{asset('user/img/post-img/xe-may-dien.png')}}" alt=""></a>
-
-                                                            <div class="post--info">
-                                                                <ul class="nav meta">
-                                                                    <li><a href="#">Zepar</a></li>
-                                                                    <li><a href="#">28/06/2023</a></li>
-                                                                </ul>
-
-                                                                <div class="title">
-                                                                    <h3 class="h4"><a href="" class="btn-link">Xe máy điện Honda U-Go có bản nâng cấp giá 26 triệu đồng...</a></h3>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Post Item End -->
-                                                </li>
-
+                                                <?php if ($key == 1) { ?>
                                                 <li class="col-xs-12">
                                                     <!-- Divider Start -->
                                                     <hr class="divider">
                                                     <!-- Divider End -->
                                                 </li>
+                                                <?php } ?>
+                                                <?php endforeach; ?>
 
-                                                <li class="col-xs-6">
+                                                <li class="col-xs-6 hidden">
+                                                    <!-- Post Item Start -->
+                                                    <div class="post--item post--layout-2">
+                                                        <div class="post--img">
+                                                            <a href="" class="thumb"><img src="{{asset('user/img/post-img/xe-may-dien.png')}}" alt=""></a>
+
+                                                            <div class="post--info">
+                                                                <ul class="nav meta">
+                                                                    <li><a href="#">Zepar</a></li>
+                                                                    <li><a href="#">28/06/2023</a></li>
+                                                                </ul>
+
+                                                                <div class="title">
+                                                                    <h3 class="h4"><a href="" class="btn-link">Xe máy điện Honda U-Go có bản nâng cấp giá 26 triệu đồng...</a></h3>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Post Item End -->
+                                                </li>
+
+                                                <li class="col-xs-12 hidden">
+                                                    <!-- Divider Start -->
+                                                    <hr class="divider">
+                                                    <!-- Divider End -->
+                                                </li>
+
+                                                <li class="col-xs-6 hidden">
                                                     <!-- Post Item Start -->
                                                     <div class="post--item post--layout-2">
                                                         <div class="post--img">
@@ -207,7 +220,7 @@
                                                     <!-- Post Item End -->
                                                 </li>
                                                 
-                                                <li class="col-xs-6">
+                                                <li class="col-xs-6 hidden">
                                                     <!-- Post Item Start -->
                                                     <div class="post--item post--layout-2">
                                                         <div class="post--img">
