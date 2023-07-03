@@ -5,6 +5,7 @@
 @section('web_content')
 <?php
 use App\Models\Taikhoan;
+use App\Models\Slide;
 
 ?>
     <!-- Main Content Section Start -->
@@ -108,31 +109,44 @@ use App\Models\Taikhoan;
                                 <!-- Post Items Start -->
                                 <div class="post--items post--items-2" data-ajax-content="outer">
                                     <ul class="nav row" data-ajax-content="inner">
+                                        <?php foreach ($tinmoi as $key => $value_tinmoinhat) : ?>
+                                        <?php $tacgiatinmoinhat = Taikhoan::where(['id' => $value_tinmoinhat->account_id])->first(); ?>
+                                        <?php $slidetinmoinhat = Slide::where(['post_id' => $value_tinmoinhat->id])->first(); ?>
                                         <li class="col-md-6">
                                             <!-- Post Item Start -->
                                             <div class="post--item post--layout-2">
                                                 <div class="post--img">
-                                                    <a href="" class="thumb"><img src="{{asset('user/img/post-img/f7f9000cf953290d7042-168794481470437.jpg')}}" alt=""></a>
-                                                    <a href="#" class="cat">Mới</a>
-                                                    <a href="#" class="icon"><i class="fa fa-heart-o"></i></a>
+                                                    <a href="{{ route('chitietbaiviet', $value_tinmoinhat->slug_post) }}" class="thumb" title="<?=$value_tinmoinhat->title_post?>">
+                                                    <?php if ($slidetinmoinhat->img != null) { ?>
+                                                    <img src="{{ asset('uploads/posts/'.$slidetinmoinhat->img) }}" alt="<?=$value_tinmoinhat->title_post?>">
+                                                    <?php } else { ?>
+                                                    <img src="{{ asset('uploads/noimg/nobanner.jpg') }}" alt="<?=$value_tinmoinhat->title_post?>">
+                                                    <?php } ?>
+                                                    </a>
+                                                    <a href="{{ route('chitietbaiviet', $value_tinmoinhat->slug_post) }}" class="cat">Mới</a>
+                                                    <a href="{{ route('chitietbaiviet', $value_tinmoinhat->slug_post) }}" class="icon"><i class="fa fa-heart-o"></i></a>
 
                                                     <div class="post--info">
                                                         <ul class="nav meta">
-                                                            <li><a href="#">Admin</a></li>
-                                                            <li><a href="#">28/6/223</a></li>
+                                                            <li><a href="{{ route('chitietbaiviet', $value_tinmoinhat->slug_post) }}" title="<?=$value_tinmoinhat->title_post?>"><?=$tacgiatinmoinhat->fullname?></a></li>
+                                                            <?php $time = strtotime($value_tinmoinhat->created_at); ?>
+                                                            <?php $timenew = date('d/m/Y', $time); ?>
+                                                            <li><a href="{{ route('chitietbaiviet', $value_tinmoinhat->slug_post) }}" title="<?=$value_tinmoinhat->title_post?>"><?=$timenew?></a></li>
                                                         </ul>
 
                                                         {{-- <div class="title">
                                                             <h3 style="color: #000; "><a href="" class="btn-link">Vì sao mưa lớn khắp TP.HCM chiều nay?</a></h3>
                                                         </div> --}}
                                                         <div class="title">
-                                                            <h4 class="h4"><a href="" class="btn-link">Chiều 28.6, TP.HCM có mưa lớn ở khắp nơi, nhiều tuyến đường bị ngập cục bộ. Dự báo trong đêm nay vẫn còn mưa rào và giông vài nơi.</a></h4>
+                                                            <h4 class="h4"><a href="{{ route('chitietbaiviet', $value_tinmoinhat->slug_post) }}" class="btn-link" title="<?=$value_tinmoinhat->title_post?>"><?=$value_tinmoinhat->description?></a></h4>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <!-- Post Item End -->
                                         </li>
+                                        <?php if (++$key == 1) {break;} ?>
+                                        <?php endforeach; ?>
 
                                         <li class="col-md-6">
                                             <ul class="nav row">
@@ -142,21 +156,30 @@ use App\Models\Taikhoan;
                                                     <!-- Divider End -->
                                                 </li>
                                                 <?php foreach ($tinmoi as $key => $value_tinmoi) : ?>
-                                                <?php $tacgia = Taikhoan::where(['id' => $value_tinmoi->account_id])->first(); ?>
+                                                <?php $tacgialistmoi = Taikhoan::where(['id' => $value_tinmoi->account_id])->first(); ?>
+                                                <?php $slidetinmoi = Slide::where(['post_id' => $value_tinmoi->id])->first(); ?>
                                                 <li class="col-xs-6">
                                                     <!-- Post Item Start -->
                                                     <div class="post--item post--layout-2">
                                                         <div class="post--img">
-                                                            <a href="{{ route('chitietbaiviet', $value_tinmoi->slug_post) }}" class="thumb"><img src="{{asset('user/img/post-img/xe-may-dien.png')}}" alt=""></a>
+                                                            <a href="{{ route('chitietbaiviet', $value_tinmoi->slug_post) }}" class="thumb" title="<?=$value_tinmoi->title_post?>">
+                                                                <?php if ($slidetinmoi->img != null) { ?>
+                                                                <img src="{{ asset('uploads/posts/'.$slidetinmoi->img) }}" alt="<?=$value_tinmoi->title_post?>">
+                                                                <?php } else { ?>
+                                                                <img src="{{ asset('uploads/noimg/nobanner.jpg') }}" alt="<?=$value_tinmoi->title_post?>">
+                                                                <?php } ?>
+                                                            </a>
 
                                                             <div class="post--info">
                                                                 <ul class="nav meta">
-                                                                    <li><a href="#"><?=$tacgia->fullname?></a></li>
-                                                                    <li><a href="#"><?=$value_tinmoi->created_at?></a></li>
+                                                                    <li><a href="{{ route('chitietbaiviet', $value_tinmoi->slug_post) }}" title="<?=$value_tinmoi->title_post?>"><?=$tacgialistmoi->fullname?></a></li>
+                                                                    <?php $times = strtotime($value_tinmoi->created_at); ?>
+                                                                    <?php $timenews = date('d/m/Y', $times); ?>
+                                                                    <li><a href="{{ route('chitietbaiviet', $value_tinmoi->slug_post) }}" title="<?=$value_tinmoi->title_post?>"><?=$timenews?></a></li>
                                                                 </ul>
 
                                                                 <div class="title">
-                                                                    <h3 class="h4"><a href="" class="btn-link"><?=$value_tinmoi->description?></a></h3>
+                                                                    <h3 class="h4"><a href="{{ route('chitietbaiviet', $value_tinmoi->slug_post) }}" class="btn-link" title="<?=$value_tinmoi->title_post?>"><?=$value_tinmoi->description?></a></h3>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -171,75 +194,6 @@ use App\Models\Taikhoan;
                                                 </li>
                                                 <?php } ?>
                                                 <?php endforeach; ?>
-
-                                                <li class="col-xs-6 hidden">
-                                                    <!-- Post Item Start -->
-                                                    <div class="post--item post--layout-2">
-                                                        <div class="post--img">
-                                                            <a href="" class="thumb"><img src="{{asset('user/img/post-img/xe-may-dien.png')}}" alt=""></a>
-
-                                                            <div class="post--info">
-                                                                <ul class="nav meta">
-                                                                    <li><a href="#">Zepar</a></li>
-                                                                    <li><a href="#">28/06/2023</a></li>
-                                                                </ul>
-
-                                                                <div class="title">
-                                                                    <h3 class="h4"><a href="" class="btn-link">Xe máy điện Honda U-Go có bản nâng cấp giá 26 triệu đồng...</a></h3>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Post Item End -->
-                                                </li>
-
-                                                <li class="col-xs-12 hidden">
-                                                    <!-- Divider Start -->
-                                                    <hr class="divider">
-                                                    <!-- Divider End -->
-                                                </li>
-
-                                                <li class="col-xs-6 hidden">
-                                                    <!-- Post Item Start -->
-                                                    <div class="post--item post--layout-2">
-                                                        <div class="post--img">
-                                                            <a href="" class="thumb"><img src="{{asset('user/img/post-img/xe-may-dien.png')}}" alt=""></a>
-
-                                                            <div class="post--info">
-                                                                <ul class="nav meta">
-                                                                    <li><a href="#">Zepar</a></li>
-                                                                    <li><a href="#">28/06/2023</a></li>
-                                                                </ul>
-
-                                                                <div class="title">
-                                                                    <h3 class="h4"><a href="" class="btn-link">Xe máy điện Honda U-Go có bản nâng cấp giá 26 triệu đồng...</a></h3>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Post Item End -->
-                                                </li>
-                                                
-                                                <li class="col-xs-6 hidden">
-                                                    <!-- Post Item Start -->
-                                                    <div class="post--item post--layout-2">
-                                                        <div class="post--img">
-                                                            <a href="" class="thumb"><img src="{{asset('user/img/post-img/xe-may-dien.png')}}" alt=""></a>
-
-                                                            <div class="post--info">
-                                                                <ul class="nav meta">
-                                                                    <li><a href="#">Zepar</a></li>
-                                                                    <li><a href="#">28/06/2023</a></li>
-                                                                </ul>
-
-                                                                <div class="title">
-                                                                    <h3 class="h4"><a href="" class="btn-link">Xe máy điện Honda U-Go có bản nâng cấp giá 26 triệu đồng...</a></h3>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- Post Item End -->
-                                                </li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -263,7 +217,9 @@ use App\Models\Taikhoan;
                             <!-- Post Items Start -->
                             <div class="post--items post--items-1" data-ajax-content="outer">
                                 <ul class="nav row gutter--15" data-ajax-content="inner">
-                                    <li class="col-md-12">
+                                    <?php foreach ($tinnoibat as $key => $value_tinnoibatnhat) : ?>
+                                    <?php $tacgialistnoibatnhat = Taikhoan::where(['id' => $value_tinnoibatnhat->account_id])->first(); ?>
+                                    <li class="col-md-12" title="<?=$value_tinnoibatnhat->title_post?>">
                                         <!-- Post Item Start -->
                                         <div class="post--item post--layout-1 post--title-large">
                                             <div class="post--img a">
@@ -279,18 +235,25 @@ use App\Models\Taikhoan;
                                                 <a href="#" class="icon"><i class="fa fa-heart-o"></i></a>
                                                 <div class="post--info">
                                                     <ul class="nav meta">
-                                                        <li><a href="#">Astaroth</a></li>
-                                                        <li><a href="#">Today 05:52 pm</a></li>
+                                                        <li><a href="#"><?= $tacgialistnoibatnhat->fullname ?></a></li>
+                                                        <?php $timetinnoibatss = strtotime($value_tinnoibatnhat->created_at); ?>
+                                                        <?php $timesnoibatnhatss = date('d/m/Y H:i A', $timetinnoibatss); ?>
+                                                        <li><a href="#"><?=$timesnoibatnhatss ?></a></li>
                                                     </ul>
 
                                                     <div class="title text-xxs-ellipsis">
-                                                        <h2 class="h4"><a href="" class="btn-link">Vé xem BlackPink tại Việt Nam đã được rao bán, cao nhất 25 triệu đồng</a></h2>
+                                                        <h2 class="h4"><a href="" class="btn-link"><?=$value_tinnoibatnhat->title_post?></a></h2>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <!-- Post Item End -->
                                     </li>
+                                    <?php if (++$key == 1) {break;} ?>
+                                    <?php endforeach; ?>
+
+                                    <?php foreach ($tinnoibat as $key => $value_tinnoibat) : ?>
+                                    <?php $tacgialistnoibat = Taikhoan::where(['id' => $value_tinnoibat->account_id])->first(); ?>
                                     <li class="col-md-4 col-xs-6 col-xxs-12">
                                         <!-- Post Item Start -->
                                         <div class="post--item post--layout-1">
@@ -302,62 +265,27 @@ use App\Models\Taikhoan;
                                                         height: 200px;
                                                     }
                                                 </style>
-                                                <a href="" class="thumb"><img src="{{asset('user/img/post-img/2523523523.jpg')}}"  style="object-fit: fill" alt=""></a>
+                                                <a href="{{ route('chitietbaiviet', $value_tinnoibat->slug_post) }}" class="thumb"><img src="{{asset('user/img/post-img/2523523523.jpg')}}"  style="object-fit: fill" alt="<?= $value_tinnoibat->title_post ?>"></a>
 
                                                 <div class="post--info">
                                                     <ul class="nav meta">
-                                                        <li><a href="#">Astaroth</a></li>
-                                                        <li><a href="#">Today 03:52 pm</a></li>
+                                                        <li><a href="{{ route('chitietbaiviet', $value_tinnoibat->slug_post) }}"><?=$tacgialistnoibat->fullname?></a></li>
+                                                        <?php $timenoibat = strtotime($value_tinnoibat->created_at); ?>
+                                                        <?php $timesnoibats = date('d/m/Y H:i A', $timenoibat); ?>
+                                                        <li><a href="{{ route('chitietbaiviet', $value_tinnoibat->slug_post) }}"><?=$timesnoibats?></a></li>
                                                     </ul>
 
                                                     <div class="title">
-                                                        <h2 class="h4"><a href="" class="btn-link">‘Indiana Jones 5’: Tạm biệt Indy, tạm biệt một di sản</a></h2>
+                                                        <h2 class="h4"><a href="{{ route('chitietbaiviet', $value_tinnoibat->slug_post) }}" class="btn-link"><?=$value_tinnoibat->title_post?></a></h2>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <!-- Post Item End -->
                                     </li>
-                                    <li class="col-md-4 col-xs-6 col-xxs-12">
-                                        <!-- Post Item Start -->
-                                        <div class="post--item post--layout-1">
-                                            <div class="post--img b">
-                                                <a href="" class="thumb"><img src="{{asset('user/img/post-img/2523523523.jpg')}}"  style="object-fit: fill" alt=""></a>
-
-                                                <div class="post--info">
-                                                    <ul class="nav meta">
-                                                        <li><a href="#">Astaroth</a></li>
-                                                        <li><a href="#">Today 03:52 pm</a></li>
-                                                    </ul>
-
-                                                    <div class="title">
-                                                        <h2 class="h4"><a href="" class="btn-link">‘Indiana Jones 5’: Tạm biệt Indy, tạm biệt một di sản</a></h2>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Post Item End -->
-                                    </li>
-                                    <li class="col-md-4 col-xs-6 col-xxs-12">
-                                        <!-- Post Item Start -->
-                                        <div class="post--item post--layout-1">
-                                            <div class="post--img b">
-                                                <a href="" class="thumb"><img src="{{asset('user/img/post-img/2523523523.jpg')}}"  style="object-fit: fill" alt=""></a>
-
-                                                <div class="post--info">
-                                                    <ul class="nav meta">
-                                                        <li><a href="#">Astaroth</a></li>
-                                                        <li><a href="#">Today 03:52 pm</a></li>
-                                                    </ul>
-
-                                                    <div class="title">
-                                                        <h2 class="h4"><a href="" class="btn-link">‘Indiana Jones 5’: Tạm biệt Indy, tạm biệt một di sản</a></h2>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Post Item End -->
-                                    </li>
+                                    <?php if (++$key == 3) {break;} ?>
+                                    <?php endforeach; ?>
+                                    
 
                                 </ul>
                             </div>

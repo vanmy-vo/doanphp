@@ -28,22 +28,22 @@ use App\Http\Controllers\user\ContactController as UserContactController;
 */
 //Admin
 
-Route::get('/', function () {
-    // return view('welcome');
-    return redirect('home');
-})->middleware('web');
+// Route::get('/', function () {
+//     // return view('welcome');
+//     return redirect('home');
+// })->middleware('web');
 
 
-Route::get('home', function () {
-    return view('user.index');
+// Route::get('home', function () {
+//     return view('user.index');
 
-});
+// });
 
-Route::middleware(['web'])->group(function() {
+// Route::middleware(['web'])->group(function() {
 
 
 
-});
+// });
 
 // Route::middleware(['admin'])->group(function() {
 //     return view('')

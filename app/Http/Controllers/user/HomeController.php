@@ -9,8 +9,9 @@ use App\Models\Baiviet;
 class HomeController extends Controller
 {
     public function index(){
-        $tinmoi = Baiviet::orderBy('id', 'desc')->limit(4)->get();
+        $tinmoi = Baiviet::where(['status' => 0])->orderBy('id', 'desc')->limit(4)->get();
+        $tinnoibat = Baiviet::where(['status' => 0])->orderBy('id', 'asc')->limit(4)->get();
         // dd($tinmoi);
-        return view('user.index', compact('tinmoi'));
+        return view('user.index', compact('tinmoi', 'tinnoibat'));
     }
 }
