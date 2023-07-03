@@ -52,23 +52,12 @@
                                 </ul>
 
                                 <div class="title">
-                                    <h2 class="h4">Bộ Quốc phòng Anh cho biết nước này và các đồng minh đã giúp huấn luyện hơn 17.000 tân binh Ukraine và dự kiến đào tạo 30.000 người đến năm 2024.</h2>
+                                    <h2 class="h4"><?=$chitiet->title_post?></h2>
                                 </div>
                             </div>
 
                             <div class="post--content">
-                                <p>Hãng AFP ngày 26.6 đưa tin hơn 17.000 tân binh do Ukraine tuyển dụng đã hoàn tất việc huấn luyện Anh và các nước khác trong năm qua, nhằm giúp Kyiv đối phó chiến dịch quân sự đặc biệt của Moscow.
-
-                                    Theo Bộ Quốc phòng Anh, các tân binh được tuyển dụng từ nhiều tầng lớp xã hội khác nhau đã trải qua một chương trình huấn luyện khắc nghiệt kéo dài 5 tuần, biến họ "từ dân thường thành binh lính".
-                                    Anh và 9 nước khác gồm Canada, Úc, New Zealand, Na Uy, Phần Lan, Thụy Điển, Đan Mạch, Lithuania và Hà Lan đã đưa ra sáng kiến dành cho tình nguyện viên được Lực lượng Vũ trang Ukraine tuyển dụng vào tháng 6.2022.</p>
-
-                                <p>Chương trình huấn luyện do Anh dẫn đầu có tên là Chiến dịch Interflex đã đào tạo cho các tân binh các kỹ năng khác nhau bao gồm xử lý vũ khí, sơ cứu chiến trường và chiến thuật tuần tra. Trước đó, những người này có ít hoặc không có kinh nghiệm quân sự.
-                                    "Quyết tâm và sự kiên trì của các tân binh từ mọi tầng lớp xã hội ở Ukraine đến để huấn luyện chiến đấu bên cạnh các lực lượng Anh và quốc tế của chúng tôi là điều đáng trân trọng", Bộ trưởng Quốc phòng Anh Ben Wallace cho biết.
-                                    Ông cho biết Anh và các đối tác quốc tế sẽ tiếp tục cung cấp sự hỗ trợ quan trọng này cho đến khi còn cần thiết, giúp Ukraine đối phó lực lượng Nga.
-                                    Ban đầu, Anh đề nghị huấn luyện 10.000 binh sĩ Ukraine về kỹ năng chiến trường, dựa trên khóa huấn luyện binh lính cơ bản của Anh. Bộ Quốc phòng Anh cho biết chương trình này hiện đã được gia hạn và đang trên đà huấn luyện khoảng 30.000 tân binh vào năm 2024.
-                                    Theo Bộ Quốc phòng Anh, khóa huấn luyện đã tạo ra "sự khác biệt đáng kể đối với hiệu quả chiến đấu của Ukraine".
-                                    "Lực lượng Vũ trang Vương quốc Anh duy trì liên lạc chặt chẽ với Ukraine để cải thiện và phát triển khóa huấn luyện, dựa trên các kỹ năng cần thiết nhất trên chiến trường", Bộ Quốc phòng Anh cho biết thêm.
-                                </p>
+                                {!! $chitiet->content_post !!}
                             </div>
                         </div>
                         <!-- Post Item End -->

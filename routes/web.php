@@ -28,22 +28,22 @@ use App\Http\Controllers\user\ContactController as UserContactController;
 */
 //Admin
 
-Route::get('/', function () {
-    // return view('welcome');
-    return redirect('home');
-})->middleware('web');
+// Route::get('/', function () {
+//     // return view('welcome');
+//     return redirect('home');
+// })->middleware('web');
 
 
-Route::get('home', function () {
-    return view('user.index');
+// Route::get('home', function () {
+//     return view('user.index');
 
-});
+// });
 
-Route::middleware(['web'])->group(function() {
+// Route::middleware(['web'])->group(function() {
 
 
 
-});
+// });
 
 // Route::middleware(['admin'])->group(function() {
 //     return view('')
@@ -137,3 +137,6 @@ Route::get('/contact', [UserContactController::class,'index'])->name('contact');
 Route::any('/ckfinder/connector', '\CKSource\CKFinderBridge\Controller\CKFinderController@requestAction')->name('ckfinder_connector');
 Route::any('/ckfinder/browser', '\CKSource\CKFinderBridge\Controller\CKFinderController@browserAction')->name('ckfinder_browser');
 
+Route::get('bai-viet/{slug}', [UserDetailController::class, 'detail'])->name('chitietbaiviet');
+Route::get('danh-muc/{id}', [UserCategoryController::class, 'detailcategory'])->name('chitietdanhmuc');
+Route::get('loai-danh-muc/{id}', [UserTypeCategoryController::class, 'detailtype'])->name('chitietloai');
