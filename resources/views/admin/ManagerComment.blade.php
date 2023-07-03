@@ -234,7 +234,7 @@ use Illuminate\Support\Request;
                     </thead>
                     <tbody id="abc">
                         <?php foreach ($list as $value) : ?>
-                            <tr data-key="1">
+                            <tr data-key="<?= $value->id ?>">
                                 <td class="tc1">
                                     <?php $image = Slide::where(['post_id' => $value->id])->first(); ?>
                                     <?php if ($image) { ?>
@@ -267,7 +267,7 @@ use Illuminate\Support\Request;
                                     <button type="button" class="btn btn-xs btn-success" onclick="addPost(true, <?= $value->id ?>)" style="text-transform: inherit;">
                                         <i class="fa fa-edit"></i> edit
                                     </button>
-                                    <div class="btn btn-xs btn-danger" onclick="Delete('Lê Triệu Long')" style=""><i class="fa fa-remove"></i> Xoá</div>
+                                    <div class="btn btn-xs btn-danger" onclick="Delete('<?= $value->title_post ?>', '<?= $value->id ?>')" style=""><i class="fa fa-remove"></i> Xoá</div>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
@@ -648,9 +648,24 @@ use Illuminate\Support\Request;
 
 <script type="text/javascript">
 
-    function Delete(name){
+    function Delete(name, id){
         if (confirm('Bạn có chắc muốn xóa "' + name + '"')){
             // console.log("ok");
+            $.ajax({
+                url: '{{ route("post.admin.delete") }}',
+                type: 'POST',
+                data: {
+                    id: id,
+                    _token: $('input[name="_token"]').val(),
+                },
+                success:function(data) {
+                    alert(data);
+                    $('tr[data-key="'+id+'"]').remove();
+                },
+                error:function(error) {
+
+                }
+            });
         }
     }
 
@@ -678,8 +693,9 @@ use Illuminate\Support\Request;
             $('textarea[name="descriptionshort"]').val('');
             $('.imageload').attr('src', '<?=SITE_PATH?>/image/noimage.jpg').css('box-shadow', '1px 1px 1px #000, -1px 1px 1px #000, 1px -1px 1px #000, -1px -1px 1px #000');
             $('select[name="danhmuc"]').val('');
-            $('select[name="tacgia"]').val('');
+            $('select[name="tacgia"]').val(<?=session('user')['userid']?>);
             $('select[name="loaibaiviet"]').val('');
+            $('input[name="postid"]').remove();
         } else {
             // alert(idPost);
             $('.filtergrouptitle').html('CẬP NHẬT THÔNG TIN BÀI VIẾT');
@@ -710,6 +726,7 @@ use Illuminate\Support\Request;
                     // $('input[name="imageupload"]').val(data['imageload']);
                     $('select[name="tacgia"]').val(data['account_id']);
                     $('select[name="loaibaiviet"]').val(data['type_id']);
+                    $('#addpost').append('<input type="hidden" class="form-control input-edit" value="'+data['id']+'" placeholder="Tiêu đề bài viết" name="postid" />')
                 },
                 error:function(error) {
 
