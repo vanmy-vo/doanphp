@@ -330,7 +330,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('admin-contact') }}">
+                                    <a href="{{ route('contact-admin') }}">
                                         <i class="fa fa-phone"></i>Quản lý liên hệ
                                     </a>
                                 </li>
@@ -433,6 +433,7 @@
     <script src="<?=SITE_PATH?>/Lib/vendors/switchery/dist/switchery.min.js"></script>
     <script src="<?=SITE_PATH?>/Lib/vendors/raphael/raphael.min.js"></script>
     <script src="<?=SITE_PATH?>/Lib/vendors/morris.js/morris.min.js"></script>
+    
     <div id="Loading">
         <div style="margin:0 auto;position:relative;top:50%;transform:translateY(-50%)">
             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background:none; display: block;" width="80px" height="80px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">

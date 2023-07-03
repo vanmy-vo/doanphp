@@ -7,6 +7,7 @@ use App\Http\Middleware\CheckAdminLogin;
 
 //Admin
 use App\Http\Controllers\admin\BaivietController;
+use App\Http\Controllers\admin\ContactController;
 
 //User
 use App\Http\Controllers\user\HomeController as UserHomeController;
@@ -81,9 +82,10 @@ Route::get('admin/slide', function () {
 
 
 // quan ly lien he
-Route::get('admin/contact', function () {
-    return view('admin.ManagercContact');
-})->name('admin-contact')->middleware(CheckAdminLogin::class);
+Route::group(['prefix' => 'admin'],function(){
+    Route::get('/contact',[ContactController::class,'index'])->name('contact-admin')->middleware(CheckAdminLogin::class);
+    Route::post('/update-contact',[ContactController::class,'updateContact'])->name('update-contact')->middleware(CheckAdminLogin::class);
+});
 
 
 // quan ly quang cao
