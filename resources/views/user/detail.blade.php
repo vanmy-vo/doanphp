@@ -170,13 +170,14 @@
                         <div class="comment--list pd--30-0">
                             <!-- Post Items Title Start -->
                             <div class="post--items-title">
-                                <h2 class="h4">03 bình luận</h2>
+                                <h2 class="h4"><span class="totalbinhluan"><?=count($tongbinhluan)?></span> bình luận</h2>
 
                                 <i class="icon fa fa-comments-o"></i>
                             </div>
                             <!-- Post Items Title End -->
 
-                            <ul class="comment--items nav">
+                            <ul class="comment--items nav" id="binhluanbaiviet">
+                                <?php foreach($tongbinhluan as $key => $binhluan) : ?>
                                 <li>
                                     <!-- Comment Item Start -->
                                     <div class="comment--item clearfix">
@@ -186,21 +187,35 @@
 
                                         <div class="comment--info">
                                             <div class="comment--header clearfix">
-                                                <p class="name">Karla Gleichauf</p>
-                                                <p class="date">12 May 2017 at 05:28 pm</p>
+                                                <p class="name"><?=$binhluan->fullname?></p>
+                                                <p class="date"><?=$binhluan->created_at?></p>
 
-                                                <a href="#" class="reply"><i class="fa fa-mail-reply"></i></a>
+                                                <a href="javascript:void(0)" class="reply" onclick="showReply(<?=$binhluan->id?>)"><i class="fa fa-mail-reply"></i></a>
+                                                <div class="show-id-<?=$binhluan->id?>" style="
+    right: 30px;
+    position: absolute;
+    font-size: 100px;
+    background-color: blue;
+    width: 100px;
+    height: 100px;
+    z-index: 1;
+    box-shadow: 1px 1px 3px #000, -1px 1px 3px #000, 1px -1px 3px #000, -1px -1px 3px #000;
+    top: 30px;
+    display: none;
+/*    opacity: 0;*/
+">1</div>
                                             </div>
 
                                             <div class="comment--content">
-                                                <p>On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment</p>
+                                                <p><?=$binhluan->content_comment?></p>
                                             </div>
                                         </div>
                                     </div>
                                     <!-- Comment Item End -->
                                 </li>
+                                <?php endforeach; ?>
 
-                                <li>
+                                <li class="hidden">
                                     <!-- Comment Item Start -->
                                     <div class="comment--item clearfix">
                                         <div class="comment--img float--left">
@@ -222,7 +237,7 @@
                                     </div>
                                     <!-- Comment Item End -->
 
-                                    <ul class="comment--items nav">
+                                    <ul class="comment--items nav hidden">
                                         <li>
                                             <!-- Comment Item Start -->
                                             <div class="comment--item clearfix">
@@ -262,9 +277,10 @@
                             <!-- Post Items Title End -->
 
                             <div class="comment-respond">
-                                <form action="#" data-form="validate">
+                                <form action="#" method="POST" data-form="validate">
                                     <p>Đừng lo, Email của bạn sẽ được bảo mật. Hãy diền đầy đủ thông tin (*)</p>
-
+                                    @csrf
+                                    <input type="hidden" name="idpost" value="<?=$chitiet->id?>">
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <label>
@@ -286,7 +302,7 @@
                                         </div>
 
                                         <div class="col-md-12">
-                                            <button type="submit" class="btn btn-primary">Đăng bình luận</button>
+                                            <button type="button" class="btn btn-primary" onclick="upComment()">Đăng bình luận</button>
                                         </div>
                                     </div>
                                 </form>
@@ -359,4 +375,73 @@
         </div>
     </div>
     <!-- Main Content Section End -->
+
+    <script type="text/javascript">
+        function upComment() {
+            var valueName = $('input[name="name"]').val();
+            var valueEmail = $('input[name="email"]').val();
+            var valueComment = $('textarea[name="comment"]').val();
+            var valueToken = $('input[name="_token"]').val();
+            var dateUp = new Date();
+            var timeComment = [
+              dateUp.getFullYear(),
+              '-',
+              dateUp.getMonth() + 1,
+              '-',
+              dateUp.getDate(),
+              ' ',
+              dateUp.getHours(),
+              ':',
+              dateUp.getMinutes(),
+              ':',
+              dateUp.getSeconds()
+            ].join('');
+            if (valueName == '' || valueEmail == '' || valueComment == '') {
+                alert('Vui lòng nhập đầy đủ thông tin!');
+                return;
+            }
+            var checkMail = ValidateEmail(valueEmail);
+            if (checkMail == false) {
+                alert('Địa chỉ email không hợp lệ.');
+                return;
+            } 
+            $.ajax({
+                url: '{{ route("binhluanpost") }}',
+                type: 'POST',
+                data: {
+                    fullname: valueName,
+                    email: valueEmail,
+                    comment: valueComment,
+                    idpost: $('input[name="idpost"]').val(),
+                    _token: valueToken,
+                },
+                success:function(data) {
+                    // alert(data);
+                    $('.totalbinhluan').html(data);
+                    $('#binhluanbaiviet').append('<li><div class="comment--item clearfix"><div class="comment--img float--left"><img src="user/img/avatar.jpg" alt=""></div><div class="comment--info"><div class="comment--header clearfix"><p class="name">'+valueName+'</p><p class="date">'+timeComment+'</p><a href="#" class="reply"><i class="fa fa-mail-reply"></i></a></div><div class="comment--content"><p>'+valueComment+'</p></div></div></div></li>');
+                },
+                error:function(error) {
+
+                }
+            });
+        }
+
+        function ValidateEmail(mail) {
+        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
+            return (true);
+        }
+            // alert("You have entered an invalid email address!");
+            return (false);
+        }
+
+        function showReply(show) {
+            if (show != 0) {
+                $('show-id-'+show).css('display', 'block');
+                alert('true');
+
+            } else {
+                alert('false');
+            }
+        }
+    </script>
 @endsection
