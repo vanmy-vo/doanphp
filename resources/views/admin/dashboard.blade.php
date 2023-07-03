@@ -4,11 +4,14 @@
 
 @section('webcontent')
 <?php 
+use Illuminate\Support\Facades\DB;
 
 use App\Models\Baiviet;
 
 $baiviet = Baiviet::get();
-
+$category = DB::table('category')->get();
+$contact = DB::table('contact')->get();
+$ads = DB::table('ads')->get();
 ?>
 <!-- <div style="width: 600px; margin: auto;">
     <canvas id="myChart"></canvas>
@@ -24,18 +27,18 @@ $baiviet = Baiviet::get();
 </style>
 <div class="col-lg-3" style="height: 100px;">
     <div style="background: #337ab7;width: 100%;height: 100%;color: #fff;">
-        <a href="#" style="display: block;width: 100%;height: 100%;">
+        <a href="{{ route('category.admin') }}" style="display: block;width: 100%;height: 100%;">
             <div class="col-lg-6"><h5>Danh mục</h5></div>
-        <div class="col-lg-6" style="height: 100%;"><span style="position: absolute;bottom: 10%;right: 15%;font-size: 16px;">100</span></div>
+        <div class="col-lg-6" style="height: 100%;"><span style="position: absolute;bottom: 10%;right: 15%;font-size: 16px;"><?=count($category)?></span></div>
         </a>
 
     </div>
 </div>
 <div class="col-lg-3" style="height: 100px;">
     <div style="background: #f0ad4e;width: 100%;height: 100%;color: #fff;">
-        <a href="#" style="display: block;width: 100%;height: 100%;">
+        <a href="{{ route('admin-contact') }}" style="display: block;width: 100%;height: 100%;">
             <div class="col-lg-6"><h5>Liên hệ</h5></div>
-        <div class="col-lg-6" style="height: 100%;"><span style="position: absolute;bottom: 10%;right: 15%;font-size: 16px;">100</span></div>
+        <div class="col-lg-6" style="height: 100%;"><span style="position: absolute;bottom: 10%;right: 15%;font-size: 16px;"><?=count($contact)?></span></div>
         </a>
 
     </div>
@@ -51,9 +54,9 @@ $baiviet = Baiviet::get();
 </div>
 <div class="col-lg-3" style="height: 100px;">
     <div style="background: #d9534f;width: 100%;height: 100%;color: #fff;">
-        <a href="#" style="display: block;width: 100%;height: 100%;">
+        <a href="{{ route('ads.admin') }}" style="display: block;width: 100%;height: 100%;">
             <div class="col-lg-6"><h5>Quảng cáo</h5></div>
-        <div class="col-lg-6" style="height: 100%;"><span style="position: absolute;bottom: 10%;right: 15%;font-size: 16px;">100</span></div>
+        <div class="col-lg-6" style="height: 100%;"><span style="position: absolute;bottom: 10%;right: 15%;font-size: 16px;"><?=count($ads)?></span></div>
         </a>
 
     </div>

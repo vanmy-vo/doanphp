@@ -21,7 +21,7 @@ class BaivietController extends Controller
         if (!session('user')['userid']) {
             return view('admin.login');
         }
-        $list = Baiviet::orderBy('id', 'desc')->get();
+        $list = Baiviet::where(['status' => 0])->orderBy('id', 'desc')->get();
         $category = DB::table('category')->get();
         // $tacgia = DB::table('account')->where(['role_id' => 2])->get();
         $tacgia = DB::table('account')->get();
@@ -144,8 +144,14 @@ class BaivietController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        $baiviet = Baiviet::where(['id' => $request->id])->first();
+        $baiviet->status = 1;
+        if ($baiviet->update()) {
+            return 'Xoá thành công';
+        } else {
+            return 'Xóa không thành công';
+        }
     }
 }
