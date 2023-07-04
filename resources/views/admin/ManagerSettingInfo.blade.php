@@ -279,107 +279,6 @@
                 </thead>
                 <tbody>
                         <tr>
-<<<<<<< HEAD
-                            <td class="col-md-2 tc1"><img src="{{asset('user/img/ads-img/black-pink.jpg')}}" alt="" width="50" height="50"></td>
-                            <td class="col-md-2 tc1">TP.Hồ Chí Minh</td>
-                            <td class="col-md-2 tc1">trang web Mô tả trang web Mô tả trang webMô tả trang webMô tả trang web Mô tả trang web...</td>
-                            <td class="col-md-2 tc1">demo@gmail.com</td>
-                            <td class="col-md-2 tc1">0944 123 123</td>
-                            <td class="col-md-2 tc1">http://localhost:8080/doanmonhoc/public/admin/setting</td>
-                            <td class="col-md-2 tc1"><a class="btn btn-xs btn-success" data-toggle="modal" data-target="#updateAds"><i class="fa fa-pencil-square-o"></i></a></td>
-                        </tr>
-                </tbody>
-            </table>
-        </div>
-    </div> --}}
-    <style>
-        #FilterContentCenter {
-            margin: auto;
-            background-color: #fff;
-            border-radius: 4px;
-            width: 95%;
-            min-width: 278px;
-            max-width: 450px;
-            position: relative;
-        }
-
-        .filtergrouptitle {
-            margin: 20px 0px 0px 0px;
-            padding: 0px;
-            font-size: 20px;
-        }
-
-            .filtergrouptitle.floatleft {
-                margin: 0px 10px 0px 0px;
-                padding: 10px;
-                line-height: 1;
-                border: 1px dotted #ccc;
-                border-radius: 5px;
-                float: left;
-            }
-
-                .filtergrouptitle.floatleft.focus {
-                    background: #ccc;
-                }
-
-        .scroll {
-            border: 1px solid #ccc;
-            height: 195px;
-            overflow-y: scroll;
-        }
-
-        .inputtext {
-            margin: 0px 0px 0px 0px;
-            padding: 0px 0px 0px 0px;
-            text-align: center;
-        }
-
-        .filterpane .row {
-            margin: 0px 0px 5px 0px;
-            padding: 3px 0px 3px 0px;
-            background-color: #eae9e9;
-            border-radius: 4px;
-        }
-
-            .filterpane .row.selected {
-                background-color: var(--secondary);
-                color: #fff;
-            }
-
-        .lefttitle {
-            margin: 10px 0px 0px 0px;
-            padding: 0px;
-            line-height: 1;
-        }
-        .input-edit{
-            padding-left: 17px;
-        }
-    </style>
-    <div id="updateAds" tabindex="-1" role="dialog" aria-labelledby="updateAds" aria-hidden="true">
-        <div class="modal-dialog modal-md" role="document">
-            <div class="modal-content">
-                <div class="modal-header bg-dark">
-                    <h3 class="filtergrouptitle modal-title text-white text-uppercase" style="text-align: center;">Cài đặt website</h3>
-                </div>
-
-                <div class="modal-body">
-                    <form action="" id="updateAdsForm" method="">
-                        <div id="FilterContentCenter">
-                            <div class="filterpane" style="margin-bottom:0px;padding-bottom:0px">
-                                <div class="row">
-                                    <div class="col-md-3 col-sm-3 col-xs-12">
-                                        <img src="{{asset('user/img/ads-img/black-pink.jpg')}}" alt="" width="100" height="100">                                    
-                                    </div>
-
-                                     <div class="col-md-4 col-sm-3 col-xs-12">
-                                        <p class="lefttitle">Thay đổi logo mới</p>
-                                    </div>
-
-                                    <div class="col-md-8 col-sm-9 col-xs-12">
-                                        <input type="file" class="form-control input-edit" />
-                                    </div>
-                                    <div class="clearfix"></div>
-=======
                             <td class="col-md-2 tc1"><img src="{{asset('user/img/ads-img/black-pink.jpg')}}" alt=""
     width="50" height="50"></td>
     <td class="col-md-2 tc1">TP.Hồ Chí Minh</td>
@@ -476,13 +375,13 @@
                                 <div class="col-md-3 col-sm-3 col-xs-12">
                                     <!-- <img src="{{asset('user/img/ads-img/black-pink.jpg')}}" alt="" width="100" height="100">         -->
                                     <?php if ($databases[0]->linkimage == '' || $databases[0]->linkimage == null) { ?>
-                                    <img id="preview-image-before-upload" src="{{ asset('user/img/ads-img/black-pink.jpg') }}"
-                                        alt="preview image" width="100" height="100" value="">
+                                    <img id="preview-image-before-upload"
+                                        src="{{ asset('user/img/ads-img/black-pink.jpg') }}" alt="preview image"
+                                        width="100" height="100" value="">
                                     <?php } else { ?>
                                     <img id="preview-image-before-upload" src="<?= $databases[0]->linkimage ?>"
-                                     alt="preview image" width="100" height="100" value="">
+                                        alt="preview image" width="100" height="100" value="">
                                     <?php } ?>
->>>>>>> 2494320075624d136d25d8dc8b0fd5b0139c3146
                                 </div>
                                 <div class="col-md-4 col-sm-3 col-xs-12">
                                     <p class="lefttitle">Thay đổi logo mới</p>
@@ -572,10 +471,11 @@
                         var linkfb = $('#linkfb').val();
                         var image = 'C:\\Users\\ADMIN\\Pictures\\Screenshots\\abc.png';
                         console.log(image);
-                        if (image == ""){
+                        if (image == "") {
                             image = '<?= $databases[0]->linkimage ?>';
                         }
-                        if (address_ == "" || describe == "" || email == "" || phone == "" || linkfb == ""){
+                        if (address_ == "" || describe == "" || email == "" || phone == "" || linkfb ==
+                            "") {
                             alert("Không được bỏ trống thông tin");
                             return;
                         }

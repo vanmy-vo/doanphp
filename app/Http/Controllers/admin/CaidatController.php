@@ -22,19 +22,7 @@ class CaidatController extends Controller
 
     public function update(Request $request)
     {               
-        if ($request->hasFile('imageupload')) {
-            if ($request->file('imageupload')->isValid()) {
-                $request->validate([
-                    'imageupload' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
-                ]);
-                // $imageName = time() . '.' . $request->imageupload->extension();
-                $imageName = $request->file('imageupload')->getClientOriginalName();
-                $request->imageupload('imageupload')->move(public_path('uploads/posts'), $imageName);
-                // return $imageName;
-            }
-        }
-
-        dd($request->file('imageupload'));
+   
 
         $email = $request->input('email');
         $address_ = $request->input('address_');
