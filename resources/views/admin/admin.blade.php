@@ -8,6 +8,7 @@
     <link id="favicon" rel="icon" type="image/x-icon" href="../Lib/cccd.png" />
     <link rel="apple-touch-icon" href="@URL/favicon-180x180.png" />
     <meta name="msapplication-TileImage" content="@URL/favicon-270x270.png" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="<?=SITE_PATH?>/Lib/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?=SITE_PATH?>/Lib/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="<?=SITE_PATH?>/Lib/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
@@ -18,7 +19,7 @@
     <script src="<?=SITE_PATH?>/Lib/vendors/jquery/dist/jquery.min.js"></script>
     <script src="<?=SITE_PATH?>/Lib/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <link href="<?=SITE_PATH?>/Lib/vendors/switchery/dist/switchery.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="<?=SITE_PATH?>/ckeditor5/sample/style.css">
+    <!-- <link rel="stylesheet" type="text/css" href="<?=SITE_PATH?>/ckeditor5/sample/styles.css"> -->
     <style>
         /* width */
         ::-webkit-scrollbar {
@@ -303,13 +304,14 @@
                     <div class="profile clearfix">
                         <div class="profile_info">
                             <span>Xin chào,</span>
-                            <h2>LÊ TRIỆU LONG</h2>
+                            <h2><?= session('user')['fullname'] ?></h2>
                         </div>
                     </div>
                     <br />
                     <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
                         <div class="menu_section">
                             <ul class="nav side-menu">
+                                <?php if (session('user')['role_id'] == 1) { ?>
                                 <li>
                                     <a href="{{ route('dashboard.admin') }}">
                                         <i class="fa fa-pie-chart"></i>
@@ -329,7 +331,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('admin-contact') }}">
+                                    <a href="{{ route('post.admim.lienhe') }}">
                                         <i class="fa fa-phone"></i>Quản lý liên hệ
                                     </a>
                                 </li>
@@ -340,11 +342,12 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('setting.admin') }}">
+                                    <a href="{{ route('post.admim.caidat') }}">
                                         <i class="fa fa-user"></i>
                                         Quản lý cài đặt thông tin
                                     </a>
                                 </li>
+                                <?php } ?>
                                 <li>
                                     <a href="{{ route('post.admin') }}">
                                         <i class="fa fa-list-ul"></i>
@@ -515,42 +518,42 @@
 
 
     </script>
-    <script src="https://cdn.ckeditor.com/ckeditor5/37.0.1/classic/ckeditor.js"></script>
+    <!-- <script src="https://cdn.ckeditor.com/ckeditor5/37.0.1/classic/ckeditor.js"></script> -->
     <!-- <script src="<?=str_replace('public', '', SITE_PATH)?>node_modules/chart.js/dist/chart.js"></script> -->
     <!-- <script src="{{ asset('js/chart.js') }}"></script> -->
     
 <script type="text/javascript">
     // import Chart from 'chart.js';
 
-const labels = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-];
+// const labels = [
+//     'January',
+//     'February',
+//     'March',
+//     'April',
+//     'May',
+//     'June',
+// ];
 
-const data = {
-    labels: labels,
-    datasets: [{
-        label: 'My First dataset',
-        backgroundColor: 'rgb(255, 99, 132)',
-        borderColor: 'rgb(255, 99, 132)',
-        data: [0, 10, 5, 2, 20, 30, 45],
-    }]
-};
+// const data = {
+//     labels: labels,
+//     datasets: [{
+//         label: 'My First dataset',
+//         backgroundColor: 'rgb(255, 99, 132)',
+//         borderColor: 'rgb(255, 99, 132)',
+//         data: [0, 10, 5, 2, 20, 30, 45],
+//     }]
+// };
 
-const config = {
-    type: 'line',
-    data: data,
-    options: {}
-};
+// const config = {
+//     type: 'line',
+//     data: data,
+//     options: {}
+// };
 
-new Chart(
-    document.getElementById('myChart'),
-    config
-);
+// new Chart(
+//     document.getElementById('myChart'),
+//     config
+// );
 </script>
 
 </body>

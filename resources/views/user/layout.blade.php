@@ -37,6 +37,11 @@
     <link rel="stylesheet" href="{{asset('user/css/custom.css')}}">
 </head>
 <body>
+    <?php
+    use App\Models\Danhmuc;
+    use Illuminate\Support\Facades\DB;
+    $category = DB::table('category')->get();
+    ?>
     <!-- Preloader Start -->
     {{-- <div id="preloader">
         <div class="preloader bg--color-1--b" data-preloader="1">
@@ -161,15 +166,20 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Danh mục<i class="fa flm fa-angle-down"></i></a>
                                 <ul class="dropdown-menu">
+                                    <?php foreach ($category as $value_category_menu) : ?>
                                     <li class="dropdown">
-                                        <a href="{{asset('type-category')}}" class="dropdown-toggle" data-toggle="dropdown">Thế giới<i class="fa flm fa-angle-right"></i></a>
+                                        <a href="{{ route('chitietdanhmuc', $value_category_menu->id) }}" class="dropdown-toggle" data-toggle="dropdown"><?=$value_category_menu->category_name?><i class="fa flm fa-angle-right"></i></a>
                                         <ul class="dropdown-menu">
-                                            <li><a href="{{asset('category')}}">Điểm nóng</a></li>
-                                            <li><a href="{{asset('category')}}">Quân sự</a></li>
-                                            <li><a href="{{asset('category')}}">Thế giới động vật</a></li>
+                                            <?php $type = DB::table('type')->where(['category_id' => $value_category_menu->id])->get(); ?>
+                                            <?php foreach ($type as $value_type_menu) : ?>
+                                            <li><a href="{{ route('chitietloai', $value_type_menu->id) }}"><?=$value_type_menu->type_name?></a></li>
+                                            <?php endforeach; ?>
+                                            <!-- <li><a href="{{asset('category')}}">Quân sự</a></li> -->
+                                            <!-- <li><a href="{{asset('category')}}">Thế giới động vật</a></li> -->
                                         </ul>
                                     </li>
-                                    <li class="dropdown">
+                                    <?php endforeach; ?>
+                                    <!-- <li class="dropdown">
                                         <a href="{{asset('type-category')}}" class="dropdown-toggle" data-toggle="dropdown">Bạn trẻ - cuộc sống<i class="fa flm fa-angle-right"></i></a>
                                         <ul class="dropdown-menu">
                                             <li><a href="{{asset('category')}}">Tình yêu - giới tính</a></li>
@@ -199,7 +209,7 @@
                                             <li><a href="{{asset('category')}}">Giải C1</a></li>
                                             <li><a href="{{asset('category')}}">Bóng đá quốc tế</a></li>
                                         </ul>
-                                    </li>
+                                    </li> -->
                                 </ul>
                             </li>
                             <li><a href="{{route('contact')}}">Liên hệ</a></li>      
@@ -314,13 +324,15 @@
                                 <!-- Links Widget Start -->
                                 <div class="links--widget">
                                     <ul class="nav">
-                                        <li><a href="#" class="fa-angle-right">Đời sống</a></li>
-                                        <li><a href="#" class="fa-angle-right">Quốc Tê</a></li>
+                                        <?php foreach ($category as $value_category_footer) : ?>
+                                        <li><a href="{{ route('chitietdanhmuc', $value_category_footer->id) }}" class="fa-angle-right"><?=$value_category_footer->category_name?></a></li>
+                                        <?php endforeach; ?>
+                                        <!-- <li><a href="#" class="fa-angle-right">Quốc Tê</a></li>
                                         <li><a href="#" class="fa-angle-right">Thể Thao</a></li>
                                         <li><a href="#" class="fa-angle-right">Giải Trí</a></li>
                                         <li><a href="#" class="fa-angle-right">Công Nghệ</a></li>
                                         <li><a href="#" class="fa-angle-right">Kinh Tế</a></li>
-                                        <li><a href="#" class="fa-angle-right">Văn Hóa</a></li>
+                                        <li><a href="#" class="fa-angle-right">Văn Hóa</a></li> -->
                                     </ul>
                                 </div>
                                 <!-- Links Widget End -->

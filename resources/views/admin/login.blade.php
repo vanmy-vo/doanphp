@@ -236,7 +236,12 @@
 </head>
 <body>
     <div id="fullscreen">
-        <div id="LoginPane">
+        <div id="LoginPane">            
+            <?php if (isset($error) || isset($succes)) { ?>
+            <div class="alert alert-<?php if (isset($succes)) { echo 'info'; } else { echo 'danger'; } ?>">
+                <strong><?php if (isset($succes)) { echo 'Success'; } else { echo 'Error'; }?></strong> <?php if (isset($succes)) { echo $succes; } else { echo $error; }?>.
+            </div>
+            <?php } ?>
             <form action="{{ route('auth.admin') }}" method="post">
                 @csrf
                 <!-- <img id="LoginLogo" src="<?=SITE_PATH?>/image/logintem.png" alt="" /> -->
