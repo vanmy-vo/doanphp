@@ -52,23 +52,12 @@
                                 </ul>
 
                                 <div class="title">
-                                    <h2 class="h4">Bộ Quốc phòng Anh cho biết nước này và các đồng minh đã giúp huấn luyện hơn 17.000 tân binh Ukraine và dự kiến đào tạo 30.000 người đến năm 2024.</h2>
+                                    <h2 class="h4"><?=$chitiet->title_post?></h2>
                                 </div>
                             </div>
 
                             <div class="post--content">
-                                <p>Hãng AFP ngày 26.6 đưa tin hơn 17.000 tân binh do Ukraine tuyển dụng đã hoàn tất việc huấn luyện Anh và các nước khác trong năm qua, nhằm giúp Kyiv đối phó chiến dịch quân sự đặc biệt của Moscow.
-
-                                    Theo Bộ Quốc phòng Anh, các tân binh được tuyển dụng từ nhiều tầng lớp xã hội khác nhau đã trải qua một chương trình huấn luyện khắc nghiệt kéo dài 5 tuần, biến họ "từ dân thường thành binh lính".
-                                    Anh và 9 nước khác gồm Canada, Úc, New Zealand, Na Uy, Phần Lan, Thụy Điển, Đan Mạch, Lithuania và Hà Lan đã đưa ra sáng kiến dành cho tình nguyện viên được Lực lượng Vũ trang Ukraine tuyển dụng vào tháng 6.2022.</p>
-
-                                <p>Chương trình huấn luyện do Anh dẫn đầu có tên là Chiến dịch Interflex đã đào tạo cho các tân binh các kỹ năng khác nhau bao gồm xử lý vũ khí, sơ cứu chiến trường và chiến thuật tuần tra. Trước đó, những người này có ít hoặc không có kinh nghiệm quân sự.
-                                    "Quyết tâm và sự kiên trì của các tân binh từ mọi tầng lớp xã hội ở Ukraine đến để huấn luyện chiến đấu bên cạnh các lực lượng Anh và quốc tế của chúng tôi là điều đáng trân trọng", Bộ trưởng Quốc phòng Anh Ben Wallace cho biết.
-                                    Ông cho biết Anh và các đối tác quốc tế sẽ tiếp tục cung cấp sự hỗ trợ quan trọng này cho đến khi còn cần thiết, giúp Ukraine đối phó lực lượng Nga.
-                                    Ban đầu, Anh đề nghị huấn luyện 10.000 binh sĩ Ukraine về kỹ năng chiến trường, dựa trên khóa huấn luyện binh lính cơ bản của Anh. Bộ Quốc phòng Anh cho biết chương trình này hiện đã được gia hạn và đang trên đà huấn luyện khoảng 30.000 tân binh vào năm 2024.
-                                    Theo Bộ Quốc phòng Anh, khóa huấn luyện đã tạo ra "sự khác biệt đáng kể đối với hiệu quả chiến đấu của Ukraine".
-                                    "Lực lượng Vũ trang Vương quốc Anh duy trì liên lạc chặt chẽ với Ukraine để cải thiện và phát triển khóa huấn luyện, dựa trên các kỹ năng cần thiết nhất trên chiến trường", Bộ Quốc phòng Anh cho biết thêm.
-                                </p>
+                                {!! $chitiet->content_post !!}
                             </div>
                         </div>
                         <!-- Post Item End -->
@@ -181,13 +170,14 @@
                         <div class="comment--list pd--30-0">
                             <!-- Post Items Title Start -->
                             <div class="post--items-title">
-                                <h2 class="h4">03 bình luận</h2>
+                                <h2 class="h4"><span class="totalbinhluan"><?=count($tongbinhluan)?></span> bình luận</h2>
 
                                 <i class="icon fa fa-comments-o"></i>
                             </div>
                             <!-- Post Items Title End -->
 
-                            <ul class="comment--items nav">
+                            <ul class="comment--items nav" id="binhluanbaiviet">
+                                <?php foreach($tongbinhluan as $key => $binhluan) : ?>
                                 <li>
                                     <!-- Comment Item Start -->
                                     <div class="comment--item clearfix">
@@ -197,21 +187,35 @@
 
                                         <div class="comment--info">
                                             <div class="comment--header clearfix">
-                                                <p class="name">Karla Gleichauf</p>
-                                                <p class="date">12 May 2017 at 05:28 pm</p>
+                                                <p class="name"><?=$binhluan->fullname?></p>
+                                                <p class="date"><?=$binhluan->created_at?></p>
 
-                                                <a href="#" class="reply"><i class="fa fa-mail-reply"></i></a>
+                                                <a href="javascript:void(0)" class="reply" onclick="showReply(<?=$binhluan->id?>)"><i class="fa fa-mail-reply"></i></a>
+                                                <div class="show-id-<?=$binhluan->id?>" style="
+    right: 30px;
+    position: absolute;
+    font-size: 100px;
+    background-color: blue;
+    width: 100px;
+    height: 100px;
+    z-index: 1;
+    box-shadow: 1px 1px 3px #000, -1px 1px 3px #000, 1px -1px 3px #000, -1px -1px 3px #000;
+    top: 30px;
+    display: none;
+/*    opacity: 0;*/
+">1</div>
                                             </div>
 
                                             <div class="comment--content">
-                                                <p>On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment</p>
+                                                <p><?=$binhluan->content_comment?></p>
                                             </div>
                                         </div>
                                     </div>
                                     <!-- Comment Item End -->
                                 </li>
+                                <?php endforeach; ?>
 
-                                <li>
+                                <li class="hidden">
                                     <!-- Comment Item Start -->
                                     <div class="comment--item clearfix">
                                         <div class="comment--img float--left">
@@ -233,7 +237,7 @@
                                     </div>
                                     <!-- Comment Item End -->
 
-                                    <ul class="comment--items nav">
+                                    <ul class="comment--items nav hidden">
                                         <li>
                                             <!-- Comment Item Start -->
                                             <div class="comment--item clearfix">
@@ -273,9 +277,10 @@
                             <!-- Post Items Title End -->
 
                             <div class="comment-respond">
-                                <form action="#" data-form="validate">
+                                <form action="#" method="POST" data-form="validate">
                                     <p>Đừng lo, Email của bạn sẽ được bảo mật. Hãy diền đầy đủ thông tin (*)</p>
-
+                                    @csrf
+                                    <input type="hidden" name="idpost" value="<?=$chitiet->id?>">
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <label>
@@ -297,7 +302,7 @@
                                         </div>
 
                                         <div class="col-md-12">
-                                            <button type="submit" class="btn btn-primary">Đăng bình luận</button>
+                                            <button type="button" class="btn btn-primary" onclick="upComment()">Đăng bình luận</button>
                                         </div>
                                     </div>
                                 </form>
@@ -370,4 +375,73 @@
         </div>
     </div>
     <!-- Main Content Section End -->
+
+    <script type="text/javascript">
+        function upComment() {
+            var valueName = $('input[name="name"]').val();
+            var valueEmail = $('input[name="email"]').val();
+            var valueComment = $('textarea[name="comment"]').val();
+            var valueToken = $('input[name="_token"]').val();
+            var dateUp = new Date();
+            var timeComment = [
+              dateUp.getFullYear(),
+              '-',
+              dateUp.getMonth() + 1,
+              '-',
+              dateUp.getDate(),
+              ' ',
+              dateUp.getHours(),
+              ':',
+              dateUp.getMinutes(),
+              ':',
+              dateUp.getSeconds()
+            ].join('');
+            if (valueName == '' || valueEmail == '' || valueComment == '') {
+                alert('Vui lòng nhập đầy đủ thông tin!');
+                return;
+            }
+            var checkMail = ValidateEmail(valueEmail);
+            if (checkMail == false) {
+                alert('Địa chỉ email không hợp lệ.');
+                return;
+            } 
+            $.ajax({
+                url: '{{ route("binhluanpost") }}',
+                type: 'POST',
+                data: {
+                    fullname: valueName,
+                    email: valueEmail,
+                    comment: valueComment,
+                    idpost: $('input[name="idpost"]').val(),
+                    _token: valueToken,
+                },
+                success:function(data) {
+                    // alert(data);
+                    $('.totalbinhluan').html(data);
+                    $('#binhluanbaiviet').append('<li><div class="comment--item clearfix"><div class="comment--img float--left"><img src="user/img/avatar.jpg" alt=""></div><div class="comment--info"><div class="comment--header clearfix"><p class="name">'+valueName+'</p><p class="date">'+timeComment+'</p><a href="#" class="reply"><i class="fa fa-mail-reply"></i></a></div><div class="comment--content"><p>'+valueComment+'</p></div></div></div></li>');
+                },
+                error:function(error) {
+
+                }
+            });
+        }
+
+        function ValidateEmail(mail) {
+        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
+            return (true);
+        }
+            // alert("You have entered an invalid email address!");
+            return (false);
+        }
+
+        function showReply(show) {
+            if (show != 0) {
+                $('show-id-'+show).css('display', 'block');
+                alert('true');
+
+            } else {
+                alert('false');
+            }
+        }
+    </script>
 @endsection

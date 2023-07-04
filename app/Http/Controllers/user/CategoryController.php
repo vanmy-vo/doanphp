@@ -10,4 +10,8 @@ class CategoryController extends Controller
     public function index(){
         return view('user.category');
     }
+
+    public function detailcategory($id) {
+        return $id;
+    }
 }

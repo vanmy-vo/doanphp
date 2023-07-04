@@ -1,7 +1,8 @@
 <?php
-
+// Frameword
 use Illuminate\Support\Facades\Route;
 //Admin
+use App\Http\Controllers\admin\BaivietController;
 
 //User
 use App\Http\Controllers\user\HomeController as UserHomeController;
@@ -11,9 +12,6 @@ use App\Http\Controllers\user\SearchController as UserSearchController;
 use App\Http\Controllers\user\DetailController as UserDetailController;
 use App\Http\Controllers\user\ContactController as UserContactController;
 
-use App\Http\Controllers\admin\BaivietController;
-use App\Http\Controllers\admin\LienheController;
-use App\Http\Controllers\admin\CaidatController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,46 +24,76 @@ use App\Http\Controllers\admin\CaidatController;
 */
 //Admin
 
-Route::get('/', function () {
-    // return view('welcome');
-    return redirect('home');
-})->middleware('web');
+// Route::get('/', function () {
+//     // return view('welcome');
+//     return redirect('home');
+// })->middleware('web');
 
 
+Route::get('home', function () {
+    return view('user.index');
+
+});
+
+Route::middleware(['web'])->group(function() {
+
+
+
+});
+
+
+// trang dang nhap cua quan tri vien
 Route::get('admin/login', function () {
     return view('admin.login');
 })->name('login.admin');
 
+
+// chuyen huong sang trang thong ke
 Route::get('admin', function () {
     return redirect('admin/dashboard');
-})->name('admin');
+})->name('admin')->middleware(CheckAdminLogin::class);
 
+
+// quan ly thong ke
 Route::get('admin/dashboard', function () {
     return view('admin.dashboard');
-})->name('dashboard.admin');
+})->name('dashboard.admin')->middleware(CheckAdminLogin::class);
 
+
+// quan ly danh muc
 Route::get('admin/category', function () {
     return view('admin.ManagerList');
-})->name('category.admin');
+})->name('category.admin')->middleware(CheckAdminLogin::class);
 
+
+// quan ly slide show
 Route::get('admin/slide', function () {
     return view('admin.ManagercSlideShow');
-})->name('slide.admin');
+})->name('slide.admin')->middleware(CheckAdminLogin::class);
+
+Route::get('admin/contact', function () {
+    return view('admin.ManagercContact');
+})->name('admin-contact');
 
 Route::get('admin/ads', function () {
     return view('admin.ManagerAdvertisement');
-})->name('ads.admin');
+})->name('ads.admin')->middleware(CheckAdminLogin::class);
 
-
+Route::get('admin/setting', function () {
+    return view('admin.ManagerSettingInfo');
+})->name('setting.admin');
 
 // Route::get('admin/post', function () {
 //     return view('admin.ManagerComment');
 // })->name('post.admin');
 
-Route::get('admin/baiviet', [BaivietController::class, 'index'])->name('post.admin');
-Route::post('admin/luubaiviet', [BaivietController::class, 'store'])->name('post.admin.store');
-Route::post('admin/capnhatbaiviet', [BaivietController::class, 'edit'])->name('post.admin.update');
-Route::post('admin/capnhat', [BaivietController::class, 'update'])->name('post.admin.edit');
+// quan ly bai viet
+Route::get('admin/baiviet', [BaivietController::class, 'index'])->name('post.admin')->middleware(CheckAdminLogin::class);
+Route::post('admin/luubaiviet', [BaivietController::class, 'store'])->name('post.admin.store')->middleware(CheckAdminLogin::class);
+Route::post('admin/capnhatbaiviet', [BaivietController::class, 'edit'])->name('post.admin.update')->middleware(CheckAdminLogin::class);
+Route::post('admin/capnhat', [BaivietController::class, 'update'])->name('post.admin.edit')->middleware(CheckAdminLogin::class);
+
+Route::post('admin/delete', [BaivietController::class, 'destroy'])->name('post.admin.delete')->middleware(CheckAdminLogin::class);
 
 Route::get('admin/lienhe', [LienheController::class, 'index'])->name('post.admim.lienhe');
 Route::post('admin/luulienhe', [LienheController::class, 'addContact'])->name('post.admin.savecontact');
@@ -86,12 +114,13 @@ Route::get('/search', [UserSearchController::class,'index'])->name('search');
 
 
 Route::get('admin/logout', function () {
+    session()->forget('user');
     return redirect()->route('login.admin');
 })->name('logout.admin');
 
-Route::post('auth/admin', function () {
+Route::post('auth/admin', function (Request $request) {
     return redirect()->route('admin');
-})->name('auth.admin');
+})->name('auth.admin')->middleware(CheckAdminLogin::class);
 
 Route::get('/detail', [UserDetailController::class,'index'])->name('detail');
 Route::get('/contact', [UserContactController::class,'index'])->name('contact');
@@ -100,3 +129,8 @@ Route::get('/contact', [UserContactController::class,'index'])->name('contact');
 Route::any('/ckfinder/connector', '\CKSource\CKFinderBridge\Controller\CKFinderController@requestAction')->name('ckfinder_connector');
 Route::any('/ckfinder/browser', '\CKSource\CKFinderBridge\Controller\CKFinderController@browserAction')->name('ckfinder_browser');
 
+Route::get('bai-viet/{slug}', [UserDetailController::class, 'detail'])->name('chitietbaiviet');
+Route::get('danh-muc/{id}', [UserCategoryController::class, 'detailcategory'])->name('chitietdanhmuc');
+Route::get('loai-danh-muc/{id}', [UserTypeCategoryController::class, 'detailtype'])->name('chitietloai');
+
+Route::post('binhluanbaiviet', [UserDetailController::class, 'binhluan'])->name('binhluanpost');

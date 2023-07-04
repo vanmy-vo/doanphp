@@ -304,13 +304,14 @@
                     <div class="profile clearfix">
                         <div class="profile_info">
                             <span>Xin chào,</span>
-                            <h2>LÊ TRIỆU LONG</h2>
+                            <h2><?= session('user')['fullname'] ?></h2>
                         </div>
                     </div>
                     <br />
                     <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
                         <div class="menu_section">
                             <ul class="nav side-menu">
+                                <?php if (session('user')['role_id'] == 1) { ?>
                                 <li>
                                     <a href="{{ route('dashboard.admin') }}">
                                         <i class="fa fa-pie-chart"></i>
@@ -346,6 +347,7 @@
                                         Quản lý cài đặt thông tin
                                     </a>
                                 </li>
+                                <?php } ?>
                                 <li>
                                     <a href="{{ route('post.admin') }}">
                                         <i class="fa fa-list-ul"></i>
