@@ -84,23 +84,31 @@ use Illuminate\Support\Request;
             <div class="search-box">
                 <!-- <input placeholder="Nhập tên tài khoản..." value="" onchange="SearchLocation(this)">
                 <i onclick="SearchLocation(this.previousElementSibling)" class="fa fa-search"></i> -->
-                <input id="search" placeholder="Nhập tên tài khoản..." name="c" value="">
+                <input id="search" placeholder="Nhập tên bài viết..." name="searchpost" value="">
             </div>
             <div class="col-md-2" style="margin-left: 1%;">
-                <select class="form-control input-edit" name="danhmuc">
+                <select class="form-control input-edit" name="danhmucsearch" id="timkeimdanhmuc" onchange="changeLoai()">
                     <option value="">Chọn danh mục</option>
                     <?php foreach ($category as $value_category_filter) : ?>
                     <option value="<?= $value_category_filter->id ?>"><?= $value_category_filter->category_name ?></option>
                     <?php endforeach; ?>
                 </select>
             </div>
+            <div class="col-md-2" style="margin-left: 1%;">
+                <select class="form-control input-edit" name="loaibaivietsearch">
+                    <option value="">Chọn loại bài viết</option>
+                    <?php foreach ($type as $value_type_filter) : ?>
+                    <option value="<?= $value_type_filter->id ?>"><?= $value_type_filter->type_name ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
             <div class="col-md-1" style="margin-left: 1%;display: flex;flex-direction: row-reverse;">
                 <label for="a" style="padding-top: 10px;">ẩn/hiện</label>
-                <input type="checkbox" name="a" value="0">
+                <input type="checkbox" name="statussearch" value="0">
             </div>
             <div class="col-md-1" style="margin-left: 1%;display: flex;flex-direction: row-reverse;">
                 <label for="n" style="padding-top: 10px;">slideshow</label>
-                <input type="checkbox" name="n" value="0">
+                <input type="checkbox" name="slidesreach" value="0">
             </div>
             <div style="margin-left: 1%;">
                 <i onclick="searchPost()" class="fa fa-search btn btn-success"></i>        
@@ -736,23 +744,74 @@ use Illuminate\Support\Request;
     }
    
     function searchPost() {
-        var value = $('#search').val();
-        let arr = document.querySelectorAll('tr');
-        var txt1 = arr[1].querySelectorAll('td')[1].querySelector('p').textContent;
-        var txt2 = arr[2].querySelectorAll('td')[1].querySelector('p').textContent;
-        var txt3 = arr[3].querySelectorAll('td')[1].querySelector('p').textContent;
-        const array = [txt1, txt2, txt3];
-        window.sessionStorage.setItem("items", JSON.stringify(array));
-        var storedArray = JSON.parse(sessionStorage.getItem("items"));//no brackets
-        var i;
-        if (storedArray.includes(value)) {
-            var position = storedArray.indexOf(value) + 1;
-            $('#abc').html(arr[position]);
-        } else {
-            alert('not found');
-        }
+        var tenbaiviet = $('#search').val();
+        var danhmuc = $('select[name="danhmucsearch"]').val();
+        var loaibaiviet = $('select[name="loaibaivietsearch"]').val();
+        var status = $('input[name="statussearch"]').val();
+        var slide = $('input[name="slidesreach"]').val();
+        // console.log(tenbaiviet);
+
+        // let arr = document.querySelectorAll('tr');
+        // var txt1 = arr[1].querySelectorAll('td')[1].querySelector('p').textContent;
+        // var txt2 = arr[2].querySelectorAll('td')[1].querySelector('p').textContent;
+        // var txt3 = arr[3].querySelectorAll('td')[1].querySelector('p').textContent;
+        // const array = [txt1, txt2, txt3];
+        // window.sessionStorage.setItem("items", JSON.stringify(array));
+        // var storedArray = JSON.parse(sessionStorage.getItem("items"));//no brackets
+        // var i;
+        // if (storedArray.includes(value)) {
+        //     var position = storedArray.indexOf(value) + 1;
+        //     $('#abc').html(arr[position]);
+        // } else {
+        //     alert('not found');
+        // }
+
+        $.ajax({
+            url: '{{ route("tim") }}',
+            type: 'POST',
+            data: {
+                tenbaiviet: tenbaiviet,
+                danhmuc: danhmuc,
+                loaibaiviet: loaibaiviet,
+                status: status,
+                slide: slide,
+                _token: $('input[name="_token"]').val(),
+            },
+            success:function(data) {
+                // console.log(data);
+                // alert(data);
+                // return;
+                if (data == 'rong') {
+                    alert('Vui lòng nhập thông tin tìm kiếm');
+                } else {
+                    $('#abc').html(data);
+                }
+            },
+            error:function(error) {
+
+            }
+        });
     }
 
+    function changeLoai() {
+        var vlauefilter = $('#timkeimdanhmuc').val();
+        $.ajax({
 
+            url: '{{ route("filterloai") }}',
+            type: 'POST',
+            data: {
+                vlauefilter: vlauefilter,
+                _token: $('input[name="_token"]').val(),
+            },
+            success:function(data) {
+                // alert(data)
+                $('select[name="loaibaivietsearch"]').html(data);
+            },
+            error:function(error) {
+
+            }
+        })
+
+    }
 </script>
 @stop

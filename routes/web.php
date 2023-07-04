@@ -142,3 +142,7 @@ Route::get('danh-muc/{id}', [UserCategoryController::class, 'detailcategory'])->
 Route::get('loai-danh-muc/{id}', [UserTypeCategoryController::class, 'detailtype'])->name('chitietloai');
 
 Route::post('binhluanbaiviet', [UserDetailController::class, 'binhluan'])->name('binhluanpost');
+
+Route::post('timkiembaivietadmin', [BaivietController::class, 'timkiem'])->name('tim');
+
+Route::post('locloaitudanhmuc', [BaivietController::class, 'filter'])->name('filterloai');
