@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Baiviet;
+use App\Models\Taikhoan;
 use App\Models\Slide;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
@@ -47,13 +48,24 @@ class BaivietController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'imageupload' => 'mimes:jpg,png,jpeg,gif,svg',
-        ]);
+        // $request->validate([
+        //     'imageupload' => 'mimes:jpg,png,jpeg,gif,svg',
+        // ]);
 
-        $nameimage = $request->file('imageupload')->getClientOriginalName();
+        // $nameimage = $request->file('imageupload')->getClientOriginalName();
 
-        $path = $request->file('imageupload')->move('public/uploads/posts');
+        // $path = $request->file('imageupload')->move(\public_path('uploads/posts'));
+         if ($request->hasFile('imageupload')) {
+            if ($request->file('imageupload')->isValid()) {
+                $request->validate([
+                    'imageupload' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
+                ]);
+                // $imageName = time() . '.' . $request->imageupload->extension();
+                $imageName = $request->file('imageupload')->getClientOriginalName();
+                $request->imageupload->move(public_path('uploads/posts'), $imageName);
+                // return $imageName;
+            }
+        }
 
         $baivetmoi = new Baiviet;
         $baivetmoi->title_post = $request->title;
@@ -68,7 +80,7 @@ class BaivietController extends Controller
         $baivetmoi->type_id = 1;
         if ($baivetmoi->save()) {
             $slide = new Slide();
-            $slide->img = $path . '/' . $nameimage;
+            $slide->img = $imageName;
             $slide->post_id = $baivetmoi->id;
             $slide->save(); 
             return redirect()->back()->with('message', 'taoj thanfh cong');
@@ -120,12 +132,31 @@ class BaivietController extends Controller
 
         $baiviet->title_post = $request->title;
         $baiviet->description = $request->descriptionshort;
-        $baiviet->content_post = $request->noidungbaiviet;
+        if ($request->noidungbaiviet == null) {
+            $baiviet->content_post = $baiviet->content_post;
+        } else {
+            $baiviet->content_post = $request->noidungbaiviet;
+        }
         // $baiviet->title_post = $request->danhmuc;
         $baiviet->account_id = $request->tacgia;
         $baiviet->type_id = $request->loaibaiviet;
 
-        if ($baiviet->save()) {
+        if ($request->hasFile('imageupload')) {
+            if ($request->file('imageupload')->isValid()) {
+                $request->validate([
+                    'imageupload' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
+                ]);
+                // $imageName = time() . '.' . $request->imageupload->extension();
+                $imageName = $request->file('imageupload')->getClientOriginalName();
+                $request->imageupload->move(public_path('uploads/posts'), $imageName);
+                // return $imageName;
+            }
+        }
+
+        $slide = Slide::where(['post_id' => $baiviet->id])->first();
+        $slide->img = $imageName;
+
+        if ($baiviet->save() && $slide->save()) {
             $message['code'] = '99';
             $message['noti'] = 'Cập nhật thành công';
         } else {
@@ -152,6 +183,104 @@ class BaivietController extends Controller
             return 'Xoá thành công';
         } else {
             return 'Xóa không thành công';
+        }
+    }
+
+    public function timkiem(Request $request) {
+        if ($request->tenbaiviet == null && $request->danhmuc == null && $request->loaibaiviet == null) {
+            $baiviet = Baiviet::orderBy('id', 'desc')->get();
+            foreach ($baiviet as $key => $value) {
+                echo '<tr data-key="'. $value->id .'">
+                        <td class="tc1">';
+                        $image = Slide::where(['post_id' => $value->id])->first();
+                        if ($image) { 
+                            if ($image->img) { 
+                                echo '<img src="'.SITE_PATH.'/uploads/posts/'.$image->img.'" alt="'. $value->title_post .'" width="200" title="'. $value->title_post .'">';
+                            } else { 
+                                echo '<img src="'.SITE_PATH.'/uploads/noimg/nobanner.jpg" alt="'. $value->title_post .'" width="200" title="'. $value->title_post .'">';
+                            }
+                        } else {
+                            echo '<img src="'.SITE_PATH.'/uploads/noimg/nobanner.jpg" alt="'. $value->title_post .'" width="200" title="'. $value->title_post .'">';
+                        }
+                        echo '</td>
+                        <td class="tc2">
+                            <p>'. $value->title_post .'</p>
+                        </td>
+                        <td class="tc3">';
+                            $taikhoan = Taikhoan::where(['id' => $value->account_id])->first();
+                            echo '<p>'. $taikhoan->fullname .'</p>
+                        </td>
+                        <td>';
+                            $time = strtotime($value->created_at);
+                            echo '<p>'. date('d-m-Y H:i:s', $time) .'</p>
+                        </td>
+                        <td class="tc" style="text-transform: capitalize;">                        
+                            <!-- <div class="btn btn-xs btn-success">
+                                <a href="#" style="color: #fff;">
+                                    <i class="fa fa-edit"></i> edit
+                                </a>
+                            </div> -->
+                            <button type="button" class="btn btn-xs btn-success" onclick="addPost(true, '. $value->id .')" style="text-transform: inherit;">
+                                <i class="fa fa-edit"></i> edit
+                            </button>
+                            <div class="btn btn-xs btn-danger" onclick="Delete("'.$value->title_post.'", "'. $value->id .'")" style=""><i class="fa fa-remove"></i> Xoá</div>
+                        </td>
+                    </tr>';
+            }
+        } else {
+            $baiviet = Baiviet::where('title_post', 'like',  "%$request->tenbaiviet%")->orWhere(['type_id' => $request->loaibaiviet])->orderBy('id', 'desc')->get();
+            if (count($baiviet) != 0) {
+                foreach ($baiviet as $key => $value) {
+                    echo '<tr data-key="'. $value->id .'">
+                            <td class="tc1">';
+                            $image = Slide::where(['post_id' => $value->id])->first();
+                            if ($image) { 
+                                if ($image->img) { 
+                                    echo '<img src="'.SITE_PATH.'/uploads/posts/'.$image->img.'" alt="'. $value->title_post .'" width="200" title="'. $value->title_post .'">';
+                                } else { 
+                                    echo '<img src="'.SITE_PATH.'/uploads/noimg/nobanner.jpg" alt="'. $value->title_post .'" width="200" title="'. $value->title_post .'">';
+                                }
+                            } else {
+                                echo '<img src="'.SITE_PATH.'/uploads/noimg/nobanner.jpg" alt="'. $value->title_post .'" width="200" title="'. $value->title_post .'">';
+                            }
+                            echo '</td>
+                            <td class="tc2">
+                                <p>'. $value->title_post .'</p>
+                            </td>
+                            <td class="tc3">';
+                                $taikhoan = Taikhoan::where(['id' => $value->account_id])->first();
+                                echo '<p>'. $taikhoan->fullname .'</p>
+                            </td>
+                            <td>';
+                                $time = strtotime($value->created_at);
+                                echo '<p>'. date('d-m-Y H:i:s', $time) .'</p>
+                            </td>
+                            <td class="tc" style="text-transform: capitalize;">                        
+                                <!-- <div class="btn btn-xs btn-success">
+                                    <a href="#" style="color: #fff;">
+                                        <i class="fa fa-edit"></i> edit
+                                    </a>
+                                </div> -->
+                                <button type="button" class="btn btn-xs btn-success" onclick="addPost(true, '. $value->id .')" style="text-transform: inherit;">
+                                    <i class="fa fa-edit"></i> edit
+                                </button>
+                                <div class="btn btn-xs btn-danger" onclick="Delete("'.$value->title_post.'", "'. $value->id .'")" style=""><i class="fa fa-remove"></i> Xoá</div>
+                            </td>
+                        </tr>';
+                }
+            } else {
+                echo '<tr>Không tìm thấy dữ liệu</tr>';
+            }
+        }
+        // return $request->all();
+    }
+
+    public function filter(Request $request) {
+        $danhmuc = $request->vlauefilter;
+        $type = DB::table('type')->where(['category_id' => $danhmuc])->get();
+        echo '<option value="">Chọn loại bài viết</option>';
+        foreach ($type as $key => $value) {
+            echo '<option value="'.$value->id.'">'.$value->type_name.'</option>';
         }
     }
 }
