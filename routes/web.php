@@ -1,6 +1,7 @@
 <?php
 // Frameword
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\CheckAdminLogin;
 //Admin
 use App\Http\Controllers\admin\BaivietController;
 
@@ -11,6 +12,8 @@ use App\Http\Controllers\user\TypeCategoryController as UserTypeCategoryControll
 use App\Http\Controllers\user\SearchController as UserSearchController;
 use App\Http\Controllers\user\DetailController as UserDetailController;
 use App\Http\Controllers\user\ContactController as UserContactController;
+
+use App\Http\Controllers\admin\CaidatController;
 
 /*
 |--------------------------------------------------------------------------
@@ -79,9 +82,6 @@ Route::get('admin/ads', function () {
     return view('admin.ManagerAdvertisement');
 })->name('ads.admin')->middleware(CheckAdminLogin::class);
 
-Route::get('admin/setting', function () {
-    return view('admin.ManagerSettingInfo');
-})->name('setting.admin');
 
 // Route::get('admin/post', function () {
 //     return view('admin.ManagerComment');
