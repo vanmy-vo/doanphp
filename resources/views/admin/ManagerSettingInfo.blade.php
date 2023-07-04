@@ -279,161 +279,231 @@
                 </thead>
                 <tbody>
                         <tr>
-                            <td class="col-md-2 tc1"><img src="{{asset('user/img/ads-img/black-pink.jpg')}}" alt="" width="50" height="50"></td>
-                            <td class="col-md-2 tc1">TP.Hồ Chí Minh</td>
-                            <td class="col-md-2 tc1">trang web Mô tả trang web Mô tả trang webMô tả trang webMô tả trang web Mô tả trang web...</td>
-                            <td class="col-md-2 tc1">demo@gmail.com</td>
-                            <td class="col-md-2 tc1">0944 123 123</td>
-                            <td class="col-md-2 tc1">http://localhost:8080/doanphplaravelmoi/doanphp/public/admin/setting</td>
-                            <td class="col-md-2 tc1"><a class="btn btn-xs btn-success" data-toggle="modal" data-target="#updateAds"><i class="fa fa-pencil-square-o"></i></a></td>
-                        </tr>
-                </tbody>
-            </table>
-        </div>
-    </div> --}}
-    <style>
-        #FilterContentCenter {
-            margin: auto;
-            background-color: #fff;
-            border-radius: 4px;
-            width: 95%;
-            min-width: 278px;
-            max-width: 450px;
-            position: relative;
-        }
+                            <td class="col-md-2 tc1"><img src="{{asset('user/img/ads-img/black-pink.jpg')}}" alt=""
+    width="50" height="50"></td>
+    <td class="col-md-2 tc1">TP.Hồ Chí Minh</td>
+    <td class="col-md-2 tc1">trang web Mô tả trang web Mô tả trang webMô tả trang webMô tả trang web Mô tả trang web...
+    </td>
+    <td class="col-md-2 tc1">demo@gmail.com</td>
+    <td class="col-md-2 tc1">0944 123 123</td>
+    <td class="col-md-2 tc1">http://localhost:8080/doanphplaravelmoi/doanphp/public/admin/setting</td>
+    <td class="col-md-2 tc1"><a class="btn btn-xs btn-success" data-toggle="modal" data-target="#updateAds"><i
+                class="fa fa-pencil-square-o"></i></a></td>
+    </tr>
+    </tbody>
+    </table>
+</div>
+</div> --}}
+<style>
+#FilterContentCenter {
+    margin: auto;
+    background-color: #fff;
+    border-radius: 4px;
+    width: 95%;
+    min-width: 278px;
+    max-width: 450px;
+    position: relative;
+}
 
-        .filtergrouptitle {
-            margin: 20px 0px 0px 0px;
-            padding: 0px;
-            font-size: 20px;
-        }
+.filtergrouptitle {
+    margin: 20px 0px 0px 0px;
+    padding: 0px;
+    font-size: 20px;
+}
 
-            .filtergrouptitle.floatleft {
-                margin: 0px 10px 0px 0px;
-                padding: 10px;
-                line-height: 1;
-                border: 1px dotted #ccc;
-                border-radius: 5px;
-                float: left;
-            }
+.filtergrouptitle.floatleft {
+    margin: 0px 10px 0px 0px;
+    padding: 10px;
+    line-height: 1;
+    border: 1px dotted #ccc;
+    border-radius: 5px;
+    float: left;
+}
 
-                .filtergrouptitle.floatleft.focus {
-                    background: #ccc;
-                }
+.filtergrouptitle.floatleft.focus {
+    background: #ccc;
+}
 
-        .scroll {
-            border: 1px solid #ccc;
-            height: 195px;
-            overflow-y: scroll;
-        }
+.scroll {
+    border: 1px solid #ccc;
+    height: 195px;
+    overflow-y: scroll;
+}
 
-        .inputtext {
-            margin: 0px 0px 0px 0px;
-            padding: 0px 0px 0px 0px;
-            text-align: center;
-        }
+.inputtext {
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    text-align: center;
+}
 
-        .filterpane .row {
-            margin: 0px 0px 5px 0px;
-            padding: 3px 0px 3px 0px;
-            background-color: #eae9e9;
-            border-radius: 4px;
-        }
+.filterpane .row {
+    margin: 0px 0px 5px 0px;
+    padding: 3px 0px 3px 0px;
+    background-color: #eae9e9;
+    border-radius: 4px;
+}
 
-            .filterpane .row.selected {
-                background-color: var(--secondary);
-                color: #fff;
-            }
+.filterpane .row.selected {
+    background-color: var(--secondary);
+    color: #fff;
+}
 
-        .lefttitle {
-            margin: 10px 0px 0px 0px;
-            padding: 0px;
-            line-height: 1;
-        }
-        .input-edit{
-            padding-left: 17px;
-        }
-    </style>
-    <div id="updateAds" tabindex="-1" role="dialog" aria-labelledby="updateAds" aria-hidden="true">
-        <div class="modal-dialog modal-md" role="document">
-            <div class="modal-content">
-                <div class="modal-header bg-dark">
-                    <h3 class="filtergrouptitle modal-title text-white text-uppercase" style="text-align: center;">Cài đặt website</h3>
-                </div>
+.lefttitle {
+    margin: 10px 0px 0px 0px;
+    padding: 0px;
+    line-height: 1;
+}
 
-                <div class="modal-body">
-                    <form action="" id="updateAdsForm" method="">
-                        <div id="FilterContentCenter">
-                            <div class="filterpane" style="margin-bottom:0px;padding-bottom:0px">
-                                <div class="row">
-                                    <div class="col-md-3 col-sm-3 col-xs-12">
-                                        <img src="{{asset('user/img/ads-img/black-pink.jpg')}}" alt="" width="100" height="100">                                    
-                                    </div>
-
-                                     <div class="col-md-4 col-sm-3 col-xs-12">
-                                        <p class="lefttitle">Thay đổi logo mới</p>
-                                    </div>
-
-                                    <div class="col-md-8 col-sm-9 col-xs-12">
-                                        <input type="file" class="form-control input-edit" />
-                                    </div>
-                                    <div class="clearfix"></div>
+.input-edit {
+    padding-left: 17px;
+}
+</style>
+<div id="updateAds" tabindex="-1" role="dialog" aria-labelledby="updateAds" aria-hidden="true">
+    <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-dark">
+                <h3 class="filtergrouptitle modal-title text-white text-uppercase" style="text-align: center;">Cài đặt
+                    website</h3>
+            </div>
+            <div class="modal-body">
+                <form id="updateAdsForm" action="{{ route('post.admim.updatesetting') }}" method="post"
+                    enctype="multipart/form-data">
+                    @csrf
+                    <div id="FilterContentCenter">
+                        <div class="filterpane" style="margin-bottom:0px;padding-bottom:0px">
+                            <div class="row">
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <!-- <img src="{{asset('user/img/ads-img/black-pink.jpg')}}" alt="" width="100" height="100">         -->
+                                    <?php if ($databases[0]->linkimage == '' || $databases[0]->linkimage == null) { ?>
+                                    <img id="preview-image-before-upload" src="{{ asset('user/img/ads-img/black-pink.jpg') }}"
+                                        alt="preview image" width="100" height="100" value="">
+                                    <?php } else { ?>
+                                    <img id="preview-image-before-upload" src="<?= $databases[0]->linkimage ?>"
+                                     alt="preview image" width="100" height="100" value="">
+                                    <?php } ?>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-3 col-sm-3 col-xs-12">
-                                        <p class="lefttitle">Địa chỉ</p>
-                                    </div>
-                                    <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <input type="text" class="form-control input-edit" value="TH.Hồ Chí Minh"/>
-                                    </div>
-                                    <div class="clearfix"></div>
+                                <div class="col-md-4 col-sm-3 col-xs-12">
+                                    <p class="lefttitle">Thay đổi logo mới</p>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-3 col-sm-3 col-xs-12">
-                                        <p class="lefttitle">Mô tả</p>
-                                    </div>
-                                    <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <input type="text" class="form-control input-edit" value="Mô tả ngắn..." />
-                                    </div>
-                                    <div class="clearfix"></div>
+                                <div class="col-md-8 col-sm-9 col-xs-12">
+                                    <input type="file" id="image" name="image" class="form-control input-edit">
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-3 col-sm-3 col-xs-12">
-                                        <p class="lefttitle">Email</p>
-                                    </div>
-                                    <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <input type="text" class="form-control input-edit" value="Demo@gmail.com"/>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-3 col-sm-3 col-xs-12">
-                                        <p class="lefttitle">Số điện thoại</p>
-                                    </div>
-                                    <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <input type="text" class="form-control input-edit" value="0944 123 123"/>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-3 col-sm-3 col-xs-12">
-                                        <p class="lefttitle">Facebook</p>
-                                    </div>
-                                    <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <input type="text" class="form-control input-edit" value="http://localhost:8080/doanphplaravelmoi/doanphp/public/admin/setting?"/>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
+                                <div class="clearfix"></div>
                             </div>
-                            <div class="clearfix"></div>
-                            <div class="filerfooter" style="margin-top:20px">
-                                <button class="btn btn-success">Cập nhật</button>
+                            <div class="row">
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <p class="lefttitle">Địa chỉ</p>
+                                </div>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <input id="address_" type="text" class="form-control input-edit"
+                                        value="<?= $databases[0]->address_ ?>" />
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <p class="lefttitle">Mô tả</p>
+                                </div>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <input id="describe" type="text" class="form-control input-edit"
+                                        value="<?= $databases[0]->describe ?>" />
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <p class="lefttitle">Email</p>
+                                </div>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <input id="email" type="email" class="form-control input-edit"
+                                        value="<?= $databases[0]->email ?>" />
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <p class="lefttitle">Số điện thoại</p>
+                                </div>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <input id="phone" type="text" class="form-control input-edit"
+                                        value="<?= $databases[0]->phone ?>" />
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3 col-sm-3 col-xs-12">
+                                    <p class="lefttitle">Facebook</p>
+                                </div>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <input id="linkfb" type="text" class="form-control input-edit"
+                                        value="<?= $databases[0]->linkfb ?>" />
+                                </div>
+                                <div class="clearfix"></div>
                             </div>
                         </div>
-                    </form>
-                </div>
+                        <div class="clearfix"></div>
+                        <div class="filerfooter" style="margin-top:10px">
+                            <span id="message" style="display:none; color:#029e04; margin-bottom:10px"> Cập nhật thành
+                                công </span>
+                            <button class="btn btn-success" type="commit">Cập nhật</button>
+                        </div>
+                    </div>
+                </form>
+
+                <script>
+                $(document).ready(function() {
+                    $('#image').change(function() {
+                        let reader = new FileReader();
+                        reader.onload = (e) => {
+                            $('#preview-image-before-upload').attr('src', e.target
+                                .result);
+                        }
+                        reader.readAsDataURL(this.files[0]);
+                    });
+                    $('#updateAdsForm').submit(function(e) {
+                        var formData = $(this).serialize();
+                        e.preventDefault();
+                        var address_ = $('#address_').val();
+                        var describe = $('#describe').val();
+                        var email = $('#email').val();
+                        var phone = $('#phone').val();
+                        var linkfb = $('#linkfb').val();
+                        var image = 'C:\\Users\\ADMIN\\Pictures\\Screenshots\\abc.png';
+                        console.log(image);
+                        if (image == ""){
+                            image = '<?= $databases[0]->linkimage ?>';
+                        }
+                        if (address_ == "" || describe == "" || email == "" || phone == "" || linkfb == ""){
+                            alert("Không được bỏ trống thông tin");
+                            return;
+                        }
+                        $.ajax({
+                            url: '{{ route("post.admim.updatesetting") }}',
+                            type: 'POST',
+                            data: {
+                                address_: address_,
+                                describe: describe,
+                                email: email,
+                                phone: phone,
+                                linkfb: linkfb,
+                                image: image,
+                            },
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            success: function(response) {
+                                $('#message').css('display', 'flex')
+                            },
+                            error: function(response) {
+                                alert('Cập nhật thất bại');
+                            }
+                        });
+                    });
+                });
+                </script>
             </div>
         </div>
     </div>
+</div>
 </div>
 @stop

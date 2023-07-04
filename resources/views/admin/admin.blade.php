@@ -8,6 +8,7 @@
     <link id="favicon" rel="icon" type="image/x-icon" href="../Lib/cccd.png" />
     <link rel="apple-touch-icon" href="@URL/favicon-180x180.png" />
     <meta name="msapplication-TileImage" content="@URL/favicon-270x270.png" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="<?=SITE_PATH?>/Lib/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?=SITE_PATH?>/Lib/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="<?=SITE_PATH?>/Lib/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
@@ -329,7 +330,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('admin-contact') }}">
+                                    <a href="{{ route('post.admim.lienhe') }}">
                                         <i class="fa fa-phone"></i>Quản lý liên hệ
                                     </a>
                                 </li>
@@ -340,7 +341,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('setting.admin') }}">
+                                    <a href="{{ route('post.admim.caidat') }}">
                                         <i class="fa fa-user"></i>
                                         Quản lý cài đặt thông tin
                                     </a>

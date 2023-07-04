@@ -12,6 +12,8 @@ use App\Http\Controllers\user\DetailController as UserDetailController;
 use App\Http\Controllers\user\ContactController as UserContactController;
 
 use App\Http\Controllers\admin\BaivietController;
+use App\Http\Controllers\admin\LienheController;
+use App\Http\Controllers\admin\CaidatController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,18 +30,6 @@ Route::get('/', function () {
     // return view('welcome');
     return redirect('home');
 })->middleware('web');
-
-
-Route::get('home', function () {
-    return view('user.index');
-
-});
-
-Route::middleware(['web'])->group(function() {
-
-
-
-});
 
 
 Route::get('admin/login', function () {
@@ -62,17 +52,11 @@ Route::get('admin/slide', function () {
     return view('admin.ManagercSlideShow');
 })->name('slide.admin');
 
-Route::get('admin/contact', function () {
-    return view('admin.ManagercContact');
-})->name('admin-contact');
-
 Route::get('admin/ads', function () {
     return view('admin.ManagerAdvertisement');
 })->name('ads.admin');
 
-Route::get('admin/setting', function () {
-    return view('admin.ManagerSettingInfo');
-})->name('setting.admin');
+
 
 // Route::get('admin/post', function () {
 //     return view('admin.ManagerComment');
@@ -83,12 +67,18 @@ Route::post('admin/luubaiviet', [BaivietController::class, 'store'])->name('post
 Route::post('admin/capnhatbaiviet', [BaivietController::class, 'edit'])->name('post.admin.update');
 Route::post('admin/capnhat', [BaivietController::class, 'update'])->name('post.admin.edit');
 
+Route::get('admin/lienhe', [LienheController::class, 'index'])->name('post.admim.lienhe');
+Route::post('admin/luulienhe', [LienheController::class, 'addContact'])->name('post.admin.savecontact');
+
+Route::get('admin/caidat', [CaidatController::class, 'index'])->name('post.admim.caidat');
+Route::POST('admin/capnhatcaidat', [CaidatController::class, 'update'])->name('post.admim.updatesetting');
+
 Route::get('admin/user', function () {
     return view('admin.ManagerUser');
 })->name('user.admin');
 
 //User
-Route::get('/', [UserHomeController::class,'index'])->name('/');
+Route::get('/home', [UserHomeController::class,'index'])->name('home');
 Route::get('/category', [UserCategoryController::class,'index'])->name('category');
 Route::get('/type-category', [UserTypeCategoryController::class,'index'])->name('type-category');
 Route::get('/search', [UserSearchController::class,'index'])->name('search');
