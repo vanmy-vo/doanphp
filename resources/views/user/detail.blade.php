@@ -278,7 +278,7 @@
 
                             <div class="comment-respond">
                                 <form action="#" method="POST" data-form="validate">
-                                    <p>Đừng lo, Email của bạn sẽ được bảo mật. Hãy diền đầy đủ thông tin (*)</p>
+                                    <p>Đừng lo, Email của bạn sẽ được bảo mật. Hãy điền đầy đủ thông tin (*)</p>
                                     @csrf
                                     <input type="hidden" name="idpost" value="<?=$chitiet->id?>">
                                     <div class="row">

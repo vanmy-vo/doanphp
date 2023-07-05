@@ -25,6 +25,10 @@ $ads = DB::table('ads')->get();
         color: #000;
     }
 </style>
+@php
+                  $ca= App\Models\category::whereNull('deleted_at')->count();
+                
+                  @endphp
 <div class="col-lg-3" style="height: 100px;">
     <div style="background: #337ab7;width: 100%;height: 100%;color: #fff;">
         <a href="{{ route('category.admin') }}" style="display: block;width: 100%;height: 100%;">

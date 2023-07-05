@@ -37,13 +37,9 @@ use App\Http\Controllers\user\ContactController as UserContactController;
 
 Route::get('home', function () {
     return view('user.index');
-
 });
 
 Route::middleware(['web'])->group(function() {
-
-
-
 });
 
 
@@ -71,6 +67,7 @@ Route::get('admin/category', function () {
 })->name('category.admin')->middleware(CheckAdminLogin::class);
 Route::get('/search',[CategoryController::class,'search'])->name('search');
 Route::post('/addcategory',[CategoryController::class, 'addCategory'])->name('addCategory');
+Route::get('admin/loadcategory',[CategoryController::class, 'loadCategory'])->name('loadCategory');
 
 
 // quan ly slide show
@@ -78,16 +75,19 @@ Route::get('admin/slide', function () {
     return view('admin.ManagercSlideShow');
 })->name('slide.admin')->middleware(CheckAdminLogin::class);
 
+//quan ly lien he
 Route::get('admin/contact', function () {
     return view('admin.ManagercContact');
 })->name('admin-contact');
+Route::post('/addcontact',[ContactController::class, 'addContact'])->name('addContact');
 
+//quan ly quang cao
 Route::get('admin/ads', function () {
     return view('admin.ManagerAdvertisement');
 })->name('ads.admin')->middleware(CheckAdminLogin::class);
 Route::post('/addads',[AdsController::class, 'addAds'])->name('addAds');
 Route::get('/searchads',[AdsController::class,'searchads'])->name('searchads');
-Route::get('admin/ads',[AdsController::class,'loadAds'])->name('loadAds');
+Route::get('admin/loadads',[AdsController::class,'loadAds'])->name('loadAds');
 
 // Route::get('admin/post', function () {
 //     return view('admin.ManagerComment');
@@ -112,7 +112,6 @@ Route::get('/category', [UserCategoryController::class,'index'])->name('category
 Route::get('/type-category', [UserTypeCategoryController::class,'index'])->name('type-category');
 Route::get('/search', [UserSearchController::class,'index'])->name('search');
 Route::post('/addcontact',[ContactController::class, 'addContact'])->name('addContact');
-
 
 Route::get('admin/logout', function () {
     session()->forget('user');
