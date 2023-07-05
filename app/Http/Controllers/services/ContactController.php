@@ -8,23 +8,21 @@ use App\Http\Resources\ContactResource;
 use Illuminate\Support\Facades\DB;
 use App\Http\Payload;
 use App\Models\Lienhe;
-
-
+use Carbon\Carbon;
 class ContactController extends Controller
 {
     public function getContact(){
         $contacts = Lienhe::all();
+
         if($contacts->isEmpty())
             return Payload::toJson(null, "Data Not Found", 404);   
         return Payload::toJson(ContactResource::collection($contacts), "Request Successfully", 200);
     }
     
     public function getContactById($id){
-        $contact = Lienhe::where('id',$id)->first();
-        if(!$contact)
-        {
-            return Payload::toJson(null,'Data Not Found',404);
-        }
+        $contact = Lienhe::where('id', $id)->first();
+        if(!$contact){
+            return Payload::toJson(null,'Data Not Found',404);}
         return Payload::toJson(new ContactResource($contact),'Request Successfully',200);
     }
     
@@ -37,6 +35,7 @@ class ContactController extends Controller
             'content_contact' => $request->content_contact,
         ]);
         $contact->save();
+
         $contact = Lienhe::where('id',$contact->id)->first();
         return Payload::toJson(new ContactResource($contact),"Create Successfully",201);
     }
@@ -48,10 +47,10 @@ class ContactController extends Controller
                 'email' =>  $request->email,
                 'title_contact' => $request->title_contact,
                 'content_contact' => $request->content_contact,
+                'updated_at' => Carbon::now('Asia/Ho_Chi_Minh'),
             ],);  
         if($result == 1){
-            $contact = Lienhe::where('id',$request->id)->first();
-            return Payload::toJson(new ContactResource($contact), "Update Successfully", 202);
+            return Payload::toJson(true,"Update Successfully",202);
         }
         return Payload::toJson(false,"Cannot Update",500);
     }

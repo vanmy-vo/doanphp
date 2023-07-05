@@ -4,279 +4,281 @@
 
 @section('webcontent')
     {{-- Add Form --}}
-    <style>
-        #FilterContentCenter {
-            margin: auto;
-            background-color: #fff;
-            border-radius: 4px;
-            width: 95%;
-            min-width: 278px;
-            max-width: 450px;
-            position: relative;
-        }
-
-        .filtergrouptitle {
-            margin: 20px 0px 0px 0px;
-            padding: 0px;
-            font-size: 20px;
-        }
-
-            .filtergrouptitle.floatleft {
-                margin: 0px 10px 0px 0px;
-                padding: 10px;
-                line-height: 1;
-                border: 1px dotted #ccc;
-                border-radius: 5px;
-                float: left;
+        <style>
+            #FilterContentCenter {
+                margin: auto;
+                background-color: #fff;
+                border-radius: 4px;
+                width: 95%;
+                min-width: 278px;
+                max-width: 450px;
+                position: relative;
             }
 
-                .filtergrouptitle.floatleft.focus {
-                    background: #ccc;
+            .filtergrouptitle {
+                margin: 20px 0px 0px 0px;
+                padding: 0px;
+                font-size: 20px;
+            }
+
+                .filtergrouptitle.floatleft {
+                    margin: 0px 10px 0px 0px;
+                    padding: 10px;
+                    line-height: 1;
+                    border: 1px dotted #ccc;
+                    border-radius: 5px;
+                    float: left;
                 }
 
-        .scroll {
-            border: 1px solid #ccc;
-            height: 195px;
-            overflow-y: scroll;
-        }
+                    .filtergrouptitle.floatleft.focus {
+                        background: #ccc;
+                    }
 
-        .inputtext {
-            margin: 0px 0px 0px 0px;
-            padding: 0px 0px 0px 0px;
-            text-align: center;
-        }
-
-        .filterpane .row {
-            margin: 0px 0px 5px 0px;
-            padding: 3px 0px 3px 0px;
-            background-color: #eae9e9;
-            border-radius: 4px;
-        }
-
-            .filterpane .row.selected {
-                background-color: var(--secondary);
-                color: #fff;
+            .scroll {
+                border: 1px solid #ccc;
+                height: 195px;
+                overflow-y: scroll;
             }
 
-        .lefttitle {
-            margin: 10px 0px 0px 0px;
-            padding: 0px;
-            line-height: 1;
-        }
-        .input-edit{
-            padding-left: 17px;
-        }
-    </style>
-    <div class="modal fade" id="addContact" tabindex="-1" role="dialog" aria-labelledby="addContact" aria-hidden="true">
-        <div class="modal-dialog modal-md" role="document">
-            <div class="modal-content">
-                <div class="modal-header bg-dark">
-                    <h3 class="filtergrouptitle modal-title text-white text-uppercase" id="exampleModalPopoversLabel"  style="text-align: center;">THÊM THÔNG TIN LIÊN HỆ</h3>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-
-                <div class="modal-body">
-                    <form>
-                        @csrf
-                        <div id="FilterContentCenter">
-                            <div class="filterpane" style="margin-bottom:0px;padding-bottom:0px">
-                                <div class="row">
-                                    <div class="col-md-3 col-sm-3 col-xs-12">
-                                        <p class="lefttitle">Tên</p>
-                                    </div>
-                                    <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <input type="text" class="form-control input-edit" id="fullname" name="fullname" />
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-3 col-sm-3 col-xs-12">
-                                        <p class="lefttitle">Email</p>
-                                    </div>
-                                    <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <input type="text" class="form-control input-edit" id="email" name="email"/>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-3 col-sm-3 col-xs-12">
-                                        <p class="lefttitle">Tiêu đề</p>
-                                    </div>
-                                    <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <input type="text" class="form-control input-edit" id="title_contact" name="title_contact" />
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-3 col-sm-3 col-xs-12">
-                                        <p class="lefttitle">Nội dung</p>
-                                    </div>
-                                    <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <textarea type="text" class="form-control input-edit" id="content_contact" name="content_contact" ></textarea>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </div>
-                            <div class="clearfix"></div>
-                            <div class="filerfooter" style="margin-top:20px">
-                                <button class="btn btn-success btn-add">Thêm</button>
-                                <button class="btn btn-dark" class="close" data-dismiss="modal">Hủy</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    {{-- End Add Form --}}
-
-    {{-- Edit Form --}}
-    <style>
-        #FilterContentCenter {
-            margin: auto;
-            background-color: #fff;
-            border-radius: 4px;
-            width: 95%;
-            min-width: 278px;
-            max-width: 450px;
-            position: relative;
-        }
-
-        .filtergrouptitle {
-            margin: 20px 0px 0px 0px;
-            padding: 0px;
-            font-size: 20px;
-        }
-
-            .filtergrouptitle.floatleft {
-                margin: 0px 10px 0px 0px;
-                padding: 10px;
-                line-height: 1;
-                border: 1px dotted #ccc;
-                border-radius: 5px;
-                float: left;
+            .inputtext {
+                margin: 0px 0px 0px 0px;
+                padding: 0px 0px 0px 0px;
+                text-align: center;
             }
 
-                .filtergrouptitle.floatleft.focus {
-                    background: #ccc;
+            .filterpane .row {
+                margin: 0px 0px 5px 0px;
+                padding: 3px 0px 3px 0px;
+                background-color: #eae9e9;
+                border-radius: 4px;
+            }
+
+                .filterpane .row.selected {
+                    background-color: var(--secondary);
+                    color: #fff;
                 }
 
-        .scroll {
-            border: 1px solid #ccc;
-            height: 195px;
-            overflow-y: scroll;
-        }
-
-        .inputtext {
-            margin: 0px 0px 0px 0px;
-            padding: 0px 0px 0px 0px;
-            text-align: center;
-        }
-
-        .filterpane .row {
-            margin: 0px 0px 5px 0px;
-            padding: 3px 0px 3px 0px;
-            background-color: #eae9e9;
-            border-radius: 4px;
-        }
-
-            .filterpane .row.selected {
-                background-color: var(--secondary);
-                color: #fff;
+            .lefttitle {
+                margin: 10px 0px 0px 0px;
+                padding: 0px;
+                line-height: 1;
             }
+            .input-edit{
+                padding-left: 17px;
+            }
+        </style>
+        <div class="modal fade" id="addContact" tabindex="-1" role="dialog" aria-labelledby="addContact" aria-hidden="true">
+            <div class="modal-dialog modal-md" role="document">
+                <div class="modal-content">
+                    <div class="modal-header bg-dark">
+                        <h3 class="filtergrouptitle modal-title text-white text-uppercase" id="exampleModalPopoversLabel"  style="text-align: center;">THÊM THÔNG TIN LIÊN HỆ</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
 
-        .lefttitle {
-            margin: 10px 0px 0px 0px;
-            padding: 0px;
-            line-height: 1;
-        }
-        .input-edit{
-            padding-left: 17px;
-        }
-    </style>
-    <div class="modal fade" id="updateContact" tabindex="-1" role="dialog" aria-labelledby="updateContact" aria-hidden="true">
-        <div class="modal-dialog modal-md" role="document">
-            <div class="modal-content">
-                <div class="modal-header bg-dark">
-                    <h3 class="filtergrouptitle modal-title text-white text-uppercase" id="exampleModalPopoversLabel"  style="text-align: center;">SỬA THÔNG TIN LIÊN HỆ</h3>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-
-                <div class="modal-body">
-                    <div id="FilterContentCenter">
-                        <form action="{{route('update-contact')}}" method="POST">
-                            <div class="filterpane" style="margin-bottom:0px;padding-bottom:0px">
-                                @csrf
-                                <input type="hidden" name="id" id="id_edit">
-                                <div class="row">
-                                    <div class="col-md-3 col-sm-3 col-xs-12">
-                                        <p class="lefttitle">Tên</p>
+                    <div class="modal-body">
+                        <form>
+                            @csrf
+                            <div id="FilterContentCenter">
+                                <div class="filterpane" style="margin-bottom:0px;padding-bottom:0px">
+                                    <div class="row">
+                                        <div class="col-md-3 col-sm-3 col-xs-12">
+                                            <p class="lefttitle">Tên</p>
+                                        </div>
+                                        <div class="col-md-9 col-sm-9 col-xs-12">
+                                            <input type="text" class="form-control input-edit" id="fullname" name="fullname" required/>
+                                        </div>
+                                        <div class="clearfix"></div>
                                     </div>
-                                    <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <input type="text" class="form-control input-edit" id="fullname_edit" name="fullname"/>
+                                    <div class="row">
+                                        <div class="col-md-3 col-sm-3 col-xs-12">
+                                            <p class="lefttitle">Email</p>
+                                        </div>
+                                        <div class="col-md-9 col-sm-9 col-xs-12">
+                                            <input type="email" class="form-control input-edit" id="email" name="email" required/>
+                                        </div>
+                                        <div class="clearfix"></div>
                                     </div>
-                                    <div class="clearfix"></div>
+                                    <div class="row">
+                                        <div class="col-md-3 col-sm-3 col-xs-12">
+                                            <p class="lefttitle">Tiêu đề</p>
+                                        </div>
+                                        <div class="col-md-9 col-sm-9 col-xs-12">
+                                            <input type="text" class="form-control input-edit" id="title_contact" name="title_contact" required/>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3 col-sm-3 col-xs-12">
+                                            <p class="lefttitle">Nội dung</p>
+                                        </div>
+                                        <div class="col-md-9 col-sm-9 col-xs-12">
+                                            <textarea type="text" class="form-control input-edit" id="content_contact" name="content_contact" required></textarea>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-3 col-sm-3 col-xs-12">
-                                        <p class="lefttitle">Email</p>
-                                    </div>
-                                    <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <input type="text" class="form-control input-edit" id="email_edit" name="email"/>
-                                    </div>
-                                    <div class="clearfix"></div>
+                                <div class="clearfix"></div>
+                                <div class="filerfooter" style="margin-top:20px">
+                                    <button class="btn btn-success btn-add">Thêm</button>
+                                    <button class="btn btn-dark" class="close" data-dismiss="modal">Hủy</button>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-3 col-sm-3 col-xs-12">
-                                        <p class="lefttitle">Tiêu đề</p>
-                                    </div>
-                                    <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <input type="text" class="form-control input-edit" id="title_contact_edit" name="title_contact" />
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-3 col-sm-3 col-xs-12">
-                                        <p class="lefttitle">Nội dung</p>
-                                    </div>
-                                    <div class="col-md-9 col-sm-9 col-xs-12">
-                                        <textarea type="text" class="form-control input-edit" id="content_contact_edit" name="content_contact" ></textarea>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </div>
-                            <div class="clearfix"></div>
-                            <div class="filerfooter" style="margin-top:20px">
-                                <button class="btn btn-success btn-edit">Sửa</button>
-                                <button class="btn btn-dark" class="close" data-dismiss="modal">Hủy</button>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    {{-- End Edit Form --}}
+    {{-- End Add Form --}}
 
-    <!-- KHUNG TIỂU ĐỀ -->
-    <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="x_panel" style="padding:15px!important">
-                <div class="x_title" style="border-bottom:none;padding-bottom:0px;margin-bottom:0px">
-                    <h2 style="font-family:Verdana;line-height:normal;color:#000">DANH SÁCH LIÊN HỆ</h2>
-                    <div class="nav navbar-right green">
-                        <a href="" class="btn btn-success btn-sm" data-toggle="modal" data-target="#addContact"><i class="fa fa-plus-square" aria-hidden="true"></i> Thêm</a>
+    {{-- Edit Form --}}
+        <style>
+            #FilterContentCenter {
+                margin: auto;
+                background-color: #fff;
+                border-radius: 4px;
+                width: 95%;
+                min-width: 278px;
+                max-width: 450px;
+                position: relative;
+            }
+
+            .filtergrouptitle {
+                margin: 20px 0px 0px 0px;
+                padding: 0px;
+                font-size: 20px;
+            }
+
+                .filtergrouptitle.floatleft {
+                    margin: 0px 10px 0px 0px;
+                    padding: 10px;
+                    line-height: 1;
+                    border: 1px dotted #ccc;
+                    border-radius: 5px;
+                    float: left;
+                }
+
+                    .filtergrouptitle.floatleft.focus {
+                        background: #ccc;
+                    }
+
+            .scroll {
+                border: 1px solid #ccc;
+                height: 195px;
+                overflow-y: scroll;
+            }
+
+            .inputtext {
+                margin: 0px 0px 0px 0px;
+                padding: 0px 0px 0px 0px;
+                text-align: center;
+            }
+
+            .filterpane .row {
+                margin: 0px 0px 5px 0px;
+                padding: 3px 0px 3px 0px;
+                background-color: #eae9e9;
+                border-radius: 4px;
+            }
+
+                .filterpane .row.selected {
+                    background-color: var(--secondary);
+                    color: #fff;
+                }
+
+            .lefttitle {
+                margin: 10px 0px 0px 0px;
+                padding: 0px;
+                line-height: 1;
+            }
+            .input-edit{
+                padding-left: 17px;
+            }
+        </style>
+        <div class="modal fade" id="updateContact" tabindex="-1" role="dialog" aria-labelledby="updateContact" aria-hidden="true">
+            <div class="modal-dialog modal-md" role="document">
+                <div class="modal-content">
+                    <div class="modal-header bg-dark">
+                        <h3 class="filtergrouptitle modal-title text-white text-uppercase" id="exampleModalPopoversLabel"  style="text-align: center;">SỬA THÔNG TIN LIÊN HỆ</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
                     </div>
-                    <div class="clearfix"></div>
+
+                    <div class="modal-body">
+                        <div id="FilterContentCenter">
+                            {{-- <form action="{{route('update.contact')}}" method="POST"> --}}
+                            <form>
+                                <div class="filterpane" style="margin-bottom:0px;padding-bottom:0px">
+                                    @csrf
+                                    <input type="hidden" name="id" id="id_edit">
+                                    <div class="row">
+                                        <div class="col-md-3 col-sm-3 col-xs-12">
+                                            <p class="lefttitle">Tên</p>
+                                        </div>
+                                        <div class="col-md-9 col-sm-9 col-xs-12">
+                                            <input type="text" class="form-control input-edit" id="fullname_edit" name="fullname"/>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3 col-sm-3 col-xs-12">
+                                            <p class="lefttitle">Email</p>
+                                        </div>
+                                        <div class="col-md-9 col-sm-9 col-xs-12">
+                                            <input type="text" class="form-control input-edit" id="email_edit" name="email"/>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3 col-sm-3 col-xs-12">
+                                            <p class="lefttitle">Tiêu đề</p>
+                                        </div>
+                                        <div class="col-md-9 col-sm-9 col-xs-12">
+                                            <input type="text" class="form-control input-edit" id="title_contact_edit" name="title_contact" />
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3 col-sm-3 col-xs-12">
+                                            <p class="lefttitle">Nội dung</p>
+                                        </div>
+                                        <div class="col-md-9 col-sm-9 col-xs-12">
+                                            <textarea type="text" class="form-control input-edit" id="content_contact_edit" name="content_contact" ></textarea>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="filerfooter" style="margin-top:20px">
+                                    <button class="btn btn-success btn-update">Sửa</button>
+                                    <button class="btn btn-dark" class="close" data-dismiss="modal">Hủy</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    {{-- End Edit Form --}}
 
+    <!-- KHUNG TIỂU ĐỀ -->
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel" style="padding:15px!important">
+                    <div class="x_title" style="border-bottom:none;padding-bottom:0px;margin-bottom:0px">
+                        <h2 style="font-family:Verdana;line-height:normal;color:#000">DANH SÁCH LIÊN HỆ</h2>
+                        <div class="nav navbar-right green">
+                            <a href="" class="btn btn-success btn-sm" data-toggle="modal" data-target="#addContact"><i class="fa fa-plus-square" aria-hidden="true"></i> Thêm</a>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- KHUNG TIỂU ĐỀ -->
+    
     <!-- Search bar -->
     <style>
         .device-search-box {
@@ -460,13 +462,13 @@
                     <tbody id="contactTableBody">
                         @foreach($contacts as $key => $c)
                         <tr>
-                            <td>{{$i++}}</td>
+                            <td>{{$pagination['i']++}}</td>
                             <td>{{$c->fullname}}</td>
                             <td>{{$c->email}}</td>
                             <td>{{$c->title_contact}}</td>
                             <td>{{$c->content_contact}}</td>
                             <td class="tc">
-                                <a class="btn btn-xs btn-success updateContact" data-toggle="modal" data-target="#updateContact" data-id="{{$c->id}}"><i class="fa fa-pencil-square-o"></i></a>
+                                <a class="btn btn-xs btn-success btn-edit" data-toggle="modal" data-target="#updateContact" data-id="{{$c->id}}"><i class="fa fa-pencil-square-o"></i></a>
                                 <a class="btn btn-xs btn-danger btn-delete" onclick="confirm('Bạn có chắc chắn muốn xóa không?')" data-id="{{$c->id}}"><i class="fa fa-remove"></i></a>
                             </td>
                         </tr>
@@ -513,8 +515,8 @@
                     text-align: center;
                     margin: 0 5px 0 0;
                     padding: 6px 10px !important;
-                    width: 80px;
-                    height: unset;
+                    width: 40px;
+                    height: auto;
                     border-radius: 4px;
                     font-size: 13px;
                     float: left;
@@ -540,38 +542,71 @@
                         border-radius: 4px;
                     }
             </style>
-            <div id="PageControl">
-                <span class="pageButton" id="FirstPage" onclick="GoToPage(1)">
-                    <i class="fa fa-step-backward" aria-hidden="true"></i>
-                </span>
-                <span class="pageButton" id="PreviousPage" onclick="GoToPage(0)">
-                    <i class="fa fa-chevron-left" aria-hidden="true"></i>
-                </span>
-                <select id="PageNumber" class="form-control">
-                            <option value="1" selected="selected">1</option>
-                </select>
-                <span class="pageButton" id="NextPage" onclick="GoToPage(2)">
-                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                </span>
-                <span class="pageButton" id="LastPage" onclick="GoToPage(1)">
-                    <i class="fa fa-step-forward" aria-hidden="true"></i>
-                </span>
-                <p class="ItemPP">
-                    <span style="margin-right:5px">Số lượng</span>
-                    <select id="ItemPerPage" class="form-control">
-                        <option value="20" selected="">20</option>
-                        <option value="40">40</option>
-                        <option value="80">80</option>
-                        <option value="160">160</option>
-                    </select>
-                    <span style="margin-left:5px">Liên hệ / trang </span>
-                </p>
-                <div class="clear"></div>
+            <div id="PageControl col-md-12" style="display: flex;">
+                <div class="col-md-6" style="justify-content: flex-start; display: flex; margin-top: 10px;">
+                    <span style="padding-top: 15px;">Trang {{$pagination['currentPage']}} / {{ $pagination['lastPage'] }}</span>
+                </div>
+                
+                @if ($pagination['lastPage'] > 1)
+                    <div class="pagination col-md-6" style="justify-content: flex-end;display: flex">
+                        @if($pagination['currentPage'] >= 1 && $pagination['currentPage'] <= $pagination['endPage'])
+                        
+                            <!-- Hiển thị liên kết đến trang đầu tiên -->
+                            @if ($pagination['startPage'] > 1)
+                            <a href="?page=1"><span class="pageButton">Trang đầu</span></a>
+                            @endif
+
+                            <!-- Hiển thị các liên kết đến trang trước trang hiện tại -->
+                            @if ($pagination['currentPage'] > 1)
+                            <a href="?page={{ $pagination['currentPage'] - 1 }}">
+                                <span class="pageButton"><i class="fa fa-chevron-left"></i></span>
+                            </a>
+                            @endif
+
+
+                            <!-- Hiển thị các liên kết đến các trang lùi -->
+                            @for ($page = $pagination['startPage']; $page < $pagination['currentPage']; $page++)
+                            <a href="?page={{ $page }}"><span class="pageButton">{{ $page }}</span></a>
+                            @endfor
+
+                            <!-- Hiển thị trang hiện tại -->
+                            <span id="PageNumber" style="background-color: #009aff;">{{ $pagination['currentPage'] }}</span>
+
+                            <!-- Hiển thị các liên kết đến các trang tiếp theo -->
+                            @for ($page = $pagination['currentPage'] + 1; $page <= $pagination['endPage']; $page++)
+                            <a href="?page={{ $page }}"><span class="pageButton">{{ $page }}</span></a>
+                            @endfor
+
+                            
+                            <!-- Hiển thị các liên kết đến trang tiếp theo trang hiện tại -->
+                            @if ($pagination['currentPage'] < $pagination['lastPage'])
+                            <a href="?page={{ $pagination['currentPage'] + 1 }}">
+                                <span class="pageButton" id="NextPage"><i class="fa fa-chevron-right" aria-hidden="true"></i></span>
+                            </a>
+                            @endif
+                            
+                            <!-- Hiển thị liên kết đến trang cuối cùng -->
+                            @if ($pagination['endPage'] < $pagination['lastPage'])
+                                <a href="?page={{ $pagination['lastPage'] }}"><span class="pageButton">Trang cuối</span></a>
+                            @endif
+
+                        @else
+                            <span style="height:auto;margin-top: 5px; margin-right: 5px; font-weight: bold;">Không có dữ liệu -  </span>
+                            <a href="?page=1"><span class="pageButton">Quay về trang đầu</span></a>
+                        @endif
+                    </div>
+                @endif
             </div>
         </div>
     </div>
 
     <script>
+        function isValidEmail(email) {
+            // Regular expression to check email format
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailPattern.test(email);
+        }
+
         $(document).ready(function(){
             function fetchData(){
                 $.ajax({
@@ -580,10 +615,6 @@
                     success: function(data){
                         if (data.data) {
                             var contacts = data.data;
-                            $('#fullname_edit').val(contacts.fullname);
-                            $('#email_edit').val(contacts.email);
-                            $('#title_contact_edit').val(contacts.title_contact);
-                            $('#content_contact_edit').val(contacts.content_contact);
                             var tableBody = $('#contactTableBody');
                             tableBody.empty();
 
@@ -596,10 +627,9 @@
                                     '<td>' + contact.title_contact + '</td>' +
                                     '<td>' + contact.content_contact + '</td>' +
                                     '<td class="tc">' +
-                                    '<a class="btn btn-xs btn-success" data-toggle="modal" data-target="#updateContact"><i class="fa fa-pencil-square-o"></i></a>' +
-                                    '<a class="btn btn-xs btn-danger" onclick="deleteContact(' + contact.id + ')"><i class="fa fa-remove"></i></a>' +
-                                    '</td>' +
-                                    '</tr>';
+                                        '<a class="btn btn-xs btn-success btn-edit" data-toggle="modal" data-target="#updateContact"><i class="fa fa-pencil-square-o"></i></a>' +
+                                        '<a class="btn btn-xs btn-danger btn-delete" data-id="' + contact.id + '" onclick="confirmDelete(' + contact.id + ')"><i class="fa fa-remove"></i></a>' +                                    '</td>' +
+                                '</tr>';
                                 tableBody.append(newRow);
                             }
                         }
@@ -614,6 +644,12 @@
                 $email = $('#email').val();
                 $title_contact = $('#title_contact').val();
                 $content_contact = $('#content_contact').val();
+
+                if (!isValidEmail($email)) {
+                    toastr.error('Địa chỉ Email không hợp lệ');
+                    return;
+                }
+                
                 $.ajax({
                     type: 'POST',
                     url: 'http://127.0.0.1:8000/api/contacts/save-contact',
@@ -631,47 +667,81 @@
                             $('#email').val('');
                             $('#title_contact').val('');
                             $('#content_contact').val('');
-
+                            toastr.success('Đã thêm');
                             fetchData();
-                        }
-                        else{
-                            return alert('Thêm thất bại!');
-                        } 
-                        
+                        }     
                     }
                 });
             });
             
-            $('.updateContact').on('click',function(e){
+            $('.btn-edit').on('click', function(e) {
                 e.preventDefault();
-
-                $id_contact = $(this).attr('data-id');
-                console.log($id_contact);
+                var id_contact = $(this).attr('data-id');
                 $.ajax({
                     type: 'GET',
-                    url: 'http://127.0.0.1:8000/api/contacts/get-contact-by-id/' + $id_contact,
-                    success: function(data){
-                        $contact = data.data;
-                        console.log($contact);
-                        $('#updateContact #id_edit').val($contact.id);
-                        $('#updateContact #fullname_edit').val($contact.fullname);
-                        $('#updateContact #email_edit').val($contact.email);
-                        $('#updateContact #title_contact_edit').val($contact.title_contact);
-                        $('#updateContact #content_contact_edit').val($contact.content_contact);         
-                    }
+                    url: 'http://127.0.0.1:8000/api/contacts/get-contact-by-id/' + id_contact,
+                    success: function(data) {
+                        var contact = data.data;
+                        if (contact) {
+                            $('#updateContact #id_edit').val(contact.id);
+                            $('#updateContact #fullname_edit').val(contact.fullname);
+                            $('#updateContact #email_edit').val(contact.email);
+                            $('#updateContact #title_contact_edit').val(contact.title_contact);
+                            $('#updateContact #content_contact_edit').val(contact.content_contact);
+                            
+                            $('.btn-update').on('click', function(e) {
+                                e.preventDefault();
+                                var id_edit = $('#id_edit').val();
+                                var fullname_edit = $('#fullname_edit').val();
+                                var email_edit = $('#email_edit').val();
+                                var title_contact_edit = $('#title_contact_edit').val();
+                                var content_contact_edit = $('#content_contact_edit').val();
+                                
+                                $.ajax({
+                                    type: 'POST',
+                                    url: 'http://127.0.0.1:8000/api/contacts/update-contact',
+                                    data: {
+                                        id: id_edit,
+                                        fullname: fullname_edit,
+                                        email: email_edit,
+                                        title_contact: title_contact_edit,
+                                        content_contact: content_contact_edit,
+                                    },
+                                    dataType: 'text',
+                                    success: function(response) {
+                                        if (response) {
+                                            toastr.success('Cập nhật thành công');
+                                            $('#updateContact').modal('hide');
+                                            fetchData();
+                                        } else {
+                                            toastr.error('Vui lòng thử lại');
+                                        }
+                                    },
+                                    error: function() {
+                                        toastr.error('Có lỗi xảy ra, vui lòng thử lại sau');
+                                    }
+                                });
+                            });
+                        }
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        console.log('AJAX call failed.');
+                    },
                 });
             });
 
+
             $('.btn-delete').on('click', function(e){
-                e.preventDefault();
+                // e.preventDefault();
                 $id_contact = $(this).attr('data-id');
                 $.ajax({
                     type: 'POST',
                     url: 'http://127.0.0.1:8000/api/contacts/destroy-contact/' + $id_contact,
                     success: function(data){
-                        if(data.data){
-                            fetchData();
-                        }
+                        // if(data.data){
+                        //     fetchData();
+                        // }
+                        location.reload();
                     }
                 });
             })

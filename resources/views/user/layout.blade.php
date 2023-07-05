@@ -33,8 +33,11 @@
     <!-- ==== Theme Color Stylesheet ==== -->
     <link rel="stylesheet" href="{{asset('user/css/colors/theme-color-1.css')}}" id="changeColorScheme">
     
-    <!-- ==== Custom Stylesheet ==== -->
+    
     <link rel="stylesheet" href="{{asset('user/css/custom.css')}}">
+    <!-- ==== Toast ==== -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
 </head>
 <body>
     <!-- Preloader Start -->
@@ -402,6 +405,8 @@
 
     <!-- ==== jQuery Library ==== -->
     <script src="{{asset('user/js/jquery-3.2.1.min.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
 
     <!-- ==== Bootstrap Framework ==== -->
     <script src="{{asset('user/js/bootstrap.min.js')}}"></script>
@@ -442,5 +447,7 @@
     <!-- ==== Main JavaScript ==== -->
     <script src="{{asset('user/js/main.js')}}"></script>
     <script src="{{asset('user/js/custom.js')}}"></script>
+
+    @yield('js')
 </body>
 </html>

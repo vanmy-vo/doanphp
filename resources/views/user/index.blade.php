@@ -388,14 +388,15 @@
                                     <p>Liên hệ với chúng tôi</p>
                                 </div>
 
-                                <form action="" method="post" name="mc-embedded-subscribe-form" target="_blank" data-form="mailchimpAjax">
+                                <form name="mc-embedded-subscribe-form" target="_blank">
                                     <div class="input-group">
-                                        <input type="email" name="" placeholder="Nhập Email" class="form-control" autocomplete="off" required>
-                                        <input type="text" name="" placeholder="Nhập tiêu đề" class="form-control" autocomplete="off" required>
-                                        <input type="text" name="" placeholder="Nhập nội dung" class="form-control" autocomplete="off" required>
-                                        <button type="submit" class="btn btn-lg btn-default active"><i class="fa fa-paper-plane-o"></i></button>
+                                        <input type="text" id="fullname" name="fullname" placeholder="Nhập Tên" class="form-control" autocomplete="off" required>
+                                        <input type="email" id="email" name="email" placeholder="Nhập Email" class="form-control" autocomplete="off" required>
+                                        <input type="text" id="title_contact" name="title_contact" placeholder="Nhập tiêu đề" class="form-control" autocomplete="off" required>
+                                        <textarea type="text" id="content_contact" name="content_contact" placeholder="Nhập nội dung" class="form-control" autocomplete="off" required></textarea>
+                                        <button type="submit" class="btn btn-lg btn-default active btn-message"><i class="fa fa-paper-plane-o"></i></button>
                                     </div>
-                                    <div class="status"></div>
+                                    {{-- <div class="status"></div> --}}
                                 </form>
                             </div>
                             <!-- Subscribe Widget End -->
@@ -796,4 +797,52 @@
         </div>
     </div>
     <!-- Main Content Section End -->
+@endsection
+
+@section('js')
+    <script>
+        toastr.options = {
+            positionClass: 'toast-bottom-right'
+        };
+
+        function isValidEmail(email) {
+            // Regular expression to check email format
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailPattern.test(email);
+        }
+        
+        $('.btn-message').on('click',function(e){
+            e.preventDefault();
+            $fullname = $('#fullname').val();
+            $email = $('#email').val();
+            $title_contact = $('#title_contact').val();
+            $content_contact = $('#content_contact').val();
+
+            if (!isValidEmail($email)) {
+                toastr.error('Địa chỉ Email không hợp lệ');
+                return;
+            }
+
+            $.ajax({
+                type: 'POST',
+                url: 'http://127.0.0.1:8000/api/contacts/save-contact',
+                data: {
+                    fullname : $fullname,
+                    email : $email,
+                    title_contact : $title_contact,
+                    content_contact : $content_contact,
+                },  
+                dataType: 'json',
+                success: function(data){
+                    if(data.data){
+                        $('#fullname').val('');
+                        $('#email').val('');
+                        $('#title_contact').val('');
+                        $('#content_contact').val('');
+                        toastr.success('Đã gửi');
+                    }
+                }
+            });
+        });
+    </script>
 @endsection

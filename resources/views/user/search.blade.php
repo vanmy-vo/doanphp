@@ -25,40 +25,46 @@
 
                         <!-- Page Title Start -->
                         <div class="page--title ptop--30">
-                            <h2 class="h2">Kết quả cho: <span></span></h2>
+                            <h2 class="h2">Kết quả: {{$keyword}}<span></span></h2>
                         </div>
                         <!-- Page Title End -->
 
                         <!-- Post Items Start -->
-                        @if($dataSearchs != [])
+                        @if($results != [])
                         <div class="post--items post--items-5 pd--30-0">
                             <ul class="nav">
-                                @foreach ($dataSearchs as $key => $resuilt)
+                                @foreach ($results as $key => $result)
                                 <li>
                                     <!-- Post Item Start -->
                                     <div class="post--item post--title-larger">
                                         <div class="row">
                                             <div class="col-md-4 col-sm-12 col-xs-4 col-xxs-12">
                                                 <div class="post--img">
-                                                    <a href="" class="thumb"><img src="user/img/post-img/{{$resuilt->post_image->img}}" alt=""></a>
-                                                    <a href="" class="cat">{{$resuilt->type->type_name}}</a>
+                                                    
+                                                    @if($result->post_image->img == null)
+                                                        <a href="" class="thumb"><img src="" alt="Image not found!"></a>
+                                                    @else
+                                                        <a href="" class="thumb"><img src="uploads/posts/{{$result->post_image->img}}"></a>
+                                                    @endif
+
+                                                    <a href="" class="cat">{{$result->type->type_name}}</a>
                                                 </div>
                                             </div>
 
                                             <div class="col-md-8 col-sm-12 col-xs-8 col-xxs-12">
                                                 <div class="post--info">
                                                     <ul class="nav meta">
-                                                        <li><a href="">{{$resuilt->account->fullname}}</a></li>
-                                                        <li><a href="">{{$resuilt->created_at}}</a></li>
+                                                        <li><a href="">{{$result->account->fullname}}</a></li>
+                                                        <li><a href="">{{$result->created_at}}</a></li>
                                                     </ul>
 
                                                     <div class="title">
-                                                        <h3 class="h4"><a href="news-single-v1.html" class="btn-link">{{$resuilt->title_post}}</a></h3>
+                                                        <h3 class="h4"><a href="news-single-v1.html" class="btn-link">{{$result->title_post}}</a></h3>
                                                     </div>
                                                 </div>
 
                                                 <div class="post--content">
-                                                    <p>{{$resuilt->description}}</p>
+                                                    <p>{{$result->description}}</p>
                                                 </div>
 
                                                 <div class="post--action">
@@ -79,22 +85,31 @@
 
                         <!-- Pagination Start -->
                         <div class="pagination--wrapper clearfix bdtop--1 bd--color-2 ptop--60 pbottom--30">
-                            <p class="pagination-hint float--left">Page 02 of 03</p>
-
+                            <p class="pagination-hint float--left">Trang {{$results->currentPage()}} / {{$results->lastPage()}}</p>
+                        
                             <ul class="pagination float--right">
-                                <li><a href="#"><i class="fa fa-long-arrow-left"></i></a></li>
-                                <li><a href="#">01</a></li>
-                                <li class="active"><span>02</span></li>
-                                <li><a href="#">03</a></li>
-                                <li>
-                                    <i class="fa fa-angle-double-right"></i>
-                                    <i class="fa fa-angle-double-right"></i>
-                                    <i class="fa fa-angle-double-right"></i>
-                                </li>
-                                <li><a href="#">20</a></li>
-                                <li><a href="#"><i class="fa fa-long-arrow-right"></i></a></li>
+                                @if ($results->currentPage() > 1)
+                                    <li><a href="{{$results->previousPageUrl()}}"><i class="fa fa-long-arrow-left"></i></a></li>
+                                @else
+                                    <li class="disabled"><span><i class="fa fa-long-arrow-left"></i></span></li>
+                                @endif
+                        
+                                @foreach ($results->getUrlRange(max($results->currentPage() - 2, 1), min($results->currentPage() + 2, $results->lastPage())) as $page => $url)
+                                    @if ($page == $results->currentPage())
+                                        <li class="active"><span>{{$page}}</span></li>
+                                    @else
+                                        <li><a href="{{$url}}">{{$page}}</a></li>
+                                    @endif
+                                @endforeach
+                        
+                                @if ($results->currentPage() < $results->lastPage())
+                                    <li><a href="{{$results->nextPageUrl()}}"><i class="fa fa-long-arrow-right"></i></a></li>
+                                @else
+                                    <li class="disabled"><span><i class="fa fa-long-arrow-right"></i></span></li>
+                                @endif
                             </ul>
                         </div>
+                        
                         <!-- Pagination End -->
                     </div>
                 </div>

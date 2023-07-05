@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Taikhoan;
 use App\Models\Danhmuc;
+use App\Models\Baiviet_image;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+
 class Baiviet extends Model
 {
     use HasFactory;
@@ -25,10 +28,16 @@ class Baiviet extends Model
         'account_id',
         'type_id',
     ];
-public function taiKhoan(){
-    return $this->belongsTo(Taikhoan::class, 'account_id', 'id');
-}
-    public function danhMuc(){
+    public $timestamps = true;
+    
+    public function account(){
+        return $this->belongsTo(Taikhoan::class, 'account_id', 'id');
+    }
+    public function type(){
         return $this->belongsTo(Danhmuc::class, 'type_id', 'id');
+    }
+
+    public function post_image(): HasOne{
+        return $this->hasOne(Baiviet_image::class, 'post_id', 'id');
     }
 }

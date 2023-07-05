@@ -19,6 +19,8 @@
     <script src="<?=SITE_PATH?>/Lib/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <link href="<?=SITE_PATH?>/Lib/vendors/switchery/dist/switchery.min.css" rel="stylesheet">
     <!-- <link rel="stylesheet" type="text/css" href="<?=SITE_PATH?>/ckeditor5/sample/styles.css"> -->
+    <!-- ==== Toast ==== -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <style>
         /* width */
         ::-webkit-scrollbar {
@@ -330,7 +332,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('contact-admin') }}">
+                                    <a href="{{ route('contact.admin') }}">
                                         <i class="fa fa-phone"></i>Quản lý liên hệ
                                     </a>
                                 </li>
@@ -433,6 +435,7 @@
     <script src="<?=SITE_PATH?>/Lib/vendors/switchery/dist/switchery.min.js"></script>
     <script src="<?=SITE_PATH?>/Lib/vendors/raphael/raphael.min.js"></script>
     <script src="<?=SITE_PATH?>/Lib/vendors/morris.js/morris.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     
     <div id="Loading">
         <div style="margin:0 auto;position:relative;top:50%;transform:translateY(-50%)">

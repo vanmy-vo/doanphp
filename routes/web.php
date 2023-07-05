@@ -82,10 +82,8 @@ Route::get('admin/slide', function () {
 
 
 // quan ly lien he
-Route::group(['prefix' => 'admin'],function(){
-    Route::get('/contact',[ContactController::class,'index'])->name('contact-admin')->middleware(CheckAdminLogin::class);
-    Route::post('/update-contact',[ContactController::class,'updateContact'])->name('update-contact')->middleware(CheckAdminLogin::class);
-});
+    Route::get('admin/contact',[ContactController::class,'index'])->name('contact.admin')->middleware(CheckAdminLogin::class);
+    Route::post('admin/update',[ContactController::class,'updateContact'])->name('update.contact')->middleware(CheckAdminLogin::class);
 
 
 // quan ly quang cao

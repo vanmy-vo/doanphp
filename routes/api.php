@@ -25,7 +25,8 @@ Route::group(['prefix'=>'/contacts'],function() {
     Route::get('/get-contact',[ContactController::class,'getContact']);
     Route::get('/get-contact-by-id/{id}',[ContactController::class,'getContactById']);
     Route::post('/save-contact',[ContactController::class,'store']);
-    Route::get('/update-contact/{id}',[ContactController::class,'update']);
+    // Route::get('/update-contact/{id}',[ContactController::class,'update']);
+    Route::post('/update-contact',[ContactController::class,'update']);
     Route::post('/remove-contact/{id}',[ContactController::class,'remove']);
     Route::post('/destroy-contact/{id}',[ContactController::class,'destroy']);
 });
