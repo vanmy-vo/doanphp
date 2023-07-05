@@ -13,7 +13,7 @@ use App\Http\Controllers\user\SearchController as UserSearchController;
 use App\Http\Controllers\user\DetailController as UserDetailController;
 use App\Http\Controllers\user\ContactController as UserContactController;
 
-use App\Http\Controllers\admin\CaidatController;
+use App\Http\Controllers\admin\SettingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -103,8 +103,8 @@ Route::post('admin/delete', [BaivietController::class, 'destroy'])->name('post.a
 Route::get('admin/lienhe', [LienheController::class, 'index'])->name('post.admim.lienhe');
 Route::post('admin/luulienhe', [LienheController::class, 'addContact'])->name('post.admin.savecontact');
 
-Route::get('admin/caidat', [CaidatController::class, 'index'])->name('post.admim.caidat');
-Route::POST('admin/capnhatcaidat', [CaidatController::class, 'update'])->name('post.admim.updatesetting');
+Route::get('admin/setting', [SettingController::class, 'index'])->name('post.admim.setting');
+Route::POST('admin/updatesetting', [SettingController::class, 'update'])->name('post.admim.updatesetting');
 
 Route::get('admin/user', function () {
     return view('admin.ManagerUser');

@@ -164,58 +164,6 @@ use App\Models\Slide;
                                 <!-- Comment Item End -->
                             </li>
                             <?php endforeach; ?>
-
-                            <li class="hidden">
-                                <!-- Comment Item Start -->
-                                <div class="comment--item clearfix">
-                                    <div class="comment--img float--left">
-                                        <img src="user/img/avatar.jpg" alt="">
-                                    </div>
-
-                                    <div class="comment--info">
-                                        <div class="comment--header clearfix">
-                                            <p class="name">M Shyamalan</p>
-                                            <p class="date">12 May 2017 at 05:28 pm</p>
-
-                                            <a href="#" class="reply"><i class="fa fa-mail-reply"></i></a>
-                                        </div>
-
-                                        <div class="comment--content">
-                                            <p>On the other hand, we denounce with righteous indignation and dislike men
-                                                who are so beguiled and demoralized by the charms of pleasure of the
-                                                moment</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Comment Item End -->
-
-                                <ul class="comment--items nav hidden">
-                                    <li>
-                                        <!-- Comment Item Start -->
-                                        <div class="comment--item clearfix">
-                                            <div class="comment--img float--left">
-                                                <img src="user/img/avatar.jpg" alt="">
-                                            </div>
-
-                                            <div class="comment--info">
-                                                <div class="comment--header clearfix">
-                                                    <p class="name">Liz Montano</p>
-                                                    <p class="date">12 May 2017 at 05:28 pm</p>
-
-                                                    <a href="#" class="reply"><i class="fa fa-mail-reply"></i></a>
-                                                </div>
-
-                                                <div class="comment--content">
-                                                    <p>On the other hand, we denounce with righteous indignation and
-                                                        dislike men who are so beguiled and demoralized by the charms of
-                                                        pleasure of the moment</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Comment Item End -->
-                                    </li>
-                                </ul>
-                            </li>
                         </ul>
                     </div>
                     <!-- Comment List End -->
@@ -282,9 +230,9 @@ use App\Models\Slide;
                         <div class="tags--widget style--1">
                             <ul class="nav">
                                 <li><a href="{{route('category')}}">Mới</a></li>
-                                <li><a href="#">Hot</a></li>
-                                <li><a href="#">Tin Nóng</a></li>
-                                <li><a href="#">Game</a></li>
+                                <li><a href="{{route('category')}}">Hot</a></li>
+                                <li><a href="{{route('category')}}">Tin Nóng</a></li>
+                                <li><a href="{{route('category')}}">Game</a></li>
                             </ul>
                         </div>
                         <!-- Tags Widget End -->
