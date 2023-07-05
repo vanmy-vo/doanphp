@@ -86,7 +86,7 @@
 
                         <!-- Header Topbar Social Start -->
                         <ul class="header--topbar-social nav hidden-sm hidden-xxs">
-                            <li><a href="#"><i class="fa fa-facebook"></i>acebook</a></li>
+                            <li><a href="#"><i class="fa fa-facebook"></i>Facebook</a></li>
                         </ul>
                         <!-- Header Topbar Social End -->
                     </div>
