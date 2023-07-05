@@ -405,7 +405,8 @@ use App\Models\Slide;
                         <!-- Ad Widget End -->
                     </div>
                     <div class="slider ad--widget" id="img">
-                        <a href="<?= $databases[0]->link_name ?>" target="_blank"><img src="<?= $databases[0]->image_ads ?>"> </a>
+                        <a href="<?= $databases[0]->link_name ?>" target="_blank"><img
+                                src="{{ asset('uploads/posts/'.$databases[0]->image_ads) }}"> </a>
                     </div>
                     <script>
                     var img = document.getElementById('img');
@@ -413,7 +414,7 @@ use App\Models\Slide;
                     var link_slides = [];
                     <?php foreach($databases as $row) : ?>
 
-                    slides.push('<?= $row->image_ads ?>');
+                    slides.push('{{ asset('uploads/posts/'.$row->image_ads) }}');
                     link_slides.push('<?= $row->link_name ?>');
 
                     <?php endforeach; ?>
@@ -432,7 +433,7 @@ use App\Models\Slide;
                             "> </a>";
 
                     }
-                    setInterval(slider, 2000);
+                    setInterval(slider, 1000);
                     </script>
 
                        <!-- Widget Start -->
