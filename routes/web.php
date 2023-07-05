@@ -69,6 +69,8 @@ Route::get('admin/dashboard', function () {
 Route::get('admin/category', function () {
     return view('admin.ManagerList');
 })->name('category.admin')->middleware(CheckAdminLogin::class);
+Route::get('/search',[CategoryController::class,'search'])->name('search');
+Route::post('/addcategory',[CategoryController::class, 'addCategory'])->name('addCategory');
 
 
 // quan ly slide show
