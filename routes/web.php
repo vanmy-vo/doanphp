@@ -1,10 +1,7 @@
 <?php
 // Frameword
 use Illuminate\Support\Facades\Route;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use App\Http\Middleware\CheckAdminLogin;
-
 //Admin
 use App\Http\Controllers\admin\BaivietController;
 
@@ -15,6 +12,8 @@ use App\Http\Controllers\user\TypeCategoryController as UserTypeCategoryControll
 use App\Http\Controllers\user\SearchController as UserSearchController;
 use App\Http\Controllers\user\DetailController as UserDetailController;
 use App\Http\Controllers\user\ContactController as UserContactController;
+
+use App\Http\Controllers\admin\CaidatController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,20 +33,16 @@ use App\Http\Controllers\user\ContactController as UserContactController;
 // })->middleware('web');
 
 
-// Route::get('home', function () {
-//     return view('user.index');
+Route::get('home', function () {
+    return view('user.index');
 
-// });
+});
 
-// Route::middleware(['web'])->group(function() {
+Route::middleware(['web'])->group(function() {
 
 
 
-// });
-
-// Route::middleware(['admin'])->group(function() {
-//     return view('')
-// });
+});
 
 
 // trang dang nhap cua quan tri vien
@@ -79,23 +74,14 @@ Route::get('admin/slide', function () {
     return view('admin.ManagercSlideShow');
 })->name('slide.admin')->middleware(CheckAdminLogin::class);
 
-
-// quan ly lien he
 Route::get('admin/contact', function () {
     return view('admin.ManagercContact');
-})->name('admin-contact')->middleware(CheckAdminLogin::class);
+})->name('admin-contact');
 
-
-// quan ly quang cao
 Route::get('admin/ads', function () {
     return view('admin.ManagerAdvertisement');
 })->name('ads.admin')->middleware(CheckAdminLogin::class);
 
-
-// quan ly cai dat thong tin
-Route::get('admin/setting', function () {
-    return view('admin.ManagerSettingInfo');
-})->name('setting.admin')->middleware(CheckAdminLogin::class);
 
 // Route::get('admin/post', function () {
 //     return view('admin.ManagerComment');
@@ -109,12 +95,18 @@ Route::post('admin/capnhat', [BaivietController::class, 'update'])->name('post.a
 
 Route::post('admin/delete', [BaivietController::class, 'destroy'])->name('post.admin.delete')->middleware(CheckAdminLogin::class);
 
+Route::get('admin/lienhe', [LienheController::class, 'index'])->name('post.admim.lienhe');
+Route::post('admin/luulienhe', [LienheController::class, 'addContact'])->name('post.admin.savecontact');
+
+Route::get('admin/caidat', [CaidatController::class, 'index'])->name('post.admim.caidat');
+Route::POST('admin/capnhatcaidat', [CaidatController::class, 'update'])->name('post.admim.updatesetting');
+
 Route::get('admin/user', function () {
     return view('admin.ManagerUser');
 })->name('user.admin');
 
 //User
-Route::get('/', [UserHomeController::class,'index'])->name('/');
+Route::get('/home', [UserHomeController::class,'index'])->name('home');
 Route::get('/category', [UserCategoryController::class,'index'])->name('category');
 Route::get('/type-category', [UserTypeCategoryController::class,'index'])->name('type-category');
 Route::get('/search', [UserSearchController::class,'index'])->name('search');
