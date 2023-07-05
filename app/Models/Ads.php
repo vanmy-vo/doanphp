@@ -5,11 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class category extends Model
+class ads extends Model
 {
     use HasFactory;
-    protected $table = 'category';
+
+    protected $table = 'ads';
     protected $fillable = [
-        'category_name'
+        'title_ads','content_ads','link_name','img'
     ];
+    public $tempstamps = true;
 }

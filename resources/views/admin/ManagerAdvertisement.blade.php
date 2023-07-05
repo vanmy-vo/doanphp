@@ -1,6 +1,6 @@
 @extends('admin.admin')
 
-@section('title', 'Quản lý quản cáo')
+@section('title', 'Quản lý quảng cáo')
 
 @section('webcontent')
 {{-- View Form --}}
@@ -55,50 +55,58 @@
     <div class="modal-dialog modal-md" role="document">
         <div class="modal-content">
             <div class="modal-header bg-dark">
-                <h3 class="modal-title text-white text-uppercase" id="exampleModalPopoversLabel" style="text-align: center;">Thông tin slideshow</h3>
+                <h3 class="modal-title text-white text-uppercase" id="exampleModalPopoversLabel" style="text-align: center;">Thông tin Quảng cáo</h3>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
-
-            <div class="modal-body">
+            @foreach($ads as $key => $ad)
+                        <tr>
+                        <div class="modal-body">
                 <div id="FilterContentCenter">
                     <div class="filterpane">
                         <div class="row">
                             <div class="col-md-12 col-sm-12 col-xs-12">
                                 <label class="col-md-6">Tiêu đề:</label>
-                                <p class="col-md-6">Quảng cáo Samsung</p>
+                                <p class="col-md-6">{{$ad->title_ads}}</p>
                             </div>
                             <div class="clearfix"></div>
                         </div>
                         <div class="row">
                             <div class="col-md-12 col-sm-12 col-xs-12">
                                 <label class="col-md-6">Hình ảnh:</label>
-                                <img src="{{asset('user/img/ads-img/black-pink.jpg')}}" alt="" width="200" height="200" style="margin-top: 15px; object-fit:fill">
+                                <img src="{{$ad->img}}" alt="" width="200" height="200" style="margin-top: 15px; object-fit:fill">
                             </div>
                             <div class="clearfix"></div>
                         </div>
                         <div class="row">
                             <div class="col-md-12 col-sm-12 col-xs-12">
-                                <label class="col-md-6">Tên đường dẫn: </label>
-                                <p class="col-md-6">Samsungabc.com</p>
+                                <label class="col-md-6">Nội dung: </label>
+                                <p class="col-md-6">{{$ad->content_ads}}</p>
                             </div>
                             <div class="clearfix"></div>
                         </div>
                         <div class="row">
                             <div class="col-md-12 col-sm-12 col-xs-12">
                                 <label class="col-md-6">Liên kết: </label>
-                                <p class="col-md-6" style="word-wrap: break-word;">http://localhost:8080/doanphplaravelmoi/doanphp/public/admin/ads</p>
+                                <p class="col-md-6" style="word-wrap: break-word;">{{$ad->link_name}}</p>
                             </div>
                             <div class="clearfix"></div>
                         </div>
                     </div>
+
                     <div class="clearfix"></div>
+                
                     <div class="filerfooter" style="margin-top:20px">
-                        <button class="btn btn-dark">Đóng</button>
+                    <div class="btn btn-dark" onclick="ShowHide(false)">Hủy</div>
+                       
                     </div>
                 </div>
             </div>
+                      
+                        @endforeach
+                        </tr>
+           
         </div>
     </div>
 </div>
@@ -172,14 +180,14 @@
     <div class="modal-dialog modal-md" role="document">
         <div class="modal-content">
             <div class="modal-header bg-dark">
-                <h3 class="filtergrouptitle modal-title text-white text-uppercase" id="exampleModalPopoversLLabel"  style="text-align: center;">Thêm Slideshow</h3>
+                <h3 class="filtergrouptitle modal-title text-white text-uppercase" id="exampleModalPopoversLLabel"  style="text-align: center;">Thêm Quảng Cáo</h3>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
 
             <div class="modal-body">
-                <form action="" id="updateAdsForm" method="">
+                <form action="" id="addAdsForm" method="GET" action="{{route('addAds')}}">
                     <div id="FilterContentCenter">
                         <div class="filterpane" style="margin-bottom:0px;padding-bottom:0px">
                             <div class="row">
@@ -187,7 +195,7 @@
                                     <p class="lefttitle">Tiêu đề</p>
                                 </div>
                                 <div class="col-md-9 col-sm-9 col-xs-12">
-                                    <input type="text" class="form-control input-edit" value=""/>
+                                    <input  type="text" name="title_ads" class="form-control input-edit" value=""/>
                                 </div>
                                 <div class="clearfix"></div>
                             </div>
@@ -196,16 +204,16 @@
                                     <p class="lefttitle">Hình ảnh</p>
                                 </div>
                                 <div class="col-md-9 col-sm-9 col-xs-12">
-                                    <input type="file" class="form-control input-edit" value="" />
+                                    <input type="file" name="img" class="form-control input-edit" value="" />
                                 </div>
                                 <div class="clearfix"></div>
                             </div>
                             <div class="row">
                                 <div class="col-md-3 col-sm-3 col-xs-12">
-                                    <p class="lefttitle">Tên đường dẫn</p>
+                                    <p class="lefttitle">Nội dung</p>
                                 </div>
                                 <div class="col-md-9 col-sm-9 col-xs-12">
-                                    <input type="text" class="form-control input-edit" value="" />
+                                    <input type="text" name="content_ads" class="form-control input-edit" value="" />
                                 </div>
                                 <div class="clearfix"></div>
                             </div>
@@ -214,7 +222,7 @@
                                     <p class="lefttitle">Liên kết</p>
                                 </div>
                                 <div class="col-md-9 col-sm-9 col-xs-12">
-                                    <textarea type="text" class="form-control input-edit" value="" ></textarea>
+                                    <textarea type="text"name="link_name" class="form-control input-edit" value="" ></textarea>
                                 </div>
                                 <div class="clearfix"></div>
                             </div>
@@ -300,14 +308,14 @@
     <div class="modal-dialog modal-md" role="document">
         <div class="modal-content">
             <div class="modal-header bg-dark">
-                <h3 class="filtergrouptitle modal-title text-white text-uppercase" id="exampleModalPopoversLabel"  style="text-align: center;">SỬA THÔNG TIN Slideshow</h3>
+                <h3 class="filtergrouptitle modal-title text-white text-uppercase" id="exampleModalPopoversLabel"  style="text-align: center;">SỬA THÔNG TIN QUẢNG CÁO</h3>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
 
             <div class="modal-body">
-                <form action="" id="updateAdsForm" method="">
+                <form action="" id="updateAdsForm" method="GET">
                     <div id="FilterContentCenter">
                         <div class="filterpane" style="margin-bottom:0px;padding-bottom:0px">
                             <div class="row">
@@ -330,7 +338,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-3 col-sm-3 col-xs-12">
-                                    <p class="lefttitle">Tên đường dẫn</p>
+                                    <p class="lefttitle">Nội dung</p>
                                 </div>
                                 <div class="col-md-9 col-sm-9 col-xs-12">
                                     <input type="text" class="form-control input-edit" value="" />
@@ -421,10 +429,14 @@
     <div class="col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 10px">
         <div class="device-search-box">
             <label>Tìm kiếm</label>
-            <div class="search-box">
-                <input placeholder="Nhập..." value="" onchange="SearchLocation(this)">
-                <i onclick="SearchLocation(this.previousElementSibling)" class="fa fa-search"></i>
-            </div>
+            <form method="GET" action="{{route('searchads')}}" class="form-inline">
+
+                @csrf
+                
+                <input name="search" class="form-control mr-sm-2" type="search" placeholder="Nhập từ khóa tìm kiếm"
+                    aria-label="Search">
+                <button class="btn btn-primary" type="submit">Tìm kiếm</button>
+            </form>
         </div>
     </div>
 </div>
@@ -535,24 +547,29 @@
             <table class="data-table">
                 <thead>
                     <tr>
-                        <th>STT</th>
+                
                         <th class="tc1">Tiêu đề</th>
                         <th class="tc2">Hình ảnh</th>
-                        <th class="tc3">Tên đường dẫn</th>
-                        <th class="tc4">Thao tác</th>
+                        <th class="tc3">Nội dung</th>
+                        <th class="tc4">Địa chỉ trang web</th>
+                        <th class="tc5">Thao tác</th>
                     </tr>
                 </thead>
                 <tbody>
+                @foreach($ads as $key => $ad)
                         <tr>
-                            <td>1</td>
-                            <td class="tc1">Quảng cáo samsung</td>
+                            <td class="tc1">{{$ad->title_ads}}</td>
                             <td class="tc2"><img src="{{asset('user/img/ads-img/black-pink.jpg')}}" alt="" width="50" height="50"></td>
-                            <td class="tc3"><a href="http://localhost:8080/doanphplaravelmoi/doanphp/public/admin/ads" target="_blank">samsungabvcd.com</a></td>
+                            <td class="tc3">{{$ad->content_ads}}</td>
+                            <td class="tc4">{{$ad->link_name}}</td>
+                           
                             <td class="tc">                        
                                 <a class="btn btn-xs btn-success" data-toggle="modal" data-target="#viewAds"><i class="fa fa-eye"></i></a>
                                 <a class="btn btn-xs btn-success" data-toggle="modal" data-target="#updateAds"><i class="fa fa-pencil-square-o"></i></a>
                                 <a class="btn btn-xs btn-danger"><i class="fa fa-remove"></i></a>
                             </td>
+                      
+                        @endforeach
                         </tr>
                 </tbody>
             </table>

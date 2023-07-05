@@ -5,6 +5,7 @@ use App\Http\Middleware\CheckAdminLogin;
 //Admin
 use App\Http\Controllers\admin\BaivietController;
 use App\Http\Controllers\admin\CaidatController;
+use App\Http\Controllers\admin\AdsController;
 
 //User
 use App\Http\Controllers\user\HomeController as UserHomeController;
@@ -82,7 +83,9 @@ Route::get('admin/contact', function () {
 Route::get('admin/ads', function () {
     return view('admin.ManagerAdvertisement');
 })->name('ads.admin')->middleware(CheckAdminLogin::class);
-
+Route::post('/addads',[AdsController::class, 'addAds'])->name('addAds');
+Route::get('/searchads',[AdsController::class,'searchads'])->name('searchads');
+Route::get('admin/ads',[AdsController::class,'loadAds'])->name('loadAds');
 
 // Route::get('admin/post', function () {
 //     return view('admin.ManagerComment');

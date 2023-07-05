@@ -4,6 +4,7 @@ namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Lienhe;
 
 class ContactController extends Controller
 {
@@ -20,6 +21,5 @@ class ContactController extends Controller
         $co->save();
         return redirect()->back();
         // ->withErrors(['passed'=>"Bạn đã liên hệ thành công!"]);
-      
     }
 }
