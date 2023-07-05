@@ -208,7 +208,8 @@
                     </div>
 
                     <!-- Header Search Form Start -->
-                    <form action="#" class="header--search-form float--right" data-form="validate">
+                    <form action="{{route('search')}}" method="GET" enctype="multipart/form-data" class="header--search-form float--right" data-form="validate">
+                        @csrf
                         <input type="search" name="search" placeholder="Tìm kiếm..." class="header--search-control form-control" required>
 
                         <button type="submit" class="header--search-btn btn"><i class="header--search-icon fa fa-search"></i></button>
