@@ -6,7 +6,6 @@ use App\Http\Middleware\CheckAdminLogin;
 use App\Http\Controllers\admin\BaivietController;
 use App\Http\Controllers\admin\CaidatController;
 use App\Http\Controllers\admin\AdsController;
-
 //User
 use App\Http\Controllers\user\HomeController as UserHomeController;
 use App\Http\Controllers\user\CategoryController as UserCategoryController;
