@@ -127,7 +127,7 @@ Route::any('/ckfinder/browser', '\CKSource\CKFinderBridge\Controller\CKFinderCon
 Route::get('bai-viet/{slug}', [UserDetailController::class, 'detail'])->name('chitietbaiviet');
 Route::get('danh-muc/{id}', [UserCategoryController::class, 'detailcategory'])->name('chitietdanhmuc');
 Route::get('loai-danh-muc/{id}', [UserTypeCategoryController::class, 'detailtype'])->name('chitietloai');
-<<<<<<< HEAD
+
 
 Route::post('binhluanbaiviet', [UserDetailController::class, 'binhluan'])->name('binhluanpost');
 
@@ -136,4 +136,3 @@ Route::post('timkiembaivietadmin', [BaivietController::class, 'timkiem'])->name(
 Route::post('locloaitudanhmuc', [BaivietController::class, 'filter'])->name('filterloai');
 =======
 Route::post('binhluanbaiviet', [UserDetailController::class, 'binhluan'])->name('binhluanpost');
->>>>>>> e110ee08f7681ec6bd3fbdd62111e1fc034f115a
