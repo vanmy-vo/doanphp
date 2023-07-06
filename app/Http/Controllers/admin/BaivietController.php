@@ -22,7 +22,7 @@ class BaivietController extends Controller
         if (!session('user')['userid']) {
             return view('admin.login');
         }
-        $list = Baiviet::where(['status' => 0])->orderBy('id', 'desc')->get();
+        $list = Baiviet::where(['status' => 0])->orderBy('id', 'desc')->paginate(10);
         $category = DB::table('category')->get();
         // $tacgia = DB::table('account')->where(['role_id' => 2])->get();
         $tacgia = DB::table('account')->get();
