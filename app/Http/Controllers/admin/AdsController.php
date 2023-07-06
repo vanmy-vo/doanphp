@@ -49,7 +49,7 @@ return view('admin.ManagerAdvertisement',compact('ads'));
 }
 public function detailAds($id)
 {
-    $category=ads::find($id);
+    $ads=ads::find($id);
     return view('admin.ManagerAdvertisement',compact('ads'));
 }
 }

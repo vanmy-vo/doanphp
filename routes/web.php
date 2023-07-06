@@ -86,7 +86,7 @@ Route::get('admin/ads', function () {
 })->name('ads.admin')->middleware(CheckAdminLogin::class);
 Route::post('/addads',[AdsController::class, 'addAds'])->name('addAds');
 Route::get('/searchads',[AdsController::class,'searchads'])->name('searchads');
-Route::get('admin/loadads',[AdsController::class,'loadAds'])->name('loadAds');
+Route::get('admin/loadads',[AdsController::class,'loadAds'])->name('ads.admin');
 
 // Route::get('admin/post', function () {
 //     return view('admin.ManagerComment');

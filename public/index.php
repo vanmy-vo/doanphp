@@ -4,8 +4,8 @@ use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Http\Request;
 
 define('LARAVEL_START', microtime(true));
-define('SITE_PATH', 'http://localhost/doanmonhoc/public');//may toi khong can port dung link nay
-// define('SITE_PATH', 'http://localhost:8080/doanmonhoc/public'); // may ai co port thi dung link nay
+// define('SITE_PATH', 'http://localhost/doanmonhoc/public');//may toi khong can port dung link nay
+define('SITE_PATH', 'http://localhost:80/doanphp/public'); // may ai co port thi dung link nay
 
 /*
 |--------------------------------------------------------------------------
