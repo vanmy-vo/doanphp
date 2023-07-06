@@ -10,6 +10,11 @@ class category extends Model
     use HasFactory;
     protected $table = 'category';
     protected $fillable = [
-        'category_name'
+        'category_name',
+        'created_at',
+        'updated_at',
+        'deleted_at',
+        'slug_category',
     ];
+    public $timestamps = true;
 }

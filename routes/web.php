@@ -6,6 +6,8 @@ use App\Http\Middleware\CheckAdminLogin;
 use App\Http\Controllers\admin\BaivietController;
 use App\Http\Controllers\admin\CaidatController;
 use App\Http\Controllers\admin\AdsController;
+use App\Http\Controllers\admin\ContactController;
+
 //User
 use App\Http\Controllers\user\HomeController as UserHomeController;
 use App\Http\Controllers\user\CategoryController as UserCategoryController;
@@ -75,10 +77,14 @@ Route::get('admin/slide', function () {
 })->name('slide.admin')->middleware(CheckAdminLogin::class);
 
 //quan ly lien he
-Route::get('admin/contact', function () {
-    return view('admin.ManagercContact');
-})->name('admin-contact');
-Route::post('/addcontact',[ContactController::class, 'addContact'])->name('addContact');
+// Route::get('admin/contact', function () {
+//     return view('admin.ManagercContact');
+// })->name('admin-contact');
+// Route::post('/addcontact',[ContactController::class, 'addContact'])->name('addContact');
+
+// quan ly lien he
+    Route::get('admin/contact',[ContactController::class,'index'])->name('contact.admin')->middleware(CheckAdminLogin::class);
+    Route::post('admin/update',[ContactController::class,'updateContact'])->name('update.contact')->middleware(CheckAdminLogin::class);
 
 //quan ly quang cao
 Route::get('admin/ads', function () {

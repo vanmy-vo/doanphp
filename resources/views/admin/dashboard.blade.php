@@ -40,7 +40,7 @@ $ads = DB::table('ads')->get();
 </div>
 <div class="col-lg-3" style="height: 100px;">
     <div style="background: #f0ad4e;width: 100%;height: 100%;color: #fff;">
-        <a href="{{ route('admin-contact') }}" style="display: block;width: 100%;height: 100%;">
+        <a href="{{ route('contact.admin') }}" style="display: block;width: 100%;height: 100%;">
             <div class="col-lg-6"><h5>Liên hệ</h5></div>
         <div class="col-lg-6" style="height: 100%;"><span style="position: absolute;bottom: 10%;right: 15%;font-size: 16px;"><?=count($contact)?></span></div>
         </a>
