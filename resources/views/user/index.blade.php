@@ -412,22 +412,44 @@ use App\Models\Slide;
                             <div class="content">
                                 <p>Liên hệ với chúng tôi</p>
                             </div>
-
-                            <form action="" method="post" name="mc-embedded-subscribe-form" target="_blank"
-                                data-form="mailchimpAjax">
-                                <div class="input-group">
-                                    <input type="email" name="" placeholder="Nhập Email" class="form-control"
-                                        autocomplete="off" required>
-                                    <input type="text" name="" placeholder="Nhập tiêu đề" class="form-control"
-                                        autocomplete="off" required>
-                                    <input type="text" name="" placeholder="Nhập nội dung" class="form-control"
-                                        autocomplete="off" required>
-                                    <button type="submit" class="btn btn-lg btn-default active"><i
-                                            class="fa fa-paper-plane-o"></i></button>
-                                </div>
-                                <div class="status"></div>
-                            </form>
-                        </div>
+                            @error('failed')
+              <div class="alert alert-danger">{{$message}}</div>
+            @enderror
+            @error('passed')
+              <div class="alert alert-success">{{$message}}</div>
+            @enderror
+            <form method="POST"action="{{route('addContact')}}" data-form="ajax">
+                                @csrf
+                                    <div class="status"></div> 
+                                    <div class="row">
+                                        <div class="col-xs-6 col-xxs-12">
+                                            <label>
+                                                <span>Họ và Tên *</span>
+                                                <input type="text" name="fullname" class="form-control" required>
+                                            </label>
+                                            <label>
+                                                <span>Địa chỉ Email *</span>
+                                                <input type="email" name="email" class="form-control" required>
+                                            </label>
+                                            <label>
+                                                <span>Tiêu đề *</span>
+                                                <input type="text" name="title_contact" class="form-control">
+                                            </label>
+                                        </div>
+                                        <div class="col-xs-6 col-xxs-12">
+                                            <label>
+                                                <span>Nội dung *</span>
+                                                <textarea name="content_contact" class="form-control" required></textarea>
+                                            </label>
+                                        </div>
+                                        <div class="col-md-12 text-right">
+                                            <button type="submit" class="btn btn-primary">Send Message</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            </div>
+                     
                         <!-- Subscribe Widget End -->
                     </div>
                     <!-- Widget End -->
