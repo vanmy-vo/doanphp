@@ -65,14 +65,21 @@
                         <!-- Comment Form Start -->
                         <div class="comment--form">
                             <div class="comment-respond">
-                                <form action="forms/contact-form.php" data-form="ajax">
-                                    <div class="status"></div>
+                            @error('failed')
+              <div class="alert alert-danger">{{$message}}</div>
+            @enderror
+            @error('passed')
+              <div class="alert alert-success">{{$message}}</div>
+            @enderror
+                                <form method="POST"action="{{route('addContact')}}">
+                                @csrf
+                                    <div class=""></div>
                                     
                                     <div class="row">
                                         <div class="col-xs-6 col-xxs-12">
                                             <label>
-                                                <span>Họ và tên *</span>
-                                                <input type="text" name="name" class="form-control" required>
+                                                <span>Họ và Tên *</span>
+                                                <input type="text" name="fullname" class="form-control" required>
                                             </label>
 
                                             <label>
@@ -81,20 +88,20 @@
                                             </label>
 
                                             <label>
-                                                <span>Tiêu đề</span>
-                                                <input type="text" name="website" class="form-control">
+                                                <span>Tiêu đề *</span>
+                                                <input type="text" name="title_contact" class="form-control">
                                             </label>
                                         </div>
 
                                         <div class="col-xs-6 col-xxs-12">
                                             <label>
                                                 <span>Nội dung *</span>
-                                                <textarea name="message" class="form-control" required></textarea>
+                                                <textarea name="content_contact" class="form-control" required></textarea>
                                             </label>
                                         </div>
 
                                         <div class="col-md-12 text-right">
-                                            <button type="submit" class="btn btn-primary">Gửi tin nhắn</button>
+                                            <button type="submit" class="btn btn-primary">Send Message</button>
                                         </div>
                                     </div>
                                 </form>
