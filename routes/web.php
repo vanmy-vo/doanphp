@@ -134,5 +134,5 @@ Route::post('binhluanbaiviet', [UserDetailController::class, 'binhluan'])->name(
 Route::post('timkiembaivietadmin', [BaivietController::class, 'timkiem'])->name('tim');
 
 Route::post('locloaitudanhmuc', [BaivietController::class, 'filter'])->name('filterloai');
-=======
+
 Route::post('binhluanbaiviet', [UserDetailController::class, 'binhluan'])->name('binhluanpost');
