@@ -26,7 +26,7 @@ $ads = DB::table('ads')->get();
     }
 </style>
 @php
-                  $ca= App\Models\category::whereNull('deleted_at')->count();
+                  //$ca= App\Models\category::whereNull('deleted_at')->count();
                 
                   @endphp
 <div class="col-lg-3" style="height: 100px;">

@@ -79,41 +79,45 @@ use Illuminate\Support\Request;
 </style>
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 10px">
-        <div class="device-search-box col-lg-12 col-md-12" style="display: flex;width: 100%;">
-            <label for="c">Tìm</label>
-            <div class="search-box">
-                <!-- <input placeholder="Nhập tên tài khoản..." value="" onchange="SearchLocation(this)">
-                <i onclick="SearchLocation(this.previousElementSibling)" class="fa fa-search"></i> -->
-                <input id="search" placeholder="Nhập tên bài viết..." name="searchpost" value="">
+        <form action="{{ route('search.get') }}" method="get">
+            @csrf
+            <div class="device-search-box col-lg-12 col-md-12" style="display: flex;width: 100%;">
+                <label for="c">Tìm</label>
+                <div class="search-box">
+                    <!-- <input placeholder="Nhập tên tài khoản..." value="" onchange="SearchLocation(this)">
+                    <i onclick="SearchLocation(this.previousElementSibling)" class="fa fa-search"></i> -->
+                    <input id="search" placeholder="Nhập tên bài viết..." name="searchpost" value="">
+                </div>
+                <div class="col-md-2" style="margin-left: 1%;">
+                    <select class="form-control input-edit" name="danhmucsearch" id="timkeimdanhmuc" onchange="changeLoai()">
+                        <option value="">Chọn danh mục</option>
+                        <?php foreach ($category as $value_category_filter) : ?>
+                        <option value="<?= $value_category_filter->id ?>"><?= $value_category_filter->category_name ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+                <div class="col-md-2" style="margin-left: 1%;">
+                    <select class="form-control input-edit" name="loaibaivietsearch">
+                        <option value="">Chọn loại bài viết</option>
+                        <?php foreach ($type as $value_type_filter) : ?>
+                        <option value="<?= $value_type_filter->id ?>"><?= $value_type_filter->type_name ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+                <div class="col-md-1" style="margin-left: 1%;display: flex;flex-direction: row-reverse;">
+                    <label for="a" style="padding-top: 10px;">ẩn/hiện</label>
+                    <input type="checkbox" name="statussearch" value="0">
+                </div>
+                <div class="col-md-1" style="margin-left: 1%;display: flex;flex-direction: row-reverse;">
+                    <label for="n" style="padding-top: 10px;">slideshow</label>
+                    <input type="checkbox" name="slidesreach" value="0">
+                </div>
+                <div style="margin-left: 1%;">
+                    <i onclick="searchPost()" class="fa fa-search btn btn-success"></i>
+                    <button type="submit">search</button>
+                </div>
             </div>
-            <div class="col-md-2" style="margin-left: 1%;">
-                <select class="form-control input-edit" name="danhmucsearch" id="timkeimdanhmuc" onchange="changeLoai()">
-                    <option value="">Chọn danh mục</option>
-                    <?php foreach ($category as $value_category_filter) : ?>
-                    <option value="<?= $value_category_filter->id ?>"><?= $value_category_filter->category_name ?></option>
-                    <?php endforeach; ?>
-                </select>
-            </div>
-            <div class="col-md-2" style="margin-left: 1%;">
-                <select class="form-control input-edit" name="loaibaivietsearch">
-                    <option value="">Chọn loại bài viết</option>
-                    <?php foreach ($type as $value_type_filter) : ?>
-                    <option value="<?= $value_type_filter->id ?>"><?= $value_type_filter->type_name ?></option>
-                    <?php endforeach; ?>
-                </select>
-            </div>
-            <div class="col-md-1" style="margin-left: 1%;display: flex;flex-direction: row-reverse;">
-                <label for="a" style="padding-top: 10px;">ẩn/hiện</label>
-                <input type="checkbox" name="statussearch" value="0">
-            </div>
-            <div class="col-md-1" style="margin-left: 1%;display: flex;flex-direction: row-reverse;">
-                <label for="n" style="padding-top: 10px;">slideshow</label>
-                <input type="checkbox" name="slidesreach" value="0">
-            </div>
-            <div style="margin-left: 1%;">
-                <i onclick="searchPost()" class="fa fa-search btn btn-success"></i>        
-            </div>
-        </div>
+        </form>
     </div>
 </div>
 

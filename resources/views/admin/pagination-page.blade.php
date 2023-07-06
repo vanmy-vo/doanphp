@@ -69,14 +69,22 @@
             <?php if ($list->onFirstPage()) { ?>
             <li class="disabled"><a href="#"><span aria-hidden="true">First</span></a></li>
             <?php } else { ?>
-            <li><a href="{{ $paginator->toArray()['first_page_url'] }}"><span aria-hidden="true">First</span></a></li>
+                <?php if (isset($_GET['_token'])) : ?>
+                <li><a href="<?=url()->full()?>&page=1"><span aria-hidden="true">First</span></a></li>
+                <?php else : ?>
+                <li><a href="?page=1"><span aria-hidden="true">First</span></a></li>
+                <?php endif; ?>
             <?php } ?>
 
 
             <?php if ($list->onFirstPage()) { ?>
             <li class="disabled"><a href="#"><span aria-hidden="true">&laquo;</span></a></li>
             <?php } else { ?>
-            <li><a href="<?=$list->previousPageUrl()?>"><span aria-hidden="true">&laquo;</span></a></li>
+                <?php if (isset($_GET['_token'])) : ?>
+                <li><a href="<?=url()->full()?><?=$list->firstItem()?>"><span aria-hidden="true">&laquo;</span></a></li>
+                <?php else : ?>
+                <li><a href="<?=$list->previousPageUrl()?>"><span aria-hidden="true">&laquo;</span></a></li>
+                <?php endif; ?>
             <?php } ?>
 
             <?php foreach ($elements as $value) : ?>
@@ -90,7 +98,11 @@
                         <?php if ($page == $list->currentPage()) : ?>
                         <li class="active"><a href=""><?= $page ?></a></li>
                         <?php else : ?>
-                        <li><a href="<?= $url ?>"><?= $page ?></a></li>
+                            <?php if (isset($_GET['_token'])) : ?>
+                            <li><a href="<?=url()->full()?>&page=<?=$page?>"><?= $page ?></a></li>
+                            <?php else : ?>
+                            <li><a href="?page=<?=$page?>"><?= $page ?></a></li>
+                            <?php endif; ?>
                         <?php endif; ?>
                     <?php endforeach; ?>
                 <?php endif; ?>
@@ -101,13 +113,21 @@
             <?php if (!$list->hasMorePages()) { ?>            
             <li class="disabled"><a href="#"><span aria-hidden="true">&raquo;</span></a></li>
             <?php } else { ?>
-            <li><a href="<?=$list->nextPageUrl()?>"><span aria-hidden="true">&raquo;</span></a></li>
+                <?php if (isset($_GET['_token'])) : ?>
+                <li><a href="<?=url()->full()?><?=$list->nextPageUrl()?>"><span aria-hidden="true">&raquo;</span></a></li>
+                <?php else : ?>
+                <li><a href="<?=$list->nextPageUrl()?>"><span aria-hidden="true">&raquo;</span></a></li>
+                <?php endif; ?>
             <?php } ?>
 
             <?php if (!$list->hasMorePages()) { ?>            
             <li class="disabled"><a href="#"><span aria-hidden="true">Last</span></a></li>
             <?php } else { ?>
-            <li><a href="baiviet?page=<?=$list->lastPage()?>"><span aria-hidden="true">Last</span></a></li>
+                <?php if (isset($_GET['_token'])) : ?>
+                <li><a href="<?=url()->full()?>&page=<?=$list->lastPage()?>"><span aria-hidden="true">Last</span></a></li>
+                <?php else : ?>
+                <li><a href="?page=<?=$list->lastPage()?>"><span aria-hidden="true">Last</span></a></li>
+                <?php endif; ?>
             <?php } ?>
         </ul>
         <?php } ?>

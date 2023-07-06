@@ -136,3 +136,5 @@ Route::post('timkiembaivietadmin', [BaivietController::class, 'timkiem'])->name(
 Route::post('locloaitudanhmuc', [BaivietController::class, 'filter'])->name('filterloai');
 
 Route::post('binhluanbaiviet', [UserDetailController::class, 'binhluan'])->name('binhluanpost');
+
+Route::get('timkiemadmin', [BaivietController::class, 'search'])->name('search.get');

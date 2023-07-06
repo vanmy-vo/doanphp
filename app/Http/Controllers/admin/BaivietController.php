@@ -22,7 +22,7 @@ class BaivietController extends Controller
         if (!session('user')['userid']) {
             return view('admin.login');
         }
-        $list = Baiviet::where(['status' => 0])->orderBy('id', 'desc')->paginate(10);
+        $list = Baiviet::where(['status' => 0])->orderBy('id', 'desc')->paginate(1);
         $category = DB::table('category')->get();
         // $tacgia = DB::table('account')->where(['role_id' => 2])->get();
         $tacgia = DB::table('account')->get();
@@ -282,5 +282,19 @@ class BaivietController extends Controller
         foreach ($type as $key => $value) {
             echo '<option value="'.$value->id.'">'.$value->type_name.'</option>';
         }
+    }
+
+    public function search(Request $request) {
+        if (!session('user')['userid']) {
+            return view('admin.login');
+        }
+
+        $list = Baiviet::where(['status' => 0])->where('title_post', 'like', "%$request->searchpost%")->orWhere(['type_id' => $request->loaibaivietsearch])->orWhere(['category_id' => $request->danhmucsearch])->leftjoin('type', 'type.id', 'post.type_id')->leftjoin('category', 'category.id', 'type.category_id')->orderBy('post.id', 'desc')->paginate(1);
+
+        $category = DB::table('category')->get();
+        // $tacgia = DB::table('account')->where(['role_id' => 2])->get();
+        $tacgia = DB::table('account')->get();
+        $type = DB::table('type')->get();
+        return view('admin.ManagerComment', compact('list', 'category', 'tacgia', 'type'));
     }
 }
