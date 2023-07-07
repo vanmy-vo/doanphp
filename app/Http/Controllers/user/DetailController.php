@@ -16,7 +16,10 @@ class DetailController extends Controller
     public function detail($slug) {
         $chitiet = Baiviet::where(['slug_post' => $slug, 'status' => 0])->first();
         $tongbinhluan = DB::table('comment')->where(['post_id' => $chitiet->id])->get();
-        return view('user.detail', compact('chitiet', 'tongbinhluan'));
+        $databases = DB::table('ads')->get();
+        $tinlienquan = DB::table('post')->where(['type_id' => $chitiet->type_id])->orderBy('created_at', 'desc')->limit(2)->get();
+        $imagetinlienquan = DB::table('post_image')->get();
+        return view('user.detail', compact('chitiet', 'tongbinhluan', 'databases', 'tinlienquan','imagetinlienquan'));
     }
 
     public function binhluan(Request $request) {

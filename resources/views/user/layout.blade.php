@@ -33,8 +33,11 @@
     <!-- ==== Theme Color Stylesheet ==== -->
     <link rel="stylesheet" href="{{asset('user/css/colors/theme-color-1.css')}}" id="changeColorScheme">
     
-    <!-- ==== Custom Stylesheet ==== -->
+    
     <link rel="stylesheet" href="{{asset('user/css/custom.css')}}">
+    <!-- ==== Toast ==== -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
 </head>
 <body>
     <?php
@@ -134,7 +137,7 @@
                     <div id="headerNav" class="navbar-collapse collapse float--left">
                         <!-- Header Menu Links Start -->
                         <ul class="header--menu-links nav navbar-nav" data-trigger="hoverIntent">
-                            <li><a href="{{asset('/')}}">Trang chủ</a></li>
+                            <li><a href="{{asset('/home')}}">Trang chủ</a></li>
 
                             <!-- <li><a href="{{asset('type-category')}}">Giáo dục</a></li> -->
                             <li class="dropdown hidden">
@@ -218,7 +221,8 @@
                     </div>
 
                     <!-- Header Search Form Start -->
-                    <form action="#" class="header--search-form float--right" data-form="validate">
+                    <form action="{{route('search')}}" method="GET" enctype="multipart/form-data" class="header--search-form float--right" data-form="validate">
+                        @csrf
                         <input type="search" name="search" placeholder="Tìm kiếm..." class="header--search-control form-control" required>
 
                         <button type="submit" class="header--search-btn btn"><i class="header--search-icon fa fa-search"></i></button>
@@ -413,6 +417,8 @@
 
     <!-- ==== jQuery Library ==== -->
     <script src="{{asset('user/js/jquery-3.2.1.min.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
 
     <!-- ==== Bootstrap Framework ==== -->
     <script src="{{asset('user/js/bootstrap.min.js')}}"></script>
@@ -453,5 +459,7 @@
     <!-- ==== Main JavaScript ==== -->
     <script src="{{asset('user/js/main.js')}}"></script>
     <script src="{{asset('user/js/custom.js')}}"></script>
+
+    @yield('js')
 </body>
 </html>

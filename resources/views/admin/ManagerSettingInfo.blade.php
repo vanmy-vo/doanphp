@@ -366,27 +366,27 @@
                     website</h3>
             </div>
             <div class="modal-body">
-                <form id="updateAdsForm" action="{{ route('post.admim.updatesetting') }}" method="post"
+            <form id="uploadForm" action="{{ route('post.admim.updatesetting') }}" method="post"
                     enctype="multipart/form-data">
                     @csrf
                     <div id="FilterContentCenter">
                         <div class="filterpane" style="margin-bottom:0px;padding-bottom:0px">
                             <div class="row">
                                 <div class="col-md-3 col-sm-3 col-xs-12">
-                                    <!-- <img src="{{asset('user/img/ads-img/black-pink.jpg')}}" alt="" width="100" height="100">         -->
-                                    <?php if ($databases[0]->linkimage == '' || $databases[0]->linkimage == null) { ?>
-                                    <img id="preview-image-before-upload" src="{{ asset('user/img/ads-img/black-pink.jpg') }}"
-                                        alt="preview image" width="100" height="100" value="">
+                                    <?php if ($db_setting->linkimage == '' || !file_exists('uploads/posts/imageviewsetting/'.$db_setting->linkimage)) { ?>
+                                    <img id="preview-image-before-upload"
+                                        src="{{ asset('uploads/posts/imageviewsetting/empty.png') }}" alt="preview image"
+                                        width="100" height="100" value="">
                                     <?php } else { ?>
-                                    <img id="preview-image-before-upload" src="<?= $databases[0]->linkimage ?>"
-                                     alt="preview image" width="100" height="100" value="">
+                                    <img id="preview-image-before-upload" src="{{ asset('uploads/posts/imageviewsetting/' . $db_setting->linkimage) }}"
+                                        alt="preview image" width="100" height="100" value="">
                                     <?php } ?>
                                 </div>
                                 <div class="col-md-4 col-sm-3 col-xs-12">
                                     <p class="lefttitle">Thay đổi logo mới</p>
                                 </div>
                                 <div class="col-md-8 col-sm-9 col-xs-12">
-                                    <input type="file" id="image" name="image" class="form-control input-edit">
+                                    <input  type="file" name="file" id="file" class="form-control input-edit">
                                 </div>
                                 <div class="clearfix"></div>
                             </div>
@@ -395,8 +395,8 @@
                                     <p class="lefttitle">Địa chỉ</p>
                                 </div>
                                 <div class="col-md-9 col-sm-9 col-xs-12">
-                                    <input id="address_" type="text" class="form-control input-edit"
-                                        value="<?= $databases[0]->address_ ?>" />
+                                    <input id="address_" name="address_" type="text" class="form-control input-edit"
+                                        value="<?= $db_setting->address_ ?>" />
                                 </div>
                                 <div class="clearfix"></div>
                             </div>
@@ -405,8 +405,8 @@
                                     <p class="lefttitle">Mô tả</p>
                                 </div>
                                 <div class="col-md-9 col-sm-9 col-xs-12">
-                                    <input id="describe" type="text" class="form-control input-edit"
-                                        value="<?= $databases[0]->describe ?>" />
+                                    <input id="describe" name="describe" type="text" class="form-control input-edit"
+                                        value="<?= $db_setting->describe ?>" />
                                 </div>
                                 <div class="clearfix"></div>
                             </div>
@@ -415,8 +415,8 @@
                                     <p class="lefttitle">Email</p>
                                 </div>
                                 <div class="col-md-9 col-sm-9 col-xs-12">
-                                    <input id="email" type="email" class="form-control input-edit"
-                                        value="<?= $databases[0]->email ?>" />
+                                    <input id="email" name="email" type="email" class="form-control input-edit"
+                                        value="<?= $db_setting->email ?>" />
                                 </div>
                                 <div class="clearfix"></div>
                             </div>
@@ -425,8 +425,8 @@
                                     <p class="lefttitle">Số điện thoại</p>
                                 </div>
                                 <div class="col-md-9 col-sm-9 col-xs-12">
-                                    <input id="phone" type="text" class="form-control input-edit"
-                                        value="<?= $databases[0]->phone ?>" />
+                                    <input id="phone" name="phone" type="text" class="form-control input-edit"
+                                        value="<?= $db_setting->phone ?>" />
                                 </div>
                                 <div class="clearfix"></div>
                             </div>
@@ -435,8 +435,8 @@
                                     <p class="lefttitle">Facebook</p>
                                 </div>
                                 <div class="col-md-9 col-sm-9 col-xs-12">
-                                    <input id="linkfb" type="text" class="form-control input-edit"
-                                        value="<?= $databases[0]->linkfb ?>" />
+                                    <input id="linkfb" name="linkfb" type="text" class="form-control input-edit"
+                                        value="<?= $db_setting->linkfb ?>" />
                                 </div>
                                 <div class="clearfix"></div>
                             </div>
@@ -452,7 +452,7 @@
 
                 <script>
                 $(document).ready(function() {
-                    $('#image').change(function() {
+                    $('#file').change(function() {
                         let reader = new FileReader();
                         reader.onload = (e) => {
                             $('#preview-image-before-upload').attr('src', e.target
@@ -460,47 +460,43 @@
                         }
                         reader.readAsDataURL(this.files[0]);
                     });
-                    $('#updateAdsForm').submit(function(e) {
-                        var formData = $(this).serialize();
+                    $('#uploadForm').submit(function(e) {
                         e.preventDefault();
+
+                        var formData = new FormData(this);
+
                         var address_ = $('#address_').val();
                         var describe = $('#describe').val();
                         var email = $('#email').val();
                         var phone = $('#phone').val();
                         var linkfb = $('#linkfb').val();
-                        var image = 'C:\\Users\\ADMIN\\Pictures\\Screenshots\\abc.png';
-                        console.log(image);
-                        if (image == ""){
-                            image = '<?= $databases[0]->linkimage ?>';
-                        }
-                        if (address_ == "" || describe == "" || email == "" || phone == "" || linkfb == ""){
+                        if (address_ == "" || describe == "" || email == "" || phone == "" || linkfb ==
+                            "") {
                             alert("Không được bỏ trống thông tin");
                             return;
                         }
+
+                        console.log(formData);
                         $.ajax({
-                            url: '{{ route("post.admim.updatesetting") }}',
+                            url: $(this).attr('action'),
                             type: 'POST',
-                            data: {
-                                address_: address_,
-                                describe: describe,
-                                email: email,
-                                phone: phone,
-                                linkfb: linkfb,
-                                image: image,
-                            },
-                            headers: {
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                            },
+                            data: formData,
+                            dataType: 'json',
+                            cache: false,
+                            contentType: false,
+                            processData: false,
                             success: function(response) {
-                                $('#message').css('display', 'flex')
+                                $('#message').css('display', 'flex');
                             },
-                            error: function(response) {
-                                alert('Cập nhật thất bại');
+                            error: function(xhr, status, error) {
+                                alert(xhr.responseText);
+                                // Handle the error response here
                             }
                         });
                     });
                 });
                 </script>
+
             </div>
         </div>
     </div>

@@ -15,10 +15,6 @@
         </div>
         <!-- Main Breadcrumb End -->
 
-        <!-- Map Start -->
-        {{-- <div class="map--fluid mtop--30" data-trigger="map" data-map-latitude="23.790546" data-map-longitude="90.375583" data-map-zoom="16" data-map-marker="[[23.790546, 90.375583]]"></div> --}}
-        <!-- Map End -->
-
         <!-- Contact Section Start -->
         <div class="contact--section pd--30-0">
             <div class="container">
@@ -33,7 +29,7 @@
                                     </div>
 
                                     <div class="content">
-                                        <p><a href="tel:0055667788991122">0944 123 123</a></p>
+                                        <p><a href="">0944 123 123</a></p>
                                     </div>
                                 </li>
 
@@ -43,7 +39,7 @@
                                     </div>
 
                                     <div class="content">
-                                        <p><a href="mailto:example@example.com">example@example.com</a></p>
+                                        <p><a href="">example@example.com</a></p>
                                     </div>
                                 </li>
 
@@ -65,43 +61,35 @@
                         <!-- Comment Form Start -->
                         <div class="comment--form">
                             <div class="comment-respond">
-                            @error('failed')
-              <div class="alert alert-danger">{{$message}}</div>
-            @enderror
-            @error('passed')
-              <div class="alert alert-success">{{$message}}</div>
-            @enderror
-                                <form method="POST"action="{{route('addContact')}}">
-                                @csrf
-                                    <div class=""></div>
-                                    
+                                <form>
+                                    <div class="status"></div>
                                     <div class="row">
                                         <div class="col-xs-6 col-xxs-12">
                                             <label>
-                                                <span>Họ và Tên *</span>
-                                                <input type="text" name="fullname" class="form-control" required>
+                                                <span>Họ và tên *</span>
+                                                <input type="text" id="fullname" name="fullname" class="form-control" required>
                                             </label>
 
                                             <label>
                                                 <span>Địa chỉ Email *</span>
-                                                <input type="email" name="email" class="form-control" required>
+                                                <input type="email" id="email" name="email" class="form-control" required>
                                             </label>
 
                                             <label>
-                                                <span>Tiêu đề *</span>
-                                                <input type="text" name="title_contact" class="form-control">
+                                                <span>Tiêu đề</span>
+                                                <input type="text" id="title_contact" name="title_contact" class="form-control">
                                             </label>
                                         </div>
 
                                         <div class="col-xs-6 col-xxs-12">
                                             <label>
                                                 <span>Nội dung *</span>
-                                                <textarea name="content_contact" class="form-control" required></textarea>
+                                                <textarea id="content_contact" name="content_contact" class="form-control" required></textarea>
                                             </label>
                                         </div>
 
                                         <div class="col-md-12 text-right">
-                                            <button type="submit" class="btn btn-primary">Send Message</button>
+                                            <button type="submit" class="btn btn-primary btn-message">Gửi tin nhắn</button>
                                         </div>
                                     </div>
                                 </form>
@@ -113,4 +101,52 @@
             </div>
         </div>
         <!-- Contact Section End -->
+@endsection
+
+@section('js')
+    <script>
+        toastr.options = {
+            positionClass: 'toast-bottom-right'
+        };
+
+        function isValidEmail(email) {
+            // Regular expression to check email format
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailPattern.test(email);
+        }
+        
+        $('.btn-message').on('click',function(e){
+            e.preventDefault();
+            $fullname = $('#fullname').val();
+            $email = $('#email').val();
+            $title_contact = $('#title_contact').val();
+            $content_contact = $('#content_contact').val();
+
+            if (!isValidEmail($email)) {
+                toastr.error('Địa chỉ Email không hợp lệ');
+                return;
+            }
+
+            $.ajax({
+                type: 'POST',
+                url: 'http://127.0.0.1:8000/api/contacts/save-contact',
+                data: {
+                    fullname : $fullname,
+                    email : $email,
+                    title_contact : $title_contact,
+                    content_contact : $content_contact,
+                },  
+                dataType: 'json',
+                success: function(data){
+                    if(data.data){
+                        $('#fullname').val('');
+                        $('#email').val('');
+                        $('#title_contact').val('');
+                        $('#content_contact').val('');
+                        toastr.success('Đã gửi');
+                    }
+                }
+            });
+        });
+    </script>
 @endsection
