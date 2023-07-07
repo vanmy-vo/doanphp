@@ -6,6 +6,7 @@ use App\Http\Middleware\CheckAdminLogin;
 use App\Http\Controllers\admin\BaivietController;
 use App\Http\Controllers\admin\CaidatController;
 use App\Http\Controllers\admin\AdsController;
+use App\Http\Controllers\admin\CategoryController;
 //User
 use App\Http\Controllers\user\HomeController as UserHomeController;
 use App\Http\Controllers\user\CategoryController as UserCategoryController;
@@ -61,12 +62,9 @@ Route::get('admin/dashboard', function () {
 
 
 // quan ly danh muc
-Route::get('admin/category', function () {
-    return view('admin.ManagerList');
-})->name('category.admin')->middleware(CheckAdminLogin::class);
 Route::get('/search',[CategoryController::class,'search'])->name('search');
 Route::post('/addcategory',[CategoryController::class, 'addCategory'])->name('addCategory');
-Route::get('admin/loadcategory',[CategoryController::class, 'loadCategory'])->name('loadCategory');
+Route::get('/admin/category',[CategoryController::class, 'loadCategory'])->name('category.admin')->middleware(CheckAdminLogin::class);
 
 
 // quan ly slide show
@@ -87,6 +85,7 @@ Route::get('admin/ads', function () {
 Route::post('/addads',[AdsController::class, 'addAds'])->name('addAds');
 Route::get('/searchads',[AdsController::class,'searchads'])->name('searchads');
 Route::get('admin/loadads',[AdsController::class,'loadAds'])->name('ads.admin');
+Route::get('admin/delete-ads/{id}',[AdsController::class,'deleteAds'])->name('delete-ads');
 
 // Route::get('admin/post', function () {
 //     return view('admin.ManagerComment');

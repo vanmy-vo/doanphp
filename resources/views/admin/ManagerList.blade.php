@@ -200,111 +200,35 @@
                         <tr>
                             <th class="tc1">Tên danh mục</th>
                             <th class="tc2">ngày tạo</th>
-                            <!-- <th class="tc3"></th> -->
-                            <th class="tc4">Thao tác</th>
+                            <th class="tc3">Thao tác</th>
                         </tr>
                     </thead>
                     <tbody>
-                            <tr>
-                                <td class="tc1">
-                                    <!-- ltlong@gmail.com
-                                    <br>
-                                    <b>Lê Triệu Long</b> -->
-                                    việt nam
-                                </td>
-                                <td class="tc2">
-                                    <!-- <p>Nhân viên</p> -->
-                                    <p>31/03/2023</p>
-                                </td>
-                                <!-- <td class="tc3">
-                                    <p>Administrator</p>
-                                    <p>31/03/2023</p>
-                                </td> -->
-                                <td class="tc">      
-                                    <!-- <button type="button" class="btn btn-success btn-xs" onclick="listChild(1)">list con</button>
+                        @foreach($category as $ca)
+                        <tr>
+                            <td class="tc1">
+                                {{$ca->category_name}}
+                            </td>
+                            <td class="tc2">
+                                <p>{{$ca->created_at}}</p>
+                            </td>
+                            <td class="tc">      
+                        
                                     <button type="button" class="btn btn-success btn-xs" onclick="Level(1)">
-                                        thêm
-                                    </button>   -->                
-                                    <!-- <div class="btn btn-xs btn-success"> -->
-                                        <!-- <a href="detailAccount.html" style="color: #fff;">
-                                            <i class="fa fa-edit"></i> Chi tiết
-                                        </a> -->
-                                        <button type="button" class="btn btn-success btn-xs" onclick="Level(1)">
-                                            <i class="fa fa-edit"></i> Chi tiết
-                                        </button>
-                                    <!-- </div> -->
-                                    <div class="btn btn-xs btn-danger" onclick="Delete('Lê Triệu Long')" style=""><i class="fa fa-remove"></i> Xoá</div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="tc1">
-                                    <!-- ltlong@gmail.com
-                                    <br>
-                                    <b>Lê Triệu Long</b> -->
-                                    châu âu
-                                </td>
-                                <td class="tc2">
-                                    <!-- <p>Nhân viên</p> -->
-                                    <p>30/03/2023</p>
-                                </td>
-                                <!-- <td class="tc3">
-                                    <p>Administrator</p>
-                                    <p>31/03/2023</p>
-                                </td> -->
-                                <td class="tc">
-                                   <!--  <button type="button" class="btn btn-success btn-xs" onclick="listChild(2)">list con</button>
-                                    <button type="button" class="btn btn-success btn-xs" onclick="Level(2)">
-                                        thêm
-                                    </button>    -->                     
-                                    <!-- <div class="btn btn-xs btn-success"> -->
-                                        <!-- <a href="detailAccount.html" style="color: #fff;">
-                                            <i class="fa fa-edit"></i> Chi tiết
-                                        </a> -->
-                                        <button type="button" class="btn btn-success btn-xs" onclick="Level(2)">
-                                            <i class="fa fa-edit"></i> Chi tiết
-                                        </button>
-                                    <!-- </div> -->
-                                    <div class="btn btn-xs btn-danger" onclick="Delete('Lê Triệu Long')" style=""><i class="fa fa-remove"></i> Xoá</div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="tc1">
-                                    <!-- ltlong@gmail.com
-                                    <br>
-                                    <b>Lê Triệu Long</b> -->
-                                    thế giới
-                                </td>
-                                <td class="tc2">
-                                    <!-- <p>Nhân viên</p> -->
-                                    <p>29/03/2023</p>
-                                </td>
-                                <!-- <td class="tc3">
-                                    <p>Administrator</p>
-                                    <p>31/03/2023</p>
-                                </td> -->
-                                <td class="tc">
-                                   <!--  <button type="button" class="btn btn-success btn-xs" onclick="listChild(3)">list con</button>
-                                    <button type="button" class="btn btn-success btn-xs" onclick="Level(3)">
-                                        thêm
-                                    </button> -->                        
-                                    <!-- <div class="btn btn-xs btn-success"> -->
-                                        <!-- <a href="detailAccount.html" style="color: #fff;">
-                                            <i class="fa fa-edit"></i> Chi tiết
-                                        </a> -->
-                                        <button type="button" class="btn btn-success btn-xs" onclick="Level(3)">
-                                            <i class="fa fa-edit"></i> Chi tiết
-                                        </button>
-                                    <!-- </div> -->
-                                    <div class="btn btn-xs btn-danger" onclick="Delete('Lê Triệu Long')" style=""><i class="fa fa-remove"></i> Xoá</div>
-                                </td>
-                            </tr>
+                                        <i class="fa fa-edit"></i> Chi tiết
+                                    </button>
+                    
+                                <div class="btn btn-xs btn-danger" onclick="Delete('Lê Triệu Long')" style=""><i class="fa fa-remove"></i> Xoá</div>
+                            </td>
+                        </tr>       
+                        @endforeach
                     </tbody>
                 </table>
         </div>
     </div>
 </div>
 
-<div class="row">
+<!-- <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
         <style>
             #PageControl {
@@ -397,7 +321,8 @@
                 <div class="clear"></div>
             </div>
     </div>
-</div>
+</div> -->
+<div class="p-2">{{ $category->onEachSide(2)->links() }}</div>
 <!-- Modal Bộ lọc -->
 <style>
     #FilterBG {
