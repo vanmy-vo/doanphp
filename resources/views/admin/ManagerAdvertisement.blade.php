@@ -78,7 +78,8 @@
             </div>
 
             <div class="modal-body">
-                <form id="addAdsForm" method="GET" action="{{route('addAds')}}">
+                <form enctype="multipart/form-data" id="addAdsForm" method="post" action="{{route('addAds')}}">
+                    @csrf
                     <div id="FilterContentCenter">
                         <div class="filterpane" style="margin-bottom:0px;padding-bottom:0px">
                             <div class="row">
@@ -456,7 +457,7 @@
                            
                             <td class="tc">                        
                                 <!-- <a class="btn btn-xs btn-success" data-toggle="modal" data-target="#viewAds"><i class="fa fa-eye"></i></a> -->
-                                <a class="btn btn-xs btn-success" data-toggle="modal" data-target="#updateAds"><i class="fa fa-pencil-square-o"></i></a>
+                                <a href="{{route('ads.admin.update',['id'=>$ad->id])}}" class="btn btn-xs btn-success" data-toggle="modal" ><i class="fa fa-pencil-square-o"></i></a>
                                 <a href="{{route('delete-ads', $ad->id)}}" onclick="confirm('Bạn có chắc chắn muốn xóa không?')" class="btn btn-xs btn-danger"><i class="fa fa-remove"></i></a>
                             </td>
                         @endforeach

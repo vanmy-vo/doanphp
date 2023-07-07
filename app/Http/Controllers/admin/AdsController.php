@@ -26,21 +26,43 @@ class AdsController extends Controller
     public function addAds(Request $request)
     {
         $request->validate([
-            'imageupload' => 'mimes:jpg,png,jpeg,gif,svg',
+            'img' => 'mimes:jpg,png,jpeg,gif,svg',
         ]);
 
-        $img = $request->file('imageupload')->getClientOriginalName();
-
-
-        $path = $request->file('imageupload')->move('public/uploads/ads');
-        {
-            $ad=new ads();
+        $img = $request->file('img')->getClientOriginalName();
+        $path = $request->file('img')->move(public_path('uploads/ads'),$img);
+            $ad=new Ads();
             $ad->title_ads = $request->title_ads;
             $ad->content_ads = $request->content_ads;
             $ad->link = $request->link;
-            $ad->img = $path . '/' . $img;
+            $ad->img = $img;
             $ad->save();
-            return back ()->withErrors(['passed'=>"Bạn đã thêm thành công!"]);
+            return back();
+    }
+    public function editAds($id)
+    {
+        $ads=Ads::find($id);
+         return view('admin.AdvertisementEdit',compact('ads'));
+    }  
+    public function updateAds(Request $request,$id)
+    {
+        $ad= Ads::find($id);
+        $request->validate([
+            'imageupload' => 'mimes:jpg,png,jpeg,gif,svg',
+        ]);
+        $img = $request->file('imageupload')->getClientOriginalName();
+        $path = $request->file('imageupload')->move(public_path('uploads/ads'),$img);
+        {
+          
+            if($request->hasfile('imageupload'))
+            {
+                $ad->img =$img;
+            }
+            $ad->title_ads = $request->title_ads;
+            $ad->content_ads = $request->content_ads;
+            $ad->link = $request->link;
+            $ad->save();
+            return back ();
         }
 
     }

@@ -82,11 +82,12 @@ Route::post('/addcontact',[ContactController::class, 'addContact'])->name('addCo
 Route::get('admin/ads', function () {
     return view('admin.ManagerAdvertisement');
 })->name('ads.admin')->middleware(CheckAdminLogin::class);
-Route::post('/addads',[AdsController::class, 'addAds'])->name('addAds');
+Route::post('admin/addads',[AdsController::class, 'addAds'])->name('addAds');
 Route::get('/searchads',[AdsController::class,'searchads'])->name('searchads');
 Route::get('admin/loadads',[AdsController::class,'loadAds'])->name('ads.admin');
 Route::get('admin/delete-ads/{id}',[AdsController::class,'deleteAds'])->name('delete-ads');
-
+Route::get('admin/capnhatad/{id}', [AdsController::class, 'editAds'])->name('ads.admin.update')->middleware(CheckAdminLogin::class);
+Route::post('admin/updateads/{id}',[AdsController::class, 'updateAds'])->name('updateAds');
 // Route::get('admin/post', function () {
 //     return view('admin.ManagerComment');
 // })->name('post.admin');
