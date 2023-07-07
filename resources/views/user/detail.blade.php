@@ -229,10 +229,9 @@ use App\Models\Slide;
                         <!-- Tags Widget Start -->
                         <div class="tags--widget style--1">
                             <ul class="nav">
-                                <li><a href="{{route('category')}}">Mới</a></li>
-                                <li><a href="{{route('category')}}">Hot</a></li>
-                                <li><a href="{{route('category')}}">Tin Nóng</a></li>
-                                <li><a href="{{route('category')}}">Game</a></li>
+                                <li><a href="{{route('category')}}"><?= $type[0]->type_name ?></a></li>
+                                <li><a href="{{route('category')}}"><?= $type[1]->type_name ?></a></li>
+                                <li><a href="{{route('category')}}"><?= $type[2]->type_name ?></a></li>
                             </ul>
                         </div>
                         <!-- Tags Widget End -->

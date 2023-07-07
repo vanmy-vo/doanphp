@@ -4,11 +4,16 @@
 @section('title','Liên hệ')
 
 @section('web_content')
+<body>
+    <?php
+    use Illuminate\Support\Facades\DB;
+    $setting = DB::table('setting')->first();
+    ?>
         <!-- Main Breadcrumb Start -->
         <div class="main--breadcrumb">
             <div class="container">
                 <ul class="breadcrumb">
-                    <li><a href="home-1.html" class="btn-link"><i class="fa fm fa-home"></i>Trang chủ</a></li>
+                    <li><a href="home" class="btn-link"><i class="fa fm fa-home"></i>Trang chủ</a></li>
                     <li class="active"><span>Liên hệ</span></li>
                 </ul>
             </div>
@@ -29,7 +34,7 @@
                                     </div>
 
                                     <div class="content">
-                                        <p><a href="">0944 123 123</a></p>
+                                        <p><a href="tel:<?= $setting->phone ?>"><?= $setting->phone ?></a></p>
                                     </div>
                                 </li>
 
@@ -39,7 +44,7 @@
                                     </div>
 
                                     <div class="content">
-                                        <p><a href="">example@example.com</a></p>
+                                        <p><a href="mailto:<?= $setting->phone ?>"><?= $setting->email ?></a></p>
                                     </div>
                                 </li>
 
@@ -49,7 +54,7 @@
                                     </div>
 
                                     <div class="content">
-                                        <p>TP.Hồ Chí Minh</p>
+                                        <p><?= $setting->address_ ?></p>
                                     </div>
                                 </li>
                             </ul>

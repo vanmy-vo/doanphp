@@ -19,7 +19,8 @@ class DetailController extends Controller
         $databases = DB::table('ads')->get();
         $tinlienquan = DB::table('post')->where(['type_id' => $chitiet->type_id])->orderBy('created_at', 'desc')->limit(2)->get();
         $imagetinlienquan = DB::table('post_image')->get();
-        return view('user.detail', compact('chitiet', 'tongbinhluan', 'databases', 'tinlienquan','imagetinlienquan'));
+        $type = DB::table('type')->orderBy('created_at', 'desc')->limit(3)->get();
+        return view('user.detail', compact('chitiet', 'tongbinhluan', 'databases', 'tinlienquan','imagetinlienquan','type'));
     }
 
     public function binhluan(Request $request) {

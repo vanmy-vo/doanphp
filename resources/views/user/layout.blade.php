@@ -44,6 +44,7 @@
     use App\Models\Danhmuc;
     use Illuminate\Support\Facades\DB;
     $category = DB::table('category')->get();
+    $setting = DB::table('setting')->first();
     ?>
     <!-- Preloader Start -->
     {{-- <div id="preloader">
@@ -103,7 +104,7 @@
                     <!-- Header Logo Start -->
                     <div class="header--logo float--left float--sm-none text-sm-center">
                         <h1 class="h1">
-                            <a href="{{asset('/')}}" class="btn-link">
+                            <a href="{{asset('/home')}}" class="btn-link">
                                 <img src="{{asset('user/img/logo-tt.png')}}" alt="News Logo" width="227" height="50">
                                 <span class="hidden">Logo tin tức</span>
                             </a>
@@ -291,25 +292,24 @@
                                 <!-- About Widget Start -->
                                 <div class="about--widget">
                                     <div class="content">
-                                        <p>Website Tin Tức Việt Nam</p>
+                                        <p><?= $setting->describe ?></p>
                                     </div>
 
                                     <div class="action">
-                                        <a href="#" class="btn-link">Xem thêm<i class="fa flm fa-angle-double-right"></i></a>
                                     </div>
 
                                     <ul class="nav">
                                         <li>
                                             <i class="fa fa-map"></i>
-                                            <a href="">TP.Hồ Chí Minh</a>
+                                            <a href=""><?= $setting->address_ ?></a>
                                         </li>
                                         <li>
                                             <i class="fa fa-envelope-o"></i>
-                                            <a href="">Demo@caothang.edu.vn</a>
+                                            <a href="mailto:<?= $setting->email ?>"><?= $setting->email ?></a>
                                         </li>
                                         <li>
                                             <i class="fa fa-phone"></i>
-                                            <a href="">+123 456 (789)</a>
+                                            <a href="tel:<?= $setting->phone ?>"><?= $setting->phone ?></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -393,7 +393,7 @@
                     <p class="text float--left">&copy; 2023 <a href="#">Website Tin Tức</a></p>
 
                     <ul class="nav social float--right">
-                        <li><a href="#"><i class="fa fa-facebook"></i>acebook</a></li>
+                        <li><a target="_blank" href="<?= $setting->linkfb ?>"><i class="fa fa-facebook"></i> facebook</a></li>
                     </ul>
 
                     <ul class="nav links float--right">
