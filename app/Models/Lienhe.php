@@ -5,13 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class LienheController extends Model
+class Lienhe extends Model
 {
-    use HasFactory;
-
     protected $table = 'contact';
-
     protected $fillable = [
-        'title_post',
+        'fullname',
+        'email',
+        'title_contact',
+        'content_contact',
     ];
+    public $timestamps = true; 
 }

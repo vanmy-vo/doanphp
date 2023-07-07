@@ -10,6 +10,14 @@ class Danhmuc extends Model
     use HasFactory;
     protected $table = 'category';
     protected $fillable = [
-        'category_name','created_at'
+
+
+        'category_name',
+        'created_at',
+        'updated_at',
+        'deleted_at',
+        'slug_category',
+
     ];
+    public $timestamps = true;
 }

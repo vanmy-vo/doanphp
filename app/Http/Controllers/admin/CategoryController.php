@@ -19,22 +19,34 @@ class CategoryController extends Controller
     }  
     public function addCategory(Request $request)
     {
-        $ca=new Danhmuc();
-        $ca->category_name = $request->category_name;
-        $ca->save();
+        $category=new Danhmuc();
+        $category->category_name = $request->category_name;
+        $category->save();
         return redirect()->back();
     }
     public function searchcategory(Request $request)
     {
-    $ca=Danhmuc::where('category_name','like','%'.$request->search.'%')->get();
+    $category=Danhmuc::where('category_name','like','%'.$request->search.'%')->get();
     return view('admin.ManagerList',compact('category'));
     }
     public function updateAds(Request $request,$id)
     {
-        $ca= Danhmuc::find($id);
-            $ca->category_name = $request->category_name;
-            $ca->save();
+        $category= Danhmuc::find($id);
+            $category->category_name = $request->category_name;
+            $category->save();
             return back ();
         }
+        public function deleteCategory(Request $request)
+        {
+            $category = Danhmuc::where(['id' =>$request->id])->first();
+            $category->status =1;
+            if($category->update()){
+    return 'Xóa thành công';
+}
+    else{
+        return'Xóa thất bại';
     }
-
+}
+        }
+    
+   

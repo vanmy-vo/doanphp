@@ -203,7 +203,7 @@
                     <thead>
                         <tr>
                             <th class="tc1">Tên danh mục</th>
-                            <th class="tc2">ngày tạo</th>
+                            <th class="tc2">Ngày tạo</th>
                             <th class="tc3">Thao tác</th>
                         </tr>
                     </thead>
@@ -222,7 +222,8 @@
                                         <i class="fa fa-edit"></i> Chi tiết
                                     </button>
                     
-                                <div class="btn btn-xs btn-danger" onclick="Delete('Bạn có chắc là muốn xóa')" style=""><i class="fa fa-remove"></i> Xoá</div>
+                                    <a href="{{route('delete-category', $ca->id)}}" onclick="confirm('Bạn có chắc chắn muốn xóa không?')" class="btn btn-xs btn-danger"><i class="fa fa-remove"></i></a>
+                            </td>
                             </td>
                         </tr>       
                         @endforeach

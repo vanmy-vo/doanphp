@@ -385,90 +385,85 @@ use App\Models\Slide;
             <div class="main--sidebar col-md-4 col-sm-5 ptop--30 pbottom--30" data-sticky-content="true">
                 <div class="sticky-content-inner">
                     <!-- Widget Start -->
+                    <!-- QUẢNG CÁO -->
+                    <style>
+                    .slider {
+                        margin: 20px auto;
+                    }
+
+                    #img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: contain;
+                    }
+                    </style>
                     <div class="widget">
-                        <!-- Ad Widget Start -->
                         <div class="widget--title">
                             <h2 class="h4">Quảng cáo</h2>
                             <i class="icon fa fa-bullhorn"></i>
                         </div>
-                        <div class="ad--widget">
-                            <a href="#">
-                                <img src="{{asset('user/img/ads-img/ads-black-pink-samsung.jpg')}}" alt="">
-                            </a>
-                        </div>
                         <!-- Ad Widget End -->
                     </div>
-                    <!-- Widget End -->
+                    <div class="slider ad--widget" id="img">
+                        <a href="<?= $databases[0]->link_name ?>" target="_blank"><img
+                                src="{{ asset('uploads/posts/'.$databases[0]->image_ads) }}"> </a>
+                    </div>
+                    <script>
+                    var img = document.getElementById('img');
+                    var slides = [];
+                    var link_slides = [];
+                    <?php foreach($databases as $row) : ?>
 
-                    <!-- Widget Start -->
-                    <div class="widget">
+                    slides.push('{{ asset('uploads/posts/'.$row->image_ads) }}');
+                    link_slides.push('<?= $row->link_name ?>');
+
+                    <?php endforeach; ?>
+
+                    var Start = 0;
+
+                    function slider() {
+                        if (Start < slides.length) {
+                            Start = Start + 1;
+                        } else {
+                            Start = 1;
+                        }
+
+                        img.innerHTML = "<a href=" + link_slides[Start - 1] + " + target='_blank'> <img src=" + slides[
+                                Start - 1] +
+                            "> </a>";
+
+                    }
+                    setInterval(slider, 1000);
+                    </script>
+
+                       <!-- Widget Start -->
+                       <div class="widget">
                         <div class="widget--title">
                             <h2 class="h4">Liên hệ</h2>
                             <i class="icon fa fa-envelope-open-o"></i>
                         </div>
-
                         <!-- Subscribe Widget Start -->
                         <div class="subscribe--widget">
                             <div class="content">
                                 <p>Liên hệ với chúng tôi</p>
                             </div>
-                            @error('failed')
-              <div class="alert alert-danger">{{$message}}</div>
-            @enderror
-            @error('passed')
-              <div class="alert alert-success">{{$message}}</div>
-            @enderror
-            <form method="POST"action="{{route('addContact')}}" data-form="ajax">
-                                @csrf
-                                    <div class="status"></div> 
-                                    <div class="row">
-                                        <div class="col-xs-6 col-xxs-12">
-                                            <label>
-                                                <span>Họ và Tên *</span>
-                                                <input type="text" name="fullname" class="form-control" required>
-                                            </label>
-                                            <label>
-                                                <span>Địa chỉ Email *</span>
-                                                <input type="email" name="email" class="form-control" required>
-                                            </label>
-                                            <label>
-                                                <span>Tiêu đề *</span>
-                                                <input type="text" name="title_contact" class="form-control">
-                                            </label>
-                                        </div>
-                                        <div class="col-xs-6 col-xxs-12">
-                                            <label>
-                                                <span>Nội dung *</span>
-                                                <textarea name="content_contact" class="form-control" required></textarea>
-                                            </label>
-                                        </div>
-                                        <div class="col-md-12 text-right">
-                                            <button type="submit" class="btn btn-primary">Send Message</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                            </div>
-                     
+
+                            <form name="mc-embedded-subscribe-form" target="_blank">
+                                <div class="input-group">
+                                    <input type="text" id="fullname" name="fullname" placeholder="Nhập Tên" class="form-control" autocomplete="off" required>
+                                    <input type="email" id="email" name="email" placeholder="Nhập Email" class="form-control" autocomplete="off" required>
+                                    <input type="text" id="title_contact" name="title_contact" placeholder="Nhập tiêu đề" class="form-control" autocomplete="off" required>
+                                    <textarea type="text" id="content_contact" name="content_contact" placeholder="Nhập nội dung" class="form-control" autocomplete="off" required></textarea>
+                                    <button type="submit" class="btn btn-lg btn-default active btn-message"><i class="fa fa-paper-plane-o"></i></button>
+                                </div>
+                                {{-- <div class="status"></div> --}}
+                            </form>
+                        </div>
+                        {{-- </div> --}}
                         <!-- Subscribe Widget End -->
                     </div>
                     <!-- Widget End -->
 
-                    <!-- Widget Start -->
-                    <div class="widget">
-                        <div class="widget--title">
-                            <h2 class="h4">Quảng cáo</h2>
-                            <i class="icon fa fa-bullhorn"></i>
-                        </div>
-
-                        <!-- Ad Widget Start -->
-                        <div class="ad--widget">
-                            <a href="#">
-                                <img src="{{asset('user/img/ads-img/black-pink.jpg')}}" alt="">
-                            </a>
-                        </div>
-                        <!-- Ad Widget End -->
-                    </div>
                     <!-- Widget End -->
                 </div>
             </div>
@@ -715,4 +710,52 @@ use App\Models\Slide;
     </div>
 </div>
 <!-- Main Content Section End -->
+@endsection
+
+@section('js')
+    <script>
+        toastr.options = {
+            positionClass: 'toast-bottom-right'
+        };
+
+        function isValidEmail(email) {
+            // Regular expression to check email format
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailPattern.test(email);
+        }
+        
+        $('.btn-message').on('click',function(e){
+            e.preventDefault();
+            $fullname = $('#fullname').val();
+            $email = $('#email').val();
+            $title_contact = $('#title_contact').val();
+            $content_contact = $('#content_contact').val();
+
+            if (!isValidEmail($email)) {
+                toastr.error('Địa chỉ Email không hợp lệ');
+                return;
+            }
+
+            $.ajax({
+                type: 'POST',
+                url: 'http://127.0.0.1:8000/api/contacts/save-contact',
+                data: {
+                    fullname : $fullname,
+                    email : $email,
+                    title_contact : $title_contact,
+                    content_contact : $content_contact,
+                },  
+                dataType: 'json',
+                success: function(data){
+                    if(data.data){
+                        $('#fullname').val('');
+                        $('#email').val('');
+                        $('#title_contact').val('');
+                        $('#content_contact').val('');
+                        toastr.success('Đã gửi');
+                    }
+                }
+            });
+        });
+    </script>
 @endsection

@@ -15,7 +15,7 @@ use App\Http\Controllers\user\SearchController as UserSearchController;
 use App\Http\Controllers\user\DetailController as UserDetailController;
 use App\Http\Controllers\user\ContactController as UserContactController;
 
-
+use App\Http\Controllers\admin\SettingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -65,7 +65,7 @@ Route::get('admin/dashboard', function () {
 Route::get('/searchcategory',[CategoryController::class,'searchcategory'])->name('searchcategory');
 Route::post('/addcategory',[CategoryController::class, 'addCategory'])->name('addCategory');
 Route::get('/admin/category',[CategoryController::class, 'loadCategory'])->name('category.admin')->middleware(CheckAdminLogin::class);
-
+Route::get('admin/delete-category/{id}',[CategoryController::class,'deleteCategory'])->name('delete-category');
 
 // quan ly slide show
 Route::get('admin/slide', function () {
@@ -73,10 +73,14 @@ Route::get('admin/slide', function () {
 })->name('slide.admin')->middleware(CheckAdminLogin::class);
 
 //quan ly lien he
-Route::get('admin/contact', function () {
-    return view('admin.ManagercContact');
-})->name('admin-contact');
-Route::post('/addcontact',[ContactController::class, 'addContact'])->name('addContact');
+// Route::get('admin/contact', function () {
+//     return view('admin.ManagercContact');
+// })->name('admin-contact');
+// Route::post('/addcontact',[ContactController::class, 'addContact'])->name('addContact');
+
+// quan ly lien he
+    Route::get('admin/contact',[ContactController::class,'index'])->name('contact.admin')->middleware(CheckAdminLogin::class);
+    Route::post('admin/update',[ContactController::class,'updateContact'])->name('update.contact')->middleware(CheckAdminLogin::class);
 
 //quan ly quang cao
 Route::get('admin/ads', function () {
@@ -100,8 +104,10 @@ Route::post('admin/capnhat', [BaivietController::class, 'update'])->name('post.a
 Route::post('admin/delete', [BaivietController::class, 'destroy'])->name('post.admin.delete')->middleware(CheckAdminLogin::class);
 Route::get('admin/lienhe', [LienheController::class, 'index'])->name('post.admim.lienhe');
 Route::post('admin/luulienhe', [LienheController::class, 'addContact'])->name('post.admin.savecontact');
-Route::get('admin/caidat', [CaidatController::class, 'index'])->name('post.admim.caidat');
-Route::POST('admin/capnhatcaidat', [CaidatController::class, 'update'])->name('post.admim.updatesetting');
+
+Route::get('admin/setting', [SettingController::class, 'index'])->name('post.admim.setting');
+Route::POST('admin/updatesetting', [SettingController::class, 'update'])->name('post.admim.updatesetting');
+
 Route::get('admin/user', function () {
     return view('admin.ManagerUser');
 })->name('user.admin');
