@@ -385,28 +385,63 @@ use App\Models\Slide;
             <div class="main--sidebar col-md-4 col-sm-5 ptop--30 pbottom--30" data-sticky-content="true">
                 <div class="sticky-content-inner">
                     <!-- Widget Start -->
+                    <!-- QUẢNG CÁO -->
+                    <style>
+                    .slider {
+                        margin: 20px auto;
+                    }
+
+                    #img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: contain;
+                    }
+                    </style>
                     <div class="widget">
-                        <!-- Ad Widget Start -->
                         <div class="widget--title">
                             <h2 class="h4">Quảng cáo</h2>
                             <i class="icon fa fa-bullhorn"></i>
                         </div>
-                        <div class="ad--widget">
-                            <a href="#">
-                                <img src="{{asset('user/img/ads-img/ads-black-pink-samsung.jpg')}}" alt="">
-                            </a>
-                        </div>
                         <!-- Ad Widget End -->
                     </div>
-                    <!-- Widget End -->
+                    <div class="slider ad--widget" id="img">
+                        <a href="<?= $databases[0]->link_name ?>" target="_blank"><img
+                                src="{{ asset('uploads/posts/'.$databases[0]->image_ads) }}"> </a>
+                    </div>
+                    <script>
+                    var img = document.getElementById('img');
+                    var slides = [];
+                    var link_slides = [];
+                    <?php foreach($databases as $row) : ?>
 
-                    <!-- Widget Start -->
-                    <div class="widget">
-                        {{-- <div class="widget--title">
+                    slides.push('{{ asset('uploads/posts/'.$row->image_ads) }}');
+                    link_slides.push('<?= $row->link_name ?>');
+
+                    <?php endforeach; ?>
+
+                    var Start = 0;
+
+                    function slider() {
+                        if (Start < slides.length) {
+                            Start = Start + 1;
+                        } else {
+                            Start = 1;
+                        }
+
+                        img.innerHTML = "<a href=" + link_slides[Start - 1] + " + target='_blank'> <img src=" + slides[
+                                Start - 1] +
+                            "> </a>";
+
+                    }
+                    setInterval(slider, 1000);
+                    </script>
+
+                       <!-- Widget Start -->
+                       <div class="widget">
+                        <div class="widget--title">
                             <h2 class="h4">Liên hệ</h2>
                             <i class="icon fa fa-envelope-open-o"></i>
-                        </div> --}}
-
+                        </div>
                         <!-- Subscribe Widget Start -->
                         <div class="subscribe--widget">
                             <div class="content">
@@ -429,21 +464,6 @@ use App\Models\Slide;
                     </div>
                     <!-- Widget End -->
 
-                    <!-- Widget Start -->
-                    <div class="widget">
-                        <div class="widget--title">
-                            <h2 class="h4">Quảng cáo</h2>
-                            <i class="icon fa fa-bullhorn"></i>
-                        </div>
-
-                        <!-- Ad Widget Start -->
-                        <div class="ad--widget">
-                            <a href="#">
-                                <img src="{{asset('user/img/ads-img/black-pink.jpg')}}" alt="">
-                            </a>
-                        </div>
-                        <!-- Ad Widget End -->
-                    </div>
                     <!-- Widget End -->
                 </div>
             </div>

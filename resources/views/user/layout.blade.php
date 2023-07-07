@@ -137,7 +137,7 @@
                     <div id="headerNav" class="navbar-collapse collapse float--left">
                         <!-- Header Menu Links Start -->
                         <ul class="header--menu-links nav navbar-nav" data-trigger="hoverIntent">
-                            <li><a href="{{asset('/')}}">Trang chủ</a></li>
+                            <li><a href="{{asset('/home')}}">Trang chủ</a></li>
 
                             <!-- <li><a href="{{asset('type-category')}}">Giáo dục</a></li> -->
                             <li class="dropdown hidden">

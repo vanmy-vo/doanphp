@@ -344,7 +344,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('post.admim.caidat') }}">
+                                    <a href="{{ route('post.admim.setting') }}">
                                         <i class="fa fa-user"></i>
                                         Quản lý cài đặt thông tin
                                     </a>
