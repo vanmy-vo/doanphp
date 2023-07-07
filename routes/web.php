@@ -6,7 +6,11 @@ use App\Http\Middleware\CheckAdminLogin;
 use App\Http\Controllers\admin\BaivietController;
 use App\Http\Controllers\admin\CaidatController;
 use App\Http\Controllers\admin\AdsController;
+
 use App\Http\Controllers\admin\ContactController;
+
+=======
+use App\Http\Controllers\admin\CategoryController;
 
 //User
 use App\Http\Controllers\user\HomeController as UserHomeController;
@@ -63,12 +67,18 @@ Route::get('admin/dashboard', function () {
 
 
 // quan ly danh muc
+
 Route::get('admin/category', function () {
     return view('admin.ManagerList');
 })->name('category.admin')->middleware(CheckAdminLogin::class);
 Route::get('/search',[CategoryController::class,'search'])->name('search')->middleware(CheckAdminLogin::class);
 Route::post('/addcategory',[CategoryController::class, 'addCategory'])->name('addCategory')->middleware(CheckAdminLogin::class);
 Route::get('admin/loadcategory',[CategoryController::class, 'loadCategory'])->name('loadCategory')->middleware(CheckAdminLogin::class);
+
+Route::get('/searchcategory',[CategoryController::class,'searchcategory'])->name('searchcategory');
+Route::post('/addcategory',[CategoryController::class, 'addCategory'])->name('addCategory');
+Route::get('/admin/category',[CategoryController::class, 'loadCategory'])->name('category.admin')->middleware(CheckAdminLogin::class);
+
 
 
 // quan ly slide show
@@ -97,9 +107,18 @@ Route::post('/addcontact',[ContactController::class, 'addContact'])->name('addCo
 Route::get('admin/ads', function () {
     return view('admin.ManagerAdvertisement');
 })->name('ads.admin')->middleware(CheckAdminLogin::class);
+
 Route::post('/addads',[AdsController::class, 'addAds'])->name('addAds')->middleware(CheckAdminLogin::class);
 Route::get('/searchads',[AdsController::class,'searchads'])->name('searchads')->middleware(CheckAdminLogin::class);
 Route::get('admin/loadads',[AdsController::class,'loadAds'])->name('loadAds')->middleware(CheckAdminLogin::class);
+
+
+Route::post('admin/addads',[AdsController::class, 'addAds'])->name('addAds');
+Route::get('/searchads',[AdsController::class,'searchads'])->name('searchads');
+Route::get('admin/loadads',[AdsController::class,'loadAds'])->name('ads.admin');
+Route::get('admin/delete-ads/{id}',[AdsController::class,'deleteAds'])->name('delete-ads');
+Route::get('admin/capnhatad/{id}', [AdsController::class, 'editAds'])->name('ads.admin.update')->middleware(CheckAdminLogin::class);
+Route::post('admin/updateads/{id}',[AdsController::class, 'updateAds'])->name('updateAds');
 
 // Route::get('admin/post', function () {
 //     return view('admin.ManagerComment');
