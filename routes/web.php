@@ -62,7 +62,7 @@ Route::get('admin/dashboard', function () {
 
 
 // quan ly danh muc
-Route::get('/search',[CategoryController::class,'search'])->name('search');
+Route::get('/searchcategory',[CategoryController::class,'searchcategory'])->name('searchcategory');
 Route::post('/addcategory',[CategoryController::class, 'addCategory'])->name('addCategory');
 Route::get('/admin/category',[CategoryController::class, 'loadCategory'])->name('category.admin')->middleware(CheckAdminLogin::class);
 

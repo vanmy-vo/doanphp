@@ -17,23 +17,24 @@ class CategoryController extends Controller
 
             return view('admin.ManagerList',compact('category'));
     }  
-    // public function addCategory(Request $request)
-    // {
-    //     $ca=new Danhmuc();
-    //     $ca->category_name = $request->category_name;
-    //     $ca->save();
-    //     return redirect()->back();
-    // }
-    // public function search(Request $request)
-    // {
-    // $ca=Danhmuc::where('category_name','like','%'.$request->search.'%')->get();
-    // return view('admin.ManagerList',compact('category'));
-    // }
-    // public function detailCategory($id)
-    // {
-    //     $ca=Danhmuc::find($id);
-    //     return view('admin.ManagerList',compact('category'));
-    // }
-
-}
+    public function addCategory(Request $request)
+    {
+        $ca=new Danhmuc();
+        $ca->category_name = $request->category_name;
+        $ca->save();
+        return redirect()->back();
+    }
+    public function searchcategory(Request $request)
+    {
+    $ca=Danhmuc::where('category_name','like','%'.$request->search.'%')->get();
+    return view('admin.ManagerList',compact('category'));
+    }
+    public function updateAds(Request $request,$id)
+    {
+        $ca= Danhmuc::find($id);
+            $ca->category_name = $request->category_name;
+            $ca->save();
+            return back ();
+        }
+    }
 

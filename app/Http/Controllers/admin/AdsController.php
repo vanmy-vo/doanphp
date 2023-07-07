@@ -17,7 +17,7 @@ class AdsController extends Controller
     public function loadAds()
     {
         $ads=ads::whereNull('deleted_at')
-        ->paginate('2')
+        ->paginate('1')
         ->withQueryString();
 
             return view('admin.ManagerAdvertisement',compact('ads'));

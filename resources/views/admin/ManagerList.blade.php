@@ -73,11 +73,15 @@
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 10px">
         <div class="device-search-box">
-            <label>Tìm</label>
-            <div class="search-box">
-                <input placeholder="Nhập tên danh mục..." value="" onchange="SearchLocation(this)">
-                <i onclick="SearchLocation(this.previousElementSibling)" class="fa fa-search"></i>
-            </div>
+        <label>Tìm kiếm</label>
+            <form method="GET" action="{{route('searchcategory')}}" class="form-inline">
+
+                @csrf
+                
+                <input name="search" class="form-control mr-sm-2" type="search" placeholder="Nhập từ khóa tìm kiếm"
+                    aria-label="Search">
+                <button class="btn btn-primary" type="submit">Tìm kiếm</button>
+            </form>
         </div>
     </div>
 </div>
@@ -218,7 +222,7 @@
                                         <i class="fa fa-edit"></i> Chi tiết
                                     </button>
                     
-                                <div class="btn btn-xs btn-danger" onclick="Delete('Lê Triệu Long')" style=""><i class="fa fa-remove"></i> Xoá</div>
+                                <div class="btn btn-xs btn-danger" onclick="Delete('Bạn có chắc là muốn xóa')" style=""><i class="fa fa-remove"></i> Xoá</div>
                             </td>
                         </tr>       
                         @endforeach
