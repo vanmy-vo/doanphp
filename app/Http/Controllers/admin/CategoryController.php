@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Danhmuc;
+use App\Models\Loaidanhmuc;
 use Illuminate\Pagination\Paginator;
 Paginator::useBootstrap();
 
@@ -11,17 +12,28 @@ class CategoryController extends Controller
 {
     public function loadCategory()
     {
-        $category = Danhmuc::whereNull('deleted_at')  
-        ->paginate('1')
+        $category = Danhmuc::whereNull('deleted_at')->orderBy('id', 'desc')  
+        ->paginate('10')
         ->withQueryString();
-
-            return view('admin.ManagerList',compact('category'));
+        $cat=  Danhmuc::get();
+            return view('admin.ManagerList',compact('category', 'cat'));
     }  
     public function addCategory(Request $request)
     {
         $ca=new Danhmuc();
-        $ca->category_name = $request->category_name;
-        $ca->save();
+        $con = new Loaidanhmuc();
+
+        if ($request->danhmuccha) {
+            // $ca->category_name = $request->danhmuccha;
+            // $ca->save();
+            $con->type_name = $request->danhmuccon;
+            $con->category_id = $request->danhmuccha;
+            $con->save();
+        } else {
+            $ca->category_name = $request->danhmuccon;
+            $ca->save();
+        }
+
         return redirect()->back();
     }
     public function searchcategory(Request $request)

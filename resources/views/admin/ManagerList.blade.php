@@ -439,6 +439,7 @@
         </h3>
         <div class="filterpane" style="margin-bottom:0px;padding-bottom:0px">
             <form action="{{ route('addCategory') }}" method="post">
+                @csrf
             <div class="row">
                     <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
                         <p class="lefttitle">
@@ -448,10 +449,10 @@
                     <div class="col-lg-10 col-md-9 col-sm-9 col-xs-12">
                         <!-- <input type="text" class="form-control input-edit show-parent" value="" placeholder="Tiêu đề bài viết" /> -->
                         <select class="form-control input-edit parent" name="danhmuccha">
-                            <option>Chọn danh mục cha</option>
-                            <option value="1">việt nam</option>
-                            <option value="2">châu âu</option>
-                            <option value="3">thế giới</option>
+                            <option value="">Chọn danh mục cha</option>
+                            <?php foreach ($cat as $key => $value) : ?>
+                            <option value="<?=$value->id?>"><?=$value->category_name?></option>
+                            <?php endforeach; ?>
                         </select>
                     </div>
                     <div class="clearfix"></div>
