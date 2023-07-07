@@ -183,7 +183,6 @@ class BaivietController extends Controller
     public function destroy(Request $request)
     {
         $baiviet = Baiviet::where(['id' => $request->id])->first();
-        dd($baiviet);
         $baiviet->status = 1;
         if ($baiviet->update()) {
             return 'Xoá thành công';
