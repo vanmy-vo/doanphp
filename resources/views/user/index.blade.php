@@ -146,8 +146,13 @@ use App\Models\Slide;
                                                 <a href="{{ route('chitietbaiviet', $value_tinmoinhat->slug_post) }}"
                                                     class="thumb">
                                                     <?php if ($slidetinmoinhat->img != null) { ?>
-                                                    <img src="{{ asset('uploads/posts/'.$slidetinmoinhat->img) }}"
+                                                        <?php if (is_file('uploads/posts/'.$slidetinmoinhat->img)) { ?>
+                                                        <img src="{{ asset('uploads/posts/'.$slidetinmoinhat->img) }}"
                                                         alt="<?=$value_tinmoinhat->title_post?>">
+                                                        <?php } else { ?>
+                                                        <img src="{{ asset('uploads/noimg/nobanner.jpg') }}"
+                                                        alt="<?=$value_tinmoinhat->title_post?>">
+                                                        <?php } ?>
                                                     <?php } else { ?>
                                                     <img src="{{ asset('uploads/noimg/nobanner.jpg') }}"
                                                         alt="<?=$value_tinmoinhat->title_post?>">
@@ -204,8 +209,13 @@ use App\Models\Slide;
                                                         <a href="{{ route('chitietbaiviet', $value_tinmoi->slug_post) }}"
                                                             class="thumb">
                                                             <?php if ($slidetinmoi->img != null) { ?>
-                                                            <img src="{{ asset('uploads/posts/'.$slidetinmoi->img) }}"
+                                                                <?php if (is_file('uploads/posts/'.$slidetinmoi->img)) { ?>
+                                                                <img src="{{ asset('uploads/posts/'.$slidetinmoi->img) }}"
                                                                 alt="<?=$value_tinmoi->title_post?>">
+                                                                <?php } else { ?>
+                                                                <img src="{{ asset('uploads/noimg/nobanner.jpg') }}"
+                                                                alt="<?=$value_tinmoi->title_post?>">
+                                                                <?php } ?>
                                                             <?php } else { ?>
                                                             <img src="{{ asset('uploads/noimg/nobanner.jpg') }}"
                                                                 alt="<?=$value_tinmoi->title_post?>">
@@ -214,8 +224,7 @@ use App\Models\Slide;
 
                                                         <div class="post--info">
                                                             <ul class="nav meta">
-                                                                <li><a
-                                                                        href="{{ route('chitietbaiviet', $value_tinmoi->slug_post) }}"><?=$tacgialistmoi->fullname?></a>
+                                                                <li><a href="{{ route('chitietbaiviet', $value_tinmoi->slug_post) }}"><?=$tacgialistmoi->fullname?></a>
                                                                 </li>
                                                                 <?php $times = strtotime($value_tinmoi->created_at); ?>
                                                                 <?php $timenews = date('d/m/Y', $times); ?>
@@ -283,8 +292,13 @@ use App\Models\Slide;
                                                 <a href="{{ route('chitietbaiviet', $value_tinnoibatnhat->slug_post) }}"
                                                     class="thumb">
                                                     <?php if ($slidetinnoibatnhat->img != null) { ?>
-                                                    <img src="{{ asset('uploads/posts/'.$slidetinnoibatnhat->img) }}"
+                                                        <?php if (is_file('uploads/posts/'.$slidetinnoibatnhat->img)) { ?>
+                                                        <img src="{{ asset('uploads/posts/'.$slidetinnoibatnhat->img) }}"
                                                         alt="<?=$value_tinnoibatnhat->title_post?>">
+                                                        <?php } else { ?>
+                                                        <img src="{{ asset('uploads/noimg/nobanner.jpg') }}"
+                                                        alt="<?=$value_tinnoibatnhat->title_post?>">
+                                                        <?php } ?>
                                                     <?php } else { ?>
                                                     <img src="{{ asset('uploads/noimg/nobanner.jpg') }}"
                                                         alt="<?=$value_tinnoibatnhat->title_post?>">
@@ -336,9 +350,16 @@ use App\Models\Slide;
                                                 <a href="{{ route('chitietbaiviet', $value_tinnoibat->slug_post) }}"
                                                     class="thumb">
                                                     <?php if ($slidetinnoibat->img != null) { ?>
+                                                        <?php if (is_file('uploads/posts/'.$slidetinnoibat->img)) : ?>
                                                     <img src="{{ asset('uploads/posts/'.$slidetinnoibat->img) }}"
                                                         style="object-fit: fill"
                                                         alt="<?= $value_tinnoibat->title_post ?>">
+                                                        <?php else : ?>
+<img src="{{ asset('uploads/noimg/nobanner.jpg') }}"
+                                                        style="object-fit: fill"
+                                                        alt="<?= $value_tinnoibat->title_post ?>">
+                                                    
+                                                        <?php endif; ?>
                                                     <?php } else { ?>
                                                     <img src="{{ asset('uploads/noimg/nobanner.jpg') }}"
                                                         style="object-fit: fill"
@@ -504,8 +525,14 @@ use App\Models\Slide;
                                                     <a href="{{ route('chitietbaiviet', $value_tinthethao->slug_post) }}"
                                                         class="thumb">
                                                         <?php if ($slidetinthethao->img != null) { ?>
-                                                        <img src="{{asset('uploads/posts/'.$slidetinthethao->img)}}"
+                                                            <?php if (is_file('uploads/posts/'.$slidetinthethao->img)) : ?>
+                                                            <img src="{{asset('uploads/posts/'.$slidetinthethao->img)}}"
                                                             alt="<?=$value_tinthethao->title_post?>">
+                                                            <?php else : ?>
+                                                            <img src="{{ asset('uploads/noimg/nobanner.jpg') }}"
+                                                            alt="<?=$value_tinthethao->title_post?>">
+    
+                                                            <?php endif; ?>
                                                         <?php } else { ?>
                                                         <img src="{{ asset('uploads/noimg/nobanner.jpg') }}"
                                                             alt="<?=$value_tinthethao->title_post?>">
@@ -582,8 +609,13 @@ use App\Models\Slide;
                                                 <a href="{{ route('chitietbaiviet', $value_tincongnghe->slug_post) }}"
                                                     class="thumb">
                                                     <?php if ($slidetincongnghe->img != null) { ?>
-                                                    <img src="{{asset('uploads/posts/'. $slidetincongnghe->img)}}"
+                                                        <?php if (is_file('uploads/posts/'.$slidetincongnghe->img)) : ?>
+                                                        <img src="{{asset('uploads/posts/'. $slidetincongnghe->img)}}"
                                                         alt="<?=$value_tincongnghe->title_post?>">
+                                                        <?php else : ?>
+                                                        <img src="{{asset('uploads/noimg/nobanner.jpg')}}"
+                                                        alt="<?=$value_tincongnghe->title_post?>">
+                                                        <?php endif; ?>
                                                     <?php } else { ?>
                                                     <img src="{{asset('uploads/noimg/nobanner.jpg')}}"
                                                         alt="<?=$value_tincongnghe->title_post?>">
@@ -664,8 +696,13 @@ use App\Models\Slide;
                                                 <a href="{{ route('chitietbaiviet', $value_tinvang->slug_post) }}"
                                                     class="thumb">
                                                     <?php if ($slidetinvang->img != null) { ?>
-                                                    <img src="{{ asset('uploads/posts/'.$slidetinvang->img) }}"
+                                                        <?php if (is_file('uploads/posts/'.$slidetinvang->img)) : ?>
+                                                        <img src="{{ asset('uploads/posts/'.$slidetinvang->img) }}"
                                                         alt="<?=$value_tinvang->title_post?>">
+                                                        <?php else : ?>
+                                                        <img src="{{ asset('uploads/noimg/nobanner.jpg') }}"
+                                                        alt="<?=$value_tinvang->title_post?>">    
+                                                        <?php endif; ?>
                                                     <?php } else { ?>
                                                     <img src="{{ asset('uploads/noimg/nobanner.jpg') }}"
                                                         alt="<?=$value_tinvang->title_post?>">

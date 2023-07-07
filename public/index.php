@@ -4,9 +4,9 @@ use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Http\Request;
 
 define('LARAVEL_START', microtime(true));
-// define('SITE_PATH', 'http://localhost/doanmonhoc/public');//may toi khong can port dung link nay
+define('SITE_PATH', 'http://localhost/doanmonhoc/public');//may toi khong can port dung link nay
 // define('SITE_PATH', 'http://localhost:8080/doanmonhoc/public'); // may ai co port thi dung link nay
-define('SITE_PATH', 'http://localhost:8080/doanphplaravelmoi/doanphp/public'); // Link này dùng cho máy của Bảo
+// define('SITE_PATH', 'http://localhost:8080/doanphplaravelmoi/doanphp/public'); // Link này dùng cho máy của Bảo
 
 /*
 |--------------------------------------------------------------------------

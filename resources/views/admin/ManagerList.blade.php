@@ -509,6 +509,7 @@
             CHỈNH SỬA THÔNG TIN DANH MỤC
         </h3>
         <div class="filterpane" style="margin-bottom:0px;padding-bottom:0px">
+            <form action="{{ route('addCategory') }}" method="post">
             <div class="row">
                     <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
                         <p class="lefttitle">
@@ -517,7 +518,7 @@
                     </div>
                     <div class="col-lg-10 col-md-9 col-sm-9 col-xs-12">
                         <!-- <input type="text" class="form-control input-edit show-parent" value="" placeholder="Tiêu đề bài viết" /> -->
-                        <select class="form-control input-edit parent">
+                        <select class="form-control input-edit parent" name="danhmuccha">
                             <option>Chọn danh mục cha</option>
                             <option value="1">việt nam</option>
                             <option value="2">châu âu</option>
@@ -533,16 +534,18 @@
                         </p>
                     </div>
                     <div class="col-lg-10 col-md-9 col-sm-9 col-xs-12">
-                        <input type="text" class="form-control input-edit show-child" value="" placeholder="Tiêu đề bài viết" />
+                        <input type="text" class="form-control input-edit show-child" name="danhmuccon" value="" placeholder="Tiêu đề bài viết" />
                     </div>
                     <div class="clearfix"></div>
             </div>        
         </div>
         <div class="clearfix"></div>
         <div class="filerfooter" style="margin-top:20px">
-            <div class="btn btn-success" onclick="Update()">Lưu lại</div>
+            <!-- <div class="btn btn-success" onclick="Update()">Lưu lại</div> -->
+            <button type="submit" class="btn btn-success">save</button>
             <div class="btn btn-dark" onclick="ShowHide(false)">Hủy</div>
         </div>
+        </form>
     </div>
 </div>
 <script type="text/javascript">

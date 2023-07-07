@@ -77,12 +77,12 @@ Route::get('admin/slide', function () {
 })->name('slide.admin')->middleware(CheckAdminLogin::class);
 
 //quan ly lien he
-<<<<<<< HEAD
+
 Route::get('admin/contact', function () {
     return view('admin.ManagercContact');
 })->name('admin-contact')->middleware(CheckAdminLogin::class);
 Route::post('/addcontact',[ContactController::class, 'addContact'])->name('addContact')->middleware(CheckAdminLogin::class);
-=======
+
 // Route::get('admin/contact', function () {
 //     return view('admin.ManagercContact');
 // })->name('admin-contact');
@@ -91,7 +91,7 @@ Route::post('/addcontact',[ContactController::class, 'addContact'])->name('addCo
 // quan ly lien he
     Route::get('admin/contact',[ContactController::class,'index'])->name('contact.admin')->middleware(CheckAdminLogin::class);
     Route::post('admin/update',[ContactController::class,'updateContact'])->name('update.contact')->middleware(CheckAdminLogin::class);
->>>>>>> 994f351484e284be0328e7750370f886332ae66a
+
 
 //quan ly quang cao
 Route::get('admin/ads', function () {
@@ -111,19 +111,19 @@ Route::post('admin/luubaiviet', [BaivietController::class, 'store'])->name('post
 Route::post('admin/capnhatbaiviet', [BaivietController::class, 'edit'])->name('post.admin.update')->middleware(CheckAdminLogin::class);
 Route::post('admin/capnhat', [BaivietController::class, 'update'])->name('post.admin.edit')->middleware(CheckAdminLogin::class);
 Route::post('admin/delete', [BaivietController::class, 'destroy'])->name('post.admin.delete')->middleware(CheckAdminLogin::class);
-<<<<<<< HEAD
+
 Route::get('admin/lienhe', [LienheController::class, 'index'])->name('post.admim.lienhe')->middleware(CheckAdminLogin::class);
 Route::post('admin/luulienhe', [LienheController::class, 'addContact'])->name('post.admin.savecontact')->middleware(CheckAdminLogin::class);
 Route::get('admin/caidat', [CaidatController::class, 'index'])->name('post.admim.caidat')->middleware(CheckAdminLogin::class);
 Route::POST('admin/capnhatcaidat', [CaidatController::class, 'update'])->name('post.admim.updatesetting')->middleware(CheckAdminLogin::class);
-=======
+
 Route::get('admin/lienhe', [LienheController::class, 'index'])->name('post.admim.lienhe');
 Route::post('admin/luulienhe', [LienheController::class, 'addContact'])->name('post.admin.savecontact');
 
 Route::get('admin/setting', [SettingController::class, 'index'])->name('post.admim.setting');
 Route::POST('admin/updatesetting', [SettingController::class, 'update'])->name('post.admim.updatesetting');
 
->>>>>>> 994f351484e284be0328e7750370f886332ae66a
+
 Route::get('admin/user', function () {
     return view('admin.ManagerUser');
 })->name('user.admin')->middleware(CheckAdminLogin::class);

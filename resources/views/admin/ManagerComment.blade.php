@@ -245,13 +245,21 @@ use Illuminate\Support\Request;
                         </tr>
                     </thead>
                     <tbody id="abc">
-                        <?php foreach ($list as $value) : ?>
+                        <?php foreach ($list as $key => $value) : ?>
+                            <?php if (isset($_GET['_token'])) : ?>
                             <tr data-key="<?= $value->id ?>">
+                            <?php else : ?>
+                            <tr data-key="<?= $value->id ?>">
+                            <?php endif; ?>
                                 <td class="tc1">
                                     <?php $image = Slide::where(['post_id' => $value->id])->first(); ?>
                                     <?php if ($image) { ?>
                                         <?php if ($image->img) { ?>
-                                        <img src="{{ asset('uploads/posts/' . $image->img) }}" alt="<?= $value->title_post ?>" width="200" title="<?= $value->title_post ?>">
+                                            <?php if (is_file('uploads/posts/'.$image->img)) : ?>
+                                            <img src="{{ asset('uploads/posts/' . $image->img) }}" alt="<?= $value->title_post ?>" width="200" title="<?= $value->title_post ?>">
+                                            <?php else : ?>
+                                            <img src="{{ asset('uploads/noimg/nobanner.jpg') }}" alt="<?= $value->title_post ?>" width="200" title="<?= $value->title_post ?>">
+                                            <?php endif; ?>
                                         <?php } else { ?>
                                         <img src="{{ asset('uploads/noimg/nobanner.jpg') }}" alt="<?= $value->title_post ?>" width="200" title="<?= $value->title_post ?>">
                                         <?php } ?>
@@ -639,7 +647,11 @@ use Illuminate\Support\Request;
                     // $('.ck-content').html(data['content_post']);
                     $('select[name="danhmuc"]').val(data['category_id']);
                     if (data['imageload']) {
-                        $('.imageload').attr('src', '<?=SITE_PATH?>/uploads/posts/'+data['imageload']).css('box-shadow', '1px 1px 1px #000, -1px 1px 1px #000, 1px -1px 1px #000, -1px -1px 1px #000');
+                        if (data['imageload'] == 'khongtontai') {
+                            $('.imageload').attr('src', '<?=SITE_PATH?>/image/noimage.jpg').css('box-shadow', '1px 1px 1px #000, -1px 1px 1px #000, 1px -1px 1px #000, -1px -1px 1px #000');
+                        } else {
+                            $('.imageload').attr('src', '<?=SITE_PATH?>/uploads/posts/'+data['imageload']).css('box-shadow', '1px 1px 1px #000, -1px 1px 1px    #000, 1px -1px 1px #000, -1px -1px 1px #000').css('width', '100%');
+                        }
                     } else {
                         $('.imageload').attr('src', '<?=SITE_PATH?>/image/noimage.jpg').css('box-shadow', '1px 1px 1px #000, -1px 1px 1px #000, 1px -1px 1px #000, -1px -1px 1px #000');
                     }
