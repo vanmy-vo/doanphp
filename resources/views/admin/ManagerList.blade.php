@@ -73,11 +73,15 @@
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 10px">
         <div class="device-search-box">
-            <label>Tìm</label>
-            <div class="search-box">
-                <input placeholder="Nhập tên danh mục..." value="" onchange="SearchLocation(this)">
-                <i onclick="SearchLocation(this.previousElementSibling)" class="fa fa-search"></i>
-            </div>
+        <label>Tìm kiếm</label>
+            <form method="GET" action="{{route('searchcategory')}}" class="form-inline">
+
+                @csrf
+                
+                <input name="search" class="form-control mr-sm-2" type="search" placeholder="Nhập từ khóa tìm kiếm"
+                    aria-label="Search">
+                <button class="btn btn-primary" type="submit">Tìm kiếm</button>
+            </form>
         </div>
     </div>
 </div>
@@ -200,111 +204,35 @@
                         <tr>
                             <th class="tc1">Tên danh mục</th>
                             <th class="tc2">ngày tạo</th>
-                            <!-- <th class="tc3"></th> -->
-                            <th class="tc4">Thao tác</th>
+                            <th class="tc3">Thao tác</th>
                         </tr>
                     </thead>
                     <tbody>
-                            <tr>
-                                <td class="tc1">
-                                    <!-- ltlong@gmail.com
-                                    <br>
-                                    <b>Lê Triệu Long</b> -->
-                                    việt nam
-                                </td>
-                                <td class="tc2">
-                                    <!-- <p>Nhân viên</p> -->
-                                    <p>31/03/2023</p>
-                                </td>
-                                <!-- <td class="tc3">
-                                    <p>Administrator</p>
-                                    <p>31/03/2023</p>
-                                </td> -->
-                                <td class="tc">      
-                                    <!-- <button type="button" class="btn btn-success btn-xs" onclick="listChild(1)">list con</button>
+                        @foreach($category as $ca)
+                        <tr>
+                            <td class="tc1">
+                                {{$ca->category_name}}
+                            </td>
+                            <td class="tc2">
+                                <p>{{$ca->created_at}}</p>
+                            </td>
+                            <td class="tc">      
+                        
                                     <button type="button" class="btn btn-success btn-xs" onclick="Level(1)">
-                                        thêm
-                                    </button>   -->                
-                                    <!-- <div class="btn btn-xs btn-success"> -->
-                                        <!-- <a href="detailAccount.html" style="color: #fff;">
-                                            <i class="fa fa-edit"></i> Chi tiết
-                                        </a> -->
-                                        <button type="button" class="btn btn-success btn-xs" onclick="Level(1)">
-                                            <i class="fa fa-edit"></i> Chi tiết
-                                        </button>
-                                    <!-- </div> -->
-                                    <div class="btn btn-xs btn-danger" onclick="Delete('Lê Triệu Long')" style=""><i class="fa fa-remove"></i> Xoá</div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="tc1">
-                                    <!-- ltlong@gmail.com
-                                    <br>
-                                    <b>Lê Triệu Long</b> -->
-                                    châu âu
-                                </td>
-                                <td class="tc2">
-                                    <!-- <p>Nhân viên</p> -->
-                                    <p>30/03/2023</p>
-                                </td>
-                                <!-- <td class="tc3">
-                                    <p>Administrator</p>
-                                    <p>31/03/2023</p>
-                                </td> -->
-                                <td class="tc">
-                                   <!--  <button type="button" class="btn btn-success btn-xs" onclick="listChild(2)">list con</button>
-                                    <button type="button" class="btn btn-success btn-xs" onclick="Level(2)">
-                                        thêm
-                                    </button>    -->                     
-                                    <!-- <div class="btn btn-xs btn-success"> -->
-                                        <!-- <a href="detailAccount.html" style="color: #fff;">
-                                            <i class="fa fa-edit"></i> Chi tiết
-                                        </a> -->
-                                        <button type="button" class="btn btn-success btn-xs" onclick="Level(2)">
-                                            <i class="fa fa-edit"></i> Chi tiết
-                                        </button>
-                                    <!-- </div> -->
-                                    <div class="btn btn-xs btn-danger" onclick="Delete('Lê Triệu Long')" style=""><i class="fa fa-remove"></i> Xoá</div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="tc1">
-                                    <!-- ltlong@gmail.com
-                                    <br>
-                                    <b>Lê Triệu Long</b> -->
-                                    thế giới
-                                </td>
-                                <td class="tc2">
-                                    <!-- <p>Nhân viên</p> -->
-                                    <p>29/03/2023</p>
-                                </td>
-                                <!-- <td class="tc3">
-                                    <p>Administrator</p>
-                                    <p>31/03/2023</p>
-                                </td> -->
-                                <td class="tc">
-                                   <!--  <button type="button" class="btn btn-success btn-xs" onclick="listChild(3)">list con</button>
-                                    <button type="button" class="btn btn-success btn-xs" onclick="Level(3)">
-                                        thêm
-                                    </button> -->                        
-                                    <!-- <div class="btn btn-xs btn-success"> -->
-                                        <!-- <a href="detailAccount.html" style="color: #fff;">
-                                            <i class="fa fa-edit"></i> Chi tiết
-                                        </a> -->
-                                        <button type="button" class="btn btn-success btn-xs" onclick="Level(3)">
-                                            <i class="fa fa-edit"></i> Chi tiết
-                                        </button>
-                                    <!-- </div> -->
-                                    <div class="btn btn-xs btn-danger" onclick="Delete('Lê Triệu Long')" style=""><i class="fa fa-remove"></i> Xoá</div>
-                                </td>
-                            </tr>
+                                        <i class="fa fa-edit"></i> Chi tiết
+                                    </button>
+                    
+                                <div class="btn btn-xs btn-danger" onclick="Delete('Bạn có chắc là muốn xóa')" style=""><i class="fa fa-remove"></i> Xoá</div>
+                            </td>
+                        </tr>       
+                        @endforeach
                     </tbody>
                 </table>
         </div>
     </div>
 </div>
 
-<div class="row">
+<!-- <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
         <style>
             #PageControl {
@@ -397,7 +325,8 @@
                 <div class="clear"></div>
             </div>
     </div>
-</div>
+</div> -->
+<div class="p-2">{{ $category->onEachSide(2)->links() }}</div>
 <!-- Modal Bộ lọc -->
 <style>
     #FilterBG {
@@ -509,6 +438,8 @@
             CHỈNH SỬA THÔNG TIN DANH MỤC
         </h3>
         <div class="filterpane" style="margin-bottom:0px;padding-bottom:0px">
+            <form action="{{ route('addCategory') }}" method="post">
+                @csrf
             <div class="row">
                     <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
                         <p class="lefttitle">
@@ -517,11 +448,11 @@
                     </div>
                     <div class="col-lg-10 col-md-9 col-sm-9 col-xs-12">
                         <!-- <input type="text" class="form-control input-edit show-parent" value="" placeholder="Tiêu đề bài viết" /> -->
-                        <select class="form-control input-edit parent">
-                            <option>Chọn danh mục cha</option>
-                            <option value="1">việt nam</option>
-                            <option value="2">châu âu</option>
-                            <option value="3">thế giới</option>
+                        <select class="form-control input-edit parent" name="danhmuccha">
+                            <option value="">Chọn danh mục cha</option>
+                            <?php foreach ($cat as $key => $value) : ?>
+                            <option value="<?=$value->id?>"><?=$value->category_name?></option>
+                            <?php endforeach; ?>
                         </select>
                     </div>
                     <div class="clearfix"></div>
@@ -533,16 +464,18 @@
                         </p>
                     </div>
                     <div class="col-lg-10 col-md-9 col-sm-9 col-xs-12">
-                        <input type="text" class="form-control input-edit show-child" value="" placeholder="Tiêu đề bài viết" />
+                        <input type="text" class="form-control input-edit show-child" name="danhmuccon" value="" placeholder="Tiêu đề bài viết" />
                     </div>
                     <div class="clearfix"></div>
             </div>        
         </div>
         <div class="clearfix"></div>
         <div class="filerfooter" style="margin-top:20px">
-            <div class="btn btn-success" onclick="Update()">Lưu lại</div>
+            <!-- <div class="btn btn-success" onclick="Update()">Lưu lại</div> -->
+            <button type="submit" class="btn btn-success">save</button>
             <div class="btn btn-dark" onclick="ShowHide(false)">Hủy</div>
         </div>
+        </form>
     </div>
 </div>
 <script type="text/javascript">

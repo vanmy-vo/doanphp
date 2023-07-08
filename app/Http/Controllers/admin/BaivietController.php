@@ -22,7 +22,7 @@ class BaivietController extends Controller
         if (!session('user')['userid']) {
             return view('admin.login');
         }
-        $list = Baiviet::where(['status' => 0])->orderBy('id', 'desc')->paginate(1);
+        $list = Baiviet::where(['status' => 0])->orderBy('id', 'desc')->paginate(10);
         $category = DB::table('category')->get();
         // $tacgia = DB::table('account')->where(['role_id' => 2])->get();
         $tacgia = DB::table('account')->get();
@@ -113,6 +113,11 @@ class BaivietController extends Controller
         $type = DB::table('type')->where(['id' => $baiviet->type_id])->first();
         $category = DB::table('category')->where(['id' => $type->category_id])->first();
         $baiviet['imageload'] = $slide->img;
+        if (!is_file('uploads/posts/'.$slide->img)) {
+            $baiviet['imageload'] = 'khongtontai';
+        } else {
+            $baiviet['imageload'] = $slide->img;
+        }
         $baiviet['category_id'] = $category->id;
         return $baiviet;
     }
@@ -285,12 +290,7 @@ class BaivietController extends Controller
     }
 
     public function search(Request $request) {
-        if (!session('user')['userid']) {
-            return view('admin.login');
-        }
-
-        $list = Baiviet::where(['status' => 0])->where('title_post', 'like', "%$request->searchpost%")->orWhere(['type_id' => $request->loaibaivietsearch])->orWhere(['category_id' => $request->danhmucsearch])->leftjoin('type', 'type.id', 'post.type_id')->leftjoin('category', 'category.id', 'type.category_id')->orderBy('post.id', 'desc')->paginate(1);
-
+        $list = Baiviet::where(['status' => 0])->where('title_post', 'like', "%$request->searchpost%")->orWhere(['type_id' => $request->loaibaivietsearch])->orWhere(['category_id' => $request->danhmucsearch])->leftjoin('type', 'type.id', 'post.type_id')->leftjoin('category', 'category.id', 'type.category_id')->orderBy('post.id', 'desc')->paginate(10);
         $category = DB::table('category')->get();
         // $tacgia = DB::table('account')->where(['role_id' => 2])->get();
         $tacgia = DB::table('account')->get();

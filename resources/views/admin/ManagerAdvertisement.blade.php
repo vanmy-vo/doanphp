@@ -3,115 +3,6 @@
 @section('title', 'Quản lý quảng cáo')
 
 @section('webcontent')
-{{-- View Form --}}
-<style>
-    #FilterContentCenter {
-        margin: auto;
-        background-color: #fff;
-        border-radius: 5px;
-        width: 95%;
-        min-width: 278px;
-        max-width: 450px;
-        position: relative;
-    }
-
-    /* .filtergrouptitle {
-        margin: 20px 0px 0px 0px;
-        padding: 0px;
-        font-size: 20px;
-    }
-
-        .filtergrouptitle.floatleft {
-            margin: 0px 10px 0px 0px;
-            padding: 10px;
-            line-height: 1;
-            border: 1px dotted #ccc;
-            border-radius: 5px;
-            float: left;
-        }
-
-            .filtergrouptitle.floatleft.focus {
-                background: #ccc;
-            } */
-
-    .scroll {
-        border: 1px solid #ccc;
-        height: 195px;
-        overflow-y: scroll;
-    }
-
-    .filterpane .row {
-        /* margin: 20px 0px 5px 0px; */
-        /* margin-top: 15px; */
-        background-color: #eae9e9;
-        border-radius: 5px;
-    }
-
-    .input-edit{
-        padding-left: 17px;
-    }
-</style>
-<div class="modal fade" id="viewAds" tabindex="-1" role="dialog" aria-labelledby="viewAds" aria-hidden="true">
-    <div class="modal-dialog modal-md" role="document">
-        <div class="modal-content">
-            <div class="modal-header bg-dark">
-                <h3 class="modal-title text-white text-uppercase" id="exampleModalPopoversLabel" style="text-align: center;">Thông tin Quảng cáo</h3>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            @foreach($ads as $key => $ad)
-                        <tr>
-                        <div class="modal-body">
-                <div id="FilterContentCenter">
-                    <div class="filterpane">
-                        <div class="row">
-                            <div class="col-md-12 col-sm-12 col-xs-12">
-                                <label class="col-md-6">Tiêu đề:</label>
-                                <p class="col-md-6">{{$ad->title_ads}}</p>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12 col-sm-12 col-xs-12">
-                                <label class="col-md-6">Hình ảnh:</label>
-                                <img src="{{$ad->img}}" alt="" width="200" height="200" style="margin-top: 15px; object-fit:fill">
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12 col-sm-12 col-xs-12">
-                                <label class="col-md-6">Nội dung: </label>
-                                <p class="col-md-6">{{$ad->content_ads}}</p>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12 col-sm-12 col-xs-12">
-                                <label class="col-md-6">Liên kết: </label>
-                                <p class="col-md-6" style="word-wrap: break-word;">{{$ad->link_name}}</p>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-
-                    <div class="clearfix"></div>
-                
-                    <div class="filerfooter" style="margin-top:20px">
-                    <div class="btn btn-dark" onclick="ShowHide(false)">Hủy</div>
-                       
-                    </div>
-                </div>
-            </div>
-                      
-                        @endforeach
-                        </tr>
-           
-        </div>
-    </div>
-</div>
-{{-- End View Form --}}
-
 {{-- Add Form --}}
 <style>
     #FilterContentCenter {
@@ -187,7 +78,8 @@
             </div>
 
             <div class="modal-body">
-                <form action="" id="addAdsForm" method="GET" action="{{route('addAds')}}">
+                <form enctype="multipart/form-data" id="addAdsForm" method="post" action="{{route('addAds')}}">
+                    @csrf
                     <div id="FilterContentCenter">
                         <div class="filterpane" style="margin-bottom:0px;padding-bottom:0px">
                             <div class="row">
@@ -195,7 +87,7 @@
                                     <p class="lefttitle">Tiêu đề</p>
                                 </div>
                                 <div class="col-md-9 col-sm-9 col-xs-12">
-                                    <input  type="text" name="title_ads" class="form-control input-edit" value=""/>
+                                    <input  type="text" name="title_ads" class="form-control input-edit"/>
                                 </div>
                                 <div class="clearfix"></div>
                             </div>
@@ -204,7 +96,7 @@
                                     <p class="lefttitle">Hình ảnh</p>
                                 </div>
                                 <div class="col-md-9 col-sm-9 col-xs-12">
-                                    <input type="file" name="img" class="form-control input-edit" value="" />
+                                    <input type="file" name="img" class="form-control input-edit" />
                                 </div>
                                 <div class="clearfix"></div>
                             </div>
@@ -213,7 +105,7 @@
                                     <p class="lefttitle">Nội dung</p>
                                 </div>
                                 <div class="col-md-9 col-sm-9 col-xs-12">
-                                    <input type="text" name="content_ads" class="form-control input-edit" value="" />
+                                    <input type="text" name="content_ads" class="form-control input-edit" />
                                 </div>
                                 <div class="clearfix"></div>
                             </div>
@@ -222,7 +114,7 @@
                                     <p class="lefttitle">Liên kết</p>
                                 </div>
                                 <div class="col-md-9 col-sm-9 col-xs-12">
-                                    <textarea type="text"name="link_name" class="form-control input-edit" value="" ></textarea>
+                                    <textarea type="text"name="link" class="form-control input-edit" ></textarea>
                                 </div>
                                 <div class="clearfix"></div>
                             </div>
@@ -559,16 +451,15 @@
                 @foreach($ads as $key => $ad)
                         <tr>
                             <td class="tc1">{{$ad->title_ads}}</td>
-                            <td class="tc2"><img src="{{asset('user/img/ads-img/black-pink.jpg')}}" alt="" width="50" height="50"></td>
+                            <td class="tc2"><img src="{{ asset('uploads/ads/' . $ad->img) }}" alt="" width="50" height="50"></td>
                             <td class="tc3">{{$ad->content_ads}}</td>
-                            <td class="tc4">{{$ad->link_name}}</td>
+                            <td class="tc4">{{$ad->link}}</td>
                            
                             <td class="tc">                        
-                                <a class="btn btn-xs btn-success" data-toggle="modal" data-target="#viewAds"><i class="fa fa-eye"></i></a>
-                                <a class="btn btn-xs btn-success" data-toggle="modal" data-target="#updateAds"><i class="fa fa-pencil-square-o"></i></a>
-                                <a class="btn btn-xs btn-danger"><i class="fa fa-remove"></i></a>
+                                <!-- <a class="btn btn-xs btn-success" data-toggle="modal" data-target="#viewAds"><i class="fa fa-eye"></i></a> -->
+                                <a href="{{route('ads.admin.update',['id'=>$ad->id])}}" class="btn btn-xs btn-success" data-toggle="modal" ><i class="fa fa-pencil-square-o"></i></a>
+                                <a href="{{route('delete-ads', $ad->id)}}" onclick="confirm('Bạn có chắc chắn muốn xóa không?')" class="btn btn-xs btn-danger"><i class="fa fa-remove"></i></a>
                             </td>
-                      
                         @endforeach
                         </tr>
                 </tbody>
@@ -577,7 +468,7 @@
     </div>
 </div>
 {{-- Pagination --}}
-<div class="row">
+<!-- <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
         <style>
             #PageControl {
@@ -670,5 +561,6 @@
                 <div class="clear"></div>
             </div>
     </div>
-</div>
+</div> -->
+<div class="p-2">{{ $ads->onEachSide(1)->links() }}</div>
 @stop

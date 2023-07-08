@@ -1,3 +1,7 @@
+@extends('admin.admin')
+
+@section('title', 'Dashboard')
+
 @section('webcontent')
 <?php 
 use Illuminate\Support\Facades\DB;

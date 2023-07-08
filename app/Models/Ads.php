@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ads extends Model
+class Ads extends Model
 {
     use HasFactory;
 
     protected $table = 'ads';
     protected $fillable = [
-        'title_ads','content_ads','link_name','img'
+        'title_ads','content_ads','link','img'
     ];
-    public $tempstamps = true;
+    public $timestamps = true;
 }

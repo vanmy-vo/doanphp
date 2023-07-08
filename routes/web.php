@@ -6,7 +6,11 @@ use App\Http\Middleware\CheckAdminLogin;
 use App\Http\Controllers\admin\BaivietController;
 use App\Http\Controllers\admin\CaidatController;
 use App\Http\Controllers\admin\AdsController;
+
 use App\Http\Controllers\admin\ContactController;
+
+
+use App\Http\Controllers\admin\CategoryController;
 
 //User
 use App\Http\Controllers\user\HomeController as UserHomeController;
@@ -30,15 +34,15 @@ use App\Http\Controllers\admin\SettingController;
 */
 //Admin
 
-// Route::get('/', function () {
-//     // return view('welcome');
-//     return redirect('home');
-// })->middleware('web');
+Route::get('/', function () {
+    // return view('welcome');
+    return redirect('home');
+})->middleware('web');
 
 
 Route::get('home', function () {
     return view('user.index');
-});
+})->name('homepage');
 
 Route::middleware(['web'])->group(function() {
 });
@@ -63,12 +67,18 @@ Route::get('admin/dashboard', function () {
 
 
 // quan ly danh muc
+
 Route::get('admin/category', function () {
     return view('admin.ManagerList');
 })->name('category.admin')->middleware(CheckAdminLogin::class);
-Route::get('/search',[CategoryController::class,'search'])->name('search');
+Route::get('/search',[CategoryController::class,'search'])->name('search')->middleware(CheckAdminLogin::class);
+Route::post('/addcategory',[CategoryController::class, 'addCategory'])->name('addCategory')->middleware(CheckAdminLogin::class);
+Route::get('admin/loadcategory',[CategoryController::class, 'loadCategory'])->name('loadCategory')->middleware(CheckAdminLogin::class);
+
+Route::get('/searchcategory',[CategoryController::class,'searchcategory'])->name('searchcategory');
 Route::post('/addcategory',[CategoryController::class, 'addCategory'])->name('addCategory');
-Route::get('admin/loadcategory',[CategoryController::class, 'loadCategory'])->name('loadCategory');
+Route::get('/admin/category',[CategoryController::class, 'loadCategory'])->name('category.admin')->middleware(CheckAdminLogin::class);
+
 
 
 // quan ly slide show
@@ -77,6 +87,12 @@ Route::get('admin/slide', function () {
 })->name('slide.admin')->middleware(CheckAdminLogin::class);
 
 //quan ly lien he
+
+Route::get('admin/contact', function () {
+    return view('admin.ManagercContact');
+})->name('admin-contact')->middleware(CheckAdminLogin::class);
+Route::post('/addcontact',[ContactController::class, 'addContact'])->name('addContact')->middleware(CheckAdminLogin::class);
+
 // Route::get('admin/contact', function () {
 //     return view('admin.ManagercContact');
 // })->name('admin-contact');
@@ -86,13 +102,23 @@ Route::get('admin/slide', function () {
     Route::get('admin/contact',[ContactController::class,'index'])->name('contact.admin')->middleware(CheckAdminLogin::class);
     Route::post('admin/update',[ContactController::class,'updateContact'])->name('update.contact')->middleware(CheckAdminLogin::class);
 
+
 //quan ly quang cao
 Route::get('admin/ads', function () {
     return view('admin.ManagerAdvertisement');
 })->name('ads.admin')->middleware(CheckAdminLogin::class);
-Route::post('/addads',[AdsController::class, 'addAds'])->name('addAds');
+
+Route::post('/addads',[AdsController::class, 'addAds'])->name('addAds')->middleware(CheckAdminLogin::class);
+Route::get('/searchads',[AdsController::class,'searchads'])->name('searchads')->middleware(CheckAdminLogin::class);
+Route::get('admin/loadads',[AdsController::class,'loadAds'])->name('loadAds')->middleware(CheckAdminLogin::class);
+
+
+Route::post('admin/addads',[AdsController::class, 'addAds'])->name('addAds');
 Route::get('/searchads',[AdsController::class,'searchads'])->name('searchads');
-Route::get('admin/loadads',[AdsController::class,'loadAds'])->name('loadAds');
+Route::get('admin/loadads',[AdsController::class,'loadAds'])->name('ads.admin');
+Route::get('admin/delete-ads/{id}',[AdsController::class,'deleteAds'])->name('delete-ads');
+Route::get('admin/capnhatad/{id}', [AdsController::class, 'editAds'])->name('ads.admin.update')->middleware(CheckAdminLogin::class);
+Route::post('admin/updateads/{id}',[AdsController::class, 'updateAds'])->name('updateAds');
 
 // Route::get('admin/post', function () {
 //     return view('admin.ManagerComment');
@@ -104,15 +130,22 @@ Route::post('admin/luubaiviet', [BaivietController::class, 'store'])->name('post
 Route::post('admin/capnhatbaiviet', [BaivietController::class, 'edit'])->name('post.admin.update')->middleware(CheckAdminLogin::class);
 Route::post('admin/capnhat', [BaivietController::class, 'update'])->name('post.admin.edit')->middleware(CheckAdminLogin::class);
 Route::post('admin/delete', [BaivietController::class, 'destroy'])->name('post.admin.delete')->middleware(CheckAdminLogin::class);
+
+Route::get('admin/lienhe', [LienheController::class, 'index'])->name('post.admim.lienhe')->middleware(CheckAdminLogin::class);
+Route::post('admin/luulienhe', [LienheController::class, 'addContact'])->name('post.admin.savecontact')->middleware(CheckAdminLogin::class);
+Route::get('admin/caidat', [CaidatController::class, 'index'])->name('post.admim.caidat')->middleware(CheckAdminLogin::class);
+Route::POST('admin/capnhatcaidat', [CaidatController::class, 'update'])->name('post.admim.updatesetting')->middleware(CheckAdminLogin::class);
+
 Route::get('admin/lienhe', [LienheController::class, 'index'])->name('post.admim.lienhe');
 Route::post('admin/luulienhe', [LienheController::class, 'addContact'])->name('post.admin.savecontact');
 
 Route::get('admin/setting', [SettingController::class, 'index'])->name('post.admim.setting');
 Route::POST('admin/updatesetting', [SettingController::class, 'update'])->name('post.admim.updatesetting');
 
+
 Route::get('admin/user', function () {
     return view('admin.ManagerUser');
-})->name('user.admin');
+})->name('user.admin')->middleware(CheckAdminLogin::class);
 //User
 Route::get('/home', [UserHomeController::class,'index'])->name('home');
 Route::get('/category', [UserCategoryController::class,'index'])->name('category');
@@ -139,10 +172,10 @@ Route::get('loai-danh-muc/{id}', [UserTypeCategoryController::class, 'detailtype
 
 Route::post('binhluanbaiviet', [UserDetailController::class, 'binhluan'])->name('binhluanpost');
 
-Route::post('timkiembaivietadmin', [BaivietController::class, 'timkiem'])->name('tim');
+Route::post('timkiembaivietadmin', [BaivietController::class, 'timkiem'])->name('tim')->middleware(CheckAdminLogin::class);
 
-Route::post('locloaitudanhmuc', [BaivietController::class, 'filter'])->name('filterloai');
+Route::post('locloaitudanhmuc', [BaivietController::class, 'filter'])->name('filterloai')->middleware(CheckAdminLogin::class);
 
 Route::post('binhluanbaiviet', [UserDetailController::class, 'binhluan'])->name('binhluanpost');
 
-Route::get('timkiemadmin', [BaivietController::class, 'search'])->name('search.get');
+Route::get('timkiemadmin', [BaivietController::class, 'search'])->name('search.get')->middleware(CheckAdminLogin::class);
