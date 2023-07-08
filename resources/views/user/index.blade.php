@@ -21,80 +21,22 @@ use App\Models\Slide;
                             <div id="myCarousel" class="carousel slide" data-ride="carousel">
                                 <!-- Wrapper for slides -->
                                 <div class="carousel-inner">
-                                    <div class="item active">
-                                        <img src="{{asset('user/img/slideshow-img/a12-16877994426012071256703.jpg')}}"
-                                            width="400" height="350">
-                                        <div class="carousel-caption">
-                                            <h3><a href="#">Việt Nam là hình mẫu về phục hồi kinh tế</a></h3>
-                                            <p>Trưa 26.6, trong khuôn khổ chuyến thăm chính thức Trung Quốc và dự hội
-                                                nghị của Diễn đàn Kinh tế thế giới, Thủ tướng...<a
-                                                    class="label label-primary" href="" target="_blank"></a></p>
+                                    @foreach($slideshows as $key => $slideshow)
+                                    <div class="item{{ $key === 0 ? ' active' : '' }}">
+                                        <img src="{{ asset('uploads/posts/' . $slideshow->post_image->img) }}" width="400" height="350">
+                                        <div class="carousel-caption" style="overflow: hidden;">
+                                            <h3><a href="{{ route('chitietbaiviet', $slideshow->slug_post) }}">{{ $slideshow->description }}</a></h3>
+                                            <p><a class="label label-primary" href="#" target="_blank"></a></p>
                                         </div>
                                     </div><!-- End Item -->
-
-                                    <div class="item">
-                                        <img
-                                            src="{{asset('user/img/slideshow-img/img1081-168779566180572722111.jpeg')}}">
-                                        <div class="carousel-caption">
-                                            <h3><a href="#">Thiếu tướng Vũ Hồng Văn, Cục trưởng A03 nhận huân chương
-                                                    Quân công hạng nhì</a></h3>
-                                            <p>Tại hội nghị sơ kết công tác công an 6 tháng đầu năm, thừa ủy quyền của
-                                                lãnh đạo Đảng, Nhà nước, đại tướng Tô Lâm, Bộ trưởng Bộ Công an, đã...<a
-                                                    class="label label-primary" href="" target="_blank"></a></p>
-                                        </div>
-                                    </div><!-- End Item -->
-
-                                    <div class="item">
-                                        <img src="{{asset('user/img/slideshow-img/ezgif-1-d25e8afc1c.jpg')}}">
-                                        <div class="carousel-caption">
-                                            <h3><a href="#">'Mở cửa' du lịch giữa Ấn Độ và Đà Lạt, Lạc Dương</a></h3>
-                                            <p>Nhiều đơn vị lữ hành của Ấn Độ đang có kế hoạch tổ chức đưa du khách đến
-                                                Đà Lạt, Lạc Dương và các điểm du lịch khác của Lâm Đồng. <a
-                                                    class="label label-primary" href="" target="_blank"></a></p>
-                                        </div>
-                                    </div><!-- End Item -->
-
-                                    <div class="item">
-                                        <img
-                                            src="{{asset('user/img/slideshow-img/img1081-168779566180572722111.jpeg')}}">
-                                        <div class="carousel-caption">
-                                            <h3><a href="#">Thiếu tướng Vũ Hồng Văn, Cục trưởng A03 nhận huân chương
-                                                    Quân công hạng nhì</a></h3>
-                                            <p>Tại hội nghị sơ kết công tác công an 6 tháng đầu năm, thừa ủy quyền của
-                                                lãnh đạo Đảng, Nhà nước, đại tướng Tô Lâm, Bộ trưởng Bộ Công an, đã...<a
-                                                    class="label label-primary" href="" target="_blank"></a></p>
-                                        </div>
-                                    </div><!-- End Item -->
-
-                                    <div class="item">
-                                        <img src="{{asset('user/img/slideshow-img/a12-16877994426012071256703.jpg')}}">
-                                        <div class="carousel-caption">
-                                            <h3><a href="#">Việt Nam là hình mẫu về phục hồi kinh tế</a></h3>
-                                            <p>Trưa 26.6, trong khuôn khổ chuyến thăm chính thức Trung Quốc và dự hội
-                                                nghị của Diễn đàn Kinh tế thế giới, Thủ tướng...<a
-                                                    class="label label-primary" href="" target="_blank"></a></p>
-                                        </div>
-                                    </div><!-- End Item -->
+                                    @endforeach
                                 </div><!-- End Carousel Inner -->
-
                                 <ul class="list-group col-sm-4">
-                                    <li data-target="#myCarousel" data-slide-to="0" class="list-group-item active">
-                                        <h4>Việt Nam là hình mẫu về phục hồi kinh tế</h4>
+                                    @foreach($slideshows as $key => $slideshow)
+                                    <li data-target="#myCarousel" data-slide-to="{{ $key }}" class="list-group-item{{ $key === 0 ? ' active' : '' }}">
+                                        <h4>{{ $slideshow->title_post }}</h4>
                                     </li>
-                                    <li data-target="#myCarousel" data-slide-to="1" class="list-group-item">
-                                        <h4>Thiếu tướng Vũ Hồng Văn, Cục trưởng A03 nhận huân chương Quân công hạng nhì
-                                        </h4>
-                                    </li>
-                                    <li data-target="#myCarousel" data-slide-to="2" class="list-group-item">
-                                        <h4>'Mở cửa' du lịch giữa Ấn Độ và Đà Lạt, Lạc Dương</h4>
-                                    </li>
-                                    <li data-target="#myCarousel" data-slide-to="3" class="list-group-item">
-                                        <h4>Thiếu tướng Vũ Hồng Văn, Cục trưởng A03 nhận huân chương Quân công hạng nhì
-                                        </h4>
-                                    </li>
-                                    <li data-target="#myCarousel" data-slide-to="4" class="list-group-item">
-                                        <h4>Việt Nam là hình mẫu về phục hồi kinh tế</h4>
-                                    </li>
+                                    @endforeach
                                 </ul>
 
                                 <!-- Controls -->

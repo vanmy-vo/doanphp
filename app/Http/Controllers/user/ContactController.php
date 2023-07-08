@@ -3,22 +3,31 @@
 namespace App\Http\Controllers\user;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Lienhe;
+// use App\Models\Caidat;
+use Illuminate\Support\Facades\DB;
 
 class ContactController extends Controller
 {
     public function index(){
-        return view('user.contact');
+        $settings = DB::table('setting')->get();
+        $breadcrumb = $this->getBreadcrumb();
+        return view('user.contact', compact('settings', 'breadcrumb'));
     }
-    public function addContact(Request $request)
+
+    public function getBreadcrumb()
     {
-        $co=new contact();
-        $co->fullname = $request->fullname;
-        $co->email=$request->email;
-        $co->content_contact = $request->content_contact;
-        $co->title_contact=$request->title_contact;
-        $co->save();
-        return redirect()->back();
-        // ->withErrors(['passed'=>"Bạn đã liên hệ thành công!"]);
+        $breadcrumb = [
+            [
+                'title' => 'Trang chủ',
+                'url' => '/home',
+            ],
+            [
+                'title' => 'Liên hệ',
+                'url' => '/contact',
+            ],
+        ];
+
+        return $breadcrumb;
     }
+
 }

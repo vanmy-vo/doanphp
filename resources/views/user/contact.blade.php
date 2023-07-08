@@ -8,8 +8,15 @@
         <div class="main--breadcrumb">
             <div class="container">
                 <ul class="breadcrumb">
-                    <li><a href="home-1.html" class="btn-link"><i class="fa fm fa-home"></i>Trang chủ</a></li>
-                    <li class="active"><span>Liên hệ</span></li>
+                    @foreach ($breadcrumb as $key => $bc)
+                    <li class="breadcrumb-item{{ $key === count($breadcrumb) - 1 ? ' active' : '' }}">
+                        @if ($key === count($breadcrumb))
+                            {{ $bc['title'] }}
+                        @else
+                            <a href="{{ $bc['url'] }}">{{ $bc['title'] }}</a>
+                        @endif
+                    </li>
+                    @endforeach
                 </ul>
             </div>
         </div>
@@ -23,23 +30,24 @@
                         <!-- Contact Info Start -->
                         <div class="contact--info">
                             <ul class="nav">
+                                @foreach ($settings as $key => $setting)
                                 <li>
                                     <div class="title">
                                         <h3 class="h5"><i class="fa fa-phone-square"></i>Số điện thoại</h3>
                                     </div>
 
                                     <div class="content">
-                                        <p><a href="">0944 123 123</a></p>
+                                        <p><a href="">{{$setting->phone}}</a></p>
                                     </div>
                                 </li>
 
                                 <li>
                                     <div class="title">
-                                        <h3 class="h5"><i class="fa fa-envelope-open"></i>Địa chỉ Email</h3>
+                                        <h3 class="h5"><i class="fa fa-envelope-open"></i>Email</h3>
                                     </div>
 
                                     <div class="content">
-                                        <p><a href="">example@example.com</a></p>
+                                        <p><a href="">{{$setting->email}}</a></p>
                                     </div>
                                 </li>
 
@@ -49,9 +57,15 @@
                                     </div>
 
                                     <div class="content">
-                                        <p>TP.Hồ Chí Minh</p>
+                                        <p><a href="">{{$setting->address_}}</a></p>
                                     </div>
                                 </li>
+                                <li>
+                                    <div class="title">
+                                        <h3 class="h5"><i class="fa fa-facebook">acebook: </i><a href="{{$setting->linkfb}}"><u>truy cập tại đây<u></a></h3>
+                                    </div>
+                                </li>
+                                @endforeach
                             </ul>
                         </div>
                         <!-- Contact Info End -->

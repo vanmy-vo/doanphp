@@ -41,10 +41,10 @@
                                             <div class="col-md-4 col-sm-12 col-xs-4 col-xxs-12">
                                                 <div class="post--img">
                                                     
-                                                    @if($result->post_image->img == null)
+                                                    @if(!$result->post_image)
                                                         <a href="" class="thumb"><img src="" alt="Image not found!"></a>
                                                     @else
-                                                        <a href="" class="thumb"><img src="uploads/posts/{{$result->post_image->img}}"></a>
+                                                        <a href="" class="thumb"><img src="{{ asset('uploads/posts/' . $result->post_image->img) }}"></a>
                                                     @endif
 
                                                     <a href="" class="cat">{{$result->type->type_name}}</a>
@@ -59,7 +59,7 @@
                                                     </ul>
 
                                                     <div class="title">
-                                                        <h3 class="h4"><a href="news-single-v1.html" class="btn-link">{{$result->title_post}}</a></h3>
+                                                        <h3 class="h4"><a href="{{ route('chitietbaiviet', $result->slug_post) }}" class="btn-link">{{$result->title_post}}</a></h3>
                                                     </div>
                                                 </div>
 

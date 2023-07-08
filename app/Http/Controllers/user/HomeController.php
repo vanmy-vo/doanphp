@@ -16,6 +16,8 @@ class HomeController extends Controller
         $tincongnghe = Baiviet::where(['status' => 0])->orderBy('id', 'asc')->limit(5)->get();
         $tinvang = Baiviet::where(['status' => 0])->orderBy('id', 'asc')->limit(4)->get();
         $databases = DB::select('SELECT * FROM ads');
-        return view('user.index', compact('tinmoi', 'tinnoibat', 'tinthethao', 'tincongnghe', 'tinvang', 'databases'));
+
+        $slideshows = Baiviet::where('status', '1')->get();
+        return view('user.index', compact('tinmoi', 'tinnoibat', 'tinthethao', 'tincongnghe', 'tinvang', 'databases', 'slideshows'));
     }
 }

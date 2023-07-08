@@ -14,7 +14,7 @@ class DetailController extends Controller
     }
 
     public function detail($slug) {
-        $chitiet = Baiviet::where(['slug_post' => $slug, 'status' => 0])->first();
+        $chitiet = Baiviet::where(['slug_post' => $slug])->first();
         $tongbinhluan = DB::table('comment')->where(['post_id' => $chitiet->id])->get();
         $databases = DB::table('ads')->get();
         $tinlienquan = DB::table('post')->where(['type_id' => $chitiet->type_id])->orderBy('created_at', 'desc')->limit(2)->get();
